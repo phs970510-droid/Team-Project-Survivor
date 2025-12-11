@@ -12,6 +12,7 @@ public class DataManager : MonoBehaviour
 
     [Header("데이터 참조")]
     public PlayerData playerData;
+    public BaseData baseData;
     public List<WeaponData> allWeaponData = new();
 
     public int CurrentSlot { get; private set; } = 0;
@@ -32,14 +33,14 @@ public class DataManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         Money = Mathf.Max(0, Money + amount);
-        UIManager.Instance?.UpdateMoney(Money);
+        //UIManager.Instance?.UpdateMoney(Money);
         Save();
     }
 
     public void AddScrap(int amount)
     {
         Scrap = Mathf.Max(0, Scrap + amount);
-        UIManager.Instance?.UpdateScrap(Scrap);
+        //UIManager.Instance?.UpdateScrap(Scrap);
         Save();
     }
 
@@ -47,7 +48,7 @@ public class DataManager : MonoBehaviour
     {
         if (Money < amount) return false;
         Money -= amount;
-        UIManager.Instance?.UpdateMoney(Money);
+        //UIManager.Instance?.UpdateMoney(Money);
         Save();
         return true;
     }
@@ -56,7 +57,7 @@ public class DataManager : MonoBehaviour
     {
         if (Scrap < amount) return false;
         Scrap -= amount;
-        UIManager.Instance?.UpdateScrap(Scrap);
+        //UIManager.Instance?.UpdateScrap(Scrap);
         Save();
         return true;
     }
@@ -74,8 +75,8 @@ public class DataManager : MonoBehaviour
     {
         Money = PlayerPrefs.GetInt("Money", 0);
         Scrap = PlayerPrefs.GetInt("Scrap", 0);
-        UIManager.Instance?.UpdateMoney(Money);
-        UIManager.Instance?.UpdateScrap(Scrap);
+        //UIManager.Instance?.UpdateMoney(Money);
+        //UIManager.Instance?.UpdateScrap(Scrap);
     }
     public void SaveAllData(int slotIndex)
     {
@@ -83,17 +84,17 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt(prefix + "Money", Money);
         PlayerPrefs.SetInt(prefix + "Scrap", Scrap);
 
-        if (playerData != null)
+        if (baseData != null)
         {
-            PlayerPrefs.SetFloat(prefix + "Player_MaxHP", playerData.maxHP);
-            PlayerPrefs.SetFloat(prefix + "Player_MoveSpeed", playerData.moveSpeed);
+            PlayerPrefs.SetFloat(prefix + "Player_MaxHP", baseData.maxHp);
+            PlayerPrefs.SetFloat(prefix + "Player_MoveSpeed", baseData.moveSpeed);
         }
 
         foreach (var weapon in allWeaponData)
         {
             if (weapon == null) continue;
-            PlayerPrefs.SetInt(prefix + $"{weapon.weaponName}_Unlocked", weapon.isUnlocked ? 1 : 0);
-            PlayerPrefs.SetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
+            //PlayerPrefs.SetInt(prefix + $"{weapon.weaponName}_Unlocked", weapon.isUnlocked ? 1 : 0);
+            //PlayerPrefs.SetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
         PlayerPrefs.Save();
@@ -105,21 +106,21 @@ public class DataManager : MonoBehaviour
         Money = PlayerPrefs.GetInt(prefix + "Money", 0);
         Scrap = PlayerPrefs.GetInt(prefix + "Scrap", 0);
 
-        if (playerData != null)
+        if (baseData != null)
         {
-            playerData.maxHP = PlayerPrefs.GetFloat(prefix + "Player_MaxHP", playerData.maxHP);
-            playerData.moveSpeed = PlayerPrefs.GetFloat(prefix + "Player_MoveSpeed", playerData.moveSpeed);
+            baseData.maxHp = PlayerPrefs.GetFloat(prefix + "Player_MaxHP", baseData.maxHp);
+            baseData.moveSpeed = PlayerPrefs.GetFloat(prefix + "Player_MoveSpeed", baseData.moveSpeed);
         }
 
         foreach (var weapon in allWeaponData)
         {
             if (weapon == null) continue;
-            weapon.isUnlocked = PlayerPrefs.GetInt(prefix + $"{weapon.weaponName}_Unlocked", 0) == 1;
-            weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
+            //weapon.isUnlocked = PlayerPrefs.GetInt(prefix + $"{weapon.weaponName}_Unlocked", 0) == 1;
+            //weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
-        UIManager.Instance?.UpdateMoney(Money);
-        UIManager.Instance?.UpdateScrap(Scrap);
+        //UIManager.Instance?.UpdateMoney(Money);
+        //UIManager.Instance?.UpdateScrap(Scrap);
 
         Debug.Log($"[DataManager] 슬롯 {slotIndex} 불러오기 완료");
     }
