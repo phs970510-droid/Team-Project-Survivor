@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [CreateAssetMenu(fileName = "BaseData", menuName = "Data/BaseData")]
 
 public class BaseData : ScriptableObject
 {
-    [Header("±âº» ´É·ÂÄ¡")]
+    [Header("ê¸°ë³¸ ëŠ¥ë ¥ì¹˜")]
     public float moveSpeed = 5.0f;
     public float maxHp = 100;
-    public float damage = 10.0f; //enemy¸¸ »ç¿ë
+    public float damage = 10.0f; //enemyë§Œ ì‚¬ìš©
 }
