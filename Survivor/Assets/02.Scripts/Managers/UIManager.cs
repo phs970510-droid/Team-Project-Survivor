@@ -1,14 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     [Header("Controllers")]
     public PanelSwitcher panelSwitcher;
-    public SoundOptions soundOptions; //ÃßÈÄ »èÁ¦ ¿¹Á¤
-    public SoundToggle soundToggle; //ÃßÈÄ »èÁ¦ ¿¹Á¤
+    public SoundOptions soundOptions; //ì¶”í›„ ì‚­ì œ ì˜ˆì •
+    public SoundToggle soundToggle; //ì¶”í›„ ì‚­ì œ ì˜ˆì •
     public GameQuit gameQuit;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     //MenuToggle
     public void ToggleMenu()
@@ -45,7 +52,7 @@ public class UIManager : MonoBehaviour
     }
 
     //SoundController
-    //»ç¿îµå Å×½ºÆ®¸¦ À§ÇØ ³Ö¾î³ù½À´Ï´Ù. ¼­ÁØ´Ô²²¼­ ¿Ï¼ºÇÏ½Ã¸é ¾Æ·¡´Â µû·Î ÀüºÎ »èÁ¦ ¿¹Á¤ÀÔ´Ï´Ù.
+    //ì‚¬ìš´ë“œ í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ ë„£ì–´ë†¨ìŠµë‹ˆë‹¤. ì„œì¤€ë‹˜ê»˜ì„œ ì™„ì„±í•˜ì‹œë©´ ì•„ëž˜ëŠ” ë”°ë¡œ ì „ë¶€ ì‚­ì œ ì˜ˆì •ìž…ë‹ˆë‹¤.
     public void SetBGMVolume()
     {
         soundOptions.SetBgmVolme();

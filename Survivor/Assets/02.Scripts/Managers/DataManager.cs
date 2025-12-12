@@ -8,7 +8,6 @@ public class DataManager : MonoBehaviour
 
     [Header("경제/자원")]
     public int Money;   //코인
-    public int Scrap;   //스크랩
 
     [Header("데이터 참조")]
     public PlayerData playerData;
@@ -37,13 +36,6 @@ public class DataManager : MonoBehaviour
         Save();
     }
 
-    public void AddScrap(int amount)
-    {
-        Scrap = Mathf.Max(0, Scrap + amount);
-        //UIManager.Instance?.UpdateScrap(Scrap);
-        Save();
-    }
-
     public bool TrySpendMoney(int amount)
     {
         if (Money < amount) return false;
@@ -53,19 +45,9 @@ public class DataManager : MonoBehaviour
         return true;
     }
 
-    public bool TrySpendScrap(int amount)
-    {
-        if (Scrap < amount) return false;
-        Scrap -= amount;
-        //UIManager.Instance?.UpdateScrap(Scrap);
-        Save();
-        return true;
-    }
-
     public void Save()
     {
         PlayerPrefs.SetInt("Money", Money);
-        PlayerPrefs.SetInt("Scrap", Scrap);
         PlayerPrefs.Save();
 
         MirrorQuickSaveToCurrentSlotIfAny();
@@ -74,15 +56,12 @@ public class DataManager : MonoBehaviour
     public void Load()
     {
         Money = PlayerPrefs.GetInt("Money", 0);
-        Scrap = PlayerPrefs.GetInt("Scrap", 0);
         //UIManager.Instance?.UpdateMoney(Money);
-        //UIManager.Instance?.UpdateScrap(Scrap);
     }
     public void SaveAllData(int slotIndex)
     {
         string prefix = $"Save{slotIndex}_";
         PlayerPrefs.SetInt(prefix + "Money", Money);
-        PlayerPrefs.SetInt(prefix + "Scrap", Scrap);
 
         if (baseData != null)
         {
@@ -94,7 +73,7 @@ public class DataManager : MonoBehaviour
         {
             if (weapon == null) continue;
             //PlayerPrefs.SetInt(prefix + $"{weapon.weaponName}_Unlocked", weapon.isUnlocked ? 1 : 0);
-            //PlayerPrefs.SetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
+            PlayerPrefs.SetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
         PlayerPrefs.Save();
@@ -104,7 +83,6 @@ public class DataManager : MonoBehaviour
     {
         string prefix = $"Save{slotIndex}_";
         Money = PlayerPrefs.GetInt(prefix + "Money", 0);
-        Scrap = PlayerPrefs.GetInt(prefix + "Scrap", 0);
 
         if (baseData != null)
         {
@@ -116,11 +94,10 @@ public class DataManager : MonoBehaviour
         {
             if (weapon == null) continue;
             //weapon.isUnlocked = PlayerPrefs.GetInt(prefix + $"{weapon.weaponName}_Unlocked", 0) == 1;
-            //weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
+            weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
         //UIManager.Instance?.UpdateMoney(Money);
-        //UIManager.Instance?.UpdateScrap(Scrap);
 
         Debug.Log($"[DataManager] 슬롯 {slotIndex} 불러오기 완료");
     }
@@ -142,7 +119,6 @@ public class DataManager : MonoBehaviour
         if (CurrentSlot <= 0) return;
         string prefix = $"Save{CurrentSlot}_";
         PlayerPrefs.SetInt(prefix + "Money", Money);
-        PlayerPrefs.SetInt(prefix + "Scrap", Scrap);
         PlayerPrefs.Save();
     }
 }
