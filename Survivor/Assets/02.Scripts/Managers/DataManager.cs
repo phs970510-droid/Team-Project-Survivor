@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -72,7 +73,7 @@ public class DataManager : MonoBehaviour
         foreach (var weapon in allWeaponData)
         {
             if (weapon == null) continue;
-            //PlayerPrefs.SetInt(prefix + $"{weapon.weaponName}_Unlocked", weapon.isUnlocked ? 1 : 0);
+            PlayerPrefs.SetInt(prefix + $"{weapon.weaponName}_Unlocked", weapon.isUnlocked ? 1 : 0);
             PlayerPrefs.SetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
@@ -93,7 +94,7 @@ public class DataManager : MonoBehaviour
         foreach (var weapon in allWeaponData)
         {
             if (weapon == null) continue;
-            //weapon.isUnlocked = PlayerPrefs.GetInt(prefix + $"{weapon.weaponName}_Unlocked", 0) == 1;
+            weapon.isUnlocked = PlayerPrefs.GetInt(prefix + $"{weapon.weaponName}_Unlocked", 0) == 1;
             weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
