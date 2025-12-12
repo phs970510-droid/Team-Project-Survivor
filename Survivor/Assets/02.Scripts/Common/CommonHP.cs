@@ -17,6 +17,7 @@ public class CommonHP : MonoBehaviour
     [Header("경험치 프리팹(에너미만 할당)")]
     [SerializeField] private GameObject EXPPrefab;
     //큰 경험치도 추가해야 함
+    [SerializeField] private GameObject bossReward;
 
     //플레이어 HP 체력바에 참조
     public float CurrentHP => currentHP;
@@ -111,7 +112,6 @@ public class CommonHP : MonoBehaviour
             agent.isStopped = true;
             agent.velocity = Vector2.zero;
         }
-        //경험치 떨어뜨리는 것 추가
         DropEXP();
     }
 

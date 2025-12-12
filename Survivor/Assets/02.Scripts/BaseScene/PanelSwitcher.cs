@@ -1,13 +1,14 @@
 using UnityEngine;
 
-public class OpenUI : MonoBehaviour
+public class PanelSwitcher : MonoBehaviour
 {
     public GameObject panelMain;
     public GameObject panelUPGrade;
     public GameObject panelMenu;
     public GameObject panelShop;
+    public GameObject panelWarning;
 
-    public void OpenBasePanel()
+    public void OpenMainPanel()
     {
         panelUPGrade.SetActive(false);
         panelShop.SetActive(false);
@@ -32,9 +33,13 @@ public class OpenUI : MonoBehaviour
     {
         panelMenu.SetActive(!panelMenu.activeSelf);
     }
-    public void CloseMenu()
+    public void CloseMenuPanel()
     {
         panelMenu.SetActive(false);
+    }
+    public void CloseWarningPanel()
+    {
+        panelWarning.SetActive(false);
     }
 
 }
