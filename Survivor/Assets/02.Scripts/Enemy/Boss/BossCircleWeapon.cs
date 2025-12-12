@@ -7,14 +7,10 @@ public class BossCircleWeapon : MonoBehaviour
     public float rotateSpeed;
     public int count;
     public float damage;
-
     public Transform boss;
+
     private GameObject[] circleObjects;
 
-    private void Awake()
-    {
-        boss = GameObject.FindGameObjectWithTag("Boss").transform;
-    }
     void Start()
     {
         StartSpin();
@@ -22,8 +18,6 @@ public class BossCircleWeapon : MonoBehaviour
 
     void Update()
     {
-        transform.position = boss.position;
-
         transform.Rotate(-Vector3.forward, rotateSpeed * Time.deltaTime);
     }
 

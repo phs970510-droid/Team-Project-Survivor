@@ -12,7 +12,7 @@ public class CircleBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         CommonHP hp = other.GetComponent<CommonHP>();
-        if (hp != null && other.CompareTag("Enemy"))
+        if (hp != null)
         {
             hp.Damage(bulletDamage);
             Debug.Log($"{name}이 {other.name}에게 데미지 줌({bulletDamage})");

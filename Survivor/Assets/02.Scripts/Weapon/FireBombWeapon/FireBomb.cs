@@ -25,6 +25,20 @@ public class FireBomb : MonoBehaviour
         startPos = transform.position;
     }
 
+    //보스 전용 무작위로 쏘기
+    public void BossInit(Vector3 pos, float damage, float radius)
+    {
+        fireDamage = damage;
+        fireRadius = radius;
+
+        startPos = transform.position;
+
+        dir = (pos  - startPos).normalized;
+
+        float dist = Vector3.Distance(startPos, pos);
+        throwSpeed = dist / throwTime;
+    }
+
     private void Update()
     {
         shootTimer += Time.deltaTime;
