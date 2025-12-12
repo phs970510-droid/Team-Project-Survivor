@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 4082593089032405610, guid: 8e7dfa1baef42384bac824311bdc9dc0, type: 3}
   weaponName: FireBombWeapon
-  isLocked: 0
+  isUnlocked: 0
   damage: 5
   speed: 10
   fireCoolTime: 3
   bulletCount: 1
   attackRange: 10
+  price: 5000

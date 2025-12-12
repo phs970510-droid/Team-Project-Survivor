@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 3100725527675279697, guid: 93a238a29938033458426510a2c8b481, type: 3}
   weaponName: CircleWeapon
-  isLocked: 0
+  isUnlocked: 0
   damage: 10
   speed: 10
   fireCoolTime: 1
   bulletCount: 1
   attackRange: 10
+  price: 2000

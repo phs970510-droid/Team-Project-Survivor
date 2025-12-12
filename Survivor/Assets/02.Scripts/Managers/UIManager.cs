@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -12,9 +13,15 @@ public class UIManager : MonoBehaviour
     public SoundToggle soundToggle; //추후 삭제 예정
     public GameQuit gameQuit;
 
+    [SerializeField] private TextMeshProUGUI moneyText;
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void UpdateMoney(int money)
+    {
+        moneyText.text = money.ToString();
     }
 
     //MenuToggle
