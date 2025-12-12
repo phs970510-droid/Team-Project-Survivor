@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
-  m_Name: NormalBullet
+  m_Script: {fileID: 11500000, guid: 8227d55a53a90fd4691b5a9100dc639c, type: 3}
+  m_Name: PlayerBoss
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 4039606727853340734, guid: d7282e25b859ba1458af27bf075401f1, type: 3}
-  weaponName: NormalWeapon
-  isLocked: 0
+  moveSpeed: 5
+  maxHp: 100
   damage: 10
-  speed: 10
-  fireCoolTime: 1
-  bulletCount: 1
-  attackRange: 10

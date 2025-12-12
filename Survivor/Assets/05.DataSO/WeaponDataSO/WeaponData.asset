@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
-  m_Name: DroneBullet
+  m_Name: WeaponData
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 2202187861052018114, guid: f84f7e950da63c941ab16a6d6badbba6, type: 3}
-  weaponName: DroneWeapon
-  isLocked: 0
-  damage: 3
+  weaponPrefab: {fileID: 0}
+  damage: 10
   speed: 10
-  fireCoolTime: 5
-  bulletCount: 5
+  fireCoolTime: 1
+  bulletCount: 1
   attackRange: 10
