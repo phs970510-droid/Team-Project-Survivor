@@ -22,7 +22,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateMoney(int money)
     {
-        moneyText.text = money.ToString();
+        if(moneyText!= null)
+        moneyText.text = $"${money}";
+        ;
     }
 
     //MenuToggle

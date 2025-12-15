@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         Money = Mathf.Max(0, Money + amount);
-        //UIManager.Instance?.UpdateMoney(Money);
+        UIManager.Instance?.UpdateMoney(Money);
         Save();
     }
 
@@ -41,7 +41,7 @@ public class DataManager : MonoBehaviour
     {
         if (Money < amount) return false;
         Money -= amount;
-        //UIManager.Instance?.UpdateMoney(Money);
+        UIManager.Instance?.UpdateMoney(Money);
         Save();
         return true;
     }
@@ -57,7 +57,7 @@ public class DataManager : MonoBehaviour
     public void Load()
     {
         Money = PlayerPrefs.GetInt("Money", 0);
-        //UIManager.Instance?.UpdateMoney(Money);
+        UIManager.Instance?.UpdateMoney(Money);
     }
     public void SaveAllData(int slotIndex)
     {
@@ -98,7 +98,7 @@ public class DataManager : MonoBehaviour
             weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
-        //UIManager.Instance?.UpdateMoney(Money);
+        UIManager.Instance?.UpdateMoney(Money);
 
         Debug.Log($"[DataManager] 슬롯 {slotIndex} 불러오기 완료");
     }
