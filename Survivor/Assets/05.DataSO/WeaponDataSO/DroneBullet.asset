@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 2202187861052018114, guid: f84f7e950da63c941ab16a6d6badbba6, type: 3}
   weaponName: DroneWeapon
-  isLocked: 0
+  isUnlocked: 0
   damage: 3
   speed: 10
   fireCoolTime: 5
   bulletCount: 5
   attackRange: 10
+  price: 10000
