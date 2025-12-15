@@ -11,6 +11,7 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private int normalCount = 5;
     [SerializeField] private float normalDelay = 0.5f;
     [SerializeField] private float normalDamage = 10f;
+    [SerializeField] private float normalSpeed = 10f;
 
     [Header("원형 패턴")]
     [SerializeField] public GameObject cpPrefab;
@@ -104,14 +105,18 @@ public class PlayerBoss : MonoBehaviour
     {
         for (int i = 0; i < normalCount; i++)
         {
-            GameObject bulletObj = Instantiate(npPrefab, transform.position, Quaternion.identity);
-
+            //총은 플레이어 향하게
             Vector2 dir = (player.position - transform.position).normalized;
 
-            EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
-            bullet.BulletDamage(normalDamage);
+            GameObject bulletObj = Instantiate(npPrefab, transform.position, Quaternion.identity);
 
-            bullet.BulletDirection(dir);
+            //스탯 적용
+            BossBullet bullet = bulletObj.GetComponent<BossBullet>();
+            bullet.BossBulletStat(normalDamage, normalSpeed, dir);
+
+            //플레이어 바라보기
+            float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
+            bulletObj.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             yield return new WaitForSeconds(normalDelay);
         }
@@ -150,8 +155,8 @@ public class PlayerBoss : MonoBehaviour
             Vector2 randomCircle = Random.insideUnitCircle * randomRadius;
             Vector2 randomPos = (Vector2)transform.position + randomCircle;
 
-            FireBomb fire = bulletObj.GetComponent<FireBomb>();
-            fire.BossInit(randomPos, fireDamage, fireRadius);
+            FireBomb bomb = bulletObj.GetComponent<FireBomb>();
+            bomb.BossInit(randomPos, fireDamage, fireRadius, Shooter.Boss);
 
             yield return new WaitForSeconds(fireDelay);
         }
