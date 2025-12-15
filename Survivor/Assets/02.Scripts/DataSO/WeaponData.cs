@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Data/WeaponData")]
 public class WeaponData : ScriptableObject
@@ -13,4 +15,5 @@ public class WeaponData : ScriptableObject
     public int bulletCount = 1;
     public float attackRange = 10f;
     public int price;
+    public Sprite Sprite;
 }

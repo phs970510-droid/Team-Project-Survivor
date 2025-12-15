@@ -634,7 +634,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 980}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &42102935
 MonoBehaviour:
@@ -6489,7 +6489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 927338625, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  m_Sprite: {fileID: 7886631795410796208, guid: 11782ddce7ee93d43852703efb826fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9748,7 +9748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1314829850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10911,6 +10911,8 @@ MonoBehaviour:
   panelMenu: {fileID: 1577836419}
   panelShop: {fileID: 1742207861}
   panelWarning: {fileID: 38622073}
+  panelSelcet: {fileID: 0}
+  joysitck: {fileID: 0}
 --- !u!1 &1513185632
 GameObject:
   m_ObjectHideFlags: 0
@@ -12163,7 +12165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1742207862
 Transform:
   m_ObjectHideFlags: 0

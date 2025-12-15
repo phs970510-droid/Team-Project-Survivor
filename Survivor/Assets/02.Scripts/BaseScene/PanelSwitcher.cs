@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PanelSwitcher : MonoBehaviour
@@ -7,6 +8,9 @@ public class PanelSwitcher : MonoBehaviour
     public GameObject panelMenu;
     public GameObject panelShop;
     public GameObject panelWarning;
+    public GameObject panelSelcet;
+    public GameObject joysitck;
+
 
     public void OpenMainPanel()
     {
@@ -36,12 +40,18 @@ public class PanelSwitcher : MonoBehaviour
 
     public void ToggleMenu()
     {
+        //StartCoroutine(StopAction());
         Time.timeScale = 0f;
         if (panelMenu == null) return;
+        if (joysitck == null) return;
+        joysitck.SetActive(false);
+
+
         panelMenu.SetActive(!panelMenu.activeSelf);
         if (panelMenu.gameObject.activeInHierarchy == false)
         {
             Time.timeScale = 1f;
+            joysitck.SetActive(true);
 
         }
     }
@@ -50,13 +60,36 @@ public class PanelSwitcher : MonoBehaviour
         Time.timeScale = 1f;
 
         if (panelMenu == null) return;
+        if (joysitck == null) return;
 
         panelMenu.SetActive(false);
+        joysitck.SetActive(true);
+
     }
     public void CloseWarningPanel()
     {
         if(panelWarning == null) return;    
         panelWarning.SetActive(false);
     }
+
+    //public void OpenSelcetItme()
+    //{
+    //    if (panelSelcet == null) return;
+
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //    {
+    //        panelSelcet.SetActive(true);
+    //    }
+    //}
+    public void CloseSelectItme()
+    {
+        if (panelSelcet == null) return;
+        panelSelcet.SetActive(false);
+        joysitck.SetActive(true);
+        Time.timeScale = 1f;
+
+
+    }
+
 
 }

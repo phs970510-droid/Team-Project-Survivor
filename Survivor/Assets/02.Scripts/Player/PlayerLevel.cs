@@ -4,6 +4,9 @@ public class PlayerLevel : MonoBehaviour
 {
     [SerializeField] public PlayerData playerData;
 
+    public GameObject openSelectItme; //wy추가
+    public GameObject joyStick; //wy추가
+
     public int level = 1;
     public int currentExp = 0;
 
@@ -24,6 +27,8 @@ public class PlayerLevel : MonoBehaviour
 
         playerData.expMax += 20; //다음 레벨업 필요경험치 증가
         //UI 추가
+        joyStick.SetActive(false);
+        openSelectItme.SetActive(true); //wy추가
 
         //선택까지 일시정지
         Time.timeScale = 0f;

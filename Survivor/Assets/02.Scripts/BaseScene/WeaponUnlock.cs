@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DataSoWeaponUnlock : MonoBehaviour
+public class WeaponUnlock : MonoBehaviour
 {
 
     public GameObject emptyMoneyPaenl;

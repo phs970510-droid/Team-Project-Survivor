@@ -75,6 +75,23 @@ public class UIManager : MonoBehaviour
         if(sceneLoader == null) return;
         sceneLoader.BattleSceneLoader();
     }
+    public void MainSceneLoad()
+    {
+        if(sceneLoader ==null) return;
+        sceneLoader.MainSceneLoder();
+    }
+
+    //SelectItem
+    public void ColseSelectItme()
+    {
+        if (panelSwitcher == null) return;
+        panelSwitcher.CloseSelectItme();
+    }
+    //public void OpenSelcetItme()
+    //{
+    //    if (panelSwitcher == null) return;
+    //    panelSwitcher.OpenSelcetItme();
+    //}
 
     //SoundController
     //사운드 테스트를 위해 넣어놨습니다. 서준님께서 완성하시면 아래는 따로 전부 삭제 예정입니다.
