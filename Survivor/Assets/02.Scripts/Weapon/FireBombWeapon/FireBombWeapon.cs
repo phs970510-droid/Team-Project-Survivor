@@ -4,19 +4,14 @@ public class FireBombWeapon : WeaponBase
 {
     [SerializeField] private Transform playerArrow; //던지는 방향
 
-    private float timer = 0f;
-    private float throwCoolTime = 3f;
-
     protected override void Update()
     {
         base.Update();
 
-        timer += Time.deltaTime;
-
-        if (timer >= throwCoolTime)
+        if (IsShoot())
         {
             Shoot();
-            timer = 0f;
+            ResetFireCoolTime();
         }
     }
 
@@ -38,6 +33,6 @@ public class FireBombWeapon : WeaponBase
         FireBomb bomb = bulletObj.GetComponent<FireBomb>();
 
         //스탯 전달하기
-        bomb.Init(dir, weaponStat.damage, bomb.fireRadius);
+        bomb.Init(dir, weaponStat.damage, bomb.fireRadius, Shooter.Player);
     }
 }
