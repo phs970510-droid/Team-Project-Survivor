@@ -1,0 +1,101 @@
+using UnityEngine;
+/*
+기능 기입
+
+공통적으로 들어갈 기능
+
+-유지 시간 : protected
+    ㄴTypeA: 15s
+    ㄴTypeB: 10s
+
+-오브젝트 체력 : abstract
+    ㄴTypeA: none
+    ㄴTypeB: player maxHp * 2.5
+
+-상호작용 : abstract
+    ㄴTypeA: none
+    ㄴTypeB: E key
+    -충돌
+        ㄴTypeA: 플레이어, 몬스터
+        ㄴTypeB: 플레이어, 몬스터
+
+-스폰간격 : protected
+
+-스폰 : 드랍 시 오브젝트 겹칠경우? 사망 : 밀어내기
+    ㄴ OnCollisionEnter2D : 충돌 시 밀어내기
+    ㄴ OnCollisionStay2D : if 오브젝트 위치와 겹쳐서 enter가 씹힐 경우 : 밀어내기
+    ㄴ OnCollisionExit2D : 미정
+*/
+
+//부모클레스에서 컴포넌트 할당코드가 자식클래스에서 구동이 되는지 확인필요
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+public abstract class Obstacles : MonoBehaviour
+{
+    #region field
+    [Header("유지시간")]
+    [SerializeField] protected float useTime;
+
+    [Header("오브젝트 체력")]
+    [SerializeField] protected int fabricHp;
+
+    [Header("상호작용")]
+    [SerializeField] protected LayerMask obj;
+    [SerializeField] protected float interactionRange = 3.0f;
+
+    [Header("스폰")]
+    [SerializeField] Transform prefabParents;
+    [SerializeField] GameObject[] prefabs;
+
+    [Header("스폰간격")]
+    [SerializeField] protected float intervalTime = 20.0f;
+
+    [Header("컴포넌트")]
+    protected Collider2D collider; //??
+    protected Rigidbody2D rb;
+
+    protected Transform player;
+    #endregion
+
+#if UNITY_EDITOR //부모클래스 상속시킬경우 자식클래스 작동되는지 확인필요
+    public void OnValidate() //private로 작성되어야 하는데 상속시킬려면 못쓰지 않나?
+    {
+        prefabs = prefabParents.GetComponentsInChildren<GameObject>();
+    }
+#endif
+
+    void Awake()
+    {
+        collider = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void Update()
+    {
+        
+    }
+
+    #region method
+    //유지시간
+
+
+    //오브젝트 체력
+
+
+    //상호작용
+        //충돌
+
+
+    //스폰간격
+
+
+    //스폰 조건&&etc
+
+
+    #endregion
+}
