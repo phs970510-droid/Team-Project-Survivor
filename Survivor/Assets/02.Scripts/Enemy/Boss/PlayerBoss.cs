@@ -5,12 +5,13 @@ public class PlayerBoss : MonoBehaviour
 {
     [SerializeField] private float patternCoolTime = 5f;
     [SerializeField] private BaseData baseData;
-    
+
     [Header("노말 패턴")]
     [SerializeField] private GameObject npPrefab;
     [SerializeField] private int normalCount = 5;
     [SerializeField] private float normalDelay = 0.5f;
     [SerializeField] private float normalDamage = 10f;
+    [SerializeField] private float normalSpeed = 10f;
 
     [Header("원형 패턴")]
     [SerializeField] public GameObject cpPrefab;
@@ -26,23 +27,28 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private float fireDelay = 0.3f;
     [SerializeField] private float fireDamage = 5f;
     [SerializeField] private float fireRadius = 3f;
+    [SerializeField] private float randomRadius = 7f;
 
     [Header("드론 패턴")]
     [SerializeField] private GameObject dpPrefab;
     [SerializeField] private int droneCount = 10;
     [SerializeField] private float droneDelay = 0.01f;
     [SerializeField] private float droneDamage = 5f;
+    [SerializeField] private int shootCount = 5;
+    [SerializeField] private float droneRadius = 7f;
     [SerializeField] private Transform drone;
 
     private bool isPattern = false;
 
     private Transform player;
     private SpriteRenderer sr;
+    private Animator anim;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -67,6 +73,7 @@ public class PlayerBoss : MonoBehaviour
     private IEnumerator Pattern()
     {
         isPattern = true;
+        anim.SetBool("Pattern", true);
 
         //패턴 랜덤레인지
         int patternIndex = Random.Range(0, 4);
@@ -86,6 +93,7 @@ public class PlayerBoss : MonoBehaviour
                 yield return StartCoroutine(DroneShoot());
                 break;
         }
+        anim.SetBool("Pattern", false);
         //패턴 사용하면 쿨타임간 기다리기
         yield return new WaitForSeconds(patternCoolTime);
 
@@ -97,13 +105,18 @@ public class PlayerBoss : MonoBehaviour
     {
         for (int i = 0; i < normalCount; i++)
         {
-            GameObject bulletObj = Instantiate(npPrefab, transform.position, Quaternion.identity);
-
+            //총은 플레이어 향하게
             Vector2 dir = (player.position - transform.position).normalized;
 
-            EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
-            bullet.BulletDamage(normalDamage);
-            bullet.BulletDirection(dir);
+            GameObject bulletObj = Instantiate(npPrefab, transform.position, Quaternion.identity);
+
+            //스탯 적용
+            BossBullet bullet = bulletObj.GetComponent<BossBullet>();
+            bullet.BossBulletStat(normalDamage, normalSpeed, dir);
+
+            //플레이어 바라보기
+            float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
+            bulletObj.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             yield return new WaitForSeconds(normalDelay);
         }
@@ -134,37 +147,40 @@ public class PlayerBoss : MonoBehaviour
     //화염병 패턴은 n이내 랜덤한 곳 n개 뿌리기
     private IEnumerator FireBombShoot()
     {
-        for (int i = 0; i < normalCount; i++)
+        for (int i = 0; i < fireCount; i++)
         {
             GameObject bulletObj = Instantiate(fpPrefab, transform.position, Quaternion.identity);
 
             //7이내 랜덤으로 쏘기
-            Vector2 randomPos = Random.insideUnitCircle * 7f;
-            Vector2 randomDir = randomPos.normalized;
+            Vector2 randomCircle = Random.insideUnitCircle * randomRadius;
+            Vector2 randomPos = (Vector2)transform.position + randomCircle;
 
-            FireBomb fire = bulletObj.GetComponent<FireBomb>();
-            fire.Init(randomDir, fireDamage, fireRadius);
+            FireBomb bomb = bulletObj.GetComponent<FireBomb>();
+            bomb.BossInit(randomPos, fireDamage, fireRadius, Shooter.Boss);
 
             yield return new WaitForSeconds(fireDelay);
         }
     }
 
-    //드론 패턴은 n이내 랜덤한 곳 n개 뿌리기
+    //드론 패턴은 n이내 랜덤한 곳 k개 i번 뿌리기
     private IEnumerator DroneShoot()
     {
-        for(int i = 0;i < droneCount; i++)
+        for (int k = 0; k < shootCount; k++)
         {
-            //7이내 랜덤으로 쏘기
-            Vector2 randomPos = Random.insideUnitCircle * 7f;
-            Vector2 randomDir = randomPos.normalized;
+            for (int i = 0; i < droneCount; i++)
+            {
+                //7이내 랜덤으로 쏘기
+                Vector2 randomPos = Random.insideUnitCircle * droneRadius;
+                Vector2 randomDir = randomPos.normalized;
 
-            GameObject bulletObj = Instantiate(dpPrefab, drone.position, Quaternion.identity);
+                GameObject bulletObj = Instantiate(dpPrefab, drone.position, Quaternion.identity);
 
-            EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
-            bullet.BulletDamage(normalDamage);
-            bullet.BulletDirection(randomDir);
+                EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
+                bullet.BulletDamage(normalDamage);
+                bullet.BulletDirection(randomDir);
 
-            yield return new WaitForSeconds(droneDelay);
+                yield return new WaitForSeconds(droneDelay);
+            }
         }
     }
 }

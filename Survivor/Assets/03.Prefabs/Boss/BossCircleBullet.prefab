@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2196664511408547929}
   - component: {fileID: 3105930153240417104}
-  - component: {fileID: 2272112518588854718}
   - component: {fileID: 6537318710586538382}
   - component: {fileID: -790220193475914451}
-  - component: {fileID: -5581238075595442906}
-  - component: {fileID: 3686203155163083943}
+  - component: {fileID: 2795610027335459114}
+  - component: {fileID: -344605043486392409}
   m_Layer: 0
   m_Name: BossCircleBullet
   m_TagString: Untagged
@@ -89,41 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2272112518588854718
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7352974357208574979}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3611111
 --- !u!50 &6537318710586538382
 Rigidbody2D:
   serializedVersion: 4
@@ -165,23 +129,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circlePrefab: {fileID: 0}
   radius: 0
-  rotateSpeed: 180
+  rotateSpeed: 0
   count: 0
-  damage: 10
+  damage: 0
   boss: {fileID: 0}
---- !u!114 &-5581238075595442906
-MonoBehaviour:
+--- !u!70 &2795610027335459114
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7352974357208574979}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6550269964c6fcb448672e9c88f6b60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3686203155163083943
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 0.7222222}
+  m_Direction: 0
+--- !u!114 &-344605043486392409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
