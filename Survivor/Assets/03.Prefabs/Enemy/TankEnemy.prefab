@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7693460655864165100}
   - component: {fileID: 816188186653999783}
   - component: {fileID: 1740457597392495692}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TankEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -106,6 +106,9 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: 64ad5b023515f7644bf3375fce9ea9a5, type: 2}
   isDead: 0
   EXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
+  bossReward: {fileID: 0}
+  damageReduce: 0.3
+  sheildTime: 5
 --- !u!114 &1789516054317944579
 MonoBehaviour:
   m_ObjectHideFlags: 0

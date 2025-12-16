@@ -19,6 +19,11 @@ public class CommonHP : MonoBehaviour
     //큰 경험치도 추가해야 함
     [SerializeField] private GameObject bossReward;
 
+    [Header("실드")]
+    [SerializeField] private float damageReduce = 0.3f;
+    [SerializeField] private float sheildTime = 5f;
+    private bool hasShield = false;
+
     //플레이어 HP 체력바에 참조
     public float CurrentHP => currentHP;
     public float MaxHP => baseData.maxHp;
@@ -41,6 +46,11 @@ public class CommonHP : MonoBehaviour
         if (CompareTag("Player") && isInvincible)
             return; //플레이어가 무적이면 리턴하기
 
+        //실드 가지고 있으면 데미지감소
+        if (hasShield)
+        {
+            damage *= (1f - damageReduce);
+        }
         currentHP -= damage;
 
         StartCoroutine(HitAnimation());
@@ -121,5 +131,20 @@ public class CommonHP : MonoBehaviour
         {
             Instantiate(EXPPrefab, transform.position, Quaternion.identity);
         }
+    }
+
+    public void GetShieldItem()
+    {
+        StartCoroutine(ShieldCoroutine());
+    }
+
+    //실드시간 만큼 해스실드 on
+    private IEnumerator ShieldCoroutine()
+    {
+        hasShield = true;
+
+        yield return new WaitForSeconds(sheildTime);
+
+        hasShield = false;
     }
 }

@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 9b824ad910c886b4a968a4c107a08162, type: 2}
-  player: {fileID: 0}
+  player: {fileID: 3802867149826311369, guid: ad3f2ffe8b3eeac41a1ef7e075d88db7, type: 3}
   enemyBulletPrefab: {fileID: 8098695149774017166, guid: 3f422ce48ea18a24d8414dc017430f9e, type: 3}
   shootDistance: 10
   shootfireCoolTime: 1
@@ -234,6 +234,7 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: 9b824ad910c886b4a968a4c107a08162, type: 2}
   isDead: 0
   EXPPrefab: {fileID: 8438441831515790706}
+  bossReward: {fileID: 0}
 --- !u!95 &857152953777053999
 Animator:
   serializedVersion: 5

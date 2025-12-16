@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 577896920608758893}
   - component: {fileID: 7849208263998542132}
   - component: {fileID: 7477435049426307374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FastEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -216,6 +216,9 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: 7339e88e4c1c3034c9a075fa13bc88c4, type: 2}
   isDead: 0
   EXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
+  bossReward: {fileID: 0}
+  damageReduce: 0.3
+  sheildTime: 5
 --- !u!95 &7477435049426307374
 Animator:
   serializedVersion: 5

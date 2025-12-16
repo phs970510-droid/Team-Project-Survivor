@@ -27,7 +27,8 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private float fireDelay = 0.3f;
     [SerializeField] private float fireDamage = 5f;
     [SerializeField] private float fireRadius = 3f;
-    [SerializeField] private float randomRadius = 7f;
+    [SerializeField] private float minRadius = 3f;
+    [SerializeField] private float maxRadius = 10f;
 
     [Header("드론 패턴")]
     [SerializeField] private GameObject dpPrefab;
@@ -144,16 +145,19 @@ public class PlayerBoss : MonoBehaviour
         Destroy(circle);
     }
 
-    //화염병 패턴은 n이내 랜덤한 곳 n개 뿌리기
+    //화염병 패턴은 min ~ max이내 랜덤한 곳 n개 뿌리기
     private IEnumerator FireBombShoot()
     {
         for (int i = 0; i < fireCount; i++)
         {
             GameObject bulletObj = Instantiate(fpPrefab, transform.position, Quaternion.identity);
 
-            //7이내 랜덤으로 쏘기
-            Vector2 randomCircle = Random.insideUnitCircle * randomRadius;
-            Vector2 randomPos = (Vector2)transform.position + randomCircle;
+            //방향 랜덤
+            Vector2 dir = Random.insideUnitCircle.normalized;
+
+            //min ~ max 사이 랜덤값
+            float radius = Random.Range(minRadius, maxRadius);
+            Vector2 randomPos = (Vector2)transform.position + dir * radius;
 
             FireBomb bomb = bulletObj.GetComponent<FireBomb>();
             bomb.BossInit(randomPos, fireDamage, fireRadius, Shooter.Boss);
