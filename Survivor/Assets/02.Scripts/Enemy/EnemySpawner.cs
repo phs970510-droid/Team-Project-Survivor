@@ -21,6 +21,10 @@ public class EnemySpawner : MonoBehaviour
     private float currentDelay;
     private float timer;
 
+    //플레이어 좌표는 여기서만 참조하고, 몬스터는 이걸 읽는걸로 변경
+    public Transform player;
+    public Vector3 PlayerPos { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,8 @@ public class EnemySpawner : MonoBehaviour
             timer = 0f;
             currentDelay=Mathf.Max(minDelay,currentDelay - decreasedAmount);
         }
+
+        PlayerPos = new Vector3(player.position.x, player.position.y, 0f);
     }
 
     private void TrySpawn()
@@ -49,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
                 );
 
             Collider2D hit =Physics2D.OverlapCircle(spawnPos,checkRadius,enemyLayer);
-            if (hit != null)
+            if (hit == null)
             { 
                 Instantiate(enemyPrefab,spawnPos,Quaternion.identity);
                 break;
