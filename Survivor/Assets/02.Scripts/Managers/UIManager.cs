@@ -63,6 +63,18 @@ public class UIManager : MonoBehaviour
         panelSwitcher.CloseWarningPanel();
     }
 
+    public void BattleSecneToggleMenu()
+    {
+        if (panelSwitcher == null) return;
+        panelSwitcher.BattleSenceToggleMenu();
+    }
+
+    public void BattleSecneCloseMenuPanel()
+    {
+        if (panelSwitcher == null) return;
+        panelSwitcher.BattleSecneCloseMenuPanel();
+    }
+
     //QuitGame
     public void QuitGame()
     {
@@ -78,6 +90,8 @@ public class UIManager : MonoBehaviour
     public void MainSceneLoad()
     {
         if(sceneLoader ==null) return;
+        if (panelSwitcher == null) return;
+        panelSwitcher.CloseMenuPanel();
         sceneLoader.MainSceneLoder();
     }
 

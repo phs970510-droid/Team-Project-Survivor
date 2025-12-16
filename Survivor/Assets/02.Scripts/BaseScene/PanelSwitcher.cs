@@ -41,11 +41,26 @@ public class PanelSwitcher : MonoBehaviour
     public void ToggleMenu()
     {
         if (panelMenu == null) return;
-        if (joysitck == null) return;
-        StartCoroutine(StopAction());
+        panelMenu.SetActive(!panelMenu.activeSelf);
 
     }
+
+    public void BattleSenceToggleMenu()
+    {
+        if (panelMenu == null) return;
+        if (joysitck == null) return;
+        StartCoroutine(StopAction());
+    }
     public void CloseMenuPanel()
+    {
+
+        if (panelMenu == null) return;
+
+        panelMenu.SetActive(false);
+
+    }
+
+    public void BattleSecneCloseMenuPanel()
     {
         Time.timeScale = 1f;
 
@@ -54,7 +69,6 @@ public class PanelSwitcher : MonoBehaviour
 
         panelMenu.SetActive(false);
         joysitck.SetActive(true);
-
     }
     public void CloseWarningPanel()
     {
