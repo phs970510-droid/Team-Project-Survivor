@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private SpriteRenderer sr;
     private CommonHP hp;
+
+    private Coroutine followRoutine;
+    private const float UPDATE_INTERVAL = 0.2f;
 
     private void Awake()
     {
@@ -22,21 +26,42 @@ public class EnemyAI : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false;
     }
-    void Update()
+
+    private void OnEnable()
     {
-        if (spawner == null || hp.isDead) return;
-
-        //스포너에서 PlayerPos 받기
-        agent.SetDestination(spawner.PlayerPos);    //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
-
-        //좌우반전
-        if(agent.velocity.x > 0)
+        if (followRoutine != null)
         {
-            sr.flipX = false;
+            StopCoroutine(followRoutine);
         }
-        else if(agent.velocity.x < 0)
+        followRoutine = StartCoroutine(FollowPlayer());
+    }
+
+    private void OnDisable()
+    {
+        if(followRoutine != null)
+            StopCoroutine(followRoutine);
+    }
+    private IEnumerator FollowPlayer()
+    {
+        while (true)
         {
-            sr.flipX = true;
+            if (spawner != null && hp.isDead)
+            {
+                //스포너에서 PlayerPos 받기
+                agent.SetDestination(spawner.PlayerPos);    //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
+
+
+                //좌우반전
+                if (agent.velocity.x > 0)
+                {
+                    sr.flipX = false;
+                }
+                else if (agent.velocity.x < 0)
+                {
+                    sr.flipX = true;
+                }
+            }
+            yield return new WaitForSeconds(UPDATE_INTERVAL);
         }
     }
 }
