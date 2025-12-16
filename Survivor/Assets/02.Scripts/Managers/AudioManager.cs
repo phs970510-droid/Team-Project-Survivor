@@ -164,7 +164,10 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-
+    public void PlaySelectSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
+    }
    
 
    
