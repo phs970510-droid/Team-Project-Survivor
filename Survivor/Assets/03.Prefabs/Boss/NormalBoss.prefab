@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4810198007740553713}
   m_Layer: 6
   m_Name: NormalBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,10 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf6e70f0070080419e9e8ab32efb72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseData: {fileID: 11400000, guid: d11c08a25beac0846b91575fb7b9b302, type: 2}
+  baseData: {fileID: 11400000, guid: dcf081452e8286c4784e53a2acfb8bff, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
-  bossReward: {fileID: 0}
+  normalEXPPrefab: {fileID: 0}
+  bigEXPPrefab: {fileID: 0}
+  chance: 0.2
+  bossReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}
   damageReduce: 0.3
   sheildTime: 5
 --- !u!50 &4810198007740553713

@@ -3,7 +3,6 @@ using UnityEngine;
 public class MainCamera : MonoBehaviour
 {
     [Header("카메라 위치 설정")]
-    [SerializeField] private float followSpeed = 7f;
     [SerializeField] private Vector3 offset;
 
     [Header("카메라 LookAhead 설정")]

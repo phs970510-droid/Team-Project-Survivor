@@ -7,24 +7,36 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //경험치 먹었을 때
         if(other.CompareTag("Exp"))
+        {
+            playerLevel.GetEXP(5);
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("BigExp"))
         {
             playerLevel.GetEXP(10);
             Destroy(other.gameObject);
         }
-
+        
         //자석 아이템
-        else if(other.CompareTag("Magnet"))
+        if(other.CompareTag("Magnet"))
         {
             GetMagnetItem();
             Destroy(other.gameObject);
-            Debug.Log("자석 먹음");
         }
 
         //방어막 아이템 추가
-        else if (other.CompareTag("Shield"))
+        if (other.CompareTag("Shield"))
         {
             commonHP.GetShieldItem();
+            Destroy(other.gameObject);
+        }
+
+        //보스 보상
+        if (other.CompareTag("Reward"))
+        {
+            GetBossReward();
             Destroy(other.gameObject);
         }
     }
@@ -42,5 +54,10 @@ public class Item : MonoBehaviour
                 exp.MagnetOn();
             }
         }
+    }
+
+    private void GetBossReward()
+    {
+        //인게임 재화 or 무기 해금 아이템 얻기
     }
 }

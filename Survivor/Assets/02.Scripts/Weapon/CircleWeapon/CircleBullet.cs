@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class CircleBullet : MonoBehaviour
 {
-    private float bulletDamage;
+    private float circleDamage;
 
     public void BulletStat(float bulletDamage)
     {
-        this.bulletDamage = bulletDamage;
+        this.circleDamage = bulletDamage;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         CommonHP hp = other.GetComponent<CommonHP>();
+        if (hp == null) return;
         if (hp != null)
         {
-            hp.Damage(bulletDamage);
-            Debug.Log($"{name}이 {other.name}에게 데미지 줌({bulletDamage})");
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+            {
+                hp.Damage(circleDamage);
+                Debug.Log($"{name}이 {other.name}에게 데미지 줌({circleDamage})");
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1659200464345696936}
   m_Layer: 6
   m_Name: FastBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,8 +179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 28cde116669aa4043868fcd5e6f665df, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
-  bossReward: {fileID: 0}
+  normalEXPPrefab: {fileID: 0}
+  bigEXPPrefab: {fileID: 0}
+  chance: 0.2
+  bossReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}
   damageReduce: 0.3
   sheildTime: 5
 --- !u!95 &5993041750564939475

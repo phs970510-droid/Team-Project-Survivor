@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class JoyStick : MonoBehaviour
 {
     [Header("조이스틱")]
-    public float moveRange = 50f;  //조이스틱 움직이는 범위
-    public Image back;
-    public Image joyStick;
+    [SerializeField] public float moveRange = 50f;  //조이스틱 움직이는 범위
+    [SerializeField] private Image back;
+    [SerializeField] private Image joyStick;
 
     private Vector2 startPos;   //터치시작위치
     private Vector2 inputVector;//조이스틱 입력벡터

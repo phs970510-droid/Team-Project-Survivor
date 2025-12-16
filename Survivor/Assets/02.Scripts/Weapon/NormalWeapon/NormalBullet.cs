@@ -26,11 +26,16 @@ public class NormalBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         CommonHP hp = other.GetComponent<CommonHP>();
-        if(hp!= null && other.CompareTag("Enemy"))
+
+        if (hp == null) return;
+        if (hp != null)
         {
-            hp.Damage(bulletDamage);
-            Destroy(gameObject);
-            Debug.Log($"{name}이 {other.name}에게 데미지 줌({bulletDamage})");
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+            {
+                hp.Damage(bulletDamage);
+                Destroy(gameObject);
+                Debug.Log($"{name}이 {other.name}에게 데미지 줌({bulletDamage})");
+            }
         }
     }
 }

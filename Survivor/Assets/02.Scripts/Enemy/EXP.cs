@@ -43,6 +43,5 @@ public class EXP : MonoBehaviour
     public void MagnetOn()
     {
         getMagnetItem = true;
-        Debug.Log("자석 발동");
     }
 }

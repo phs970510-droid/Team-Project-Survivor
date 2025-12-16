@@ -4,38 +4,27 @@ public class FireZone : MonoBehaviour
 {
     private float fireDamage;
     private float fireRadius;
-    private Shooter shooter;
+    private int ignoreLayer;
 
-    public void FireZoneStat(float damage, float radius, Shooter shooter)
+    public void FireZoneStat(float damage, float radius, int ignoreLayer)
     {
         this.fireDamage = damage;
+        this.ignoreLayer = ignoreLayer;
         this.fireRadius = radius;
-        this.shooter = shooter;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        //맞은 오브젝트가 무시레이어면 리턴
+        if (other.gameObject.layer == ignoreLayer) return;
+
         CommonHP hp = other.GetComponent<CommonHP>();
         if (hp == null) return;
 
-        //플레이어, 보스가 쏜 화염은 자기가 안맞고 상대방한테만 데미지
-        if (shooter == Shooter.Player)
+        if(hp != null)
         {
-            if(other.CompareTag("Player")) return;
-            else if (hp.CompareTag("Enemy") && hp != null)
-            {
-                hp.Damage(fireDamage);
-                Debug.Log($"{name}이 {hp.name}에게 데미지 줌({fireDamage})");
-            }
-        }
-        else if (shooter == Shooter.Boss)
-        {
-            if (other.CompareTag("Enemy")) return;
-            else if (other.CompareTag("Player") && hp != null)
-            {
-                hp.Damage(fireDamage);
-                Debug.Log($"{name}이 {other.name}에게 데미지 줌({fireDamage})");
-            }
+            hp.Damage(fireDamage);
+            Debug.Log($"{name}이 {other.name}에게 데미지 줌({fireDamage})");
         }
     }
 }

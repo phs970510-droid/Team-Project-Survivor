@@ -117,11 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48342af6e4b4322478bcc4d2e1af63a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseData: {fileID: 11400000, guid: 9b824ad910c886b4a968a4c107a08162, type: 2}
-  player: {fileID: 3802867149826311369, guid: ad3f2ffe8b3eeac41a1ef7e075d88db7, type: 3}
   enemyBulletPrefab: {fileID: 8098695149774017166, guid: 3f422ce48ea18a24d8414dc017430f9e, type: 3}
   shootDistance: 10
   shootfireCoolTime: 1
+  baseData: {fileID: 11400000, guid: 9b824ad910c886b4a968a4c107a08162, type: 2}
 --- !u!50 &5102549481388735783
 Rigidbody2D:
   serializedVersion: 4
@@ -233,8 +232,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 9b824ad910c886b4a968a4c107a08162, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 8438441831515790706}
+  normalEXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
+  bigEXPPrefab: {fileID: 5082785930944967579, guid: dfd5d6d7d77f2f24fa9f40eeb2d62fa1, type: 3}
+  chance: 0.2
   bossReward: {fileID: 0}
+  damageReduce: 0.3
+  sheildTime: 5
 --- !u!95 &857152953777053999
 Animator:
   serializedVersion: 5

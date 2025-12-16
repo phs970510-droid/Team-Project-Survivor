@@ -12,29 +12,29 @@ public class FireBomb : MonoBehaviour
     private float fireDamage;
     public float fireRadius;
 
-    private Shooter shooter;
-
     private Vector2 dir;
     private float shootTimer;
     private Vector3 startPos;
 
-    public void Init(Vector2 dir, float damage, float radius, Shooter shooter)
+    private int ignoreLayer;
+
+    public void Init(Vector2 dir, float damage, float radius)
     {
         this.dir = dir.normalized;
         fireDamage = damage;
         fireRadius = radius;
-        this.shooter = shooter;
 
+        ignoreLayer = LayerMask.NameToLayer("Player");
         startPos = transform.position;
     }
 
     //보스 전용 무작위로 쏘기
-    public void BossInit(Vector3 pos, float damage, float radius, Shooter shooter)
+    public void BossInit(Vector3 pos, float damage, float radius)
     {
         fireDamage = damage;
         fireRadius = radius;
-        this.shooter = shooter;
 
+        ignoreLayer = LayerMask.NameToLayer("Enemy");
         startPos = transform.position;
 
         dir = (pos  - startPos).normalized;
@@ -68,7 +68,7 @@ public class FireBomb : MonoBehaviour
     private void Explode()
     {
         GameObject fireZone = Instantiate(fireZonePrefab, transform.position, Quaternion.identity);
-        fireZone.GetComponent<FireZone>().FireZoneStat(fireDamage, fireRadius, shooter);
+        fireZone.GetComponent<FireZone>().FireZoneStat(fireDamage, fireRadius, ignoreLayer);
 
         Destroy(fireZone, fireZoneLeave);
         Destroy(gameObject);

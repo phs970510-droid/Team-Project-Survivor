@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2942418017139831274}
   m_Layer: 6
   m_Name: PlayerBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,8 +312,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: ffc59f6e4349739488dd73bfaab6cce3, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 0}
-  bossReward: {fileID: 0}
+  normalEXPPrefab: {fileID: 0}
+  bigEXPPrefab: {fileID: 0}
+  chance: 0.2
+  bossReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}
   damageReduce: 0.3
   sheildTime: 5
 --- !u!70 &2942418017139831274

@@ -31,11 +31,16 @@ public class DroneBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         CommonHP hp = other.GetComponent<CommonHP>();
-        if (hp != null && other.CompareTag("Enemy"))
+
+        if (hp == null) return;
+        if (hp != null)
         {
-            hp.Damage(droneDamage);
-            Destroy(gameObject);
-            Debug.Log($"{name}이 {other.name}에게 데미지 줌({droneDamage})");
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+            {
+                hp.Damage(droneDamage);
+                Destroy(gameObject);
+                Debug.Log($"{name}이 {other.name}에게 데미지 줌({droneDamage})");
+            }
         }
     }
 }

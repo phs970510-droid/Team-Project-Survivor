@@ -77,12 +77,12 @@ public class PlayerBoss : MonoBehaviour
         anim.SetBool("Pattern", true);
 
         //패턴 랜덤레인지
-        int patternIndex = Random.Range(0, 4);
+        int patternIndex = Random.Range(0, 0);
 
         switch (patternIndex)
         {
             case 0:
-                yield return StartCoroutine(NormalShoot());
+                yield return StartCoroutine(FireBombShoot());
                 break;
             case 1:
                 yield return StartCoroutine(CircleShoot());
@@ -160,7 +160,7 @@ public class PlayerBoss : MonoBehaviour
             Vector2 randomPos = (Vector2)transform.position + dir * radius;
 
             FireBomb bomb = bulletObj.GetComponent<FireBomb>();
-            bomb.BossInit(randomPos, fireDamage, fireRadius, Shooter.Boss);
+            bomb.BossInit(randomPos, fireDamage, fireRadius);
 
             yield return new WaitForSeconds(fireDelay);
         }
