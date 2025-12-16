@@ -10,4 +10,14 @@ public class StarDisplay : MonoBehaviour
     public Image[] stars;
 
 
+    //public void onClickItem()
+    //{
+    //    stars = 
+    //    maxStar = 
+    //    for(int i=0; i< stars.Length; i++)
+    //    {
+    //        if(i < )
+    //    }
+    //}
+
 }

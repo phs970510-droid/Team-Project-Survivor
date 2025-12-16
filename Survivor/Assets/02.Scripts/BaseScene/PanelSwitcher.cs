@@ -40,20 +40,10 @@ public class PanelSwitcher : MonoBehaviour
 
     public void ToggleMenu()
     {
-        //StartCoroutine(StopAction());
-        Time.timeScale = 0f;
         if (panelMenu == null) return;
         if (joysitck == null) return;
-        joysitck.SetActive(false);
+        StartCoroutine(StopAction());
 
-
-        panelMenu.SetActive(!panelMenu.activeSelf);
-        if (panelMenu.gameObject.activeInHierarchy == false)
-        {
-            Time.timeScale = 1f;
-            joysitck.SetActive(true);
-
-        }
     }
     public void CloseMenuPanel()
     {
@@ -72,24 +62,28 @@ public class PanelSwitcher : MonoBehaviour
         panelWarning.SetActive(false);
     }
 
-    //public void OpenSelcetItme()
-    //{
-    //    if (panelSelcet == null) return;
-
-    //    if (Input.GetKeyDown(KeyCode.P))
-    //    {
-    //        panelSelcet.SetActive(true);
-    //    }
-    //}
     public void CloseSelectItme()
     {
         if (panelSelcet == null) return;
         panelSelcet.SetActive(false);
         joysitck.SetActive(true);
         Time.timeScale = 1f;
-
-
     }
 
+    private IEnumerator StopAction()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 0f;
+
+        joysitck.SetActive(false);
+
+        panelMenu.SetActive(!panelMenu.activeSelf);
+        if (panelMenu.gameObject.activeInHierarchy == false)
+        {
+            Time.timeScale = 1f;
+            joysitck.SetActive(true);
+        }
+
+    }
 
 }
