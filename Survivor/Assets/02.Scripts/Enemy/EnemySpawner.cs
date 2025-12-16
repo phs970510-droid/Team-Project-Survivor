@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//스포너는 스폰
 public class EnemySpawner : MonoBehaviour
 {
     [Header("스폰 설정")]
-    public GameObject enemyPrefab;
+    public EnemyManager enemyManager;
     public Vector2 areaMin; //스폰 영역 최소 좌표
     public Vector2 areaMax; //스폰 영역 최대 좌표
 
@@ -57,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
             Collider2D hit =Physics2D.OverlapCircle(spawnPos,checkRadius,enemyLayer);
             if (hit == null)
             { 
-                Instantiate(enemyPrefab,spawnPos,Quaternion.identity);
+                enemyManager.Spawn(spawnPos);
                 break;
             }
         }
