@@ -10,7 +10,7 @@ public class TutorialMap : Chunk
         player = GameObject.Find("Player").transform;
 
         //맵 스프라이트 부모 오브젝트 자동으로 찾아서 할당
-        chunkParent = GameObject.Find("Grid").transform.Find("Type01_Background");
+        chunkParent = GameObject.Find("Grid").transform.Find("Type01_Background").gameObject;
 
         /* 주의사항
         GameObject는 컴포넌트가 아니므로 사용불가

@@ -4,13 +4,6 @@ using UnityEngine;
 public abstract class Chunk : MonoBehaviour
 {
     #region field
-    protected enum Type
-    {
-        type01 = 1,
-        type02,
-        type03
-    }
-
     [Header("기본 설정")]
     public Transform player;
     public int chunkSize = 1;
@@ -19,7 +12,7 @@ public abstract class Chunk : MonoBehaviour
 
     [Header("청크 프리팹 풀")]
     //gameObject에 붙어있는 하위 컴포넌트 이므로 타입으로 사용이 가능하다
-    [SerializeField] protected Transform chunkParent;
+    [SerializeField] protected GameObject chunkParent;
     [SerializeField] protected Transform[] chunkPrefabs;
 
     private Vector2Int currentCenter; //현재 중심 좌표
@@ -106,9 +99,9 @@ public abstract class Chunk : MonoBehaviour
             return null;
         }
 
-        int rdN = Random.Range(0, 9);
+        int rdN = Random.Range(0, 50);
 
-        if (rdN < 8)
+        if (rdN < 48)
         {
             return chunkPrefabs[0].gameObject;
         }

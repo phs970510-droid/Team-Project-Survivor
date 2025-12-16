@@ -14,6 +14,13 @@ public class FollowCam : MonoBehaviour
 
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset = new Vector3(0.0f, 0.0f, 0.0f);
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        target = GameObject.Find("Player").transform;
+    }
+#endif
     #endregion
 
     void Update()

@@ -20,48 +20,83 @@ using UnityEngine.SceneManagement;
         ㄴchunkPrefabs를 비우고 변경되는 타입의 children 자동으로 담기
 */
 
-[RequireComponent(typeof(StageMap))]
-[RequireComponent(typeof(InfinityMap))]
 public class ChunkManager : MonoBehaviour
 {
     #region field
     public static ChunkManager Instance { get; private set; }
 
-    private StageMap stageMap;
-    private InfinityMap infinityMap;
+    //선택된 값 저장할 변수
+    private MapType selectNum;
+    public int typeNumb;
 
+    private enum MapType
+    {
+        tutorial = 1,
+        stage,
+        infinity
+    }
     #endregion
 
     private void Awake()
     {
-        if (Instance != null || Instance != this)
+        if(Instance == null)
         {
-            Destroy(Instance);
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-        stageMap = GetComponent<StageMap>();
-        infinityMap = GetComponent<InfinityMap>();
+    private void Update()
+    {
+        InputType();
     }
 
     #region method
-    private void OnEnable()
+    //맵 선택 구문에 추가
+    private void SelectMap(int index, int typeNumb)
     {
-        SceneManager.sceneLoaded += LoadScene;
+        selectNum = (MapType)index;
+        this.typeNumb = typeNumb; //stage맵에서만 사용 : 청크타입 선택할 변수
+
+        switch (selectNum)
+        {
+            case MapType.tutorial:
+                {
+                    SceneManager.LoadScene("TutorialMap");
+                }
+                break;
+            case MapType.stage:
+                {
+                    SceneManager.LoadScene("StageMap");
+                }
+                break;
+            case MapType.infinity:
+                {
+                    SceneManager.LoadScene("");
+                }
+                break;
+        }
     }
 
-    private void OnDisable()
+    //테스트 메서드
+    private void InputType()
     {
-        SceneManager.sceneLoaded -= LoadScene;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SelectMap(2, 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SelectMap(2, 2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SelectMap(2, 3);
+        }
     }
-
-    private void LoadScene(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
-    {
-        stageMap.player = GameObject.Find("Player").transform;
-        infinityMap.player = GameObject.Find("Player").transform;
-    }
-
     #endregion
 }

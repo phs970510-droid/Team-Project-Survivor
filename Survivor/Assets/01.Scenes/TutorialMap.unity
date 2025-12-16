@@ -1108,12 +1108,12 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 1, y: 1, z: 1}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
   m_Mode: 0
-  m_DetectChunkCullingBounds: 0
+  m_DetectChunkCullingBounds: 1
   m_MaskInteraction: 0
 --- !u!1839735485 &831537084
 Tilemap:
@@ -5514,7 +5514,7 @@ MonoBehaviour:
   chunkSize: 1
   loadRange: 15
   unloadRange: 15
-  chunkParent: {fileID: 2035901661}
+  chunkParent: {fileID: 2035901660}
   chunkPrefabs:
   - {fileID: 2048537092}
   - {fileID: 981819487}
