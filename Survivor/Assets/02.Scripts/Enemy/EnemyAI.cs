@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            if (spawner != null && hp.isDead)
+            if (spawner != null && !hp.isDead)
             {
                 //스포너에서 PlayerPos 받기
                 agent.SetDestination(spawner.PlayerPos);    //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
