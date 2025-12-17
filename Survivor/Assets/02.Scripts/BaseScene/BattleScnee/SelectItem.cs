@@ -13,6 +13,9 @@ public class SelectItem : MonoBehaviour
     public TextMeshProUGUI[] itemName;
     //public TextMeshProUGUI[] itemDescription;
 
+    public StarDisplay[] starDisplays;
+
+
     public void SelectItemSO()
     {
         for (int i = 0; i < 3; i++)

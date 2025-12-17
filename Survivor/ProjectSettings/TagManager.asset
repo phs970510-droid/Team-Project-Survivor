@@ -8,6 +8,8 @@ TagManager:
   - DeadEnemy
   - Exp
   - Boss
+  - Tutorial
+  - Main
   layers:
   - Default
   - TransparentFX

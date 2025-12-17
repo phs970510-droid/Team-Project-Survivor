@@ -16,4 +16,14 @@ public class WeaponData : ScriptableObject
     public float attackRange = 10f;
     public int price;
     public Sprite Sprite;
+
+
+    //무기 번호
+    //무기 종류 리스트 or 배열
+    //무기 레벨에 따른 별 개수
+    //무기 레벨에 따른 설명
+    //무기 레벨에 따른 공격력 리스트
+    //무기 레벨에 따른 불릿 개수
+    //무기 레벨에 따른 쿨타임 감소 리스트
+    //무기 레벨에 따른 공격 거리 감소 리스트
 }

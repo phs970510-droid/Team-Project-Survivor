@@ -8,8 +8,6 @@ public class PanelSwitcher : MonoBehaviour
     public GameObject panelMenu;
     public GameObject panelShop;
     public GameObject panelWarning;
-    public GameObject panelSelcet;
-    public GameObject joysitck;
 
 
     public void OpenMainPanel()
@@ -45,12 +43,6 @@ public class PanelSwitcher : MonoBehaviour
 
     }
 
-    public void BattleSenceToggleMenu()
-    {
-        if (panelMenu == null) return;
-        if (joysitck == null) return;
-        StartCoroutine(StopAction());
-    }
     public void CloseMenuPanel()
     {
 
@@ -60,44 +52,11 @@ public class PanelSwitcher : MonoBehaviour
 
     }
 
-    public void BattleSecneCloseMenuPanel()
-    {
-        Time.timeScale = 1f;
-
-        if (panelMenu == null) return;
-        if (joysitck == null) return;
-
-        panelMenu.SetActive(false);
-        joysitck.SetActive(true);
-    }
     public void CloseWarningPanel()
     {
         if(panelWarning == null) return;    
         panelWarning.SetActive(false);
     }
 
-    public void CloseSelectItme()
-    {
-        if (panelSelcet == null) return;
-        panelSelcet.SetActive(false);
-        joysitck.SetActive(true);
-        Time.timeScale = 1f;
-    }
-
-    private IEnumerator StopAction()
-    {
-        yield return new WaitForSeconds(0.1f);
-        Time.timeScale = 0f;
-
-        joysitck.SetActive(false);
-
-        panelMenu.SetActive(!panelMenu.activeSelf);
-        if (panelMenu.gameObject.activeInHierarchy == false)
-        {
-            Time.timeScale = 1f;
-            joysitck.SetActive(true);
-        }
-
-    }
 
 }
