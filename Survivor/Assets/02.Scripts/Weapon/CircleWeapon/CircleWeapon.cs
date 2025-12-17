@@ -53,7 +53,8 @@ public class CircleWeapon : MonoBehaviour
 
             //스탯 가져오기
             CircleBullet circleBullet = circleBulletObj.GetComponent<CircleBullet>();
-            circleBullet.BulletStat(weaponStat.damage);
+            int playerLayer = player.gameObject.layer;
+            circleBullet.BulletStat(weaponStat.damage, playerLayer);
 
             circleObjects[i] = circleBulletObj;
         }

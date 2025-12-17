@@ -11,8 +11,6 @@ public class DroneWeapon : WeaponBase
     [Header("드론 발사 설정")]
     [SerializeField] private float shootDelay = 0.1f;   //1발간 딜레이(쿨타임은 따로)
 
-    private float timer;
-
     protected override void Update()
     {
         base.Update();

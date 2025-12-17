@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e051f3fc6b4074badb5a63d9ea7d24, type: 3}
   m_Name: PlayerOffset
   m_EditorClassIdentifier: 
-  offset: 2
-  expMax: 100
+  arrowOffset: 2
+  hpBarOffset: {x: 0, y: 1, z: 0}
+  expMax: 160

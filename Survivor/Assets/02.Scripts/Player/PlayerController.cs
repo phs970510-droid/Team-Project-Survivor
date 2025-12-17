@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         Vector2 normalizedDir = dir.normalized;
 
         //부드럽게 이동
-        Vector2 targetPos = normalizedDir * playerData.offset;
+        Vector2 targetPos = normalizedDir * playerData.arrowOffset;
 
         //화살표 위치
         arrow.localPosition = Vector2.Lerp(arrow.localPosition, targetPos, Time.deltaTime * 10.0f);

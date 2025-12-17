@@ -6,8 +6,11 @@ public class EXP : MonoBehaviour
     [SerializeField] private float magnetSpeed = 5.0f;
     [SerializeField] private float levelUpRange = 1.0f;
 
+    private float range;
     public int magnetLevel = 0;
     private Transform player;
+
+    private bool getMagnetItem = false;
 
     private void Awake()
     {
@@ -17,7 +20,17 @@ public class EXP : MonoBehaviour
     {
         if (player == null) return;
 
-        float range = magnetLevel * levelUpRange;
+        //자석 아이템 먹으면 자석 범위는 무한
+        if (getMagnetItem)
+        {
+            range = Mathf.Infinity;
+        }
+        //평소에는 플레이어 자력
+        else
+        {
+            range = magnetLevel * levelUpRange;
+        }
+
         float distance = Vector2.Distance(transform.position, player.position);
 
         //범위 안이면 자석
@@ -25,5 +38,10 @@ public class EXP : MonoBehaviour
         {
             transform.position = Vector2.Lerp(transform.position, player.position, Time.deltaTime * magnetSpeed);
         }
+    }
+
+    public void MagnetOn()
+    {
+        getMagnetItem = true;
     }
 }

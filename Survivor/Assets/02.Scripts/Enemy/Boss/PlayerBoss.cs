@@ -27,7 +27,8 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private float fireDelay = 0.3f;
     [SerializeField] private float fireDamage = 5f;
     [SerializeField] private float fireRadius = 3f;
-    [SerializeField] private float randomRadius = 7f;
+    [SerializeField] private float minRadius = 3f;
+    [SerializeField] private float maxRadius = 10f;
 
     [Header("드론 패턴")]
     [SerializeField] private GameObject dpPrefab;
@@ -73,15 +74,15 @@ public class PlayerBoss : MonoBehaviour
     private IEnumerator Pattern()
     {
         isPattern = true;
-        anim.SetBool("Pattern", true);
+        //anim.SetBool("Pattern", true);
 
         //패턴 랜덤레인지
-        int patternIndex = Random.Range(0, 4);
+        int patternIndex = Random.Range(0, 0);
 
         switch (patternIndex)
         {
             case 0:
-                yield return StartCoroutine(NormalShoot());
+                yield return StartCoroutine(FireBombShoot());
                 break;
             case 1:
                 yield return StartCoroutine(CircleShoot());
@@ -93,7 +94,7 @@ public class PlayerBoss : MonoBehaviour
                 yield return StartCoroutine(DroneShoot());
                 break;
         }
-        anim.SetBool("Pattern", false);
+        //anim.SetBool("Pattern", false);
         //패턴 사용하면 쿨타임간 기다리기
         yield return new WaitForSeconds(patternCoolTime);
 
@@ -130,7 +131,7 @@ public class PlayerBoss : MonoBehaviour
         circle.transform.position = transform.position;
 
         //스크립트 가져오기
-        BossCircleWeapon weapon = circle.AddComponent<BossCircleWeapon>();
+        BossCircleWeapon weapon = circle.GetComponent<BossCircleWeapon>();
 
         weapon.boss = this.transform;
         weapon.circlePrefab = cpPrefab;
@@ -144,19 +145,22 @@ public class PlayerBoss : MonoBehaviour
         Destroy(circle);
     }
 
-    //화염병 패턴은 n이내 랜덤한 곳 n개 뿌리기
+    //화염병 패턴은 min ~ max이내 랜덤한 곳 n개 뿌리기
     private IEnumerator FireBombShoot()
     {
         for (int i = 0; i < fireCount; i++)
         {
             GameObject bulletObj = Instantiate(fpPrefab, transform.position, Quaternion.identity);
 
-            //7이내 랜덤으로 쏘기
-            Vector2 randomCircle = Random.insideUnitCircle * randomRadius;
-            Vector2 randomPos = (Vector2)transform.position + randomCircle;
+            //방향 랜덤
+            Vector2 dir = Random.insideUnitCircle.normalized;
 
-            FireBomb bomb = bulletObj.GetComponent<FireBomb>();
-            bomb.BossInit(randomPos, fireDamage, fireRadius, Shooter.Boss);
+            //min ~ max 사이 랜덤값
+            float radius = Random.Range(minRadius, maxRadius);
+            Vector2 randomPos = (Vector2)transform.position + dir * radius;
+
+            BossFireBomb bomb = bulletObj.GetComponent<BossFireBomb>();
+            bomb.BossInit(randomPos, fireDamage, fireRadius);
 
             yield return new WaitForSeconds(fireDelay);
         }
@@ -176,7 +180,7 @@ public class PlayerBoss : MonoBehaviour
                 GameObject bulletObj = Instantiate(dpPrefab, drone.position, Quaternion.identity);
 
                 EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
-                bullet.BulletDamage(normalDamage);
+                bullet.BulletDamage(droneDamage);
                 bullet.BulletDirection(randomDir);
 
                 yield return new WaitForSeconds(droneDelay);

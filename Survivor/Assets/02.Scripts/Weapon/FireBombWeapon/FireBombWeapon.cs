@@ -33,6 +33,6 @@ public class FireBombWeapon : WeaponBase
         FireBomb bomb = bulletObj.GetComponent<FireBomb>();
 
         //스탯 전달하기
-        bomb.Init(dir, weaponStat.damage, bomb.fireRadius, Shooter.Player);
+        bomb.Init(dir, weaponStat.damage, bomb.fireRadius);
     }
 }
