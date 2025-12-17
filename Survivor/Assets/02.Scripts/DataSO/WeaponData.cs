@@ -17,8 +17,10 @@ public class WeaponData : ScriptableObject
     public float fireCoolTime = 1.0f;
     public int bulletCount = 1;
     public float attackRange = 10f;
-    public int price;
     public Sprite Sprite;
+
+    [Header("풀링")]
+    public int poolSize;
 
 
     //무기 번호

@@ -1,64 +1,64 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 /*
-±â´É ±âÀÔ
+ê¸°ëŠ¥ ê¸°ì…
 
-°øÅëÀûÀ¸·Î µé¾î°¥ ±â´É
+ê³µí†µì ìœ¼ë¡œ ë“¤ì–´ê°ˆ ê¸°ëŠ¥
 
--À¯Áö ½Ã°£ : protected
-    ¤¤TypeA: 15s
-    ¤¤TypeB: 10s
+-ìœ ì§€ ì‹œê°„ : protected
+    ã„´TypeA: 15s
+    ã„´TypeB: 10s
 
--¿ÀºêÁ§Æ® Ã¼·Â : abstract
-    ¤¤TypeA: none
-    ¤¤TypeB: player maxHp * 2.5
+-ì˜¤ë¸Œì íŠ¸ ì²´ë ¥ : abstract
+    ã„´TypeA: none
+    ã„´TypeB: player maxHp * 2.5
 
--»óÈ£ÀÛ¿ë : abstract
-    ¤¤TypeA: none
-    ¤¤TypeB: E key
-    -Ãæµ¹
-        ¤¤TypeA: ÇÃ·¹ÀÌ¾î, ¸ó½ºÅÍ
-        ¤¤TypeB: ÇÃ·¹ÀÌ¾î, ¸ó½ºÅÍ
+-ìƒí˜¸ì‘ìš© : abstract
+    ã„´TypeA: none
+    ã„´TypeB: E key
+    -ì¶©ëŒ
+        ã„´TypeA: í”Œë ˆì´ì–´, ëª¬ìŠ¤í„°
+        ã„´TypeB: í”Œë ˆì´ì–´, ëª¬ìŠ¤í„°
 
--½ºÆù°£°İ : protected
+-ìŠ¤í°ê°„ê²© : protected
 
--½ºÆù : µå¶ø ½Ã ¿ÀºêÁ§Æ® °ãÄ¥°æ¿ì? »ç¸Á : ¹Ğ¾î³»±â
-    ¤¤ OnCollisionEnter2D : Ãæµ¹ ½Ã ¹Ğ¾î³»±â
-    ¤¤ OnCollisionStay2D : if ¿ÀºêÁ§Æ® À§Ä¡¿Í °ãÃÄ¼­ enter°¡ ¾ÃÈú °æ¿ì : ¹Ğ¾î³»±â
-    ¤¤ OnCollisionExit2D : ¹ÌÁ¤
+-ìŠ¤í° : ë“œë ì‹œ ì˜¤ë¸Œì íŠ¸ ê²¹ì¹ ê²½ìš°? ì‚¬ë§ : ë°€ì–´ë‚´ê¸°
+    ã„´ OnCollisionEnter2D : ì¶©ëŒ ì‹œ ë°€ì–´ë‚´ê¸°
+    ã„´ OnCollisionStay2D : if ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ì™€ ê²¹ì³ì„œ enterê°€ ì”¹í ê²½ìš° : ë°€ì–´ë‚´ê¸°
+    ã„´ OnCollisionExit2D : ë¯¸ì •
 */
 
-//ºÎ¸ğÅ¬·¹½º¿¡¼­ ÄÄÆ÷³ÍÆ® ÇÒ´çÄÚµå°¡ ÀÚ½ÄÅ¬·¡½º¿¡¼­ ±¸µ¿ÀÌ µÇ´ÂÁö È®ÀÎÇÊ¿ä
+//ë¶€ëª¨í´ë ˆìŠ¤ì—ì„œ ì»´í¬ë„ŒíŠ¸ í• ë‹¹ì½”ë“œê°€ ìì‹í´ë˜ìŠ¤ì—ì„œ êµ¬ë™ì´ ë˜ëŠ”ì§€ í™•ì¸í•„ìš”
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public abstract class Obstacles : MonoBehaviour
 {
     #region field
-    [Header("À¯Áö½Ã°£")]
+    [Header("ìœ ì§€ì‹œê°„")]
     [SerializeField] protected float useTime;
 
-    [Header("¿ÀºêÁ§Æ® Ã¼·Â")]
+    [Header("ì˜¤ë¸Œì íŠ¸ ì²´ë ¥")]
     [SerializeField] protected int fabricHp;
 
-    [Header("»óÈ£ÀÛ¿ë")]
+    [Header("ìƒí˜¸ì‘ìš©")]
     [SerializeField] protected LayerMask obj;
     [SerializeField] protected float interactionRange = 3.0f;
 
-    [Header("½ºÆù")]
+    [Header("ìŠ¤í°")]
     [SerializeField] Transform prefabParents;
     [SerializeField] GameObject[] prefabs;
 
-    [Header("½ºÆù°£°İ")]
+    [Header("ìŠ¤í°ê°„ê²©")]
     [SerializeField] protected float intervalTime = 20.0f;
 
-    [Header("ÄÄÆ÷³ÍÆ®")]
-    protected Collider2D collider; //??
+    [Header("ì»´í¬ë„ŒíŠ¸")]
+    protected Collider2D col;
     protected Rigidbody2D rb;
 
     protected Transform player;
     #endregion
 
-#if UNITY_EDITOR //ºÎ¸ğÅ¬·¡½º »ó¼Ó½ÃÅ³°æ¿ì ÀÚ½ÄÅ¬·¡½º ÀÛµ¿µÇ´ÂÁö È®ÀÎÇÊ¿ä
-    public void OnValidate() //private·Î ÀÛ¼ºµÇ¾î¾ß ÇÏ´Âµ¥ »ó¼Ó½ÃÅ³·Á¸é ¸ø¾²Áö ¾Ê³ª?
+#if UNITY_EDITOR //ë¶€ëª¨í´ë˜ìŠ¤ ìƒì†ì‹œí‚¬ê²½ìš° ìì‹í´ë˜ìŠ¤ ì‘ë™ë˜ëŠ”ì§€ í™•ì¸í•„ìš”
+    public void OnValidate() //privateë¡œ ì‘ì„±ë˜ì–´ì•¼ í•˜ëŠ”ë° ìƒì†ì‹œí‚¬ë ¤ë©´ ëª»ì“°ì§€ ì•Šë‚˜?
     {
         prefabs = prefabParents.GetComponentsInChildren<GameObject>();
     }
@@ -66,7 +66,7 @@ public abstract class Obstacles : MonoBehaviour
 
     void Awake()
     {
-        collider = GetComponent<Collider2D>();
+        col = GetComponent<Collider2D>();//ì˜¤ë¥˜ ìƒê¸°ë©´ col->colliderë¡œ ëª¨ë‘ ë°”ê¿”ì£¼ê¸°
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -81,20 +81,20 @@ public abstract class Obstacles : MonoBehaviour
     }
 
     #region method
-    //À¯Áö½Ã°£
+    //ìœ ì§€ì‹œê°„
 
 
-    //¿ÀºêÁ§Æ® Ã¼·Â
+    //ì˜¤ë¸Œì íŠ¸ ì²´ë ¥
 
 
-    //»óÈ£ÀÛ¿ë
-        //Ãæµ¹
+    //ìƒí˜¸ì‘ìš©
+        //ì¶©ëŒ
 
 
-    //½ºÆù°£°İ
+    //ìŠ¤í°ê°„ê²©
 
 
-    //½ºÆù Á¶°Ç&&etc
+    //ìŠ¤í° ì¡°ê±´&&etc
 
 
     #endregion
