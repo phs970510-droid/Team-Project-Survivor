@@ -1,14 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+청크 오브젝트 풀 사용
+1)싱글톤 하위로 스프라이트 생성 : 씬 이동 후 재입장 또는 리로드 시 파괴되어 null 오류 발생 방지
+2)씬에 자체적으로 부모오브젝트 생성 : 불필요한 데이터가 유지되어 같이 이동하지 않음
+*/
+
 public abstract class Chunk : MonoBehaviour
 {
     #region field
     [Header("기본 설정")]
     public Transform player;
-    public int chunkSize = 1;
-    public int loadRange = 15;
-    public int unloadRange = 15;
+
+    /* 수정사항
+    수정 전 : 청크 스프라이트 활성화 수 961개
+    수정 후 : 청크 스프라이트 활성화 수 49개
+    */
+    public int chunkSize = 5;
+    public int loadRange = 3;
+    public int unloadRange = 3;
 
     [Header("청크 프리팹 풀")]
     //gameObject에 붙어있는 하위 컴포넌트 이므로 타입으로 사용이 가능하다
@@ -99,9 +110,9 @@ public abstract class Chunk : MonoBehaviour
             return null;
         }
 
-        int rdN = Random.Range(0, 50);
+        int rdN = Random.Range(0, 15);
 
-        if (rdN < 48)
+        if (rdN < 13)
         {
             return chunkPrefabs[0].gameObject;
         }
