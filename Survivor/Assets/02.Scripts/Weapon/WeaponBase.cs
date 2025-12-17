@@ -2,9 +2,11 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    public WeaponStat weaponStat;
-    public Transform firePoint;
-    public GameObject bulletObj;
+    protected WeaponStat weaponStat;
+
+    [SerializeField] protected Transform firePoint;
+    [SerializeField] protected BulletPool bulletPool;
+    [SerializeField] protected float lifeTime;
 
     protected float fireTimer;
 
@@ -27,7 +29,8 @@ public abstract class WeaponBase : MonoBehaviour
     {
         for(int i = 0; i < weaponStat.bulletCount; i++)
         {
-            bulletObj = Instantiate(weaponStat.weaponData.weaponPrefab, firePoint.position, Quaternion.identity);
+            GameObject bulletObj = bulletPool.SpawnBullet
+                (firePoint.position, Quaternion.identity, lifeTime);
 
             //각 무기에 맞는 총 발사 구현하기
             ShootEachWeapon(bulletObj, i);

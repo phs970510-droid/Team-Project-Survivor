@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NormalBullet : MonoBehaviour
+public class NormalBullet : MonoBehaviour, IPoolable
 {
     private float bulletDamage;
     private float bulletSpeed;
@@ -38,4 +38,5 @@ public class NormalBullet : MonoBehaviour
             }
         }
     }
+    public void SpawnBullet() { }
 }

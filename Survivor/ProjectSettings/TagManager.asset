@@ -10,6 +10,9 @@ TagManager:
   - Boss
   - Magnet
   - Shield
+  - Undefined
+  - Reward
+  - BigExp
   layers:
   - Default
   - TransparentFX

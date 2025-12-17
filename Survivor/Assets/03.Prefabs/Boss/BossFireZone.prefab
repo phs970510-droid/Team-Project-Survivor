@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2929664940794828482}
   - component: {fileID: 2851419210371682140}
-  - component: {fileID: 2266577482593859555}
+  - component: {fileID: 2000504347736938227}
   m_Layer: 0
   m_Name: BossFireZone
   m_TagString: Untagged
@@ -414,7 +414,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2266577482593859555
+--- !u!114 &2000504347736938227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6210377519655294321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d6cf0b164b6ce41b5f4daddc4bbb3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 08b0c3141cfdde3489319ebe67faa59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6419917061053123162

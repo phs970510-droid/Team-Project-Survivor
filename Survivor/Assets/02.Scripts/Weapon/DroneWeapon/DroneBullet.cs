@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DroneBullet : MonoBehaviour
+public class DroneBullet : MonoBehaviour, IPoolable
 {
     private float droneDamage;
     private float lifeTime = 0.5f;
@@ -43,4 +43,6 @@ public class DroneBullet : MonoBehaviour
             }
         }
     }
+
+    public void SpawnBullet() { }
 }
