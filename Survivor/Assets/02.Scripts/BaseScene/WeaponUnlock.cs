@@ -25,7 +25,7 @@ public class WeaponUnlock : MonoBehaviour
                 weaponButtons[index].SetActive(false);
                 currentMoneyText.text = currentMoney.ToString();
             }
-            else
+            else if(currentMoney < weapon.price) 
             {
                 emptyMoneyPaenl.SetActive(true);
             }

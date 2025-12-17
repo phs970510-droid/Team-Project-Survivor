@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/01.Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/01.Scenes/WYScene/TestBattleScene.unity
-    guid: d6a6017640085e241beba3c68421bd73
-  - enabled: 1
     path: Assets/01.Scenes/MapTest.unity
     guid: c5be51bb1c0be6c4e83ba177ddeeb91e
   - enabled: 1
     path: Assets/01.Scenes/StageMap.unity
     guid: 3eb28265cef812742bb0781c3162b2d5
+  - enabled: 1
+    path: Assets/01.Scenes/BaseScene.unity
+    guid: 26c756126d788f74eb765270a799827e
+  - enabled: 1
+    path: Assets/01.Scenes/StageSelcetScene.unity
+    guid: b46ca8a6c8f4838488e6cdf2d6823c60
+  - enabled: 1
+    path: Assets/01.Scenes/TutorialMap.unity
+    guid: 266f384dbe4f6fa488b6425ece564dd4
   m_configObjects: {}

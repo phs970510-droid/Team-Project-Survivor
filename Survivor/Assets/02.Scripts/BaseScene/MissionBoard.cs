@@ -13,7 +13,7 @@ public class MissionBoard : MonoBehaviour
     public void MainSceneLoder()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("WY Scene");
+        SceneManager.LoadScene("BaseScene");
     }
     public void StageSelectLoder()
     {
