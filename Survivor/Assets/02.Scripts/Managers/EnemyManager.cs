@@ -35,11 +35,11 @@ public class EnemyManager : MonoBehaviour
         }
         enemy.transform.position = position;
 
-        CommonHP hp=enemy.GetComponent<CommonHP>();
-        if (hp != null)
-        {
-            hp.ResetHP();
-        }
+        //CommonHP hp=enemy.GetComponent<CommonHP>();
+        //if (hp != null)
+        //{
+        //    hp.ResetHP();
+        //}
 
         var agent=enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent != null)
