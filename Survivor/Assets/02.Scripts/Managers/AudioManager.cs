@@ -27,11 +27,16 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        // 싱글톤 지정
-        instance = this;
-
-        // 오디오 초기화
-        Init();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            Init();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Init()
@@ -163,5 +168,13 @@ public class AudioManager : MonoBehaviour
                 p.volume = sfxVolume;
         }
     }
+    
+    public void PlaySelectSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
+    }
+   
+
+   
 }
 
