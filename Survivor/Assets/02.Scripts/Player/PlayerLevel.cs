@@ -1,8 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour
 {
     [SerializeField] public PlayerData playerData;
+
+    public GameObject openSelectItme; //wy추가
+    public GameObject joyStick; //wy추가
+    public SelectItem SelectItem;
 
     public int level = 1;
     public int currentExp = 0;
@@ -24,6 +29,12 @@ public class PlayerLevel : MonoBehaviour
 
         playerData.expMax += 20; //다음 레벨업 필요경험치 증가
         //UI 추가
+
+        StartCoroutine(StopAction());
+        joyStick.SetActive(false);//wy추가
+        openSelectItme.SetActive(true); //wy추가
+        SelectItem.SelectItemSO();//wy추가
+
 
         //선택까지 일시정지
         Time.timeScale = 0f;
@@ -48,4 +59,16 @@ public class PlayerLevel : MonoBehaviour
     {
         exp.magnetLevel++;
     }
+
+
+    private IEnumerator StopAction()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        //joyStick.SetActive(false);//wy추가
+        //openSelectItme.SetActive(true); //wy추가
+        //SelectItem.SelectItemSO();//wy추가
+
+    }
 }
+

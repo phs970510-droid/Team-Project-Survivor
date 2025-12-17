@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PanelSwitcher : MonoBehaviour
@@ -7,6 +8,7 @@ public class PanelSwitcher : MonoBehaviour
     public GameObject panelMenu;
     public GameObject panelShop;
     public GameObject panelWarning;
+
 
     public void OpenMainPanel()
     {
@@ -36,27 +38,25 @@ public class PanelSwitcher : MonoBehaviour
 
     public void ToggleMenu()
     {
-        Time.timeScale = 0f;
         if (panelMenu == null) return;
         panelMenu.SetActive(!panelMenu.activeSelf);
-        if (panelMenu.gameObject.activeInHierarchy == false)
-        {
-            Time.timeScale = 1f;
 
-        }
     }
+
     public void CloseMenuPanel()
     {
-        Time.timeScale = 1f;
 
         if (panelMenu == null) return;
 
         panelMenu.SetActive(false);
+
     }
+
     public void CloseWarningPanel()
     {
         if(panelWarning == null) return;    
         panelWarning.SetActive(false);
     }
+
 
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class JoyStick : MonoBehaviour
 {
@@ -62,5 +63,18 @@ public class JoyStick : MonoBehaviour
 
         //조이스틱 이미지를 현재 입력 벡터위치로 이동
         joyStick.rectTransform.anchoredPosition = inputVector;
+    }
+
+    private void OnDisable()
+    {
+        ResetJoystick();
+    }
+
+    public void ResetJoystick()
+    {
+        isTouching = false;
+        inputVector = Vector2.zero;
+        startPos = Vector2.zero;
+        joyStick.rectTransform.anchoredPosition = Vector2.zero;
     }
 }

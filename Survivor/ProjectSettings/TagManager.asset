@@ -8,11 +8,8 @@ TagManager:
   - DeadEnemy
   - Exp
   - Boss
-  - Magnet
-  - Shield
-  - Undefined
-  - Reward
-  - BigExp
+  - Tutorial
+  - Main
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Data/WeaponData")]
 public class WeaponData : ScriptableObject
@@ -15,7 +17,16 @@ public class WeaponData : ScriptableObject
     public float fireCoolTime = 1.0f;
     public int bulletCount = 1;
     public float attackRange = 10f;
+    public int price;
+    public Sprite Sprite;
 
-    [Header("풀링")]
-    public int poolSize;
+
+    //무기 번호
+    //무기 종류 리스트 or 배열
+    //무기 레벨에 따른 별 개수
+    //무기 레벨에 따른 설명
+    //무기 레벨에 따른 공격력 리스트
+    //무기 레벨에 따른 불릿 개수
+    //무기 레벨에 따른 쿨타임 감소 리스트
+    //무기 레벨에 따른 공격 거리 감소 리스트
 }
