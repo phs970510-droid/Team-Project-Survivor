@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9157585725859254065}
   - component: {fileID: 2659947778149992395}
-  - component: {fileID: 639145121052625908}
   - component: {fileID: 1736699874534516098}
   - component: {fileID: 7107607116104660744}
+  - component: {fileID: 6201278080660091918}
   m_Layer: 0
   m_Name: BossFireBomb
   m_TagString: Untagged
@@ -87,24 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &639145121052625908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156672296513261783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0b50ee71526b04d8699c9356d0aa49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireZonePrefab: {fileID: 6210377519655294321, guid: 9f8a1e29bd55d394aaa3d35f68988e11, type: 3}
-  throwSpeed: 10
-  throwHeight: 3
-  throwTime: 1
-  fireZoneLeave: 3
-  fireRadius: 0
 --- !u!58 &1736699874534516098
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,3 +149,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6201278080660091918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156672296513261783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0951fd600bf7c42a4176305d394827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossFireZonePrefab: {fileID: 6210377519655294321, guid: 9f8a1e29bd55d394aaa3d35f68988e11, type: 3}
+  throwSpeed: 3
+  throwHeight: 2
+  throwTime: 1
+  fireZoneLeave: 3
+  fireRadius: 0

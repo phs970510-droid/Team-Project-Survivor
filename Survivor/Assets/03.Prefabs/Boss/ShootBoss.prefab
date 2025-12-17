@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5583567669022678326}
   m_Layer: 6
   m_Name: ShootBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,8 +179,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: b37ca74f6f397214f86d9d15819805f9, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 1009769719818405756}
-  bossReward: {fileID: 0}
+  normalEXPPrefab: {fileID: 0}
+  bigEXPPrefab: {fileID: 0}
+  chance: 0.2
+  bossReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}
+  damageReduce: 0.3
+  sheildTime: 5
 --- !u!95 &6384850856965379329
 Animator:
   serializedVersion: 5
@@ -216,7 +220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternCoolTime: 5
   bossBulletPrefab: {fileID: 5840852700482193341, guid: dff13102b53994a4fbc764159785e990, type: 3}
-  player: {fileID: 0}
   baseData: {fileID: 11400000, guid: b37ca74f6f397214f86d9d15819805f9, type: 2}
   coneBulletCount: 5
   spreadAngle: 60

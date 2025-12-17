@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FireBomb : MonoBehaviour
+public class FireBomb : MonoBehaviour, IPoolable
 {
     [Header("È­¿°º´ ¼¼ÆÃ")]
     [SerializeField] private GameObject fireZonePrefab;
@@ -12,35 +12,18 @@ public class FireBomb : MonoBehaviour
     private float fireDamage;
     public float fireRadius;
 
-    private Shooter shooter;
-
     private Vector2 dir;
     private float shootTimer;
     private Vector3 startPos;
 
-    public void Init(Vector2 dir, float damage, float radius, Shooter shooter)
+    //È­¿°º´ ½ºÅÈ
+    public void Init(Vector2 dir, float damage, float radius)
     {
         this.dir = dir.normalized;
         fireDamage = damage;
         fireRadius = radius;
-        this.shooter = shooter;
 
         startPos = transform.position;
-    }
-
-    //º¸½º Àü¿ë ¹«ÀÛÀ§·Î ½î±â
-    public void BossInit(Vector3 pos, float damage, float radius, Shooter shooter)
-    {
-        fireDamage = damage;
-        fireRadius = radius;
-        this.shooter = shooter;
-
-        startPos = transform.position;
-
-        dir = (pos  - startPos).normalized;
-
-        float dist = Vector3.Distance(startPos, pos);
-        throwSpeed = dist / throwTime;
     }
 
     private void Update()
@@ -68,9 +51,10 @@ public class FireBomb : MonoBehaviour
     private void Explode()
     {
         GameObject fireZone = Instantiate(fireZonePrefab, transform.position, Quaternion.identity);
-        fireZone.GetComponent<FireZone>().FireZoneStat(fireDamage, fireRadius, shooter);
+        fireZone.GetComponent<FireZone>().FireZoneStat(fireDamage, fireRadius);
 
         Destroy(fireZone, fireZoneLeave);
         Destroy(gameObject);
     }
+    public void SpawnBullet() { }
 }

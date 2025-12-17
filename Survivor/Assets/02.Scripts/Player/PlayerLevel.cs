@@ -40,10 +40,14 @@ public class PlayerLevel : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void BaseStatUp(BaseData baseData)
+    public void HPStatUp(BaseData baseData)
     {
         baseData.maxHp *= 1.1f;
-        baseData.moveSpeed *= 1.1f;
+    }
+
+    public void SpeedStatUp(BaseData baseData)
+    {
+         baseData.moveSpeed *= 1.1f;
     }
 
     public void WeaponStatUp(WeaponStat weaponStat)

@@ -4,8 +4,6 @@ using UnityEngine.AI;
 
 public class ShootEnemy : MonoBehaviour
 {
-    [SerializeField] private BaseData baseData;
-    [SerializeField] private Transform player;
 
     [Header("발사체 설정")]
     [SerializeField] private GameObject enemyBulletPrefab;
@@ -15,14 +13,16 @@ public class ShootEnemy : MonoBehaviour
     private bool isShooting = false;
     private Coroutine shootCoroutine;
 
+    [SerializeField] private BaseData baseData;
     private float damage;
-
+    private Transform player;
     private NavMeshAgent agent;
     private SpriteRenderer sr;
 
     private void Awake()
     {
         damage = baseData.damage;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         sr = GetComponent<SpriteRenderer>();
 

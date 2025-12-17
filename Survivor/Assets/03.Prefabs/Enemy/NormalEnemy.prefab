@@ -209,7 +209,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 6f42f2bad79b4bb41ae067d6210c0854, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
+  normalEXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
+  bigEXPPrefab: {fileID: 5082785930944967579, guid: dfd5d6d7d77f2f24fa9f40eeb2d62fa1, type: 3}
+  chance: 0.2
+  bossReward: {fileID: 0}
+  damageReduce: 0.3
+  sheildTime: 5
 --- !u!50 &6068028902716518811
 Rigidbody2D:
   serializedVersion: 4

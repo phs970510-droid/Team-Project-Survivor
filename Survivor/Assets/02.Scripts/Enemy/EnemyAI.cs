@@ -1,42 +1,67 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
-    //½¸ ¿¡³Ê¹Ì´Â ½¸¿¡³Ê¹Ì ½ºÅ©¸³Æ®¿¡¼­ ÇÃ¸³ Àû¿ë
+    //ìŠ› ì—ë„ˆë¯¸ëŠ” ìŠ›ì—ë„ˆë¯¸ ìŠ¤í¬ë¦½íŠ¸ì—ì„œ í”Œë¦½ ì ìš©
     [SerializeField] private bool useFlip;
 
-    private Transform player;
+    private EnemySpawner spawner;
     private NavMeshAgent agent;
     private SpriteRenderer sr;
     private CommonHP hp;
 
+    private Coroutine followRoutine;
+    private const float UPDATE_INTERVAL = 0.2f;
+
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        spawner = GetComponentInParent<EnemySpawner>();
         agent = GetComponent<NavMeshAgent>();
         sr = GetComponentInChildren<SpriteRenderer>();
         hp = GetComponent<CommonHP>();
 
-        //2D¿¡ ¸Â°Ô zÃàÀº È¸Àü¾ÈÇÏµµ·Ï
+        //2Dì— ë§ê²Œ zì¶•ì€ íšŒì „ì•ˆí•˜ë„ë¡
         agent.updateUpAxis = false;
         agent.updateRotation = false;
     }
-    void Update()
+
+    private void OnEnable()
     {
-        if (player == null || hp.isDead) return;
-
-        //Enemy´Â ÇÃ·¹ÀÌ¾î µû¶ó°¡°Ô
-        agent.SetDestination(player.position);
-
-        //ÁÂ¿ì¹İÀü
-        if(agent.velocity.x > 0)
+        if (followRoutine != null)
         {
-            sr.flipX = false;
+            StopCoroutine(followRoutine);
         }
-        else if(agent.velocity.x < 0)
+        followRoutine = StartCoroutine(FollowPlayer());
+    }
+
+    private void OnDisable()
+    {
+        if(followRoutine != null)
+            StopCoroutine(followRoutine);
+    }
+    private IEnumerator FollowPlayer()
+    {
+        while (true)
         {
-            sr.flipX = true;
+            if (spawner != null && hp.isDead)
+            {
+                //ìŠ¤í¬ë„ˆì—ì„œ PlayerPos ë°›ê¸°
+                agent.SetDestination(spawner.PlayerPos);    //PlayerPosëŠ” spawnerì—ì„œ ì´ë¯¸ Vector3(z=0)ìœ¼ë¡œ ê´€ë¦¬ì¤‘
+
+
+                //ì¢Œìš°ë°˜ì „
+                if (agent.velocity.x > 0)
+                {
+                    sr.flipX = false;
+                }
+                else if (agent.velocity.x < 0)
+                {
+                    sr.flipX = true;
+                }
+            }
+            yield return new WaitForSeconds(UPDATE_INTERVAL);
         }
     }
 }

@@ -41,7 +41,8 @@ public class BossCircleWeapon : MonoBehaviour
 
             //스탯 가져오기
             CircleBullet circleBullet = circleBulletObj.GetComponent<CircleBullet>();
-            circleBullet.BulletStat(damage);
+            int bossLayer = boss.gameObject.layer;
+            circleBullet.BulletStat(damage, bossLayer);
 
             circleObjects[i] = circleBulletObj;
         }

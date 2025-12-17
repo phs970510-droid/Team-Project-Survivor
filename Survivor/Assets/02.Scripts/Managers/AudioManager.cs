@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.clip = bgmClip;        // 재생할 배경음 설정
 
         // 메인 카메라에 있는 HighPassFilter를 가져와서 저장
-        bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
+        //bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
 
         // ---------------------------------------------------------
         // 효과음(SFX) 재생 채널 생성

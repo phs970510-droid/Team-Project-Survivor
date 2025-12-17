@@ -14,10 +14,18 @@ public class CommonHP : MonoBehaviour
     protected float invincibleTime = 0.5f;
     protected bool isInvincible = false;
 
-    [Header("경험치 프리팹(에너미만 할당)")]
-    [SerializeField] private GameObject EXPPrefab;
-    //큰 경험치도 추가해야 함
+    [Header("경험치(에너미만 할당)")]
+    [SerializeField] private GameObject normalEXPPrefab;
+    [SerializeField] private GameObject bigEXPPrefab;
+    [SerializeField] private float chance = 0.2f;
+
+    [Header("보스 보상")]
     [SerializeField] private GameObject bossReward;
+
+    [Header("실드")]
+    [SerializeField] private float damageReduce = 0.3f;
+    [SerializeField] private float sheildTime = 5f;
+    private bool hasShield = false;
 
     //플레이어 HP 체력바에 참조
     public float CurrentHP => currentHP;
@@ -41,6 +49,11 @@ public class CommonHP : MonoBehaviour
         if (CompareTag("Player") && isInvincible)
             return; //플레이어가 무적이면 리턴하기
 
+        //실드 가지고 있으면 데미지감소
+        if (hasShield)
+        {
+            damage *= (1f - damageReduce);
+        }
         currentHP -= damage;
 
         StartCoroutine(HitAnimation());
@@ -88,8 +101,8 @@ public class CommonHP : MonoBehaviour
         {
             //게임오버 / UI
         }
-        //에너미라면
-        else if (CompareTag("Enemy"))
+        //에너미,보스라면
+        else if (CompareTag("Enemy") || CompareTag("Boss"))
         {
             DieEnemy();
         }
@@ -97,8 +110,6 @@ public class CommonHP : MonoBehaviour
 
     private void DieEnemy()
     {
-        gameObject.tag = "DeadEnemy";   //플레이어가 공격 안하도록 태그변경
-
         //EnemyAI멈추기
         EnemyAI enemyAI = GetComponent<EnemyAI>();
         if (enemyAI != null)
@@ -112,14 +123,74 @@ public class CommonHP : MonoBehaviour
             agent.isStopped = true;
             agent.velocity = Vector2.zero;
         }
-        DropEXP();
+        if(CompareTag("Enemy")) DropEXP();
+        if (CompareTag("Boss")) DropReward();
+
+        gameObject.tag = "DeadEnemy";   //플레이어가 공격 안하도록 태그변경
     }
 
     private void DropEXP()
     {
-        if(EXPPrefab != null)
+        float rand = Random.value;
+        if(bigEXPPrefab != null && chance >= rand)
         {
-            Instantiate(EXPPrefab, transform.position, Quaternion.identity);
+            Instantiate(bigEXPPrefab, transform.position, Quaternion.identity);
         }
+        else
+        {
+            Instantiate(normalEXPPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    private void DropReward()
+    {
+        Instantiate(bossReward, transform.position, Quaternion.identity);
+    }
+
+    public void ResetHP()
+    {
+        if(baseData != null)
+        {
+        currentHP = baseData.maxHp; //hp 되돌리기
+            }
+        
+        isDead = false;
+        isInvincible = false;
+
+        anim.ResetTrigger("Die");   //애니메이션 리셋
+
+        //콜라이더 되돌리기
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null) collider.enabled = true;
+
+        gameObject.tag = "Enemy";   //태그 되돌리기
+
+        //AI되돌리기
+        EnemyAI enemyAI = GetComponent<EnemyAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.enabled = true;
+        }
+        //이동 되돌리기
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.isStopped = false;
+        }
+    }
+
+    public void GetShieldItem()
+    {
+        StartCoroutine(ShieldCoroutine());
+    }
+
+    //실드시간 만큼 해스실드 on
+    private IEnumerator ShieldCoroutine()
+    {
+        hasShield = true;
+
+        yield return new WaitForSeconds(sheildTime);
+
+        hasShield = false;
     }
 }

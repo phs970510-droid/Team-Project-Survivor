@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4906768276999562696}
   - component: {fileID: 7131998782349008154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BossCircleWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2710263309715690810}
   - component: {fileID: 2646218805175172585}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BossDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,9 +149,9 @@ GameObject:
   - component: {fileID: 8781846150198872096}
   - component: {fileID: 4241544036765951354}
   - component: {fileID: 2942418017139831274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,6 +277,7 @@ MonoBehaviour:
   normalCount: 5
   normalDelay: 0.5
   normalDamage: 10
+  normalSpeed: 10
   cpPrefab: {fileID: 7352974357208574979, guid: 30e99bdbda7aad7458ec9ed538cfbb2d, type: 3}
   circleDelay: 3
   circleCount: 4
@@ -288,7 +289,8 @@ MonoBehaviour:
   fireDelay: 0.3
   fireDamage: 5
   fireRadius: 3
-  randomRadius: 7
+  minRadius: 3
+  maxRadius: 10
   dpPrefab: {fileID: 3599948593545913801, guid: 9e77d47b198a73e4289d55bf728ea4f2, type: 3}
   droneCount: 10
   droneDelay: 0.05
@@ -310,8 +312,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: ffc59f6e4349739488dd73bfaab6cce3, type: 2}
   isDead: 0
-  EXPPrefab: {fileID: 0}
-  bossReward: {fileID: 0}
+  normalEXPPrefab: {fileID: 0}
+  bigEXPPrefab: {fileID: 0}
+  chance: 0.2
+  bossReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}
+  damageReduce: 0.3
+  sheildTime: 5
 --- !u!70 &2942418017139831274
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
