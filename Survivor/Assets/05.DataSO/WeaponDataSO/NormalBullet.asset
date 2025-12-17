@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: NormalBullet
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 4039606727853340734, guid: d7282e25b859ba1458af27bf075401f1, type: 3}
+  weaponName: NormalWeapon
+  isUnlocked: 0
   damage: 10
   speed: 10
   fireCoolTime: 1
-  bulletCount: 1
+  bulletCount: 2
   attackRange: 10
+  price: 0
+  Sprite: {fileID: 1737672109, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}

@@ -25,9 +25,12 @@ public class NormalWeapon : WeaponBase
 
     private void FindCloseEnemy()
     {
-        //에너미에 태그 붙여주기
-        GameObject[] closeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        
+        //레이어로 가까운 적 찾기
+        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+        //발사지점(플레이어) 기준 어택레인지 내 레이어 찾기
+        Collider2D[] closeEnemies = Physics2D.OverlapCircleAll(
+            firePoint.position, weaponStat.weaponData.attackRange, enemyLayer);
+
         //Linq를 이용해 적들을 거리 순으로 정렬하기
         enemies = closeEnemies
             .Select(enemy => enemy.transform)   //GameObject배열을 Transform리스트로 변환

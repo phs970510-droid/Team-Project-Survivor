@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FireBomb : MonoBehaviour
+public class FireBomb : MonoBehaviour, IPoolable
 {
     [Header("»≠ø∞∫¥ ºº∆√")]
     [SerializeField] private GameObject fireZonePrefab;
@@ -16,6 +16,7 @@ public class FireBomb : MonoBehaviour
     private float shootTimer;
     private Vector3 startPos;
 
+    //»≠ø∞∫¥ Ω∫≈»
     public void Init(Vector2 dir, float damage, float radius)
     {
         this.dir = dir.normalized;
@@ -55,4 +56,5 @@ public class FireBomb : MonoBehaviour
         Destroy(fireZone, fireZoneLeave);
         Destroy(gameObject);
     }
+    public void SpawnBullet() { }
 }

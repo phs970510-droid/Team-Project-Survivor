@@ -5,6 +5,8 @@ public class FireZone : MonoBehaviour
     private float fireDamage;
     private float fireRadius;
 
+    [SerializeField] private LayerMask enemyLayer;
+
     public void FireZoneStat(float damage, float radius)
     {
         this.fireDamage = damage;
@@ -13,12 +15,18 @@ public class FireZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        CommonHP hp = other.GetComponent<CommonHP>();
-        if (hp != null)
+        CommonHP hp = other.GetComponentInParent<CommonHP>();
+        if (hp == null) return;
+
+        if(hp != null)
         {
-            hp.Damage(fireDamage);
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+            {
+                hp.Damage(fireDamage);
+                Debug.Log($"{name}이 {other.name}에게 데미지 줌({fireDamage})");
+            }
         }
-        Debug.Log($"{name}이 {other.name}에게 데미지 줌({fireDamage})");
     }
 
+    public void SpawnBullet() { }
 }

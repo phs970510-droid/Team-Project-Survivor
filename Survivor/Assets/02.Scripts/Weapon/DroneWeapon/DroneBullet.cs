@@ -1,18 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneBullet : MonoBehaviour
+public class DroneBullet : MonoBehaviour, IPoolable
 {
-    // Start is called before the first frame update
-    void Start()
+    private float droneDamage;
+    private float lifeTime = 0.5f;
+    private float timer;
+
+    private Rigidbody2D rb;
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    public void Init(Vector2 dir, float speed, float damage)
+    {
+        rb.velocity = dir * speed;
+        this.droneDamage = damage;
+    }
+
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if( timer > lifeTime)
+        {
+            Destroy(gameObject);
+        }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        CommonHP hp = other.GetComponent<CommonHP>();
+
+        if (hp == null) return;
+        if (hp != null)
+        {
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+            {
+                hp.Damage(droneDamage);
+                Destroy(gameObject);
+                Debug.Log($"{name}이 {other.name}에게 데미지 줌({droneDamage})");
+            }
+        }
+    }
+
+    public void SpawnBullet() { }
 }

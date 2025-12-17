@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class JoyStick : MonoBehaviour
 {
     [Header("조이스틱")]
-    public float moveRange = 50f;  //조이스틱 움직이는 범위
-    public Image back;
-    public Image joyStick;
+    [SerializeField] public float moveRange = 50f;  //조이스틱 움직이는 범위
+    [SerializeField] private Image back;
+    [SerializeField] private Image joyStick;
 
     private Vector2 startPos;   //터치시작위치
     private Vector2 inputVector;//조이스틱 입력벡터
@@ -62,5 +63,18 @@ public class JoyStick : MonoBehaviour
 
         //조이스틱 이미지를 현재 입력 벡터위치로 이동
         joyStick.rectTransform.anchoredPosition = inputVector;
+    }
+
+    private void OnDisable()
+    {
+        ResetJoystick();
+    }
+
+    public void ResetJoystick()
+    {
+        isTouching = false;
+        inputVector = Vector2.zero;
+        startPos = Vector2.zero;
+        joyStick.rectTransform.anchoredPosition = Vector2.zero;
     }
 }
