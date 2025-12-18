@@ -2181,6 +2181,7 @@ RectTransform:
   - {fileID: 863978042}
   - {fileID: 1084496718}
   - {fileID: 812834657}
+  - {fileID: 1450416976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5830,7 +5831,6 @@ Transform:
   m_Children:
   - {fileID: 2138609592}
   - {fileID: 1220900729}
-  - {fileID: 1450416976}
   m_Father: {fileID: 320760299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089064482
@@ -7814,6 +7814,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1263470124}
+        m_TargetAssemblyTypeName: UpGradeItem, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1431601947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8012,13 +8024,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450416975}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -490.0621, y: -68, z: -4.918467}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224427444}
-  m_Father: {fileID: 1084496718}
+  m_Father: {fileID: 320760299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1468776782
 GameObject:
@@ -8037,7 +8049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1468776783
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10086,7 +10098,7 @@ GameObject:
   - component: {fileID: 1668036249}
   - component: {fileID: 1668036248}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13218,8 +13230,8 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1668036250}
   - {fileID: 320760299}
   - {fileID: 1004338997}
   - {fileID: 1161303034}
-  - {fileID: 1668036250}
   - {fileID: 1661959221}

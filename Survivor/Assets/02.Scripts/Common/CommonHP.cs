@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,20 +14,20 @@ public class CommonHP : MonoBehaviour
     protected float invincibleTime = 0.5f;
     protected bool isInvincible = false;
 
-    [Header("°æÇèÄ¡(¿¡³Ê¹Ì¸¸ ÇÒ´ç)")]
+    [Header("ê²½í—˜ì¹˜(ì—ë„ˆë¯¸ë§Œ í• ë‹¹)")]
     [SerializeField] private GameObject normalEXPPrefab;
     [SerializeField] private GameObject bigEXPPrefab;
     [SerializeField] private float chance = 0.2f;
 
-    [Header("º¸½º º¸»ó")]
+    [Header("ë³´ìŠ¤ ë³´ìƒ")]
     [SerializeField] private GameObject bossReward;
 
-    [Header("½Çµå")]
+    [Header("ì‹¤ë“œ")]
     [SerializeField] private float damageReduce = 0.3f;
     [SerializeField] private float sheildTime = 5f;
     private bool hasShield = false;
 
-    //ÇÃ·¹ÀÌ¾î HP Ã¼·Â¹Ù¿¡ ÂüÁ¶
+    //í”Œë ˆì´ì–´ HP ì²´ë ¥ë°”ì— ì°¸ì¡°
     public float CurrentHP => currentHP;
     public float MaxHP => baseData.maxHp;
 
@@ -39,17 +39,23 @@ public class CommonHP : MonoBehaviour
         currentHP = baseData.maxHp;
     }
 
+    private void OnEnable()
+    {
+        isDead = false;
+        isInvincible=false;
+    }
+
     public void Damage(float damage)
     {
         TakeDamage(damage);
     }
     protected virtual void TakeDamage(float damage)
     {
-        if (isDead) return; //Á×¾úÀ¸¸é ¸®ÅÏÇÏ±â
+        if (isDead) return; //ì£½ì—ˆìœ¼ë©´ ë¦¬í„´í•˜ê¸°
         if (CompareTag("Player") && isInvincible)
-            return; //ÇÃ·¹ÀÌ¾î°¡ ¹«ÀûÀÌ¸é ¸®ÅÏÇÏ±â
+            return; //í”Œë ˆì´ì–´ê°€ ë¬´ì ì´ë©´ ë¦¬í„´í•˜ê¸°
 
-        //½Çµå °¡Áö°í ÀÖÀ¸¸é µ¥¹ÌÁö°¨¼Ò
+        //ì‹¤ë“œ ê°€ì§€ê³  ìˆìœ¼ë©´ ë°ë¯¸ì§€ê°ì†Œ
         if (hasShield)
         {
             damage *= (1f - damageReduce);
@@ -58,7 +64,7 @@ public class CommonHP : MonoBehaviour
 
         StartCoroutine(HitAnimation());
 
-        //¹«Àû½Ã°£ ÄÚ·çÆ¾
+        //ë¬´ì ì‹œê°„ ì½”ë£¨í‹´
         StartCoroutine(InvincibleCoroutine());
 
         if(currentHP <= 0)
@@ -69,13 +75,13 @@ public class CommonHP : MonoBehaviour
 
     private IEnumerator HitAnimation()
     {
-        //¸Â´Â ¾Ö´Ï¸ŞÀÌ¼Ç 0.1ÃÊ¸¸ Áö¼Ó
+        //ë§ëŠ” ì• ë‹ˆë©”ì´ì…˜ 0.1ì´ˆë§Œ ì§€ì†
         anim.SetBool("Hitted", true);
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("Hitted", false);
     }
 
-    //¹«Àû½Ã°£
+    //ë¬´ì ì‹œê°„
     private IEnumerator InvincibleCoroutine()
     {
         isInvincible = true;
@@ -90,18 +96,18 @@ public class CommonHP : MonoBehaviour
         isDead = true;
         anim.SetTrigger("Die");
 
-        //Äİ¶óÀÌ´õ ¾ø¾Ö±â(ÇÃ·¹ÀÌ¾î µ¥¹ÌÁö ¾Èˆ¥°Ô)
+        //ì½œë¼ì´ë” ì—†ì• ê¸°(í”Œë ˆì´ì–´ ë°ë¯¸ì§€ ì•ˆë‹ªê²Œ)
         Collider2D collider = GetComponent<Collider2D>();
         if(collider != null) collider.enabled = false;
 
         StartCoroutine(ActiveFalse());
 
-        //ÇÃ·¹ÀÌ¾î Á×¾ú´Ù¸é °ÔÀÓ³¡
+        //í”Œë ˆì´ì–´ ì£½ì—ˆë‹¤ë©´ ê²Œì„ë
         if (CompareTag("Player"))
         {
-            //°ÔÀÓ¿À¹ö / UI
+            //ê²Œì„ì˜¤ë²„ / UI
         }
-        //¿¡³Ê¹Ì,º¸½º¶ó¸é
+        //ì—ë„ˆë¯¸,ë³´ìŠ¤ë¼ë©´
         else if (CompareTag("Enemy") || CompareTag("Boss"))
         {
             DieEnemy();
@@ -110,13 +116,13 @@ public class CommonHP : MonoBehaviour
 
     private void DieEnemy()
     {
-        //EnemyAI¸ØÃß±â
+        //EnemyAIë©ˆì¶”ê¸°
         EnemyAI enemyAI = GetComponent<EnemyAI>();
         if (enemyAI != null)
         {
             enemyAI.enabled = false;
         }
-        //ÀÌµ¿ ¾ø¾Ö±â
+        //ì´ë™ ì—†ì• ê¸°
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null)
         {
@@ -126,7 +132,7 @@ public class CommonHP : MonoBehaviour
         if(CompareTag("Enemy")) DropEXP();
         if (CompareTag("Boss")) DropReward();
 
-        gameObject.tag = "DeadEnemy";   //ÇÃ·¹ÀÌ¾î°¡ °ø°İ ¾ÈÇÏµµ·Ï ÅÂ±×º¯°æ
+        gameObject.tag = "DeadEnemy";   //í”Œë ˆì´ì–´ê°€ ê³µê²© ì•ˆí•˜ë„ë¡ íƒœê·¸ë³€ê²½
     }
 
     private void DropEXP()
@@ -151,27 +157,27 @@ public class CommonHP : MonoBehaviour
     {
         if(baseData != null)
         {
-            currentHP = baseData.maxHp; //hp µÇµ¹¸®±â
+            currentHP = baseData.maxHp; //hp ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½
         }
         
         isDead = false;
         isInvincible = false;
 
-        anim.ResetTrigger("Die");   //¾Ö´Ï¸ŞÀÌ¼Ç ¸®¼Â
+        anim.ResetTrigger("Die");   //ì• ë‹ˆë©”ì´ì…˜ ë¦¬ì…‹
 
-        //Äİ¶óÀÌ´õ µÇµ¹¸®±â
+        //ì½œë¼ì´ë” ë˜ëŒë¦¬ê¸°
         Collider2D collider = GetComponent<Collider2D>();
         if (collider != null) collider.enabled = true;
 
-        gameObject.tag = "Enemy";   //ÅÂ±× µÇµ¹¸®±â
+        gameObject.tag = "Enemy";   //íƒœê·¸ ë˜ëŒë¦¬ê¸°
 
-        //AIµÇµ¹¸®±â
+        //AIë˜ëŒë¦¬ê¸°
         EnemyAI enemyAI = GetComponent<EnemyAI>();
         if (enemyAI != null)
         {
             enemyAI.enabled = true;
         }
-        //ÀÌµ¿ µÇµ¹¸®±â
+        //ì´ë™ ë˜ëŒë¦¬ê¸°
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null)
         {
@@ -186,7 +192,7 @@ public class CommonHP : MonoBehaviour
         StartCoroutine(ShieldCoroutine());
     }
 
-    //½Çµå½Ã°£ ¸¸Å­ ÇØ½º½Çµå on
+    //ì‹¤ë“œì‹œê°„ ë§Œí¼ í•´ìŠ¤ì‹¤ë“œ on
     private IEnumerator ShieldCoroutine()
     {
         hasShield = true;
@@ -196,7 +202,7 @@ public class CommonHP : MonoBehaviour
         hasShield = false;
     }
 
-    //¾Ö´Ï¸ŞÀÌ¼Ç ÈÄ ºñÈ°¼ºÈ­
+    //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
     private IEnumerator ActiveFalse()
     {
         yield return new WaitForSeconds(1f);
