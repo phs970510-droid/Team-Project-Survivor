@@ -45,10 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 0
-  playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
-  baseData: {fileID: 11400000, guid: e61eb1f143d7d554486dfe07861855a7, type: 2}
-  allWeaponData:
-  - {fileID: 11400000, guid: 6628d2e461b9ac04787849d60c15de2e, type: 2}
-  - {fileID: 11400000, guid: f9bf45a8558158245871e2393a93f8f3, type: 2}
-  - {fileID: 11400000, guid: eac3406a402736443a448bf2695376d2, type: 2}
-  - {fileID: 11400000, guid: 1f5e16d360502ef439387a456e687a2f, type: 2}
+  playerData: {fileID: 0}
+  baseData: {fileID: 0}
+  allWeaponData: []
