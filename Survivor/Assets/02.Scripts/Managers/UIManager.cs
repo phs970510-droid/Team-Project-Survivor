@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,12 +14,26 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    public void UpdateMoney(int money)
+    private void OnEnable()
     {
-        if(moneyText!= null)
-        moneyText.text = $"${money}";
-        ;
+        SceneManager.sceneLoaded += OnSceneLoaded;    
     }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (DataManager.Instance != null)
+        {
+            UpdateMoney(DataManager.Instance.Money);
+        }
+    }
+    public void UpdateMoney(int money)
+    {
+        if (moneyText != null)
+            moneyText.text = $"${money}";
+    }
 }
