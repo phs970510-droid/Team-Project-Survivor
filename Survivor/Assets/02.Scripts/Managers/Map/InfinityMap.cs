@@ -1,13 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InfinityMap : Chunk
 {
-    void Awake()
+    void Awake()    //준한님 수정 확인필
     {
         base.Awake();
     }
 
-    void Update()
+    void Update()   //준한님 수정 확인필
     {
         base.Update();
     }
