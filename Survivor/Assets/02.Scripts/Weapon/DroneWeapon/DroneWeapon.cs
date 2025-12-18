@@ -11,6 +11,14 @@ public class DroneWeapon : WeaponBase
     [Header("드론 발사 설정")]
     [SerializeField] private float shootDelay = 0.1f;   //1발간 딜레이(쿨타임은 따로)
 
+    private void Awake()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
+    }
     protected override void Update()
     {
         base.Update();
@@ -29,9 +37,9 @@ public class DroneWeapon : WeaponBase
         if (player == null) return;
 
         //플레이어 기준 위치
-        Vector3 pos = player.position + Vector3.right * playerDistance;
+        Vector3 pos = player.position + Vector3.right * playerDistance + Vector3.up * 1f;
         //플레이어를 향해 부드럽게 이동
-        transform.position = Vector2.Lerp(transform.position, pos, followSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, pos, followSpeed * Time.deltaTime);
     }
 
     private IEnumerator DroneShoot()
@@ -51,6 +59,6 @@ public class DroneWeapon : WeaponBase
 
         DroneBullet droneBullet = bulletObj.GetComponent<DroneBullet>();
         //스탯전달
-        droneBullet.Init(randomDir, weaponStat.weaponData.speed, weaponStat.damage);
+        droneBullet.Init(randomDir, weaponStat.weaponData.speed, weaponStat.damage, bulletPool);
     }
 }

@@ -3,15 +3,33 @@ using UnityEngine;
 public class FireBombWeapon : WeaponBase
 {
     [SerializeField] private Transform playerArrow; //던지는 방향
+    [SerializeField] private BulletPool fireZonePool;
 
     protected override void Update()
     {
+        if(playerArrow == null)
+        {
+            FindPlayerArrow();
+            return;
+        }
         base.Update();
 
         if (IsShoot())
         {
             Shoot();
             ResetFireCoolTime();
+        }
+    }
+
+    //자동으로 플레이어 방향 찾기
+    private void FindPlayerArrow()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if(player != null)
+        {
+            //플레이어 자식에 있는 애로우 트랜스폼 찾기
+            playerArrow = player.transform.Find("Arrow");
         }
     }
 
@@ -33,6 +51,6 @@ public class FireBombWeapon : WeaponBase
         FireBomb bomb = bulletObj.GetComponent<FireBomb>();
 
         //스탯 전달하기
-        bomb.Init(dir, weaponStat.damage, bomb.fireRadius);
+        bomb.Init(dir, weaponStat.damage, bomb.fireRadius, bulletPool, fireZonePool);
     }
 }

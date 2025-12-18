@@ -4,11 +4,11 @@ using UnityEngine.AI;
 
 public class ShootEnemy : MonoBehaviour
 {
-
     [Header("발사체 설정")]
-    [SerializeField] private GameObject enemyBulletPrefab;
+    [SerializeField] private BulletPool bulletPool;
     [SerializeField] private float shootDistance = 10.0f;
     [SerializeField] private float shootfireCoolTime = 1.0f;
+    [SerializeField] private float lifeTime = 3f;
 
     private bool isShooting = false;
     private Coroutine shootCoroutine;
@@ -97,10 +97,9 @@ public class ShootEnemy : MonoBehaviour
 
     private void EnemyShoot()
     {
-        GameObject enemyBullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
+        GameObject bulletObj = bulletPool.SpawnBullet(transform.position, Quaternion.identity, lifeTime);
 
-        EnemyBullet bullet = enemyBullet.GetComponent<EnemyBullet>();
-        bullet.BulletDamage(damage);
-        bullet.BulletDirection((player.position - transform.position).normalized);
+        EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
+        bullet.Init(damage, (player.position - transform.position).normalized, lifeTime, bulletPool);
     }
 }

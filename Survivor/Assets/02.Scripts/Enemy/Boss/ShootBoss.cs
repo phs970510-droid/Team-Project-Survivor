@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class ShootBoss : MonoBehaviour
 {
+    [Header("기본 설정")]
+    [SerializeField] private float lifeTime = 3f;
+    [SerializeField] private BulletPool bulletPool;
     [SerializeField] private float patternCoolTime = 5f;
-    [SerializeField] private GameObject bossBulletPrefab;
     [SerializeField] private BaseData baseData;
 
     [Header("부채꼴 패턴")]
@@ -17,7 +19,7 @@ public class ShootBoss : MonoBehaviour
     [SerializeField] private int circleBulletCount = 36;
 
     [Header("랜덤 패턴")]
-    [SerializeField] private int randomBulletCount = 40;    //40발
+    [SerializeField] private int randomBulletCount = 36;    //40발
     [SerializeField] private float randomShootDelay = 0.1f; //0.1초마다
 
     private bool isPattern = false;
@@ -140,10 +142,9 @@ public class ShootBoss : MonoBehaviour
     //총쏘는 공통 로직
     private void Shoot(Vector2 dir)
     {
-        GameObject bossBullet = Instantiate(bossBulletPrefab, transform.position, Quaternion.identity);
+        GameObject bulletObj = bulletPool.SpawnBullet(transform.position, Quaternion.identity, lifeTime);
 
-        EnemyBullet eb = bossBullet.GetComponent<EnemyBullet>();
-        eb.BulletDamage(damage);
-        eb.BulletDirection(dir);
+        EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
+        bullet.Init(damage, dir, lifeTime, bulletPool);
     }
 }

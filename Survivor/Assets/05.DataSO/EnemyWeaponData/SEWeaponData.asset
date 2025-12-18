@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
-  m_Name: FireBomb
+  m_Name: SEWeaponData
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 4082593089032405610, guid: 8e7dfa1baef42384bac824311bdc9dc0, type: 3}
-  weaponName: FireBombWeapon
+  weaponPrefab: {fileID: 8098695149774017166, guid: 3f422ce48ea18a24d8414dc017430f9e, type: 3}
+  weaponName: 
   isUnlocked: 0
-  price: 5000
-  damage: 5
-  speed: 10
-  fireCoolTime: 3
-  bulletCount: 1
-  attackRange: 10
-  Sprite: {fileID: 154122315, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  price: 0
+  damage: 0
+  speed: 0
+  fireCoolTime: 0
+  bulletCount: 0
+  attackRange: 0
+  Sprite: {fileID: 0}
   poolSize: 10

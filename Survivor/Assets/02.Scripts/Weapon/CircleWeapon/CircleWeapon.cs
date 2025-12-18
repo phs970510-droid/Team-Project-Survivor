@@ -10,6 +10,15 @@ public class CircleWeapon : MonoBehaviour
 
     private GameObject[] circleObjects;
 
+    private void Awake()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
+    }
+
     void Start()
     {
         if (weaponStat != null)

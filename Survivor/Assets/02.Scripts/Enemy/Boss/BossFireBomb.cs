@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BossFireBomb : MonoBehaviour
+public class BossFireBomb : MonoBehaviour, IPoolable
 {
     [Header("화염병 세팅")]
     [SerializeField] private GameObject bossFireZonePrefab;
@@ -15,12 +13,14 @@ public class BossFireBomb : MonoBehaviour
     public float fireRadius;
 
     private Vector2 dir;
-    private float shootTimer;
+    private float timer;
     private Vector3 startPos;
 
+    private BulletPool pool;
+    private BulletPool fireZonePool;
 
     //보스 전용 무작위로 쏘기
-    public void BossInit(Vector3 pos, float damage, float radius)
+    public void BossInit(Vector3 pos, float damage, float radius, BulletPool pool, BulletPool fireZonePool)
     {
         fireDamage = damage;
         fireRadius = radius;
@@ -31,13 +31,17 @@ public class BossFireBomb : MonoBehaviour
     
         float dist = Vector3.Distance(startPos, pos);
         throwSpeed = dist / throwTime;
+
+        timer = 0f;
+        this.pool = pool;
+        this.fireZonePool = fireZonePool;
     }
 
     private void Update()
     {
-        shootTimer += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        float t = shootTimer / throwTime;
+        float t = timer / throwTime;
 
         //수평으로 이동
         Vector3 h = startPos + (Vector3)(dir * throwSpeed * t);
@@ -55,12 +59,25 @@ public class BossFireBomb : MonoBehaviour
         }
     }
 
+    public void ReturnPool()
+    {
+        if (pool != null)
+        {
+            pool.ReturnBullet(this.gameObject);
+        }
+    }
+    public void Spawn() { }
+
     private void BossExplode()
     {
-        GameObject bossFireZone = Instantiate(bossFireZonePrefab, transform.position, Quaternion.identity);
-        bossFireZone.GetComponent<BossFireZone>().BossFireZoneStat(fireDamage, fireRadius);
-    
-        Destroy(bossFireZone, fireZoneLeave);
-        Destroy(gameObject);
+        //터졌을 때 파이어존 풀링으로 가져오기
+        GameObject bossFireZoneObj = fireZonePool.SpawnBullet(transform.position, Quaternion.identity, fireZoneLeave);
+        BossFireZone fireZone = bossFireZoneObj.GetComponent<BossFireZone>();
+
+        //파이어존 스탯 전달
+        fireZone.BossFireZoneStat(fireDamage, fireRadius, fireZoneLeave, fireZonePool);
+
+        //파이어 봄도 풀
+        ReturnPool();
     }
 }
