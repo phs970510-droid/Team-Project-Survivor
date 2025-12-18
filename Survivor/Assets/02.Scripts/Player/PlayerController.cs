@@ -5,11 +5,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BaseData baseData; //기본능력치 SO데이터
     [SerializeField] private PlayerData playerData; //플레이어 SO데이터
     [SerializeField] private Transform arrow;   //플레이어 바라보는 화살표
-    [SerializeField] private JoyStick joystick;
 
     private float inputX;
     private float inputY;
 
+    private JoyStick joystick;
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         hp = GetComponent<CommonHP>();
+
+        //신에 있는 조이스틱 스크립트 자동찾기
+        if(joystick == null)
+        {
+            joystick = FindFirstObjectByType<JoyStick>();
+        }
     }
 
     void Update()
@@ -89,6 +95,8 @@ public class PlayerController : MonoBehaviour
     //캐릭터가 바라보는 방향
     private void MoveDirection()
     {
+        if (arrow == null) return;
+
         Vector2 dir = new Vector2(inputX, inputY);
 
         if (dir.magnitude == 0) return;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    protected WeaponStat weaponStat;
+    [SerializeField] protected WeaponStat weaponStat;
 
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected BulletPool bulletPool;

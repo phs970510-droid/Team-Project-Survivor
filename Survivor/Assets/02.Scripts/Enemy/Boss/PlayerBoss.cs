@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerBoss : MonoBehaviour
 {
+    [Header("기본 설정")]
     [SerializeField] private float patternCoolTime = 5f;
     [SerializeField] private BaseData baseData;
 
@@ -12,6 +13,8 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private float normalDelay = 0.5f;
     [SerializeField] private float normalDamage = 10f;
     [SerializeField] private float normalSpeed = 10f;
+    [SerializeField] private float normalLife = 4f;
+    [SerializeField] BulletPool normalPool;
 
     [Header("원형 패턴")]
     [SerializeField] public GameObject cpPrefab;
@@ -29,6 +32,9 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private float fireRadius = 3f;
     [SerializeField] private float minRadius = 3f;
     [SerializeField] private float maxRadius = 10f;
+    [SerializeField] private float fireLife = 2f;
+    [SerializeField] BulletPool firePool;
+    [SerializeField] BulletPool fireZonePool;
 
     [Header("드론 패턴")]
     [SerializeField] private GameObject dpPrefab;
@@ -38,6 +44,8 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private int shootCount = 5;
     [SerializeField] private float droneRadius = 7f;
     [SerializeField] private Transform drone;
+    [SerializeField] private float droneLife = 3f;
+    [SerializeField] private BulletPool dronePool;
 
     private bool isPattern = false;
 
@@ -74,7 +82,7 @@ public class PlayerBoss : MonoBehaviour
     private IEnumerator Pattern()
     {
         isPattern = true;
-        //anim.SetBool("Pattern", true);
+        anim.SetBool("Pattern", true);
 
         //패턴 랜덤레인지
         int patternIndex = Random.Range(0, 0);
@@ -94,7 +102,7 @@ public class PlayerBoss : MonoBehaviour
                 yield return StartCoroutine(DroneShoot());
                 break;
         }
-        //anim.SetBool("Pattern", false);
+        anim.SetBool("Pattern", false);
         //패턴 사용하면 쿨타임간 기다리기
         yield return new WaitForSeconds(patternCoolTime);
 
@@ -109,11 +117,11 @@ public class PlayerBoss : MonoBehaviour
             //총은 플레이어 향하게
             Vector2 dir = (player.position - transform.position).normalized;
 
-            GameObject bulletObj = Instantiate(npPrefab, transform.position, Quaternion.identity);
+            GameObject bulletObj = normalPool.SpawnBullet(transform.position, Quaternion.identity, normalLife);
 
             //스탯 적용
             BossBullet bullet = bulletObj.GetComponent<BossBullet>();
-            bullet.BossBulletStat(normalDamage, normalSpeed, dir);
+            bullet.BossBulletStat(normalDamage, normalSpeed, dir, normalPool);
 
             //플레이어 바라보기
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
@@ -150,7 +158,7 @@ public class PlayerBoss : MonoBehaviour
     {
         for (int i = 0; i < fireCount; i++)
         {
-            GameObject bulletObj = Instantiate(fpPrefab, transform.position, Quaternion.identity);
+            GameObject bulletObj = firePool.SpawnBullet(transform.position, Quaternion.identity, fireLife);
 
             //방향 랜덤
             Vector2 dir = Random.insideUnitCircle.normalized;
@@ -160,7 +168,7 @@ public class PlayerBoss : MonoBehaviour
             Vector2 randomPos = (Vector2)transform.position + dir * radius;
 
             BossFireBomb bomb = bulletObj.GetComponent<BossFireBomb>();
-            bomb.BossInit(randomPos, fireDamage, fireRadius);
+            bomb.BossInit(randomPos, fireDamage, fireRadius, firePool, fireZonePool);
 
             yield return new WaitForSeconds(fireDelay);
         }
@@ -177,11 +185,10 @@ public class PlayerBoss : MonoBehaviour
                 Vector2 randomPos = Random.insideUnitCircle * droneRadius;
                 Vector2 randomDir = randomPos.normalized;
 
-                GameObject bulletObj = Instantiate(dpPrefab, drone.position, Quaternion.identity);
+                GameObject bulletObj = dronePool.SpawnBullet(drone.position, Quaternion.identity, droneLife);
 
                 EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
-                bullet.BulletDamage(droneDamage);
-                bullet.BulletDirection(randomDir);
+                bullet.Init(droneDamage, randomDir, droneLife, dronePool);
 
                 yield return new WaitForSeconds(droneDelay);
             }

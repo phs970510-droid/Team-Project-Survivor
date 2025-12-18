@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
-  m_Name: WeaponData
+  m_Name: PBFZ
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
-  damage: 10
-  speed: 10
-  fireCoolTime: 1
-  bulletCount: 1
-  attackRange: 10
+  weaponPrefab: {fileID: 6210377519655294321, guid: 9f8a1e29bd55d394aaa3d35f68988e11, type: 3}
+  weaponName: 
+  isUnlocked: 0
+  price: 0
+  damage: 0
+  speed: 0
+  fireCoolTime: 0
+  bulletCount: 0
+  attackRange: 0
+  Sprite: {fileID: 0}
+  poolSize: 20

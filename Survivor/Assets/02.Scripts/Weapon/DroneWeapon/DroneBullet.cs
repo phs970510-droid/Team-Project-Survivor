@@ -6,6 +6,8 @@ public class DroneBullet : MonoBehaviour, IPoolable
     private float lifeTime = 0.5f;
     private float timer;
 
+    private BulletPool pool;
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -13,10 +15,12 @@ public class DroneBullet : MonoBehaviour, IPoolable
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(Vector2 dir, float speed, float damage)
+    public void Init(Vector2 dir, float speed, float damage, BulletPool pool)
     {
         rb.velocity = dir * speed;
         this.droneDamage = damage;
+        timer = 0f;
+        this.pool = pool;
     }
 
     void Update()
@@ -24,9 +28,18 @@ public class DroneBullet : MonoBehaviour, IPoolable
         timer += Time.deltaTime;
         if( timer > lifeTime)
         {
-            Destroy(gameObject);
+            ReturnPool();
         }
     }
+
+    public void ReturnPool()
+    {
+        if (pool != null)
+        {
+            pool.ReturnBullet(this.gameObject);
+        }
+    }
+    public void Spawn() { }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,11 +51,9 @@ public class DroneBullet : MonoBehaviour, IPoolable
             if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
             {
                 hp.Damage(droneDamage);
-                Destroy(gameObject);
+                ReturnPool();
                 Debug.Log($"{name}이 {other.name}에게 데미지 줌({droneDamage})");
             }
         }
     }
-
-    public void SpawnBullet() { }
 }

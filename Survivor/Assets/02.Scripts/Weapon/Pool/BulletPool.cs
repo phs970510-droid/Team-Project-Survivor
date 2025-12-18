@@ -3,15 +3,10 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    private WeaponData weaponData;
+    [SerializeField] private WeaponData weaponData;
     private Queue<GameObject> pool = new Queue<GameObject>();
 
-    private void Awake()
-    {
-        weaponData = GetComponent<WeaponData>();
-    }
-
-    void Start()
+    void Awake()
     {
         //풀 사이즈만큼 새로운 총알 만들기
         for(int i = 0; i < weaponData.poolSize; i++)
@@ -43,5 +38,12 @@ public class BulletPool : MonoBehaviour
         obj.gameObject.SetActive(true); //총알 활성화
 
         return obj;
+    }
+
+    //총알 반환
+    public void ReturnBullet(GameObject obj)
+    {
+        obj.SetActive(false);
+        pool.Enqueue(obj);
     }
 }

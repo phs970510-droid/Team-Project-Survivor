@@ -43,10 +43,12 @@ public class NormalWeapon : WeaponBase
 
     protected override void ShootEachWeapon(GameObject bulletObj, int index)
     {
+        NormalBullet normalbullet = bulletObj.GetComponent<NormalBullet>();
+
         //총알이 적들보다 많으면 초과한 인덱스는 파괴
         if(index >= enemies.Count)
         {
-            Destroy(bulletObj);
+            bulletPool.ReturnBullet(bulletObj);
             return;
         }
 
@@ -59,14 +61,12 @@ public class NormalWeapon : WeaponBase
         //    return;
         //}
 
-        NormalBullet normalBullet = bulletObj.GetComponent<NormalBullet>();
-
         //총알은 적 향하도록
         Vector2 dir = (currentTarget.position - firePoint.position).normalized;
 
         //총알 스탯
-        normalBullet.BulletStat(
-            weaponStat.damage, weaponStat.weaponData.speed, dir);
+        normalbullet.BulletStat(
+            weaponStat.damage, weaponStat.weaponData.speed, dir, lifeTime, bulletPool);
 
         //총알이 바라보는 방향으로 회전
         float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;

@@ -9,7 +9,6 @@ public class JoyStick : MonoBehaviour
     [SerializeField] private Image back;
     [SerializeField] private Image joyStick;
 
-    private Vector2 startPos;   //터치시작위치
     private Vector2 inputVector;//조이스틱 입력벡터
     private bool isTouching = false;//터치했는지
 
@@ -53,7 +52,7 @@ public class JoyStick : MonoBehaviour
             back.rectTransform, pos, null, out currentPos);
 
         //조이스틱 시작 위치를 기준으로 벡터 계산
-        inputVector = currentPos - startPos;
+        inputVector = currentPos;
 
         //범위 내에서만 조이스틱가능
         if (inputVector.magnitude > moveRange)
@@ -74,7 +73,6 @@ public class JoyStick : MonoBehaviour
     {
         isTouching = false;
         inputVector = Vector2.zero;
-        startPos = Vector2.zero;
         joyStick.rectTransform.anchoredPosition = Vector2.zero;
     }
 }

@@ -15,10 +15,11 @@ MonoBehaviour:
   weaponPrefab: {fileID: 2202187861052018114, guid: f84f7e950da63c941ab16a6d6badbba6, type: 3}
   weaponName: DroneWeapon
   isUnlocked: 0
+  price: 10000
   damage: 3
   speed: 10
   fireCoolTime: 5
   bulletCount: 5
   attackRange: 10
-  price: 10000
   Sprite: {fileID: -38345435, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  poolSize: 30

@@ -1,4 +1,5 @@
 public interface IPoolable
 {
-    void SpawnBullet();
+    void Spawn();
+    void ReturnPool();
 }

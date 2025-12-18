@@ -10,6 +10,11 @@ TagManager:
   - Boss
   - Tutorial
   - Main
+  - BigExp
+  - Magnet
+  - Sheild
+  - Reward
+  - Shield
   layers:
   - Default
   - TransparentFX

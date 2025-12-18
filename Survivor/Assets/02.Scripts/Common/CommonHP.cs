@@ -94,7 +94,7 @@ public class CommonHP : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         if(collider != null) collider.enabled = false;
 
-        Destroy(gameObject, 1.0f);
+        StartCoroutine(ActiveFalse());
 
         //플레이어 죽었다면 게임끝
         if (CompareTag("Player"))
@@ -151,8 +151,8 @@ public class CommonHP : MonoBehaviour
     {
         if(baseData != null)
         {
-        currentHP = baseData.maxHp; //hp 되돌리기
-            }
+            currentHP = baseData.maxHp; //hp 되돌리기
+        }
         
         isDead = false;
         isInvincible = false;
@@ -177,6 +177,8 @@ public class CommonHP : MonoBehaviour
         {
             agent.isStopped = false;
         }
+
+        gameObject.SetActive(true);
     }
 
     public void GetShieldItem()
@@ -192,5 +194,12 @@ public class CommonHP : MonoBehaviour
         yield return new WaitForSeconds(sheildTime);
 
         hasShield = false;
+    }
+
+    //애니메이션 후 비활성화
+    private IEnumerator ActiveFalse()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

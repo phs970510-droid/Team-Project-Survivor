@@ -17,7 +17,9 @@ public class HPBar : MonoBehaviour
         hpBar.value = playerHP.CurrentHP;
         
         //월드(UI)좌표에서 스크린 좌표로 변환
-        Vector3 pos = mainCamera.WorldToScreenPoint(player.position + playerData.hpBarOffset);
-        transform.position = pos;
+        //Vector3 pos = mainCamera.WorldToScreenPoint(player.position + playerData.hpBarOffset);
+        //transform.position = pos;
+        //transform.position = player.position + playerData.hpBarOffset;
+        transform.rotation = Quaternion.identity;
     }
 }

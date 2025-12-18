@@ -5,10 +5,33 @@ public class BossFireZone : MonoBehaviour
     private float fireDamage;
     private float fireRadius;
 
-    public void BossFireZoneStat(float damage, float radius)
+    private float lifeTime;
+    private float timer;
+    private BulletPool pool;
+
+    public void BossFireZoneStat(float damage, float radius, float lifeTime, BulletPool pool)
     {
         this.fireDamage = damage;
         this.fireRadius = radius;
+        this.lifeTime = lifeTime;
+        this.pool = pool;
+        this.timer = 0f;
+    }
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > lifeTime)
+        {
+            ReturnPool();
+        }
+    }
+
+    public void ReturnPool()
+    {
+        if (pool != null)
+        {
+            pool.ReturnBullet(this.gameObject);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
