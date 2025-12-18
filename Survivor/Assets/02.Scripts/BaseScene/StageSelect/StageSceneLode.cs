@@ -8,11 +8,11 @@ public class StageSceneLode : MonoBehaviour
 
     public void MainSceneLoder()
     {
-        SceneManager.LoadScene("WY Scene");
+        SceneManager.LoadScene("BaseScene");
     }
     public void TutorialSceneLoader()
     {
-        SceneManager.LoadScene("TestBattleScene");
+        SceneManager.LoadScene("TutorialMap");
     }
     public void Stage1SceneLodar()
     {
@@ -26,5 +26,4 @@ public class StageSceneLode : MonoBehaviour
     {
         //SceneManager.LoadScene("Stage3");
     }
-
 }

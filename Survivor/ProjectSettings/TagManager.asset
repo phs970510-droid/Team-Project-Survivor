@@ -10,6 +10,9 @@ TagManager:
   - Boss
   - Tutorial
   - Main
+  - Shield
+  - Reward
+  - Magnet
   layers:
   - Default
   - TransparentFX

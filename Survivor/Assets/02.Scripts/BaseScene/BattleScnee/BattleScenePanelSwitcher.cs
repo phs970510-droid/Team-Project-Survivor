@@ -7,7 +7,6 @@ public class BattleScenePanelSwitcher : MonoBehaviour
     public GameObject panelMenu;
     public GameObject panelSelcet;
     public GameObject joysitck;
-    public PlayerController playerController;
 
 
     public void BattleSenceToggleMenu()
