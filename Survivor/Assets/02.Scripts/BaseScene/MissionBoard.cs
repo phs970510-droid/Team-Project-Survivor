@@ -10,7 +10,7 @@ public class MissionBoard : MonoBehaviour
     {
         SceneManager.LoadScene("TestBattleScene");
     }
-    public void MainSceneLoder()
+    public void BaseSceneLoder()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("BaseScene");

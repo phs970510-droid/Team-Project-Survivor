@@ -19,9 +19,9 @@ public class BattleUIController : MonoBehaviour
         BattleScenePanelSwitcher.BattleSecneCloseMenuPanel();
     }
 
-    public void MainSceneLoder()
+    public void BaseSceneLoder()
     {
-        missionBoard.MainSceneLoder();
+        missionBoard.BaseSceneLoder();
     }
     public void QuitGame()
     {
