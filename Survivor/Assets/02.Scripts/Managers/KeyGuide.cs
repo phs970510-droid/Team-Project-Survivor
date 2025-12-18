@@ -10,16 +10,17 @@ public class KeyGuide : MonoBehaviour
     [SerializeField] private TMP_Text hintText;
 
     [Header("표시 설정")]
+    [SerializeField] private float autoHideDelay = 5.0f;    //자동 숨김 시간
     [SerializeField] private KeyCode toggleKey = KeyCode.H;
 
     [TextArea]
-    public string message =
-        "WASD / Mouse Drag : Move\n" +
-        "H : Show Help Again\n" +
-        "Move to the [Stage Exit]";
-
-    public GameObject joyStick;
-    public GameObject arrow;
+    public string message=
+        "WASD/콘솔: 이동\n" +
+        "E: 상호작용\n" +
+        "H: 도움말 다시 켜기\n" +
+        "ESC: 설정창\n" +
+        "마우스: 시선 방향\n" +
+        "[Stage Exit] 구역으로 이동해 상점으로 넘어가세요!";
 
     private CanvasGroup canvasGroup;
     private bool isVisible = true;
@@ -32,13 +33,15 @@ public class KeyGuide : MonoBehaviour
             canvasGroup= gameObject.AddComponent<CanvasGroup>();
         }
     }
-    private void Start()
-    {
-        if (hintText != null)
+
+    private IEnumerator Start()
+    { 
+        if(hintText !=null)
             hintText.text = message;
 
         ShowHint(true);     //처음엔 무조건 표시하기
-
+        yield return new WaitForSeconds(autoHideDelay);
+        ShowHint(false);    //일정 시간 지나면 자동 숨김
     }
 
     private void Update()
@@ -46,14 +49,7 @@ public class KeyGuide : MonoBehaviour
         if (Input.GetKeyDown(toggleKey))
         {
             ShowHint(!isVisible);
-            joyStick.SetActive(true);
-            arrow.SetActive(true);
-            Time.timeScale = 1f;
         }
-        //if (Input.GetKeyDown(toggleKey))
-        //{
-
-        //}
     }
 
     private void ShowHint(bool show)

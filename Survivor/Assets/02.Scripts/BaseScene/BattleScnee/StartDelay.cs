@@ -12,12 +12,12 @@ public class StartDelay : MonoBehaviour
     }
 
     public void Restart()
-    {
+    {   
         oKPanel.SetActive(false);
         joyStick.SetActive(true);
         Time.timeScale = 1.0f;
     }
-
+    
     IEnumerator Delay()
     {
         yield return new WaitForSecondsRealtime(0.1f);

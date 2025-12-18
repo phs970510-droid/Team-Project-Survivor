@@ -353,7 +353,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 739434338}
         m_TargetAssemblyTypeName: MissionBoard, Assembly-CSharp
-        m_MethodName: TutorialMapLoder
+        m_MethodName: BaseSceneLoder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

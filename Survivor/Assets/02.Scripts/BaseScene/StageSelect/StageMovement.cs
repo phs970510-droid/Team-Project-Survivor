@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageMovement : MonoBehaviour
 {
-    public TestSceneLoad stageSceneLode;
+    public StageSceneLode stageSceneLode;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Main"))

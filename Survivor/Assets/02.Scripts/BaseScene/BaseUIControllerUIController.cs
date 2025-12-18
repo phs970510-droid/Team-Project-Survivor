@@ -58,7 +58,7 @@ public class BaseUIController : MonoBehaviour
     public void BattleSceneLoad()
     {
         if (sceneLoader == null) return;
-        sceneLoader.TutorialMapLoder();
+        sceneLoader.BattleSceneLoader();
     }
     public void SelectSceneLoad()
     {
