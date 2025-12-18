@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MissionBoard : MonoBehaviour
 {
-    public void BattleSceneLoader()
+    public void TutorialMapLoder()
     {
-        SceneManager.LoadScene("TestBattleScene");
+        SceneManager.LoadScene("TutorialMap");
     }
     public void BaseSceneLoder()
     {
