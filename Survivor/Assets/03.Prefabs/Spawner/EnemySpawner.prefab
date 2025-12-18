@@ -49,8 +49,8 @@ MonoBehaviour:
   areaMin: {x: 0, y: 0}
   areaMax: {x: 0, y: 0}
   startDelay: 3
-  minDelay: 0
-  decreasedAmount: 0
+  minDelay: 1
+  decreasedAmount: 0.05
   checkRadius: 0.6
   enemyLayer:
     serializedVersion: 2
