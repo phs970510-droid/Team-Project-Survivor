@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 0
-  playerData: {fileID: 0}
-  baseData: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
+  baseData: {fileID: 11400000, guid: e61eb1f143d7d554486dfe07861855a7, type: 2}
   allWeaponData: []
