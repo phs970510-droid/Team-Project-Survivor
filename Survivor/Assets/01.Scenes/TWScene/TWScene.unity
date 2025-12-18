@@ -834,9 +834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79173d30883a95c46a95633e87c7051b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 1736458717}
   firePoint: {fileID: 1173984600}
-  bulletObj: {fileID: 4082593089032405610, guid: 8e7dfa1baef42384bac824311bdc9dc0, type: 3}
+  bulletPool: {fileID: 0}
+  lifeTime: 0
   playerArrow: {fileID: 701632709}
 --- !u!1 &701632708
 GameObject:
@@ -1201,6 +1201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
+  openSelectItme: {fileID: 0}
+  joyStick: {fileID: 0}
+  SelectItem: {fileID: 0}
   level: 1
   currentExp: 0
 --- !u!114 &1173984598
@@ -1268,7 +1271,7 @@ SpriteRenderer:
   m_Size: {x: 0.93333334, y: 1.2666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1173984600
@@ -1381,9 +1384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bf17c40a649e042b6a4c5c611c00f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 1719703141}
   firePoint: {fileID: 1173984600}
-  bulletObj: {fileID: 0}
+  bulletPool: {fileID: 0}
+  lifeTime: 0
 --- !u!1 &1311450891
 GameObject:
   m_ObjectHideFlags: 0
@@ -10734,9 +10737,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f3010eac7eda14b8b2c8a5bf9c42b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 2123591457}
   firePoint: {fileID: 1519054429}
-  bulletObj: {fileID: 0}
+  bulletPool: {fileID: 0}
+  lifeTime: 0
   player: {fileID: 1173984600}
   followSpeed: 5
   playerDistance: 2
