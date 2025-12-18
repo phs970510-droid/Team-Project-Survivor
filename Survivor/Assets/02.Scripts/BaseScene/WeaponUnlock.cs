@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -16,14 +16,20 @@ public class WeaponUnlock : MonoBehaviour
     {
         WeaponData weapon = items[index];
 
-        if (DataManager.Instance.TrySpendMoney(weapon.price))
+        if (float.TryParse(currentMoneyText.text, out float currentMoney))
         {
-            weaponButtons[index].SetActive(false);
-            weapon.isUnlocked = true;
+
+            if (currentMoney >= weapon.price)
+            {
+                currentMoney -= weapon.price;
+                weaponButtons[index].SetActive(false);
+                currentMoneyText.text = currentMoney.ToString();
+            }
+            else if(currentMoney < weapon.price) 
+            {
+                emptyMoneyPaenl.SetActive(true);
+            }
         }
-        else
-        {
-            emptyMoneyPaenl.SetActive(true);
-        }
+
     }
 }

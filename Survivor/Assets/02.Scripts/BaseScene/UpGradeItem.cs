@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,16 +14,23 @@ public class UpGradeItem : MonoBehaviour
 
     public void UpgradeItem(int index)
     {
-        int price = int.Parse(upgradeCost[index].text);
+        if (float.TryParse(currentMoneyText.text, out float currentGold))
+        {
 
-        if (DataManager.Instance.TrySpendMoney(price))
-        {
-            int newPrice = price * 2;
-            upgradeCost[index].text = newPrice.ToString();
-        }
-        else
-        {
-            emptyGoldPaenl.SetActive(true);
+            if (float.TryParse(upgradeCost[index].text, out float price))
+            {
+                if (currentGold >= price)
+                {
+                    currentGold -= price;
+                    price *= 2;
+                    currentMoneyText.text = currentGold.ToString();
+                    upgradeCost[index].text = price.ToString();
+                }
+                else
+                {
+                    emptyGoldPaenl.SetActive(true);
+                }
+            }
         }
 
     }
