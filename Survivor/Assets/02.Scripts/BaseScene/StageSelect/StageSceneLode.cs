@@ -20,10 +20,10 @@ public class StageSceneLode : MonoBehaviour
     }
     public void Stage2SceneLodar()
     {
-        SceneManager.LoadScene("Stage2");
+        SceneManager.LoadScene("StageMap");
     }
     public void Stage3SceneLodar()
     {
-        SceneManager.LoadScene("Stage3");
+        SceneManager.LoadScene("StageMap");
     }
 }

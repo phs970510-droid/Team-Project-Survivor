@@ -27,11 +27,6 @@ public class PlayerController : MonoBehaviour
         {
             joystick = FindFirstObjectByType<JoyStick>();
         }
-        Debug.Log($"hp: {hp}");
-        Debug.Log($"joystick: {joystick}");
-        Debug.Log($"baseData: {baseData}");
-        Debug.Log($"playerData: {playerData}");
-        Debug.Log($"anim: {anim}");
     }
 
     void Update()

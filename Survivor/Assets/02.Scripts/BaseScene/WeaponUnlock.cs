@@ -11,12 +11,13 @@ public class WeaponUnlock : MonoBehaviour
 
     public List<WeaponData> items = new List<WeaponData>();
 
-    public void UnlcikWeaponDataSO(int index)
+    public void UnclikWeaponDataSO(int index)
     {
         WeaponData weapon = items[index];
 
         if (DataManager.Instance.TrySpendMoney(weapon.price))
         {
+            //DataManager.Instance.UnlockWeapon();
             weaponButtons[index].SetActive(false);
             weapon.isUnlocked = true;
         }

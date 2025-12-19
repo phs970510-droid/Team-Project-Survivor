@@ -21,6 +21,7 @@ public class KeyGuide : MonoBehaviour
 
     private CanvasGroup canvasGroup;
     private bool isVisible = true;
+    private Coroutine Coroutine;
 
     private void Awake()
     {
@@ -29,7 +30,12 @@ public class KeyGuide : MonoBehaviour
         {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
+        if (joyStick == null)
+        {
+            joyStick = GameObject.FindWithTag("JoyStick");
+        }
     }
+
     private void Start()
     {
         if (hintText != null)
@@ -37,13 +43,18 @@ public class KeyGuide : MonoBehaviour
         ShowHint(true);     //처음엔 무조건 표시하기
         joyStick.SetActive(false);
         Time.timeScale = 0f;
-        StartCoroutine(OutKeyGuide());
+        Coroutine = StartCoroutine(OutKeyGuide());
 
     }
     private void Update()
     {
         if (Input.GetKeyDown(toggleKey))
         {
+            if(Coroutine != null)
+            {
+                StopCoroutine(Coroutine);
+                Coroutine = null;
+            }
             ShowHint(!isVisible);
             joyStick.SetActive(true);
             Time.timeScale = 1f;

@@ -279,9 +279,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1306829025385882199, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnclikWeaponDataSO
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306829025385882199, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WeaponUnlock, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296451604518009609, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnclikWeaponDataSO
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296451604518009609, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WeaponUnlock, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4717886761815799731, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
       propertyPath: m_Name
       value: BaseSceneCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952948632443865841, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnclikWeaponDataSO
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952948632443865841, guid: 02685d7564420d4498097d00f23d41d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WeaponUnlock, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

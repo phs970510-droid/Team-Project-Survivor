@@ -122,4 +122,5 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt(prefix + "Money", Money);
         PlayerPrefs.Save();
     }
+
 }
