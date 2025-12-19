@@ -50,6 +50,12 @@ public class StageMap : Chunk
     protected override void Update()
     {
         base.Update();
+        
+    }
+
+    private void LateUpdate()
+    {
+        SelectChunkType();
     }
 
     #region method
