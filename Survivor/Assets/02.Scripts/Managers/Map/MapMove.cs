@@ -7,7 +7,7 @@ public class MapMove : MonoBehaviour
     private float inputX;
     private float inputY;
 
-    private float moveSpeed = 10.0f;
+    [SerializeField] private float moveSpeed = 10.0f;
     #endregion
 
     void Update()
