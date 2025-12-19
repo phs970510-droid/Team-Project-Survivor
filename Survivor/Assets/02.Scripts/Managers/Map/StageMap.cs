@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
+//[RequireComponent(typeof())]
 public class StageMap : Chunk
 {
     #region field
@@ -28,15 +29,22 @@ public class StageMap : Chunk
     private void OnValidate()
     {
         player = GameObject.Find("Player").transform;
+
+        /* 주의사항
+            LateUpdate, Update에 작성할 경우 타입3번 타일이 자동으로 생성
+            타입1, 타입2의 타일이 3번 타입 제거 전까지 생성되지 않음
+            SendMessage cannot be called during Awake, CheckConsistency, or OnValidate
+        */
         ResetActive(); //다른 프리팹이 활성화 되어있다면 비활성화
-        SelectChunkType();
     }
 #endif
     #endregion
 
     protected override void Awake()
     {
+        SelectChunkType();
         base.Awake();
+        LoadChunk();
     }
 
     protected override void Update()
@@ -68,6 +76,8 @@ public class StageMap : Chunk
                     //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
+
+                    createdParent = GameObject.Find("CreatedParent");
                 }
                 break;
             case Type.type02:
@@ -87,6 +97,8 @@ public class StageMap : Chunk
                     //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
+
+                    createdParent = GameObject.Find("CreatedParent");
                 }
                 break;
             case Type.type03:
@@ -106,6 +118,8 @@ public class StageMap : Chunk
                     //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
+
+                    createdParent = GameObject.Find("CreatedParent");
                 }
                 break;
         }
@@ -138,6 +152,12 @@ public class StageMap : Chunk
         Obstacle01.SetActive(false);
         Obstacle02.SetActive(false);
         Obstacle03.SetActive(false);
+    }
+
+    private void LoadChunk()
+    {
+        createdPrefabs = createdParent.GetComponentsInChildren<Transform>()
+            .Where(x => x != createdParent.transform).ToArray();
     }
     #endregion
 }

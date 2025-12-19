@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class InfinityMap : Chunk
 {
-    void Awake()
+    protected override void Awake()
     {
         base.Awake();
     }
 
-    void Update()
+    protected override void Update()
     {
         base.Update();
     }
