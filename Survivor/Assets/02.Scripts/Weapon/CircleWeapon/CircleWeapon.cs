@@ -5,7 +5,7 @@ public class CircleWeapon : MonoBehaviour
     [SerializeField] private WeaponStat weaponStat;
     [SerializeField] private Transform player;
 
-    private float CircleRadius = 2.0f;
+    private float circleRadius = 2.0f;
     private float rotateSpeed = 180f;
 
     private GameObject[] circleObjects;
@@ -54,7 +54,7 @@ public class CircleWeapon : MonoBehaviour
             Vector3 offset = new Vector3(
                 Mathf.Sin(angle * Mathf.Deg2Rad),
                 Mathf.Cos(angle * Mathf.Deg2Rad),
-                0) * CircleRadius;
+                0) * circleRadius;
 
             GameObject circleBulletObj = Instantiate(
             weaponStat.weaponData.weaponPrefab, transform.position + offset,

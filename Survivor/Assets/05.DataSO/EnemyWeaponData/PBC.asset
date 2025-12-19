@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
-  m_Name: PBF
+  m_Name: PBC
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 1156672296513261783, guid: 5476a314d4097df4caa1ddf2270028c5, type: 3}
+  weaponPrefab: {fileID: 7352974357208574979, guid: 30e99bdbda7aad7458ec9ed538cfbb2d, type: 3}
   weaponName: 
   isUnlocked: 0
   price: 0
-  damage: 5
+  damage: 10
   speed: 0
-  fireCoolTime: 0.3
-  bulletCount: 10
+  fireCoolTime: 0
+  bulletCount: 4
   attackRange: 0
   Sprite: {fileID: 0}
-  poolSize: 20
+  poolSize: 0

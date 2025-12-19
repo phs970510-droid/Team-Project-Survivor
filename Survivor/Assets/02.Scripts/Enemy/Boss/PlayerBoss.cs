@@ -8,27 +8,20 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] private BaseData baseData;
 
     [Header("노말 패턴")]
-    [SerializeField] private GameObject npPrefab;
-    [SerializeField] private int normalCount = 5;
-    [SerializeField] private float normalDelay = 0.5f;
-    [SerializeField] private float normalDamage = 10f;
-    [SerializeField] private float normalSpeed = 10f;
+    [SerializeField] private WeaponData normalPattern;
     [SerializeField] private float normalLife = 4f;
     [SerializeField] BulletPool normalPool;
 
     [Header("원형 패턴")]
-    [SerializeField] public GameObject cpPrefab;
+    [SerializeField] private WeaponData circlePattern;
     [SerializeField] private float circleDelay = 3f;
-    [SerializeField] private int circleCount = 4;
     [SerializeField] private float circleRadius = 3f;
     [SerializeField] private float circleRotateSpeed = 180f;
-    [SerializeField] private float circleDamage = 10f;
+    [SerializeField] private GameObject circlePivot;
+    [SerializeField] BulletPool circlePool;
 
     [Header("화염병 패턴")]
-    [SerializeField] private GameObject fpPrefab;
-    [SerializeField] private int fireCount = 10;
-    [SerializeField] private float fireDelay = 0.3f;
-    [SerializeField] private float fireDamage = 5f;
+    [SerializeField] private WeaponData fireBombPattern;
     [SerializeField] private float fireRadius = 3f;
     [SerializeField] private float minRadius = 3f;
     [SerializeField] private float maxRadius = 10f;
@@ -37,14 +30,11 @@ public class PlayerBoss : MonoBehaviour
     [SerializeField] BulletPool fireZonePool;
 
     [Header("드론 패턴")]
-    [SerializeField] private GameObject dpPrefab;
-    [SerializeField] private int droneCount = 10;
-    [SerializeField] private float droneDelay = 0.01f;
-    [SerializeField] private float droneDamage = 5f;
-    [SerializeField] private int shootCount = 5;
+    [SerializeField] private WeaponData dronePattern;
     [SerializeField] private float droneRadius = 7f;
     [SerializeField] private Transform drone;
     [SerializeField] private float droneLife = 3f;
+    [SerializeField] private int burstCount = 10;
     [SerializeField] private BulletPool dronePool;
 
     private bool isPattern = false;
@@ -52,6 +42,7 @@ public class PlayerBoss : MonoBehaviour
     private Transform player;
     private SpriteRenderer sr;
     private Animator anim;
+    private WeaponData data;
 
     private void Awake()
     {
@@ -85,20 +76,24 @@ public class PlayerBoss : MonoBehaviour
         anim.SetBool("Pattern", true);
 
         //패턴 랜덤레인지
-        int patternIndex = Random.Range(0, 0);
+        int patternIndex = Random.Range(0, 4);
 
         switch (patternIndex)
         {
             case 0:
-                yield return StartCoroutine(FireBombShoot());
+                data = normalPattern;
+                yield return StartCoroutine(NormalShoot());
                 break;
             case 1:
+                data = circlePattern;
                 yield return StartCoroutine(CircleShoot());
                 break;
             case 2:
+                data = fireBombPattern;
                 yield return StartCoroutine(FireBombShoot());
                 break;
             case 3:
+                data = dronePattern;
                 yield return StartCoroutine(DroneShoot());
                 break;
         }
@@ -112,7 +107,7 @@ public class PlayerBoss : MonoBehaviour
     //노말 패턴은 플레이어 향해 1발씩 n번 쏘기
     private IEnumerator NormalShoot()
     {
-        for (int i = 0; i < normalCount; i++)
+        for (int i = 0; i < data.bulletCount; i++)
         {
             //총은 플레이어 향하게
             Vector2 dir = (player.position - transform.position).normalized;
@@ -121,13 +116,13 @@ public class PlayerBoss : MonoBehaviour
 
             //스탯 적용
             BossBullet bullet = bulletObj.GetComponent<BossBullet>();
-            bullet.BossBulletStat(normalDamage, normalSpeed, dir, normalPool);
+            bullet.BossBulletStat(data.damage, data.speed, dir, normalPool);
 
             //플레이어 바라보기
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             bulletObj.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            yield return new WaitForSeconds(normalDelay);
+            yield return new WaitForSeconds(data.fireCoolTime);
         }
     }
 
@@ -135,28 +130,22 @@ public class PlayerBoss : MonoBehaviour
     private IEnumerator CircleShoot()
     {
         //원형무기 오브젝트 생성
-        GameObject circle = new GameObject("BossCircleBullet");
-        circle.transform.position = transform.position;
+        GameObject pivotObj = Instantiate(circlePivot, transform.position, Quaternion.identity);
 
         //스크립트 가져오기
-        BossCircleWeapon weapon = circle.GetComponent<BossCircleWeapon>();
+        BossCircleWeapon weapon = pivotObj.GetComponent<BossCircleWeapon>();
 
-        weapon.boss = this.transform;
-        weapon.circlePrefab = cpPrefab;
-        weapon.radius = circleRadius;
-        weapon.rotateSpeed = circleRotateSpeed;
-        weapon.count = circleCount;
-        weapon.damage = circleDamage;
+        weapon.Init(data.damage, circleRadius, circleRotateSpeed, data.bulletCount, circlePool, this.transform);
 
         yield return new WaitForSeconds(circleDelay);
         //지속시간 후 삭제
-        Destroy(circle);
+        Destroy(pivotObj);
     }
 
     //화염병 패턴은 min ~ max이내 랜덤한 곳 n개 뿌리기
     private IEnumerator FireBombShoot()
     {
-        for (int i = 0; i < fireCount; i++)
+        for (int i = 0; i < data.bulletCount; i++)
         {
             GameObject bulletObj = firePool.SpawnBullet(transform.position, Quaternion.identity, fireLife);
 
@@ -168,18 +157,18 @@ public class PlayerBoss : MonoBehaviour
             Vector2 randomPos = (Vector2)transform.position + dir * radius;
 
             BossFireBomb bomb = bulletObj.GetComponent<BossFireBomb>();
-            bomb.BossInit(randomPos, fireDamage, fireRadius, firePool, fireZonePool);
+            bomb.BossInit(randomPos, data.damage, fireRadius, firePool, fireZonePool);
 
-            yield return new WaitForSeconds(fireDelay);
+            yield return new WaitForSeconds(data.fireCoolTime);
         }
     }
 
     //드론 패턴은 n이내 랜덤한 곳 k개 i번 뿌리기
     private IEnumerator DroneShoot()
     {
-        for (int k = 0; k < shootCount; k++)
+        for (int k = 0; k < burstCount; k++)
         {
-            for (int i = 0; i < droneCount; i++)
+            for (int i = 0; i < data.bulletCount; i++)
             {
                 //7이내 랜덤으로 쏘기
                 Vector2 randomPos = Random.insideUnitCircle * droneRadius;
@@ -188,9 +177,9 @@ public class PlayerBoss : MonoBehaviour
                 GameObject bulletObj = dronePool.SpawnBullet(drone.position, Quaternion.identity, droneLife);
 
                 EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
-                bullet.Init(droneDamage, randomDir, droneLife, dronePool);
+                bullet.Init(data.damage, randomDir, droneLife, dronePool);
 
-                yield return new WaitForSeconds(droneDelay);
+                yield return new WaitForSeconds(data.fireCoolTime);
             }
         }
     }
