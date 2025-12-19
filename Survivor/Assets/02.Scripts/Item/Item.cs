@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
         }
         if (other.CompareTag("BigExp"))
         {
-            playerLevel.GetEXP(10);
+            playerLevel.GetEXP(200);
             Destroy(other.gameObject);
         }
         

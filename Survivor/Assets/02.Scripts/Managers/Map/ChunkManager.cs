@@ -43,7 +43,7 @@ public class ChunkManager : MonoBehaviour
 
     #region method
     //맵 선택 구문에 추가
-    private void SelectMap(int index, int typeNumb)
+    public void SelectMap(int index, int typeNumb)
     {
         selectNum = (MapType)index;
         this.typeNumb = typeNumb; //stage맵에서만 사용 : 청크타입 선택할 변수

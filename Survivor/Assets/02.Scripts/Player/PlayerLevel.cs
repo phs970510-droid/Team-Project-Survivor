@@ -17,6 +17,7 @@ public class PlayerLevel : MonoBehaviour
     {
         if(selectItem)
         selectItem = FindObjectOfType<SelectItem>();
+
     }
     public void GetEXP(int exp)
     {
