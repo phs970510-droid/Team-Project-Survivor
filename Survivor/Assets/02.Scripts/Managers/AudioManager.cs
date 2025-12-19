@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     int channelIndex;            // 다음 사용할 채널 인덱스(라운드 로빈 방식)
 
     // 효과음을 인덱스로 부르기 위한 enum
-    public enum Sfx { Dead, Hit, LevelUp = 3, Lose, Melee, Range = 7, Select, Win }
+    public enum Sfx { Dead, Hit, LevelUp = 3, Lose, Melee, Range = 7, Select, Win, Coin }
 
     void Awake()
     {
@@ -55,8 +55,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.volume = bgmVolume;    // 초기 볼륨 적용
         bgmPlayer.clip = bgmClip;        // 재생할 배경음 설정
 
-        // 메인 카메라에 있는 HighPassFilter를 가져와서 저장
-        //bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
+
 
         // ---------------------------------------------------------
         // 효과음(SFX) 재생 채널 생성
@@ -168,13 +167,28 @@ public class AudioManager : MonoBehaviour
                 p.volume = sfxVolume;
         }
     }
-    
+    // UI 버튼 사운드
     public void PlaySelectSound()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
-   
 
-   
+    //코인 사운드
+    public void PlayCoinSound()
+    {
+        PlaySfx(Sfx.Coin);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
+            Destroy(gameObject);
+        }
+    }
+
+
 }
+
 
