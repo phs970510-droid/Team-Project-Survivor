@@ -28,20 +28,23 @@ public class StageMap : Chunk
     private void OnValidate()
     {
         player = GameObject.Find("Player").transform;
+
         ResetActive(); //다른 프리팹이 활성화 되어있다면 비활성화
-        SelectChunkType();
     }
 #endif
     #endregion
 
     protected override void Awake()
     {
+        SelectChunkType();
         base.Awake();
+        LoadChunk();
     }
 
     protected override void Update()
     {
         base.Update();
+        
     }
 
     #region method
@@ -68,6 +71,8 @@ public class StageMap : Chunk
                     //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
+
+                    createdParent = GameObject.Find("CreatedParent");
                 }
                 break;
             case Type.type02:
@@ -87,6 +92,8 @@ public class StageMap : Chunk
                     //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
+
+                    createdParent = GameObject.Find("CreatedParent");
                 }
                 break;
             case Type.type03:
@@ -106,6 +113,8 @@ public class StageMap : Chunk
                     //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
+
+                    createdParent = GameObject.Find("CreatedParent");
                 }
                 break;
         }
@@ -138,6 +147,12 @@ public class StageMap : Chunk
         Obstacle01.SetActive(false);
         Obstacle02.SetActive(false);
         Obstacle03.SetActive(false);
+    }
+
+    private void LoadChunk()
+    {
+        createdPrefabs = createdParent.GetComponentsInChildren<Transform>()
+            .Where(x => x != createdParent.transform).ToArray();
     }
     #endregion
 }
