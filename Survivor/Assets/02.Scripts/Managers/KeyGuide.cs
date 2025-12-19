@@ -35,6 +35,9 @@ public class KeyGuide : MonoBehaviour
         if (hintText != null)
             hintText.text = message;
         ShowHint(true);     //처음엔 무조건 표시하기
+        joyStick.SetActive(false);
+        Time.timeScale = 0f;
+        StartCoroutine(OutKeyGuide());
 
     }
     private void Update()
@@ -54,5 +57,13 @@ public class KeyGuide : MonoBehaviour
         canvasGroup.alpha = show ? 1.0f : 0.0f;
         canvasGroup.interactable = show;
         canvasGroup.blocksRaycasts = show;
+    }
+
+    private IEnumerator OutKeyGuide()
+    {
+        yield return new WaitForSecondsRealtime(5.0f);
+        ShowHint(!isVisible) ;
+        joyStick.SetActive(true) ;
+        Time.timeScale = 1f;
     }
 }
