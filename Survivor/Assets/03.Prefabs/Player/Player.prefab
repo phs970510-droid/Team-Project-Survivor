@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 3281383220592096950}
   playerHP: {fileID: 6344499601435526783, guid: ae33f075914fbfa41abe5ca050f846dd, type: 3}
-  player: {fileID: 3670541462173115280, guid: ae33f075914fbfa41abe5ca050f846dd, type: 3}
+  player: {fileID: 3977026852586092146}
   mainCamera: {fileID: 0}
   playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
 --- !u!1 &2791058293282041745

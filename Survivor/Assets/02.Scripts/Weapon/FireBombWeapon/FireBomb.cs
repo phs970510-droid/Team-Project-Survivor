@@ -69,7 +69,7 @@ public class FireBomb : MonoBehaviour, IPoolable
         GameObject fireZoneObj = fireZonePool.SpawnBullet(transform.position, Quaternion.identity, fireZoneLeave);
         FireZone fireZone = fireZoneObj.GetComponent<FireZone>();
         //파이어존 스탯 전달
-        fireZone.FireZoneStat(fireDamage, fireRadius, fireZoneLeave, pool);
+        fireZone.FireZoneStat(fireDamage, fireRadius, fireZoneLeave, fireZonePool);
 
         //파이어 봄도 풀
         ReturnPool();

@@ -16,10 +16,10 @@ MonoBehaviour:
   weaponName: 
   isUnlocked: 0
   price: 0
-  damage: 0
-  speed: 0
-  fireCoolTime: 0
-  bulletCount: 0
+  damage: 10
+  speed: 10
+  fireCoolTime: 0.5
+  bulletCount: 5
   attackRange: 0
   Sprite: {fileID: 0}
   poolSize: 10

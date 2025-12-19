@@ -7,16 +7,16 @@ public class FireZone : MonoBehaviour
 
     private float lifeTime;
     private float timer;
-    private BulletPool pool;
+    private BulletPool zonePool;
 
     [SerializeField] private LayerMask enemyLayer;
 
-    public void FireZoneStat(float damage, float radius, float lifeTime, BulletPool pool)
+    public void FireZoneStat(float damage, float radius, float lifeTime, BulletPool zonePool)
     {
         this.fireDamage = damage;
         this.fireRadius = radius;
         this.lifeTime = lifeTime;
-        this.pool = pool;
+        this.zonePool = zonePool;
         this.timer = 0f;
     }
 
@@ -31,9 +31,9 @@ public class FireZone : MonoBehaviour
 
     public void ReturnPool()
     {
-        if (pool != null)
+        if (zonePool != null)
         {
-            pool.ReturnBullet(this.gameObject);
+            zonePool.ReturnBullet(this.gameObject);
         }
     }
 
