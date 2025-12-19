@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42fbe3152b4da98429db376b8158e52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joyStick: {fileID: 0}
+  joyStick: {fileID: 1079136980590243089}
 --- !u!1 &1753698789236379610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5778,7 +5778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5a515354702924ab0646baed875d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageScenePanelSwitcher: {fileID: 0}
+  stageScenePanelSwitcher: {fileID: 9117173230568999283}
   missionBoard: {fileID: 8469856269410399705}
   gameQuit: {fileID: 3104098242951150270}
 --- !u!1 &5617363515745172339
