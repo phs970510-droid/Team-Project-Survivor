@@ -1,7 +1,6 @@
 using System.Linq;
 using UnityEngine;
 
-//[RequireComponent(typeof())]
 public class StageMap : Chunk
 {
     #region field
@@ -51,11 +50,6 @@ public class StageMap : Chunk
     {
         base.Update();
         
-    }
-
-    private void LateUpdate()
-    {
-        SelectChunkType();
     }
 
     #region method
