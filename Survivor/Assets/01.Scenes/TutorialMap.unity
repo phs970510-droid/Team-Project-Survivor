@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 74175687}
   - component: {fileID: 74175689}
   - component: {fileID: 74175688}
-  - component: {fileID: 74175690}
   m_Layer: 0
   m_Name: Index07
   m_TagString: Untagged
@@ -278,18 +277,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &74175690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74175686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &361813483
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +320,6 @@ GameObject:
   - component: {fileID: 379802627}
   - component: {fileID: 379802629}
   - component: {fileID: 379802628}
-  - component: {fileID: 379802630}
   m_Layer: 0
   m_Name: Index10
   m_TagString: Untagged
@@ -477,18 +463,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &379802630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379802626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &398943789
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +474,6 @@ GameObject:
   - component: {fileID: 398943790}
   - component: {fileID: 398943792}
   - component: {fileID: 398943791}
-  - component: {fileID: 398943793}
   m_Layer: 0
   m_Name: Index06
   m_TagString: Untagged
@@ -644,18 +617,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &398943793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398943789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &462052775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -841,7 +802,6 @@ GameObject:
   - component: {fileID: 629837710}
   - component: {fileID: 629837712}
   - component: {fileID: 629837711}
-  - component: {fileID: 629837713}
   m_Layer: 0
   m_Name: Index05
   m_TagString: Untagged
@@ -985,18 +945,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &629837713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629837709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &831537080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +2001,6 @@ GameObject:
   - component: {fileID: 981819487}
   - component: {fileID: 981819489}
   - component: {fileID: 981819488}
-  - component: {fileID: 981819490}
   m_Layer: 0
   m_Name: Index01
   m_TagString: Untagged
@@ -2201,18 +2148,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &981819490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981819486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1028629015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,7 +2159,6 @@ GameObject:
   - component: {fileID: 1028629016}
   - component: {fileID: 1028629018}
   - component: {fileID: 1028629017}
-  - component: {fileID: 1028629019}
   m_Layer: 0
   m_Name: Index04
   m_TagString: Untagged
@@ -2368,18 +2302,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1028629019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028629015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1144757455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,7 +2313,6 @@ GameObject:
   - component: {fileID: 1144757456}
   - component: {fileID: 1144757458}
   - component: {fileID: 1144757457}
-  - component: {fileID: 1144757459}
   m_Layer: 0
   m_Name: Index08
   m_TagString: Untagged
@@ -2535,18 +2456,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1144757459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144757455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1226314163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2535,6 @@ GameObject:
   - component: {fileID: 1266841669}
   - component: {fileID: 1266841671}
   - component: {fileID: 1266841670}
-  - component: {fileID: 1266841672}
   m_Layer: 0
   m_Name: Index02
   m_TagString: Untagged
@@ -2770,18 +2678,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1266841672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266841668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1427288142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2689,6 @@ GameObject:
   - component: {fileID: 1427288145}
   - component: {fileID: 1427288144}
   - component: {fileID: 1427288143}
-  - component: {fileID: 1427288146}
   m_Layer: 0
   m_Name: Index09
   m_TagString: Untagged
@@ -2937,18 +2832,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2035901661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1427288146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427288142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1493532064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,7 +2889,6 @@ GameObject:
   - component: {fileID: 1742249117}
   - component: {fileID: 1742249119}
   - component: {fileID: 1742249118}
-  - component: {fileID: 1742249120}
   m_Layer: 0
   m_Name: Index03
   m_TagString: Untagged
@@ -3150,18 +3032,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1742249120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742249116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1806352433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,7 +3148,6 @@ GameObject:
   - component: {fileID: 2048537092}
   - component: {fileID: 2048537094}
   - component: {fileID: 2048537093}
-  - component: {fileID: 2048537095}
   m_Layer: 0
   m_Name: Index00
   m_TagString: Untagged
@@ -3422,18 +3291,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &2048537095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048537091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2085666596
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,7 +3302,6 @@ GameObject:
   - component: {fileID: 2085666599}
   - component: {fileID: 2085666598}
   - component: {fileID: 2085666597}
-  - component: {fileID: 2085666600}
   m_Layer: 0
   m_Name: Index11
   m_TagString: Untagged
@@ -3589,18 +3445,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2035901661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2085666600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085666596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a915039abd46d3b4984fc5350e8e0bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1687099689619521457
 PrefabInstance:
   m_ObjectHideFlags: 0

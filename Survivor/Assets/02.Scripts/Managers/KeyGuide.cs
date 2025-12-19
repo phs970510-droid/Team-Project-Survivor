@@ -15,7 +15,7 @@ public class KeyGuide : MonoBehaviour
     [TextArea]
     public string message =
         "WASD / Mouse Drag : Move\n" +
-        "H : Show Help Again\n" +
+        "H : On/Off to Show Help Again\n" +
         "Move to the [Stage Exit]";
 
     public GameObject joyStick;
