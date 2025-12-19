@@ -11,15 +11,11 @@ public abstract class Chunk : MonoBehaviour
     public int loadRange = 3;
     public int unloadRange = 3;
 
-    //청크 생성 인덱스 변수
-    int i = 0;
-
-    //인덱스 체크 변수
-    int j = 0;
-    private GameObject checkIndex;
-
-    //활성화 리스트 체크
-    [SerializeField] private List<GameObject> activeTure = new List<GameObject>();
+    [Header("장식물 생성, 활성화 되어있는 청크 열외")]
+    int i = 0; //청크 생성 인덱스 변수
+    int j = 0; //장식물 순차적 생성을 위한 변수
+    private GameObject checkIndex; //인덱스 체크 변수
+    [SerializeField] private List<GameObject> activeTure = new List<GameObject>(); //활성화 리스트 체크
 
     [Header("생성된 청크 활용")]
     [SerializeField] protected GameObject createdParent;
@@ -40,9 +36,10 @@ public abstract class Chunk : MonoBehaviour
         CreateChunks();
 
         //변수 값 초기화 : 타입 변경 시 마다 재사용 되어야 함
-        if (i > 0)
+        if (i > 0 || j > 0)
         {
             i = 0;
+            j = 0;
         }
     }
 
@@ -155,16 +152,19 @@ public abstract class Chunk : MonoBehaviour
             return null;
         }
 
+        //장식물 중복생성 방지 및 배열에 포함된 장식물 모두 생성
         int numb = Random.Range(0, 10);
 
-        if (numb < 9)
+        if (j < chunkPrefabs.Length - 1 && numb >= 8)
         {
             i++;
-            return chunkPrefabs[0].gameObject;
+            j++;
+
+            return chunkPrefabs[j].gameObject;
         }
 
         i++;
-        return chunkPrefabs[Random.Range(1, chunkPrefabs.Length)].gameObject;
+        return chunkPrefabs[0].gameObject;
     }
 
     //섞어줄 매서드
@@ -177,24 +177,17 @@ public abstract class Chunk : MonoBehaviour
         }
 
         //활성화 되어있는 오브젝트는 제외하고 넘어가는 것으로 수정
-        if (j < createdPrefabs.Length)
+        checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;
+
+        var isActive = activeTure.Find(x => x.gameObject == checkIndex);
+
+        if (isActive != null)
         {
-            checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;
-
-            var isActive = activeTure.Find(x => x.gameObject == checkIndex);
-
-            if (isActive != null)
+            while(isActive != null) //무한루프
             {
-                while(isActive != null) //무한루프
-                {
-                    checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;
-                    isActive = activeTure.Find(x => x.gameObject == checkIndex);
-                    Debug.Log("중복");
-                }
-            }
-            else if (isActive == null)
-            {
-                Debug.Log("해당x");
+                checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;
+                isActive = activeTure.Find(x => x.gameObject == checkIndex);
+                Debug.Log("중복");
             }
         }
 
