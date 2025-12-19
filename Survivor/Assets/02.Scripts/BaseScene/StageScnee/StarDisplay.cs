@@ -13,5 +13,4 @@ public class StarDisplay : MonoBehaviour
         stars[currentStar].gameObject.SetActive(true);
         currentStar++;
     }
-
 }

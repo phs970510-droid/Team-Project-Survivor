@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class BattleUIController : MonoBehaviour
+public class StageUIController : MonoBehaviour
 {
 
-    public BattleScenePanelSwitcher BattleScenePanelSwitcher;
+    public StageScenePanelSwitcher stageScenePanelSwitcher;
     public MissionBoard missionBoard;
     public GameQuit gameQuit;
     public void BattleSecneToggleMenu()
     {
-        if (BattleScenePanelSwitcher == null) return;
-        BattleScenePanelSwitcher.BattleSenceToggleMenu();
+        if (stageScenePanelSwitcher == null) return;
+        stageScenePanelSwitcher.BattleSenceToggleMenu();
     }
 
     public void BattleSecneCloseMenuPanel()
     {
-        if (BattleScenePanelSwitcher == null) return;
-        BattleScenePanelSwitcher.BattleSecneCloseMenuPanel();
+        if (stageScenePanelSwitcher == null) return;
+        stageScenePanelSwitcher.BattleSecneCloseMenuPanel();
     }
 
     public void BaseSceneLoder()
@@ -31,6 +31,6 @@ public class BattleUIController : MonoBehaviour
 
     public void CloseSelectPanel()
     {
-        BattleScenePanelSwitcher.CloseSelectItme();
+        stageScenePanelSwitcher.CloseSelectItem();
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BaseUIController : MonoBehaviour
 {
-
     [Header("Controllers")]
     public PanelSwitcher panelSwitcher;
     public GameQuit gameQuit;
@@ -36,7 +35,6 @@ public class BaseUIController : MonoBehaviour
         if (panelSwitcher == null) return;
         panelSwitcher.CloseMenuPanel();
     }
-
     public void OpenShopPanel()
     {
         if (panelSwitcher == null) return;
@@ -47,7 +45,6 @@ public class BaseUIController : MonoBehaviour
         if (panelSwitcher == null) return;
         panelSwitcher.CloseWarningPanel();
     }
-
     //QuitGame
     public void QuitGame()
     {
@@ -64,5 +61,4 @@ public class BaseUIController : MonoBehaviour
     {
         sceneLoader.StageSelectLoder();
     }
-
 }
