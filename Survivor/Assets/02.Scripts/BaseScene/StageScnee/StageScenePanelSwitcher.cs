@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleScenePanelSwitcher : MonoBehaviour
+public class StageScenePanelSwitcher : MonoBehaviour
 {
     public GameObject panelMenu;
     public GameObject panelSelcet;
     public GameObject joysitck;
-
-
     public void BattleSenceToggleMenu()
     {
         bool OpenMenu = !panelMenu.activeSelf;
@@ -27,7 +25,6 @@ public class BattleScenePanelSwitcher : MonoBehaviour
         }
 
     }
-
     public void BattleSecneCloseMenuPanel()
     {
         Time.timeScale = 1f;
@@ -38,7 +35,7 @@ public class BattleScenePanelSwitcher : MonoBehaviour
         panelMenu.SetActive(false);
         joysitck.SetActive(true);
     }
-    public void CloseSelectItme()
+    public void CloseSelectItem()
     {
         if (panelSelcet == null) return;
         panelSelcet.SetActive(false);

@@ -15,7 +15,7 @@ public class SelectItem : MonoBehaviour
 
     public StarDisplay[] starDisplays;
 
-
+    //weaponSo중 하나 랜덤 선택
     public void SelectItemSO()
     {
         for (int i = 0; i < 3; i++)
@@ -26,7 +26,7 @@ public class SelectItem : MonoBehaviour
             UpdateItemUI(i, selectedItem);
         }
     }
-
+    //뽑은 아이템의 Sprite, Name 넣기
     private void UpdateItemUI(int slotIndex, WeaponData item)
     {
         if (itemIcon[slotIndex] != null && item.Sprite != null)

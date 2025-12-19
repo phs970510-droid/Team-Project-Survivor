@@ -7,11 +7,17 @@ public class PlayerLevel : MonoBehaviour
 
     public GameObject openSelectItme; //wy추가
     public GameObject joyStick; //wy추가
-    public SelectItem SelectItem; //WY추가
+    public SelectItem selectItem; //WY추가
 
     public int level = 1;
     public int currentExp = 0;
 
+
+    private void Start()
+    {
+        if(selectItem)
+        selectItem = FindObjectOfType<SelectItem>();
+    }
     public void GetEXP(int exp)
     {
         currentExp += exp;
@@ -31,7 +37,7 @@ public class PlayerLevel : MonoBehaviour
         //UI 추가
         joyStick.SetActive(false);//wy추가
         openSelectItme.SetActive(true); //wy추가
-        SelectItem.SelectItemSO();//wy추가
+        selectItem.SelectItemSO();//wy추가
 
 
         //선택까지 일시정지

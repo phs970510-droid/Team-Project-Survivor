@@ -13,7 +13,6 @@ public class StageMovement : MonoBehaviour
         }
         if (other.CompareTag("Tutorial"))
         {
-
             stageSceneLode.TutorialSceneLoader();
         }
 
