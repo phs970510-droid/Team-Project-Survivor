@@ -1,15 +1,5 @@
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-
-/*
-생성 후 비활성화 : O
-
-Awake 섞어서 활성화 : 필요 :: 씬 전환 후 바로 Update실행 x
-
-섞어서 업데이트 : X
-    ㄴ 섞어줄 부모 오브젝트 대상이 잘못 됨
-*/
 
 public abstract class Chunk : MonoBehaviour
 {
@@ -103,8 +93,6 @@ public abstract class Chunk : MonoBehaviour
                 activeTure.Add(chunk); //활성화 체크
             }
         }
-
-
     }
 
 
@@ -189,9 +177,6 @@ public abstract class Chunk : MonoBehaviour
         }
 
         //활성화 되어있는 오브젝트는 제외하고 넘어가는 것으로 수정
-
-
-
         if (j < createdPrefabs.Length)
         {
             checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;

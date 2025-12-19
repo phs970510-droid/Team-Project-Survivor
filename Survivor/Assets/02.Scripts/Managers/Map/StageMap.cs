@@ -29,11 +29,6 @@ public class StageMap : Chunk
     {
         player = GameObject.Find("Player").transform;
 
-        /* 주의사항
-            LateUpdate, Update에 작성할 경우 타입3번 타일이 자동으로 생성
-            타입1, 타입2의 타일이 3번 타입 제거 전까지 생성되지 않음
-            SendMessage cannot be called during Awake, CheckConsistency, or OnValidate
-        */
         ResetActive(); //다른 프리팹이 활성화 되어있다면 비활성화
     }
 #endif

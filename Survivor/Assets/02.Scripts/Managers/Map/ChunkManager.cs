@@ -4,9 +4,6 @@ using UnityEngine.SceneManagement;
 /*
 주의사항 : 싱글톤에 컴포넌트 연동시키지 말 것
 해당 싱글톤에 연동시킨 컴포넌트 0개
-
-풀 매니저 역할을 청크 매니저에 통합?
-청크.cs 기본적인 청크 기능구현
 */
 
 public class ChunkManager : MonoBehaviour
