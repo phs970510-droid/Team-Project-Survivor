@@ -15,4 +15,4 @@ MonoBehaviour:
   moveSpeed: 5
   maxHp: 100
   damage: 10
-  baseUpgradeCosts: 0000000000000000
+  baseUpgradeCosts: 

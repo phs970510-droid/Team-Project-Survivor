@@ -7,6 +7,7 @@ public class MainMissionBoard : MonoBehaviour
 {
     public void TutorialSceneLoader()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("TutorialMap");
     }
 }
