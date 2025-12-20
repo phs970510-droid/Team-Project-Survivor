@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class FollowCam : MonoBehaviour
 {
     /*
-    1.Pixel Perfect Camera : 1920 x 1080; : ÇÈ¼¿ °¡ÀåÀÚ¸® ¼± Á¦°Å
-    2.Timemap Renderer : ²ôÆ®¸Ó¸® ¿©¹é Á¦°Å
+    1.Pixel Perfect Camera : 1920 x 1080; : í”½ì…€ ê°€ì¥ìë¦¬ ì„  ì œê±°
+    2.Timemap Renderer : ë„íŠ¸ë¨¸ë¦¬ ì—¬ë°± ì œê±°
         :Detect Chunk Culling : Manual
         :Chunk Culling Bound x:1, y:1, z:1
     */
@@ -18,7 +18,11 @@ public class FollowCam : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        target = GameObject.Find("Player").transform;
+        var go = GameObject.Find("Player");
+        if (go == null)
+            return;
+
+        target = go.transform;
     }
 #endif
     #endregion

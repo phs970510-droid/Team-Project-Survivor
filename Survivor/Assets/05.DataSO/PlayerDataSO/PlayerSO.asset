@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8227d55a53a90fd4691b5a9100dc639c, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxHp: 100
+  moveSpeed: 7.7999973
+  maxHp: 130
   damage: 10
-  baseUpgradeCosts: 
+  baseUpgradeCosts: 64000000640000006400000064000000
