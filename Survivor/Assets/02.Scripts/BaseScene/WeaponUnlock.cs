@@ -17,7 +17,6 @@ public class WeaponUnlock : MonoBehaviour
 
         if (DataManager.Instance.TrySpendMoney(weapon.price))
         {
-            //DataManager.Instance.UnlockWeapon();
             weaponButtons[index].SetActive(false);
             weapon.isUnlocked = true;
         }

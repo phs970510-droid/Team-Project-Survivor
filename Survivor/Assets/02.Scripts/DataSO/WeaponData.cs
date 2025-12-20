@@ -21,6 +21,9 @@ public class WeaponData : ScriptableObject
     [Header("풀링")]
     public int poolSize;
 
+    [Header("강화")]
+    public int upgradeCost;
+
 
     //무기 번호
     //무기 종류 리스트 or 배열

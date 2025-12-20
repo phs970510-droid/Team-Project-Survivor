@@ -8,4 +8,7 @@ public class BaseData : ScriptableObject
     public float moveSpeed = 5.0f;
     public float maxHp = 100;
     public float damage = 10.0f; //enemy만 사용
+
+    [Header("Base Upgrade Cost")]
+    public int[] baseUpgradeCosts;
 }

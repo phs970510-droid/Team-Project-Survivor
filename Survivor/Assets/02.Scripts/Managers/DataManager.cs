@@ -45,6 +45,15 @@ public class DataManager : MonoBehaviour
         Save();
         return true;
     }
+    public int GetBaseUpgradeCost(int index)
+    {
+        return baseData.baseUpgradeCosts[index];
+    }
+
+    public void IncreaseBaseUpgradeCost(int index)
+    {
+        baseData.baseUpgradeCosts[index] *= 2;
+    }
 
     public void Save()
     {
@@ -77,6 +86,14 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
+        for (int i = 0; i < baseData.baseUpgradeCosts.Length; i++)
+        {
+            PlayerPrefs.SetInt(
+                prefix + $"BaseUpgradeCost_{i}",
+                baseData.baseUpgradeCosts[i]
+            );
+        }
+
         PlayerPrefs.Save();
         Debug.Log($"[DataManager] 슬롯 {slotIndex} 저장 완료");
     }
@@ -98,6 +115,14 @@ public class DataManager : MonoBehaviour
             weapon.damage = PlayerPrefs.GetFloat(prefix + $"{weapon.weaponName}_Damage", weapon.damage);
         }
 
+        for (int i = 0; i < baseData.baseUpgradeCosts.Length; i++)
+        {
+            baseData.baseUpgradeCosts[i] = PlayerPrefs.GetInt(
+                prefix + $"BaseUpgradeCost_{i}",
+                baseData.baseUpgradeCosts[i]
+            );
+        }
+
         UIManager.Instance?.UpdateMoney(Money);
 
         Debug.Log($"[DataManager] 슬롯 {slotIndex} 불러오기 완료");
@@ -113,6 +138,20 @@ public class DataManager : MonoBehaviour
         CurrentSlot = slotIndex;
         PlayerPrefs.SetInt("LastSaveSlot", slotIndex);
         PlayerPrefs.Save();
+    }
+
+    public void UpgradeBaseStat(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                baseData.moveSpeed += 0.2f;
+                break;
+
+            case 1:
+                baseData.maxHp += 10f;
+                break;
+        }
     }
 
     private void MirrorQuickSaveToCurrentSlotIfAny()

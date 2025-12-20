@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private BaseData baseData; //±âº»´É·ÂÄ¡ SOµ¥ÀÌÅÍ
-    [SerializeField] private PlayerData playerData; //ÇÃ·¹ÀÌ¾î SOµ¥ÀÌÅÍ
-    [SerializeField] private Transform arrow;   //ÇÃ·¹ÀÌ¾î ¹Ù¶óº¸´Â È­»ìÇ¥
+    [SerializeField] private BaseData baseData; //ê¸°ë³¸ëŠ¥ë ¥ì¹˜ SOë°ì´í„°
+    [SerializeField] private PlayerData playerData; //í”Œë ˆì´ì–´ SOë°ì´í„°
+    [SerializeField] private Transform arrow;   //í”Œë ˆì´ì–´ ë°”ë¼ë³´ëŠ” í™”ì‚´í‘œ
 
     private float inputX;
     private float inputY;
@@ -21,9 +21,10 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         hp = GetComponent<CommonHP>();
+        baseData = DataManager.Instance.baseData;
 
-        //½Å¿¡ ÀÖ´Â Á¶ÀÌ½ºÆ½ ½ºÅ©¸³Æ® ÀÚµ¿Ã£±â
-        if(joystick == null)
+        //ì‹ ì— ìˆëŠ” ì¡°ì´ìŠ¤í‹± ìŠ¤í¬ë¦½íŠ¸ ìë™ì°¾ê¸°
+        if (joystick == null)
         {
             joystick = FindFirstObjectByType<JoyStick>();
         }
@@ -31,23 +32,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Á×¾úÀ¸¸é ÇÃ·¹ÀÌ¾î ÀÌµ¿x
+        //ì£½ì—ˆìœ¼ë©´ í”Œë ˆì´ì–´ ì´ë™x
         if (hp.isDead)
         {
             Dead();
             return;
         }
 
-        //Á¶ÀÌ½ºÆ½ º¤ÅÍ °¡Á®¿À±â
+        //ì¡°ì´ìŠ¤í‹± ë²¡í„° ê°€ì ¸ì˜¤ê¸°
         Vector2 joystickVector = joystick.InputVector;
 
-        //Á¶ÀÌ½ºÆ½ ÀÔ·ÂÀÖÀ¸¸é Á¶ÀÌ½ºÆ½À¸·Î ÀÌµ¿
+        //ì¡°ì´ìŠ¤í‹± ì…ë ¥ìˆìœ¼ë©´ ì¡°ì´ìŠ¤í‹±ìœ¼ë¡œ ì´ë™
         if (joystickVector.magnitude > 0.1f)
         {
             inputX = joystickVector.x / joystick.moveRange;
             inputY = joystickVector.y / joystick.moveRange;
         }
-        //Á¶ÀÌ½ºÆ½ ÀÔ·ÂÀÌ ¾Æ´Ï¸é Å°º¸µå·Î ÀÌµ¿
+        //ì¡°ì´ìŠ¤í‹± ì…ë ¥ì´ ì•„ë‹ˆë©´ í‚¤ë³´ë“œë¡œ ì´ë™
         else
         {
             inputX = Input.GetAxisRaw("Horizontal");
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
         float magnitude = dir.magnitude;
 
-        //´ë°¢¼± Á¤±ÔÈ­
+        //ëŒ€ê°ì„  ì •ê·œí™”
         if(magnitude > 1.0f)
         {
             dir = dir.normalized;
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = dir * baseData.moveSpeed;
 
-        //ÁÂ¿ì¹İÀü
+        //ì¢Œìš°ë°˜ì „
         if (inputX != 0f)
         {
             if (inputX < 0.0f)
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed", speed);
     }
 
-    //Ä³¸¯ÅÍ°¡ ¹Ù¶óº¸´Â ¹æÇâ
+    //ìºë¦­í„°ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥
     private void MoveDirection()
     {
         if (arrow == null) return;
@@ -101,26 +102,26 @@ public class PlayerController : MonoBehaviour
 
         if (dir.magnitude == 0) return;
 
-        //º¤ÅÍ¹æÇâ Á¤±ÔÈ­
+        //ë²¡í„°ë°©í–¥ ì •ê·œí™”
         Vector2 normalizedDir = dir.normalized;
 
-        //ºÎµå·´°Ô ÀÌµ¿
+        //ë¶€ë“œëŸ½ê²Œ ì´ë™
         Vector2 targetPos = normalizedDir * playerData.arrowOffset;
 
-        //È­»ìÇ¥ À§Ä¡
+        //í™”ì‚´í‘œ ìœ„ì¹˜
         arrow.localPosition = Vector2.Lerp(arrow.localPosition, targetPos, Time.deltaTime * 10.0f);
 
-        //º¤ÅÍ ¹æÇâ¿¡¼­ °¢µµ·Î º¯È¯
+        //ë²¡í„° ë°©í–¥ì—ì„œ ê°ë„ë¡œ ë³€í™˜
         float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
 
-        //È¸Àü°ª
+        //íšŒì „ê°’
         Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
 
-        //È­»ìÇ¥ È¸Àü
+        //í™”ì‚´í‘œ íšŒì „
         arrow.rotation = Quaternion.Lerp(arrow.rotation, targetRotation, Time.deltaTime * 10.0f);
     }
 
-    //Á×¾úÀ» ¶§ ¿òÁ÷ÀÓÃ³¸®
+    //ì£½ì—ˆì„ ë•Œ ì›€ì§ì„ì²˜ë¦¬
     private void Dead()
     {
         inputX = 0f;
