@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Search;
 
 public class KeyGuide : MonoBehaviour
 {
@@ -22,6 +21,7 @@ public class KeyGuide : MonoBehaviour
 
     private CanvasGroup canvasGroup;
     private bool isVisible = true;
+    private Coroutine Coroutine;
 
     private void Awake()
     {
@@ -30,18 +30,31 @@ public class KeyGuide : MonoBehaviour
         {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
+        if (joyStick == null)
+        {
+            joyStick = GameObject.FindWithTag("JoyStick");
+        }
     }
+
     private void Start()
     {
         if (hintText != null)
             hintText.text = message;
         ShowHint(true);     //처음엔 무조건 표시하기
+        joyStick.SetActive(false);
+        Time.timeScale = 0f;
+        Coroutine = StartCoroutine(OutKeyGuide());
 
     }
     private void Update()
     {
         if (Input.GetKeyDown(toggleKey))
         {
+            if (Coroutine != null)
+            {
+                StopCoroutine(Coroutine);
+                Coroutine = null;
+            }
             ShowHint(!isVisible);
             joyStick.SetActive(true);
             Time.timeScale = 1f;
@@ -55,5 +68,13 @@ public class KeyGuide : MonoBehaviour
         canvasGroup.alpha = show ? 1.0f : 0.0f;
         canvasGroup.interactable = show;
         canvasGroup.blocksRaycasts = show;
+    }
+
+    private IEnumerator OutKeyGuide()
+    {
+        yield return new WaitForSecondsRealtime(5.0f);
+        ShowHint(!isVisible);
+        joyStick.SetActive(true);
+        Time.timeScale = 1f;
     }
 }

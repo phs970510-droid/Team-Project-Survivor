@@ -12,6 +12,8 @@ public class EnemyManager : MonoBehaviour
 
     private readonly List<GameObject> pool = new();
 
+    public bool isActiveStage = false;
+
     private void Awake()
     {
         CreatePool();
@@ -28,6 +30,9 @@ public class EnemyManager : MonoBehaviour
 
     public void Spawn(Vector3 position)
     {
+        if (!isActiveStage)
+            return;
+
         GameObject enemy = GetInactiveEnemy();
         if (enemy == null) 
         { 
