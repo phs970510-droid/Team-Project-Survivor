@@ -9,6 +9,9 @@ public class BaseData : ScriptableObject
     public float maxHp = 100;
     public float damage = 10.0f; //enemy만 사용
 
+    [Header("Base Upgrade Cost")]
+    public int[] baseUpgradeCosts;
+
     //상점 스탯 올라갈 시 저장
     public void SaveStat()
     {

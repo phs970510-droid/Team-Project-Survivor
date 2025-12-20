@@ -14,7 +14,7 @@ public class UpGradeItem : MonoBehaviour
 
     public void UpgradeItem(int index)
     {
-        int price = int.Parse(upgradeCost[index].text);
+        int price = DataManager.Instance.GetBaseUpgradeCost(index);
 
         if (DataManager.Instance.TrySpendMoney(price))
         {
