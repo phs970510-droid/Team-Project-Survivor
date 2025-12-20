@@ -18,6 +18,7 @@ public class UpGradeItem : MonoBehaviour
 
         if (DataManager.Instance.TrySpendMoney(price))
         {
+            //DataManager.Instance.UpgradeItem();
             int newPrice = price * 2;
             upgradeCost[index].text = newPrice.ToString();
         }
