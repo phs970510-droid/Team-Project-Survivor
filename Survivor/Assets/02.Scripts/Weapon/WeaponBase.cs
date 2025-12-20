@@ -9,6 +9,12 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected float lifeTime;
 
     protected float fireTimer;
+    private Transform player;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     protected virtual void Start()
     {
@@ -27,7 +33,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected void Shoot()
     {
-        for(int i = 0; i < weaponStat.bulletCount; i++)
+        firePoint.position = player.position;
+
+        for (int i = 0; i < weaponStat.bulletCount; i++)
         {
             GameObject bulletObj = bulletPool.SpawnBullet
                 (firePoint.position, Quaternion.identity, lifeTime);
