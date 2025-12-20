@@ -179,7 +179,11 @@ public class CommonHP : MonoBehaviour
         }
         //이동 되돌리기
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        if (agent != null)
+        if (!agent.isOnNavMesh)
+        {
+            Debug.Log("에너미isOnNavMesh아님");
+        }
+        if (agent != null && agent.isOnNavMesh)
         {
             agent.isStopped = false;
         }
