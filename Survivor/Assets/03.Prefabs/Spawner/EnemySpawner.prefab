@@ -55,7 +55,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  player: {fileID: 0}
+  player: {fileID: 4750564613838781617, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
 --- !u!1 &8241025100402724127
 GameObject:
   m_ObjectHideFlags: 0

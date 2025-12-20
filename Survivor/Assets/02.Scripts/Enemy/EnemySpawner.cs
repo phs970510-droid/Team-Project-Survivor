@@ -30,6 +30,11 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         currentDelay = startDelay;
+
+        if(player != null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     // Update is called once per frame

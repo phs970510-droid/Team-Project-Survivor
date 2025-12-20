@@ -19,7 +19,7 @@ MonoBehaviour:
   damage: 10
   speed: 10
   fireCoolTime: 1
-  bulletCount: 2
+  bulletCount: 1
   attackRange: 10
   Sprite: {fileID: 1737672109, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   poolSize: 10
