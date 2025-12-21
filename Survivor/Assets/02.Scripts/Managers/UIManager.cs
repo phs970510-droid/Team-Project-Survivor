@@ -12,6 +12,13 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        if (DataManager.Instance != null)
+        {
+            UpdateMoney(DataManager.Instance.Money);
+        }
+    }
 
     public void UpdateMoney(int money)
     {

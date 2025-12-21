@@ -25,4 +25,16 @@ public class WeaponUnlock : MonoBehaviour
             emptyMoneyPaenl.SetActive(true);
         }
     }
+    private void OnEnable()
+    {
+        RefreshWeaponUI();
+    }
+    private void RefreshWeaponUI()
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            bool unlocked = items[i].isUnlocked;
+            weaponButtons[i].SetActive(!unlocked);
+        }
+    }
 }

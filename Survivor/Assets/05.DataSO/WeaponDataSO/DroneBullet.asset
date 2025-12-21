@@ -23,3 +23,4 @@ MonoBehaviour:
   attackRange: 10
   Sprite: {fileID: -38345435, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   poolSize: 30
+  upgradeCost: 0

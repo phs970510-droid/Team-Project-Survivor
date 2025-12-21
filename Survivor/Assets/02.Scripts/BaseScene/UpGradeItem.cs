@@ -31,4 +31,16 @@ public class UpGradeItem : MonoBehaviour
         }
 
     }
+    private void OnEnable()
+    {
+        RefreshUpgradeCostUI();
+    }
+    private void RefreshUpgradeCostUI()
+    {
+        for (int i = 0; i < upgradeCost.Count; i++)
+        {
+            upgradeCost[i].text =
+                DataManager.Instance.GetBaseUpgradeCost(i).ToString();
+        }
+    }
 }
