@@ -8,7 +8,7 @@ public class PanelSwitcher : MonoBehaviour
     public GameObject panelMenu;
     public GameObject panelShop;
     public GameObject panelWarning;
-
+    public GameObject panelSave;
     public void OpenMainPanel()
     {
         panelUPGrade.SetActive(false);
@@ -29,6 +29,10 @@ public class PanelSwitcher : MonoBehaviour
         panelUPGrade.SetActive(false);
         panelShop.SetActive(true);
     }
+    public void OpenSave()
+    {
+        panelSave.SetActive(true);
+    }
     public void ToggleMenu()
     {
         panelMenu.SetActive(!panelMenu.activeSelf);
@@ -37,6 +41,10 @@ public class PanelSwitcher : MonoBehaviour
     public void CloseMenuPanel()
     {
         panelMenu.SetActive(false);
+    }
+    public void CloseSavePanel()
+    {
+        panelSave.SetActive(false);
     }
     public void CloseWarningPanel()
     {

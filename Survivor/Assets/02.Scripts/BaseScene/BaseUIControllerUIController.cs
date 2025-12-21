@@ -30,7 +30,16 @@ public class BaseUIController : MonoBehaviour
         if (panelSwitcher == null) return;
         panelSwitcher.OpenUPGradePanel();
     }
+    public void OpenSave()
+    {
+        panelSwitcher.OpenSave();
+    }
     public void CloseMenuPanel()
+    {
+        if (panelSwitcher == null) return;
+        panelSwitcher.CloseMenuPanel();
+    }
+    public void CloseSavePanel()
     {
         if (panelSwitcher == null) return;
         panelSwitcher.CloseMenuPanel();
@@ -60,5 +69,18 @@ public class BaseUIController : MonoBehaviour
     public void SelectSceneLoad()
     {
         sceneLoader.StageSelectLoder();
+    }
+    public void OnSelectSaveSlot(int slotIndex)
+    {
+        DataManager.Instance.SetCurrentSlot(slotIndex);
+        Debug.Log($"[SafehouseUIManager] 슬롯 {slotIndex} 저장 중...");
+        DataManager.Instance.SaveAllData(slotIndex);
+        PlayerPrefs.SetInt("LastSaveSlot", slotIndex);
+        PlayerPrefs.Save();
+
+        Debug.Log($"[SafehouseUIManager] 슬롯 {slotIndex} 저장 완료!");
+        Debug.Log("저장 경로: " + Application.persistentDataPath);
+
+        Application.Quit();
     }
 }
