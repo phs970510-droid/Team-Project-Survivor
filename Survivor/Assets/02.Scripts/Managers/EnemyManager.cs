@@ -7,15 +7,21 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Enemy Pool")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;   //실제 풀에 쓸 프리팹이므로 넣으면 안됨
+    [SerializeField] private GameObject enemyType01;
+    [SerializeField] private GameObject enemyType02;
+    [SerializeField] private GameObject enemyType03;
+
     [SerializeField] private int poolSize = 20;
 
     private readonly List<GameObject> pool = new();
 
     public bool isActiveStage = false;
 
-    private void Awake()
+    private void Start()
     {
+        int stageType = ChunkManager.Instance.typeNumb;
+        SelectEnemyPrefab(stageType);
         CreatePool();
     }
     public void CreatePool()
@@ -61,5 +67,23 @@ public class EnemyManager : MonoBehaviour
                 return pool[i];
         }
         return null;
+    }
+    private void SelectEnemyPrefab(int stageType)
+    {
+        switch (stageType)
+        {
+            case 1:
+                enemyPrefab = enemyType01;
+                break;
+            case 2:
+                enemyPrefab = enemyType02;
+                break;
+            case 3:
+                enemyPrefab = enemyType03;
+                break;
+            default:
+                Debug.LogError($"[EnemyManager] Invalid stageType : {stageType}");
+                break;
+        }
     }
 }
