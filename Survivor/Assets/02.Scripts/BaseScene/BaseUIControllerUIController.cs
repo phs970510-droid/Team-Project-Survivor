@@ -41,8 +41,7 @@ public class BaseUIController : MonoBehaviour
     }
     public void CloseSavePanel()
     {
-        if (panelSwitcher == null) return;
-        panelSwitcher.CloseMenuPanel();
+        panelSwitcher.CloseSavePanel();
     }
     public void OpenShopPanel()
     {
