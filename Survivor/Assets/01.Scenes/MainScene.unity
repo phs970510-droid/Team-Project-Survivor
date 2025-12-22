@@ -214,6 +214,14 @@ PrefabInstance:
     - target: {fileID: 4979010496211109403, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 660122771}
+    - target: {fileID: 4979010496211109403, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetBgmEnabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979010496211109403, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DataManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7938186333785937627, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -232,6 +240,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
+--- !u!114 &660122771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8085065882446925188, guid: 843d3ed9262e37b4dabf4018f9206c79, type: 3}
+  m_PrefabInstance: {fileID: 668255729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0011ea7f6aeed146b2f1757d7620743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &668255729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -287,6 +306,22 @@ PrefabInstance:
     - target: {fileID: 8085065882446925188, guid: 843d3ed9262e37b4dabf4018f9206c79, type: 3}
       propertyPath: Money
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085065882446925188, guid: 843d3ed9262e37b4dabf4018f9206c79, type: 3}
+      propertyPath: bgmClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4559935c00ef8e94b846e2e03e39f0d0, type: 3}
+    - target: {fileID: 8085065882446925188, guid: 843d3ed9262e37b4dabf4018f9206c79, type: 3}
+      propertyPath: channels
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085065882446925188, guid: 843d3ed9262e37b4dabf4018f9206c79, type: 3}
+      propertyPath: bgmVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085065882446925188, guid: 843d3ed9262e37b4dabf4018f9206c79, type: 3}
+      propertyPath: sfxVolume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
