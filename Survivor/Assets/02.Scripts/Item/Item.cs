@@ -10,12 +10,12 @@ public class Item : MonoBehaviour
         //경험치 먹었을 때
         if(other.CompareTag("Exp"))
         {
-            playerLevel.GetEXP(5);
+            playerLevel.GetEXP(10);
             Destroy(other.gameObject);
         }
         if (other.CompareTag("BigExp"))
         {
-            playerLevel.GetEXP(200);
+            playerLevel.GetEXP(20);
             Destroy(other.gameObject);
         }
         
