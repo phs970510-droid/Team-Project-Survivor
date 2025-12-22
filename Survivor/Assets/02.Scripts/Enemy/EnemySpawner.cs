@@ -58,6 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void TrySpawn()
     {
+        Debug.Log("TrySpawn");
         for (int i = 0; i < 10; i++)    //최대 10번 위치 재시도하기
         {
             Vector2 spawnPos = (Vector2)transform.position + new Vector2(
