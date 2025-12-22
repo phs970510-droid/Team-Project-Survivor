@@ -108,6 +108,37 @@ MonoBehaviour:
   player: {fileID: 4750564613838781617}
   mainCamera: {fileID: 0}
   playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
+--- !u!1 &2343118895397566613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2364557446199544674}
+  m_Layer: 3
+  m_Name: CrashCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2364557446199544674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343118895397566613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4750564613838781617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2670626587669922125
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +346,7 @@ Transform:
   - {fileID: 8822262512987083815}
   - {fileID: 4898659518256970813}
   - {fileID: 7016927037086393555}
+  - {fileID: 2364557446199544674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8248977955053233727
@@ -384,6 +416,12 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: e61eb1f143d7d554486dfe07861855a7, type: 2}
   playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
   arrow: {fileID: 8822262512987083815}
+  crashCheck: {fileID: 2364557446199544674}
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  crashPower: 5
+  wAM: 0.5
 --- !u!114 &4555377799735681598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +500,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &917420216698102336
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -492,7 +530,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
