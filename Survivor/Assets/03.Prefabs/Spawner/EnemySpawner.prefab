@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fb57ac48d66f846ad00a7eb877cca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyManagers: []
+  enemyManagers:
+  - {fileID: 8328712925048905439}
+  - {fileID: 8328712925048905439}
+  - {fileID: 8328712925048905439}
   areaMin: {x: 0, y: 0}
   areaMax: {x: 0, y: 0}
   startDelay: 3

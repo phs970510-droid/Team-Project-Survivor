@@ -62,6 +62,8 @@ public class EnemyAI : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(UPDATE_INTERVAL);
+            Debug.Log($"PlayerPos={spawner.PlayerPos}");
+            Debug.Log($"AgentDest={agent.destination}");
         }
     }
 }
