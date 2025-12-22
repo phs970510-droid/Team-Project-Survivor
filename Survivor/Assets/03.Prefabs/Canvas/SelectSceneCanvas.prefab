@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 741144142161141177}
   - component: {fileID: 8324181812773272250}
   m_Layer: 5
-  m_Name: SaveText
+  m_Name: BaseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save
+  m_text: Base
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1390,7 +1390,7 @@ GameObject:
   - component: {fileID: 2643347703956488835}
   - component: {fileID: 5322115511975705103}
   m_Layer: 5
-  m_Name: Main
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main
+  m_text: Base
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 1523136262200851511}
   - component: {fileID: 1003249578700491636}
   m_Layer: 5
-  m_Name: Save
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1782,7 +1782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1523136262200851511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5487137399746488581}
+        m_TargetAssemblyTypeName: StageSceneLode, Assembly-CSharp
+        m_MethodName: MainSceneLoder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3949159264865420684
 GameObject:
   m_ObjectHideFlags: 0
