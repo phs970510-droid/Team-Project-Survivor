@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,15 +14,6 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
     private CommonHP hp;
-
-    private Collider2D crash;
-
-    [Header("충돌 처리")]
-    [SerializeField] Transform crashCheck;
-    [SerializeField] private LayerMask ObstacleLayer;
-    [SerializeField] private int crashPower = 5;
-    private bool isCrash = false;
-    [SerializeField] private float wAM = 0.5f;
 
     void Awake()
     {
@@ -52,30 +42,24 @@ public class PlayerController : MonoBehaviour
         //조이스틱 벡터 가져오기
         Vector2 joystickVector = joystick.InputVector;
 
-        if (!isCrash) //충돌 시 입력 값 제한
+        //조이스틱 입력있으면 조이스틱으로 이동
+        if (joystickVector.magnitude > 0.1f)
         {
-            //조이스틱 입력있으면 조이스틱으로 이동
-            if (joystickVector.magnitude > 0.1f)
-            {
-                inputX = joystickVector.x / joystick.moveRange;
-                inputY = joystickVector.y / joystick.moveRange;
-            }
-            //조이스틱 입력이 아니면 키보드로 이동
-            else
-            {
-                inputX = Input.GetAxisRaw("Horizontal");
-                inputY = Input.GetAxisRaw("Vertical");
-            }
-            MoveDirection();
+            inputX = joystickVector.x / joystick.moveRange;
+            inputY = joystickVector.y / joystick.moveRange;
         }
+        //조이스틱 입력이 아니면 키보드로 이동
+        else
+        {
+            inputX = Input.GetAxisRaw("Horizontal");
+            inputY = Input.GetAxisRaw("Vertical");
+        }
+        MoveDirection();
     }
 
     private void FixedUpdate()
     {
-        if (!isCrash) //충돌 시 입력 값 제한
-        {
-            Move();
-        }
+        Move();
     }
 
     private void Move()
@@ -142,31 +126,5 @@ public class PlayerController : MonoBehaviour
     {
         inputX = 0f;
         inputY = 0f;
-    }
-
-    //충돌처리
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        crash = Physics2D.OverlapBox(crashCheck.position, transform.lossyScale, ObstacleLayer);
-
-        if (collision.gameObject.CompareTag("Obstacle") && crash != null)
-        {
-            /* 수정 필요
-            StartCoroutine(CrashDelay());
-
-            float dirX = transform.position.x - collision.transform.position.x > 0 ? 0.5f : -0.5f;
-            float dirY = transform.position.y - collision.transform.position.y > 0 ? 0.5f : -0.5f;
-            rb.AddForce(new Vector2(dirX, dirY) * crashPower, ForceMode2D.Impulse);
-            */
-        }
-    }
-
-    IEnumerator CrashDelay()
-    {
-        inputX = 0f;
-        inputY = 0f;
-        isCrash = true;
-        yield return new WaitForSeconds(wAM);
-        isCrash = false;
     }
 }

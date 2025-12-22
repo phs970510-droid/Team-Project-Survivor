@@ -20,7 +20,6 @@ TagManager:
   - Stage3
   - JoyStick
   - OpenSelectItme
-  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -29,7 +28,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - Obstacle
+  - 
   - 
   - 
   - 
