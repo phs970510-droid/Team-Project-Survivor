@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private int poolSize = 20;
 
-    private readonly List<GameObject> pool = new();
+    private GameObject[] pool;
 
     public bool isActiveStage = false;
 
@@ -25,12 +25,12 @@ public class EnemyManager : MonoBehaviour
         CreatePool();
     }
     public void CreatePool()
-    {
+    { 
+        pool = new GameObject[poolSize];
         for (int i = 0; i < poolSize; i++) 
         {
-            GameObject enemy=Instantiate(enemyPrefab,transform);
-            enemy.SetActive(false);
-            pool.Add(enemy);
+            pool[i]=Instantiate(enemyPrefab,transform);
+            pool[i].SetActive(false);
         }
     }
 
@@ -61,7 +61,7 @@ public class EnemyManager : MonoBehaviour
     }
     private GameObject GetInactiveEnemy()
     {
-        for (int i = 0; i < pool.Count; i++)
+        for (int i = 0; i < pool.Length; i++)
         {
             if (!pool[i].activeSelf)
                 return pool[i];

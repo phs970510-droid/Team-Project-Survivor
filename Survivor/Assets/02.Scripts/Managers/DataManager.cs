@@ -15,7 +15,7 @@ public class DataManager : MonoBehaviour
     [Header("데이터 참조")]
     public PlayerData playerData;
     public BaseData baseData;
-    public List<WeaponData> allWeaponData = new();
+    public List<WeaponData> allWeaponData = new List<WeaponData>();
 
     public int CurrentSlot { get; private set; } = 0;
 
@@ -80,7 +80,7 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("Money", Money);
         PlayerPrefs.Save();
 
-        MirrorQuickSaveToCurrentSlotIfAny();
+        SaveToCurrentSlot();
     }
 
     public void Load()
@@ -174,7 +174,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private void MirrorQuickSaveToCurrentSlotIfAny()
+    private void SaveToCurrentSlot()
     {
         if (CurrentSlot <= 0) return;
         string prefix = $"Save{CurrentSlot}_";
