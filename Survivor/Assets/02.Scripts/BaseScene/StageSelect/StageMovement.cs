@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StageMovement : MonoBehaviour
 {
@@ -22,17 +22,14 @@ public class StageMovement : MonoBehaviour
         else if (other.CompareTag("Stage1"))
         {
             chunkManager.SelectMap(2, 1);
-            stageSceneLode.Stage1SceneLodar();
         }
         else if (other.CompareTag("Stage2"))
         {
             chunkManager.SelectMap(2, 2);
-            stageSceneLode.Stage2SceneLodar();
         }
         else if (other.CompareTag("Stage3"))
         {
             chunkManager.SelectMap(2, 3);
-            stageSceneLode.Stage3SceneLodar();
         }
 
 

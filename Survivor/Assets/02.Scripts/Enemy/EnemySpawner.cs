@@ -38,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
             bool isActive = (i + 1) == stageType;
 
             enemyManagers[i].isActiveStage = isActive;
-            enemyManagers[i].gameObject.SetActive(isActive);
         }
     }
 
