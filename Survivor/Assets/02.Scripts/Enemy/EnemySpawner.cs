@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("스폰 설정")]
-    public EnemyManager[] enemyManagers;
+    public EnemyManager enemyManagers;
     public Vector2 areaMin; //스폰 영역 최소 좌표
     public Vector2 areaMax; //스폰 영역 최대 좌표
 
@@ -33,12 +33,7 @@ public class EnemySpawner : MonoBehaviour
 
         int stageType = ChunkManager.Instance.typeNumb;
 
-        for (int i = 0; i < enemyManagers.Length; i++)
-        {
-            bool isActive = (i + 1) == stageType;
-
-            enemyManagers[i].isActiveStage = isActive;
-        }
+        enemyManagers.SetStage(stageType);
     }
 
     // Update is called once per frame
@@ -68,14 +63,7 @@ public class EnemySpawner : MonoBehaviour
             Collider2D hit =Physics2D.OverlapCircle(spawnPos,checkRadius,enemyLayer);
             if (hit == null)
             {
-                for (int j = 0; j < enemyManagers.Length; j++)
-                {
-                    if (enemyManagers[j].isActiveStage)
-                    {
-                        enemyManagers[j].Spawn(spawnPos);
-                        break;
-                    }
-                }
+                enemyManagers.Spawn(spawnPos);
                 break;
             }
         }
