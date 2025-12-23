@@ -129,6 +129,16 @@ public class CommonHP : MonoBehaviour
             agent.isStopped = true;
             agent.velocity = Vector2.zero;
         }
+        //자식 경험치 활성화
+        if(normalEXPPrefab != null && bigEXPPrefab != null)
+        {
+            float rand = Random.value;
+            if (chance >= rand)
+            {
+                bigEXPPrefab.SetActive(true);
+            }
+            else normalEXPPrefab.SetActive(true);
+        }
         if(CompareTag("Enemy")) DropEXP();
         if (CompareTag("Boss")) DropReward();
 
@@ -137,15 +147,15 @@ public class CommonHP : MonoBehaviour
 
     private void DropEXP()
     {
-        float rand = Random.value;
-        if(bigEXPPrefab != null && chance >= rand)
-        {
-            Instantiate(bigEXPPrefab, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(normalEXPPrefab, transform.position, Quaternion.identity);
-        }
+        //float rand = Random.value;
+        //if(bigEXPPrefab != null && chance >= rand)
+        //{
+        //    Instantiate(bigEXPPrefab, transform.position, Quaternion.identity);
+        //}
+        //else
+        //{
+        //    Instantiate(normalEXPPrefab, transform.position, Quaternion.identity);
+        //}
     }
 
     private void DropReward()
