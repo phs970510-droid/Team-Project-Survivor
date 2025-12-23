@@ -80,6 +80,5 @@ public class BaseUIController : MonoBehaviour
         Debug.Log($"[SafehouseUIManager] 슬롯 {slotIndex} 저장 완료!");
         Debug.Log("저장 경로: " + Application.persistentDataPath);
 
-        Application.Quit();
     }
 }

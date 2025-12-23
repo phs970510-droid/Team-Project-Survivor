@@ -1,8 +1,10 @@
-癤퓎sing UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class StageMovement : MonoBehaviour
+public class TestMovement : MonoBehaviour
 {
-    public StageSceneLode stageSceneLode;
+    public TestStageSceneLodeipt TestSceneLoad;
     public ChunkManager chunkManager;
 
     private void Awake()
@@ -13,13 +15,13 @@ public class StageMovement : MonoBehaviour
     {
         if (other.CompareTag("Main"))
         {
-            //stageSceneLode.MainSceneLoder();
+            //TestSceneLoad.MainSceneLoder();
         }
         //else if (other.CompareTag("Tutorial"))
         //{
-        //    stageSceneLode.TutorialSceneLoader();
+        //    TestSceneLoad.TutorialSceneLoader();
         //}
-        else if (other.CompareTag("Stage1"))
+        else if (other.CompareTag("Stage1")) //여기 부분 수정해서 테스트 전투 씬 가져오면 됩니다.
         {
             chunkManager.SelectMap(2, 1);
         }

@@ -16,14 +16,6 @@ public class StageSceneLode : MonoBehaviour
     }
     public void Stage1SceneLodar()
     {
-        SceneManager.LoadScene("StageMap");
-    }
-    public void Stage2SceneLodar()
-    {
-        SceneManager.LoadScene("StageMap");
-    }
-    public void Stage3SceneLodar()
-    {
-        SceneManager.LoadScene("StageMap");
+        SceneManager.LoadScene("StageMap"); 
     }
 }

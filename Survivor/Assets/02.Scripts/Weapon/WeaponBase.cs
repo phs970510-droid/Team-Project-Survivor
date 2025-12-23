@@ -3,29 +3,28 @@ using UnityEngine;
 public abstract class WeaponBase : MonoBehaviour
 {
     [SerializeField] protected WeaponStat weaponStat;
-
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected BulletPool bulletPool;
     [SerializeField] protected float lifeTime;
 
     protected float fireTimer;
-    private Transform player;
+    protected Transform shooter;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        shooter = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected virtual void Start()
     {
-        if(weaponStat != null)
+        if (weaponStat != null)
         {
             weaponStat.StartStat();
         }
     }
     protected virtual void Update()
     {
-        if( fireTimer > 0f)
+        if (fireTimer > 0f)
         {
             fireTimer -= Time.deltaTime;
         }
@@ -33,7 +32,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected void Shoot()
     {
-        firePoint.position = player.position;
+        firePoint.position = shooter.position;
 
         for (int i = 0; i < weaponStat.bulletCount; i++)
         {
