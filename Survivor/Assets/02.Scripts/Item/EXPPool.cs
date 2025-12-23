@@ -32,6 +32,10 @@ public class EXPPool : MonoBehaviour
 
         GameObject obj = pool.Dequeue();    //하나씩 빼기
 
+        obj.transform.SetParent(null);
+
+        obj.transform.position = position;  //위치 지정
+
         obj.gameObject.SetActive(true); //활성화
 
         return obj;

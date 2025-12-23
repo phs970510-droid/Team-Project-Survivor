@@ -15,9 +15,11 @@ public class CommonHP : MonoBehaviour
     protected bool isInvincible = false;
 
     [Header("경험치(에너미만 할당)")]
-    [SerializeField] private GameObject normalEXPPrefab;
-    [SerializeField] private GameObject bigEXPPrefab;
+    //[SerializeField] private GameObject normalEXPPrefab;
+    //[SerializeField] private GameObject bigEXPPrefab;
     [SerializeField] private float chance = 0.2f;
+    [SerializeField] private EXPPool bigPool;
+    [SerializeField] private EXPPool normalPool;
 
     [Header("보스 보상")]
     [SerializeField] private GameObject bossReward;
@@ -130,21 +132,21 @@ public class CommonHP : MonoBehaviour
             agent.velocity = Vector2.zero;
         }
         //자식 경험치 활성화
-        if(normalEXPPrefab != null && bigEXPPrefab != null)
-        {
-            float rand = Random.value;
-            if (chance >= rand)
-            {
-                //GameObject에는 SetParent가 없으므로, Transform을 통해 부모 해제
-                bigEXPPrefab.transform.SetParent(null);
-                bigEXPPrefab.SetActive(true);
-            }
-            else
-            {
-                normalEXPPrefab.transform.SetParent(null);
-                normalEXPPrefab.SetActive(true);
-            }
-        }
+        //if(normalEXPPrefab != null && bigEXPPrefab != null)
+        //{
+        //    float rand = Random.value;
+        //    if (chance >= rand)
+        //    {
+        //        //GameObject에는 SetParent가 없으므로, Transform을 통해 부모 해제
+        //        bigEXPPrefab.transform.SetParent(null);
+        //        bigEXPPrefab.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        normalEXPPrefab.transform.SetParent(null);
+        //        normalEXPPrefab.SetActive(true);
+        //    }
+        //}
         //코인 드랍
         if(CompareTag("Enemy")) DropEXP();
         if (CompareTag("Boss")) DropReward();
@@ -154,15 +156,26 @@ public class CommonHP : MonoBehaviour
 
     private void DropEXP()
     {
-        //float rand = Random.value;
-        //if(bigEXPPrefab != null && chance >= rand)
-        //{
-        //    Instantiate(bigEXPPrefab, transform.position, Quaternion.identity);
-        //}
-        //else
-        //{
-        //    Instantiate(normalEXPPrefab, transform.position, Quaternion.identity);
-        //}
+        float rand = Random.value;
+        GameObject normalObj = GameObject.Find("NormalEXPPool");
+        GameObject bigObj = GameObject.Find("BigEXPPool");
+        normalPool = normalObj.GetComponent<EXPPool>();
+        bigPool = bigObj.GetComponent<EXPPool>();
+        if(bigPool == null && normalPool == null)
+        {
+            Debug.Log("풀이 null");
+        }
+        if (bigPool != null && normalPool != null)
+        {
+            if (chance >= rand)
+            {
+                bigPool.SpawnEXP(transform.position);
+            }
+            else
+            {
+                normalPool.SpawnEXP(transform.position);
+            }
+        }
     }
 
     private void DropReward()
@@ -205,16 +218,16 @@ public class CommonHP : MonoBehaviour
             agent.isStopped = false;
         }
         //경험치 프리팹 되돌리기
-        if (bigEXPPrefab != null)
-        {
-            bigEXPPrefab.transform.SetParent(this.transform);
-            bigEXPPrefab.SetActive(false);
-        }
-        if(normalEXPPrefab != null)
-        {
-            normalEXPPrefab.transform.SetParent(this.transform);
-            normalEXPPrefab.SetActive(false);
-        }
+        //if (bigEXPPrefab != null)
+        //{
+        //    bigEXPPrefab.transform.SetParent(this.transform);
+        //    bigEXPPrefab.SetActive(false);
+        //}
+        //if(normalEXPPrefab != null)
+        //{
+        //    normalEXPPrefab.transform.SetParent(this.transform);
+        //    normalEXPPrefab.SetActive(false);
+        //}
 
         gameObject.SetActive(true);
     }

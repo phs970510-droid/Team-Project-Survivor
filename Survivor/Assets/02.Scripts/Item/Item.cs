@@ -4,22 +4,9 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private PlayerLevel playerLevel;
     [SerializeField] private CommonHP commonHP;
-    [SerializeField] private EXPPool expPool;
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        //경험치 먹었을 때
-        if(other.CompareTag("Exp"))
-        {
-            playerLevel.GetEXP(10);
-            Destroy(other.gameObject);
-        }
-        if (other.CompareTag("BigExp"))
-        {
-            playerLevel.GetEXP(20);
-            Destroy(other.gameObject);
-        }
-        
+    {  
         //자석 아이템
         if(other.CompareTag("Magnet"))
         {
