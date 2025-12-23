@@ -209,11 +209,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 6f42f2bad79b4bb41ae067d6210c0854, type: 2}
   isDead: 0
-  normalEXPPrefab: {fileID: 0}
-  bigEXPPrefab: {fileID: 0}
-  chance: 0.2
-  bigPool: {fileID: 0}
-  normalPool: {fileID: 0}
+  expChance: 0.2
+  bigPool: {fileID: -7957447705339452863, guid: 0930c9e85914abd4dabb2004a2b574a2, type: 3}
+  normalPool: {fileID: 5266296165249046533, guid: 63254432723e44a43b17fb6cd6bb92ff, type: 3}
+  coinChance: 0.2
+  coinPool: {fileID: 2659758993133963925, guid: 546ca588d52e91141b4c0ccdbb272b33, type: 3}
   bossReward: {fileID: 0}
   damageReduce: 0.3
   sheildTime: 5

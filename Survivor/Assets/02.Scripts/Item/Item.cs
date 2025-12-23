@@ -4,9 +4,16 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private PlayerLevel playerLevel;
     [SerializeField] private CommonHP commonHP;
+    [SerializeField] private ItemPool coinPool;
 
     private void OnTriggerEnter2D(Collider2D other)
-    {  
+    {
+        //코인
+        if (other.CompareTag("Coin"))
+        {
+            GetCoin();
+            coinPool.ReturnItem(other.gameObject);
+        }
         //자석 아이템
         if(other.CompareTag("Magnet"))
         {
@@ -29,6 +36,11 @@ public class Item : MonoBehaviour
         }
     }
 
+    private void GetCoin()
+    {
+        DataManager.Instance.AddMoney(10);
+    }
+
     private void GetMagnetItem()
     {
         GameObject[] exps = GameObject.FindGameObjectsWithTag("Exp");
@@ -47,5 +59,6 @@ public class Item : MonoBehaviour
     private void GetBossReward()
     {
         //인게임 재화 or 무기 해금 아이템 얻기
+        DataManager.Instance.AddMoney(1000); //UI추가
     }
 }

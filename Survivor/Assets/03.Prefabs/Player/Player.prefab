@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 3810214103174425284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.4009166, y: -0.7318164, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -440,7 +440,7 @@ MonoBehaviour:
   joyStick: {fileID: 2670626587669922125}
   selectItem: {fileID: 0}
   level: 1
-  currentExp: 0
+  currentExp: 68
 --- !u!114 &9101388408852355516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLevel: {fileID: 4555377799735681598}
   commonHP: {fileID: 6964823894383930263}
+  coinPool: {fileID: 2659758993133963925, guid: 546ca588d52e91141b4c0ccdbb272b33, type: 3}
 --- !u!114 &6964823894383930263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,9 +470,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: e61eb1f143d7d554486dfe07861855a7, type: 2}
   isDead: 0
-  normalEXPPrefab: {fileID: 0}
-  bigEXPPrefab: {fileID: 0}
-  chance: 0.2
+  expChance: 0.2
+  bigPool: {fileID: 0}
+  normalPool: {fileID: 0}
+  coinChance: 0.2
+  coinPool: {fileID: 0}
   bossReward: {fileID: 0}
   damageReduce: 0.3
   sheildTime: 5

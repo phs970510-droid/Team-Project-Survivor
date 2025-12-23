@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8793284706228994763}
-  - component: {fileID: 1131316779619760189}
+  - component: {fileID: -7957447705339452863}
   m_Layer: 0
   m_Name: BigEXPPool
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1131316779619760189
+--- !u!114 &-7957447705339452863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,8 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 738533033616653992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3301f5f3ce79bca4a8091c46dd312d99, type: 3}
+  m_Script: {fileID: 11500000, guid: 723702820e8e8a041a5d84f5fbdb49fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expPrefab: {fileID: 5082785930944967579, guid: dfd5d6d7d77f2f24fa9f40eeb2d62fa1, type: 3}
-  poolSize: 10
+  itemPrefab: {fileID: 5082785930944967579, guid: dfd5d6d7d77f2f24fa9f40eeb2d62fa1, type: 3}
+  poolSize: 20

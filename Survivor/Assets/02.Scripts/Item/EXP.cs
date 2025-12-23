@@ -4,7 +4,7 @@ public class EXP : MonoBehaviour
 {
     [Header("경험치 세팅")]
     [SerializeField] private int expAmount;
-    [SerializeField] private EXPPool expPool;
+    [SerializeField] private ItemPool expPool;
     [SerializeField] private PlayerLevel playerLevel;
 
     [Header("자석 세팅")]
@@ -56,7 +56,7 @@ public class EXP : MonoBehaviour
         {
             playerLevel.GetEXP(expAmount);
             //경험치는 풀에 반환
-            expPool.ReturnEXP(gameObject);
+            expPool.ReturnItem(this.gameObject);
         }
     }
 }

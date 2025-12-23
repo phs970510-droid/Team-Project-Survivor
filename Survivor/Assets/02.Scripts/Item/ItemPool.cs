@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EXPPool : MonoBehaviour
+public class ItemPool : MonoBehaviour
 {
-    [SerializeField] private GameObject expPrefab;
+    [SerializeField] private GameObject itemPrefab;
     [SerializeField] private int poolSize;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
@@ -12,23 +12,23 @@ public class EXPPool : MonoBehaviour
     private void Awake()
     {
         //게임시작하고 풀 만들기
-        for(int i = 0; i < poolSize; i++)
+        for (int i = 0; i < poolSize; i++)
         {
-            CreateNewEXP();
+            CreateNewItem();
         }
     }
 
-    private GameObject CreateNewEXP()
+    private GameObject CreateNewItem()
     {
-        GameObject obj = Instantiate(expPrefab, transform);//생성
+        GameObject obj = Instantiate(itemPrefab, transform);//생성
         obj.SetActive(false);   //비활성화
         pool.Enqueue(obj);      //풀에 넣기
         return obj;
     }
 
-    public GameObject SpawnEXP(Vector3 position)
+    public GameObject SpawnItem(Vector3 position)
     {
-        if (pool.Count == 0) CreateNewEXP();//풀 다 쓰면 다시 만들기
+        if (pool.Count == 0) CreateNewItem();//풀 다 쓰면 다시 만들기
 
         GameObject obj = pool.Dequeue();    //하나씩 빼기
 
@@ -42,7 +42,7 @@ public class EXPPool : MonoBehaviour
     }
 
     //반환
-    public void ReturnEXP(GameObject obj)
+    public void ReturnItem(GameObject obj)
     {
         obj.SetActive(false);
         pool.Enqueue(obj);

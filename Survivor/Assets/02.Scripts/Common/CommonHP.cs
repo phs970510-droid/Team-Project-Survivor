@@ -14,12 +14,12 @@ public class CommonHP : MonoBehaviour
     protected float invincibleTime = 0.5f;
     protected bool isInvincible = false;
 
-    [Header("경험치(에너미만 할당)")]
-    //[SerializeField] private GameObject normalEXPPrefab;
-    //[SerializeField] private GameObject bigEXPPrefab;
-    [SerializeField] private float chance = 0.2f;
-    [SerializeField] private EXPPool bigPool;
-    [SerializeField] private EXPPool normalPool;
+    [Header("에너미 죽었을 때")]
+    [SerializeField] private float expChance = 0.2f;
+    [SerializeField] private ItemPool bigPool;
+    [SerializeField] private ItemPool normalPool;
+    [SerializeField] private float coinChance = 0.2f;
+    [SerializeField] private ItemPool coinPool;
 
     [Header("보스 보상")]
     [SerializeField] private GameObject bossReward;
@@ -131,24 +131,11 @@ public class CommonHP : MonoBehaviour
             agent.isStopped = true;
             agent.velocity = Vector2.zero;
         }
-        //자식 경험치 활성화
-        //if(normalEXPPrefab != null && bigEXPPrefab != null)
-        //{
-        //    float rand = Random.value;
-        //    if (chance >= rand)
-        //    {
-        //        //GameObject에는 SetParent가 없으므로, Transform을 통해 부모 해제
-        //        bigEXPPrefab.transform.SetParent(null);
-        //        bigEXPPrefab.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        normalEXPPrefab.transform.SetParent(null);
-        //        normalEXPPrefab.SetActive(true);
-        //    }
-        //}
-        //코인 드랍
-        if(CompareTag("Enemy")) DropEXP();
+        if (CompareTag("Enemy"))
+        {
+            DropEXP();
+            DropCoin();
+        }
         if (CompareTag("Boss")) DropReward();
 
         gameObject.tag = "DeadEnemy";   //플레이어가 공격 안하도록 태그변경
@@ -159,22 +146,31 @@ public class CommonHP : MonoBehaviour
         float rand = Random.value;
         GameObject normalObj = GameObject.Find("NormalEXPPool");
         GameObject bigObj = GameObject.Find("BigEXPPool");
-        normalPool = normalObj.GetComponent<EXPPool>();
-        bigPool = bigObj.GetComponent<EXPPool>();
-        if(bigPool == null && normalPool == null)
-        {
-            Debug.Log("풀이 null");
-        }
+        normalPool = normalObj.GetComponent<ItemPool>();
+        bigPool = bigObj.GetComponent<ItemPool>();
+
         if (bigPool != null && normalPool != null)
         {
-            if (chance >= rand)
+            if (expChance >= rand)
             {
-                bigPool.SpawnEXP(transform.position);
+                bigPool.SpawnItem(transform.position);
             }
             else
             {
-                normalPool.SpawnEXP(transform.position);
+                normalPool.SpawnItem(transform.position);
             }
+        }
+    }
+
+    private void DropCoin()
+    {
+        float rand = Random.value;
+        GameObject coinObj = GameObject.Find("CoinPool");
+        coinPool = coinObj.GetComponent<ItemPool>();
+
+        if (coinPool != null && coinChance >= rand)
+        {
+            coinPool.SpawnItem(transform.position + Vector3.right * 0.5f);
         }
     }
 
@@ -217,17 +213,6 @@ public class CommonHP : MonoBehaviour
         {
             agent.isStopped = false;
         }
-        //경험치 프리팹 되돌리기
-        //if (bigEXPPrefab != null)
-        //{
-        //    bigEXPPrefab.transform.SetParent(this.transform);
-        //    bigEXPPrefab.SetActive(false);
-        //}
-        //if(normalEXPPrefab != null)
-        //{
-        //    normalEXPPrefab.transform.SetParent(this.transform);
-        //    normalEXPPrefab.SetActive(false);
-        //}
 
         gameObject.SetActive(true);
     }
