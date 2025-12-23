@@ -98,7 +98,6 @@ public class PlayerController : MonoBehaviour
             if (inputX < 0.0f)
             {
                 sr.flipX = true;
-
             }
             else
             {
@@ -107,7 +106,6 @@ public class PlayerController : MonoBehaviour
         }
         float speed = rb.velocity.magnitude;
         anim.SetFloat("Speed", speed);
-        Debug.Log(speed);
     }
 
     //캐릭터가 바라보는 방향

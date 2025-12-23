@@ -4,6 +4,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private PlayerLevel playerLevel;
     [SerializeField] private CommonHP commonHP;
+    [SerializeField] private EXPPool expPool;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

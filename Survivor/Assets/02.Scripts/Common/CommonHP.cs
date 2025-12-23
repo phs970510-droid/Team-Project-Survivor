@@ -135,10 +135,17 @@ public class CommonHP : MonoBehaviour
             float rand = Random.value;
             if (chance >= rand)
             {
+                //GameObject에는 SetParent가 없으므로, Transform을 통해 부모 해제
+                bigEXPPrefab.transform.SetParent(null);
                 bigEXPPrefab.SetActive(true);
             }
-            else normalEXPPrefab.SetActive(true);
+            else
+            {
+                normalEXPPrefab.transform.SetParent(null);
+                normalEXPPrefab.SetActive(true);
+            }
         }
+        //코인 드랍
         if(CompareTag("Enemy")) DropEXP();
         if (CompareTag("Boss")) DropReward();
 
@@ -196,6 +203,17 @@ public class CommonHP : MonoBehaviour
         if (agent != null && agent.isOnNavMesh)
         {
             agent.isStopped = false;
+        }
+        //경험치 프리팹 되돌리기
+        if (bigEXPPrefab != null)
+        {
+            bigEXPPrefab.transform.SetParent(this.transform);
+            bigEXPPrefab.SetActive(false);
+        }
+        if(normalEXPPrefab != null)
+        {
+            normalEXPPrefab.transform.SetParent(this.transform);
+            normalEXPPrefab.SetActive(false);
         }
 
         gameObject.SetActive(true);
