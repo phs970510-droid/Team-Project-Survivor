@@ -215,25 +215,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 660122771}
-    - target: {fileID: 4979010496211109403, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetBgmEnabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 4979010496211109403, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DataManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938186333785937627, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8763437438091672837, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
       propertyPath: m_Name
       value: MainSceneCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9030086554080618219, guid: 8b0131ccfa061eb4eb9353e3d62ddc81, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
