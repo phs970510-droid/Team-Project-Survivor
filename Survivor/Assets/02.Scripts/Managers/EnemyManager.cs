@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 //매니저는 관리
 public class EnemyManager : MonoBehaviour
@@ -15,6 +16,13 @@ public class EnemyManager : MonoBehaviour
     private GameObject enemyPrefab;
 
     private GameObject[] pool;
+
+    [Header("BOSS")]
+    [SerializeField] private GameObject bossType1;
+    [SerializeField] private GameObject bossType2;
+    [SerializeField] private GameObject bossType3;
+    
+    private GameObject bossPrefab;
 
     public bool isActiveStage = false;
     public void SetStage(int stageType)
@@ -39,12 +47,15 @@ public class EnemyManager : MonoBehaviour
         {
             case 1:
                 enemyPrefab = enemyType01;
+                bossPrefab = bossType1;
                 break;
             case 2:
                 enemyPrefab = enemyType02;
+                bossPrefab = bossType2;
                 break;
             case 3:
                 enemyPrefab = enemyType03;
+                bossPrefab = bossType3;
                 break;
             default:
                 Debug.LogError($"[EnemyManager] Invalid stageType : {stageType}");
@@ -84,4 +95,20 @@ public class EnemyManager : MonoBehaviour
         return null;
     }
 
+    public void SpawnBoss(Vector3 position)
+    {
+        if (bossPrefab == null)
+        {
+            return;
+        }
+        GameObject enemyBoss=Instantiate(bossPrefab);
+        enemyBoss.transform.position = position;
+
+        var agent = enemyBoss.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.ResetPath();
+        }
+        enemyBoss.SetActive(true);
+    }
 }
