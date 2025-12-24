@@ -17,9 +17,12 @@ public class TutorialObstacle : Obstacles
     #region method
     private void BaseSetting()
     {
-        obstacleParents = GameObject.Find("Grid").transform.Find("Type01_Object").gameObject;
-        obstaclePrefabs = obstacleParents.GetComponentsInChildren<Transform>()
-            .Where(x => x != obstacleParents.transform).ToArray();
+        obstacleParentA = GameObject.Find("Grid").transform.Find("Type01_ObjectA").gameObject;
+        obstaclePrefabsA = obstacleParentA.GetComponentsInChildren<Transform>()
+            .Where(x => x != obstacleParentA.transform).ToArray();
+        obstacleParentB = GameObject.Find("Grid").transform.Find("Type01_ObjectB").gameObject;
+        obstaclePrefabsB = obstacleParentB.GetComponentsInChildren<Transform>()
+            .Where(x => x != obstacleParentB.transform).ToArray();
     }
 
     protected override void HordingTime()
