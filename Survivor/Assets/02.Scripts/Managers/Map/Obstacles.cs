@@ -34,14 +34,7 @@ public abstract class Obstacles : MonoBehaviour
 {
     #region field
     [Header("컴포넌트")]
-    protected Rigidbody2D rb;
-
-    protected Transform player;
-
-    protected int obstacleSize = 5;
-    protected int loadRange = 6;
-    protected int nearRange = 3;
-    protected int unloadRange = 6;
+    public Transform player;
 
     [Header("유지시간")]
     [SerializeField] protected float useTime;
@@ -54,25 +47,20 @@ public abstract class Obstacles : MonoBehaviour
     [SerializeField] protected float interactionRange = 3.0f;
 
     [Header("스폰프리팹")]
-    [SerializeField] Transform obstacleParents;
-    [SerializeField] GameObject[] obstaclePrefabs;
-
-    [Header("생성된 장애물 활용")]
-    [SerializeField] protected GameObject createdParent;
-    [SerializeField] protected Transform[] createdPrefabs;
+    [SerializeField] protected GameObject obstacleParentA;
+    [SerializeField] protected Transform[] obstaclePrefabsA;
+    [SerializeField] protected GameObject obstacleParentB;
+    [SerializeField] protected Transform[] obstaclePrefabsB;
 
     [Header("스폰간격")]
     [SerializeField] protected float intervalTime = 20.0f;
 
     private Vector2Int currentCenter;
-    private Dictionary<Vector2Int, GameObject> activeObstacles = new Dictionary<Vector2Int, GameObject>();
-    private GameObject checkIndex;
-    [SerializeField] private List<GameObject> activeTrue = new List<GameObject>();
+    private List<GameObject> activeObstacles = new List<GameObject>();
     #endregion
 
     protected virtual void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -82,123 +70,31 @@ public abstract class Obstacles : MonoBehaviour
         if (newCenter != currentCenter)
         {
             currentCenter = newCenter;
-            UpdateObstacle();
         }
     }
 
     #region method
+    protected void UnActiveObstacle()
+    {
+
+    }
+
     protected Vector2Int GetPlayerObstacle()
     {
-        int x = Mathf.FloorToInt(player.position.x / obstacleSize);
-        int y = Mathf.FloorToInt(player.position.y / obstacleSize);
+        int x = (int)player.position.x;
+        int y = (int)player.position.y;
         return new Vector2Int(x, y);
     }
 
-    protected void CreateObstacles()
+    protected void ActiveObstacle()
     {
-        HashSet<Vector2Int> needed = new HashSet<Vector2Int>();
+        
 
-        for (int x = -loadRange; x <= loadRange; x++)
-        {
-            for (int y = -loadRange; y <= loadRange; y++)
-            {
-                needed.Add(currentCenter + new Vector2Int(x, y));
-            }
-        }
-
-        foreach (var key in needed)
-        {
-            Vector3 pos = new Vector3(key.x * obstacleSize, key.y * obstacleSize, 0.0f);
-            GameObject prefab = GetObstaclePrefab();
-            GameObject obstacle = Instantiate(
-                prefab,
-                pos,
-                Quaternion.identity);
-            activeObstacles[key] = obstacle;
-        }
     }
 
-    protected void UpdateObstacle()
+    protected void Initialization()
     {
-        HashSet<Vector2Int> needed = new HashSet<Vector2Int>();
 
-        for (int x = -loadRange; x <= loadRange; x++)
-        {
-            for (int y = -loadRange; y <= loadRange; y++)
-            {
-                needed.Add(currentCenter + new Vector2Int(x, y));
-            }
-        }
-
-        List<Vector2Int> toFalse = new List<Vector2Int>();
-        foreach (var kv in activeObstacles)
-        {
-            Vector2Int key = kv.Key;
-            if (Mathf.Abs(key.x - currentCenter.x) > unloadRange ||
-                Mathf.Abs(key.y - currentCenter.y) > unloadRange)
-            {
-                kv.Value.SetActive(false);
-                toFalse.Add(key);
-                activeTrue.Remove(kv.Value);
-            }
-        }
-
-        foreach (var key in toFalse)
-        {
-            activeObstacles.Remove(key);
-        }
-
-        foreach ( var key in needed)
-        {
-            if (!activeObstacles.ContainsKey(key))
-            {
-                Vector3 pos = new Vector3(key.x * obstacleSize, key.y * obstacleSize, 0.0f);
-                GameObject prefab = SelectPrefab();
-
-                prefab.transform.position = pos;
-                prefab.SetActive(true);
-
-                GameObject obstacle = prefab;
-                activeObstacles[key] = obstacle;
-                activeTrue.Add(obstacle);
-            }
-        }
-    }
-
-    protected GameObject GetObstaclePrefab()
-    {
-        if (obstaclePrefabs == null || obstaclePrefabs.Length == 0)
-        {
-            Debug.LogError("[Obstacles : GetObstaclePrefab()] 옵스타클 프리팹이 설정되지 않았습니다.");
-            return null;
-        }
-
-        for (int i = 0; i < obstaclePrefabs.Length; i++)
-        {
-            return obstaclePrefabs[i];
-        }
-
-        return null;
-    }
-
-    protected GameObject SelectPrefab()
-    {
-        if (createdPrefabs == null || createdPrefabs.Length == 0) return null;
-
-        checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;
-
-        GameObject isActive = activeTrue.Find(x => x.gameObject == checkIndex);
-
-        if (isActive != null)
-        {
-            while(isActive != null)
-            {
-                checkIndex = createdPrefabs[Random.Range(0, createdPrefabs.Length)].gameObject;
-                isActive = activeTrue.Find(x => x.gameObject == checkIndex);
-            }
-        }
-
-        return checkIndex;
     }
 
     //유지시간
@@ -209,17 +105,17 @@ public abstract class Obstacles : MonoBehaviour
 
     //상호작용
     //충돌
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected void OnCollisionStay2D(Collision2D collision)
     {
         
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    protected void OnCollisionExit2D(Collision2D collision)
     {
         
     }
