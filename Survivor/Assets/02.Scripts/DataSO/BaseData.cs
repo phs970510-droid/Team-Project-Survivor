@@ -8,6 +8,7 @@ public class BaseData : ScriptableObject
     public float moveSpeed = 5.0f;
     public float maxHp = 100;
     public float magnetRange = 0f; //플레이어만 사용
+    public float expMultiplier = 1.0f; //플레이어만 사용
     public float damage = 10.0f; //enemy만 사용
 
     [Header("Base Upgrade Cost")]
