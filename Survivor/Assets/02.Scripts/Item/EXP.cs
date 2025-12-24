@@ -1,13 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class EXP : MonoBehaviour
 {
-    [Header("°æÇèÄ¡ ¼¼ÆÃ")]
+    [Header("ê²½í—˜ì¹˜ ì„¸íŒ…")]
     [SerializeField] private int expAmount;
     [SerializeField] private ItemPool expPool;
     [SerializeField] private PlayerLevel playerLevel;
 
-    [Header("ÀÚ¼® ¼¼ÆÃ")]
+    [Header("ìì„ ì„¸íŒ…")]
     [SerializeField] private float magnetSpeed = 5.0f;
     [SerializeField] private float levelUpRange = 1.0f;
 
@@ -24,20 +24,21 @@ public class EXP : MonoBehaviour
     {
         if (player == null) return;
 
-        //ÀÚ¼® ¾ÆÀÌÅÛ ¸ÔÀ¸¸é ÀÚ¼® ¹üÀ§´Â ¹«ÇÑ
+        //ìì„ ì•„ì´í…œ ë¨¹ìœ¼ë©´ ìì„ ë²”ìœ„ëŠ” ë¬´í•œ
         if (getMagnetItem)
         {
             range = Mathf.Infinity;
         }
-        //Æò¼Ò¿¡´Â ÇÃ·¹ÀÌ¾î ÀÚ·Â
+        //í‰ì†Œì—ëŠ” í”Œë ˆì´ì–´ ìë ¥
         else
         {
-            range = magnetLevel * levelUpRange;
+            float baseRange = DataManager.Instance.baseData.magnetRange;
+            range = baseRange + (magnetLevel * levelUpRange);
         }
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        //¹üÀ§ ¾ÈÀÌ¸é ÀÚ¼®
+        //ë²”ìœ„ ì•ˆì´ë©´ ìì„
         if(range >= distance)
         {
             transform.position = Vector2.Lerp(transform.position, player.position, Time.deltaTime * magnetSpeed);
@@ -51,11 +52,11 @@ public class EXP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //ÇÃ·¹ÀÌ¾î¿¡ ´êÀ¸¸é ÇÃ·¹ÀÌ¾î°¡ °æÇèÄ¡ ¾ò°í
+        //í”Œë ˆì´ì–´ì— ë‹¿ìœ¼ë©´ í”Œë ˆì´ì–´ê°€ ê²½í—˜ì¹˜ ì–»ê³ 
         if (other.CompareTag("Player"))
         {
             playerLevel.GetEXP(expAmount);
-            //°æÇèÄ¡´Â Ç®¿¡ ¹İÈ¯
+            //ê²½í—˜ì¹˜ëŠ” í’€ì— ë°˜í™˜
             expPool.ReturnItem(this.gameObject);
         }
     }

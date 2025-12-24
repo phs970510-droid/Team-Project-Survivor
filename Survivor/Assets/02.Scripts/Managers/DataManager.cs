@@ -79,6 +79,7 @@ public class DataManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat(prefix + "Player_MaxHP", baseData.maxHp);
             PlayerPrefs.SetFloat(prefix + "Player_MoveSpeed", baseData.moveSpeed);
+            PlayerPrefs.SetFloat(prefix + "Player_MagnetRange", baseData.magnetRange);
         }
 
         foreach (var weapon in allWeaponData)
@@ -108,6 +109,7 @@ public class DataManager : MonoBehaviour
         {
             baseData.maxHp = PlayerPrefs.GetFloat(prefix + "Player_MaxHP", baseData.maxHp);
             baseData.moveSpeed = PlayerPrefs.GetFloat(prefix + "Player_MoveSpeed", baseData.moveSpeed);
+            baseData.moveSpeed = PlayerPrefs.GetFloat(prefix + "Player_MagnetRange", baseData.magnetRange);
         }
 
         foreach (var weapon in allWeaponData)
@@ -153,6 +155,9 @@ public class DataManager : MonoBehaviour
             case 1:
                 baseData.maxHp += 10f;
                 break;
+            case 2:
+                baseData.magnetRange += 1.0f;
+                break;
         }
     }
 
@@ -176,13 +181,5 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt(prefix + "Money", Money);
         PlayerPrefs.Save();
     }
-   
-    
-
-
-   
-   
-
-   
 }
 
