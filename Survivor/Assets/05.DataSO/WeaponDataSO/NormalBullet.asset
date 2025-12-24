@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponName: NormalWeapon
   isUnlocked: 1
   price: 0
-  damage: 10
+  damage: 100
   speed: 10
   fireCoolTime: 1
   bulletCount: 1

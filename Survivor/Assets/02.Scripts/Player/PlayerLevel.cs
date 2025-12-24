@@ -9,8 +9,8 @@ public class PlayerLevel : MonoBehaviour
     public GameObject joyStick; //wy추가
     public SelectItem selectItem; //WY추가
 
-    public int level = 1;
-    public int currentExp = 0;
+    public float level = 1;
+    public float currentExp = 0;
 
 
     private void Start()
@@ -19,7 +19,7 @@ public class PlayerLevel : MonoBehaviour
         selectItem = FindObjectOfType<SelectItem>();
 
     }
-    public void GetEXP(int exp)
+    public void GetEXP(float exp)
     {
         currentExp += exp;
 
@@ -60,9 +60,14 @@ public class PlayerLevel : MonoBehaviour
         weaponStat.LevelUpStat();
     }
 
-    public void MagnetStatUp(EXP exp)
-    {
-        exp.magnetLevel++;
-    }
+    //public void MagnetStatUp(EXP exp)
+    //{
+    //    exp.magnetRange += exp.levelUpRange;
+    //}
+    //
+    //public void EXPStatUp(EXP exp)
+    //{
+    //    exp.expAmount *= exp.levelUpRange;
+    //}
 }
 
