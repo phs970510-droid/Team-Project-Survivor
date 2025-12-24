@@ -13,12 +13,12 @@ public class StageMovement : MonoBehaviour
     {
         if (other.CompareTag("Main"))
         {
-            //stageSceneLode.MainSceneLoder();
+            stageSceneLode.MainSceneLoder();
         }
-        //else if (other.CompareTag("Tutorial"))
-        //{
-        //    stageSceneLode.TutorialSceneLoader();
-        //}
+        else if (other.CompareTag("Tutorial"))
+        {
+            stageSceneLode.TutorialSceneLoader();
+        }
         else if (other.CompareTag("Stage1"))
         {
             chunkManager.SelectMap(2, 1);

@@ -174,6 +174,19 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    public float GetNextState(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return baseData.moveSpeed + 0.2f;
+            case 1:
+                return baseData.maxHp + 10f;
+            default:
+                return 0f;
+        }
+    }
+
     private void SaveToCurrentSlot()
     {
         if (CurrentSlot <= 0) return;
