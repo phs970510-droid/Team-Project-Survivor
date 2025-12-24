@@ -60,14 +60,14 @@ public class PlayerLevel : MonoBehaviour
         weaponStat.LevelUpStat();
     }
 
-    //public void MagnetStatUp(EXP exp)
-    //{
-    //    exp.magnetRange += exp.levelUpRange;
-    //}
-    //
-    //public void EXPStatUp(EXP exp)
-    //{
-    //    exp.expAmount *= exp.levelUpRange;
-    //}
+    public void MagnetStatUp(EXP exp)
+    {
+        exp.magnetRange += exp.levelUpRange;
+    }
+    
+    public void EXPStatUp(EXP exp)
+    {
+        exp.expAmount *= exp.levelUpRange;
+    }
 }
 
