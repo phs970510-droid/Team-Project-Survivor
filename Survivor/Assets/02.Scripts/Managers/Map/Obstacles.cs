@@ -54,8 +54,8 @@ public abstract class Obstacles : MonoBehaviour
     [SerializeField] protected float interactionRange = 3.0f;
 
     [Header("스폰프리팹")]
-    [SerializeField] Transform obstacleParents;
-    [SerializeField] GameObject[] obstaclePrefabs;
+    [SerializeField] protected GameObject obstacleParents;
+    [SerializeField] protected Transform[] obstaclePrefabs;
 
     [Header("생성된 장애물 활용")]
     [SerializeField] protected GameObject createdParent;
@@ -74,6 +74,7 @@ public abstract class Obstacles : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        CreateObstacles();
     }
 
     protected virtual void Update()
@@ -175,7 +176,7 @@ public abstract class Obstacles : MonoBehaviour
 
         for (int i = 0; i < obstaclePrefabs.Length; i++)
         {
-            return obstaclePrefabs[i];
+            return obstaclePrefabs[i].gameObject;
         }
 
         return null;
@@ -209,17 +210,17 @@ public abstract class Obstacles : MonoBehaviour
 
     //상호작용
     //충돌
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected void OnCollisionStay2D(Collision2D collision)
     {
         
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    protected void OnCollisionExit2D(Collision2D collision)
     {
         
     }
