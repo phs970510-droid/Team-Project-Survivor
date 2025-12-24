@@ -151,7 +151,6 @@ public class DataManager : MonoBehaviour
             case 0:
                 baseData.moveSpeed += 0.2f;
                 break;
-
             case 1:
                 baseData.maxHp += 10f;
                 break;
