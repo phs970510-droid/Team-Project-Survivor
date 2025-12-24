@@ -29,7 +29,7 @@ public class ShootEnemy : MonoBehaviour
     private void Update()
     {
         if (player == null) return;
-
+        if (!agent.isOnNavMesh) Debug.Log("NavMesh아님");
         float distance = Vector2.Distance(transform.position, player.position);
 
         //사거리 안이면 멈추고 발사하기
@@ -64,7 +64,7 @@ public class ShootEnemy : MonoBehaviour
                     shootCoroutine = null;
                 }
             }
-            agent.SetDestination(player.position);
+            //agent.SetDestination(player.position);
         }
 
         //Shoot Enemy전용 좌우반전
