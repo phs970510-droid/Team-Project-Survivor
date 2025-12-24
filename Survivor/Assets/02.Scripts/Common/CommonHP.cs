@@ -33,12 +33,16 @@ public class CommonHP : MonoBehaviour
     public float CurrentHP => currentHP;
     public float MaxHP => baseData.maxHp;
 
+    private EnemyKillCount enemyKillCount;
+
     protected virtual void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
         currentHP = baseData.maxHp;
+
+        enemyKillCount = FindObjectOfType<EnemyKillCount>();
     }
 
     private void OnEnable()
@@ -135,6 +139,10 @@ public class CommonHP : MonoBehaviour
         {
             DropEXP();
             DropCoin();
+            if(enemyKillCount != null)
+            {
+                enemyKillCount.AddKill();
+            }
         }
         if (CompareTag("Boss"))
         {
