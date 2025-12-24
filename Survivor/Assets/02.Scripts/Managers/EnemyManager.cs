@@ -2,28 +2,36 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 //매니저는 관리
 public class EnemyManager : MonoBehaviour
 {
     [Header("Enemy Pool")]
-    [SerializeField] private GameObject enemyPrefab;   //실제 풀에 쓸 프리팹이므로 넣으면 안됨
     [SerializeField] private GameObject enemyType01;
     [SerializeField] private GameObject enemyType02;
     [SerializeField] private GameObject enemyType03;
 
     [SerializeField] private int poolSize = 20;
+    private GameObject enemyPrefab;
 
     private GameObject[] pool;
 
-    public bool isActiveStage = false;
-
-    private void Start()
+    [Header("BOSS")]
+    [SerializeField] private GameObject bossType1;
+    [SerializeField] private GameObject bossType2;
+    [SerializeField] private GameObject bossType3;
+    [SerializeField] private GameObject bossForInfinite;
+    
+    private GameObject bossPrefab;
+    private GameObject bossInfinite;
+    public void SetStage(int stageType)
     {
-        int stageType = ChunkManager.Instance.typeNumb;
         SelectEnemyPrefab(stageType);
+        bossInfinite = bossForInfinite;
         CreatePool();
     }
+
     public void CreatePool()
     { 
         pool = new GameObject[poolSize];
@@ -34,15 +42,34 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    private void SelectEnemyPrefab(int stageType)
+    {
+        switch (stageType)
+        {
+            case 1:
+                enemyPrefab = enemyType01;
+                bossPrefab = bossType1;
+                break;
+            case 2:
+                enemyPrefab = enemyType02;
+                bossPrefab = bossType2;
+                break;
+            case 3:
+                enemyPrefab = enemyType03;
+                bossPrefab = bossType3;
+                break;
+            default:
+                Debug.LogError($"[EnemyManager] Invalid stageType : {stageType}");
+                break;
+        }
+    }
+
     public void Spawn(Vector3 position)
     {
-        if (!isActiveStage)
-            return;
-
         GameObject enemy = GetInactiveEnemy();
-        if (enemy == null) 
-        { 
-            return; 
+        if (enemy == null)
+        {
+            return;
         }
         enemy.transform.position = position;
 
@@ -52,9 +79,9 @@ public class EnemyManager : MonoBehaviour
             hp.ResetHP();
         }
 
-        var agent=enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        var agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent != null)
-        { 
+        {
             agent.ResetPath();
         }
         enemy.SetActive(true);
@@ -68,22 +95,29 @@ public class EnemyManager : MonoBehaviour
         }
         return null;
     }
-    private void SelectEnemyPrefab(int stageType)
+
+    public void SpawnBoss(GameObject prefab, Vector3 position)
     {
-        switch (stageType)
+        if (prefab == null)
         {
-            case 1:
-                enemyPrefab = enemyType01;
-                break;
-            case 2:
-                enemyPrefab = enemyType02;
-                break;
-            case 3:
-                enemyPrefab = enemyType03;
-                break;
-            default:
-                Debug.LogError($"[EnemyManager] Invalid stageType : {stageType}");
-                break;
+            return;
         }
+        GameObject Boss=Instantiate(prefab);
+        Boss.transform.position = position;
+
+        var agent = Boss.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.ResetPath();
+        }
+        Boss.SetActive(true);
+    }
+    public void SpawnMid(Vector3 position)
+    { 
+        SpawnBoss(bossPrefab,position);
+    }
+    public void SpawnInfinite(Vector3 position)
+    {
+        SpawnBoss(bossInfinite, position);
     }
 }

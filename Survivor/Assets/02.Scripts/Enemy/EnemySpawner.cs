@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("스폰 설정")]
-    public EnemyManager[] enemyManagers;
+    public EnemyManager enemyManagers;
     public Vector2 areaMin; //스폰 영역 최소 좌표
     public Vector2 areaMax; //스폰 영역 최대 좌표
 
@@ -15,12 +15,18 @@ public class EnemySpawner : MonoBehaviour
     public float minDelay=0.5f;      //최소 간격(도달 후 고정)
     public float decreasedAmount=0.05f;   //스폰 후 간격 감소량
 
+    [Header("보스 스폰 타이밍")]
+    public float bossSpawnTime = 60f;
+    public Transform bossSpawnPoint;
+
     [Header("충돌 검사")]
     public float checkRadius = 0.6f;
     public LayerMask enemyLayer;
 
     private float currentDelay;
     private float timer;
+    private float bossTimer;
+    private bool bossSpawned = false;
 
     //플레이어 좌표는 여기서만 참조하고, 몬스터는 이걸 읽는걸로 변경
     public Transform player;
@@ -33,12 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
         int stageType = ChunkManager.Instance.typeNumb;
 
-        for (int i = 0; i < enemyManagers.Length; i++)
-        {
-            bool isActive = (i + 1) == stageType;
-
-            enemyManagers[i].isActiveStage = isActive;
-        }
+        enemyManagers.SetStage(stageType);
     }
 
     // Update is called once per frame
@@ -52,12 +53,17 @@ public class EnemySpawner : MonoBehaviour
             currentDelay=Mathf.Max(minDelay,currentDelay - decreasedAmount);
         }
 
+        bossTimer += Time.deltaTime;
+        if (!bossSpawned&&bossTimer >= bossSpawnTime)
+        {
+            TrySpawnBoss();
+        }
+
         PlayerPos = new Vector3(player.position.x, player.position.y, 0f);
     }
 
     private void TrySpawn()
     {
-        Debug.Log("TrySpawn");
         for (int i = 0; i < 10; i++)    //최대 10번 위치 재시도하기
         {
             Vector2 spawnPos = (Vector2)transform.position + new Vector2(
@@ -68,14 +74,28 @@ public class EnemySpawner : MonoBehaviour
             Collider2D hit =Physics2D.OverlapCircle(spawnPos,checkRadius,enemyLayer);
             if (hit == null)
             {
-                for (int j = 0; j < enemyManagers.Length; j++)
-                {
-                    if (enemyManagers[j].isActiveStage)
-                    {
-                        enemyManagers[j].Spawn(spawnPos);
-                        break;
-                    }
-                }
+                enemyManagers.Spawn(spawnPos);
+                break;
+            }
+        }
+    }
+
+    private void TrySpawnBoss()
+    {
+        if (bossSpawned) return;
+
+        for (int i = 0; i < 10; i++)    //최대 10번 위치 재시도하기
+        {
+            Vector2 spawnPos = (Vector2)transform.position + new Vector2(
+                Random.Range(areaMin.x, areaMax.x),
+                Random.Range(areaMin.y, areaMax.y)
+                );
+
+            Collider2D hit = Physics2D.OverlapCircle(spawnPos, checkRadius, enemyLayer);
+            if (hit == null)
+            {
+                enemyManagers.SpawnMid(spawnPos);
+                bossSpawned= true;
                 break;
             }
         }
