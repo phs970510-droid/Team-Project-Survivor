@@ -52,6 +52,7 @@ MonoBehaviour:
   minDelay: 0.5
   decreasedAmount: 0.05
   bossSpawnTime: 60
+  finalBossSpawnTime: 120
   bossSpawnPoint: {fileID: 0}
   checkRadius: 0.6
   enemyLayer:
@@ -109,4 +110,4 @@ MonoBehaviour:
   bossType1: {fileID: 3397577142483854797, guid: 2d02f0a2ea348604a816b78802e611a0, type: 3}
   bossType2: {fileID: 4712620499357379564, guid: 3969186825def224e94301f7a895f115, type: 3}
   bossType3: {fileID: 1009769719818405756, guid: 10426227de5274440a78bd12fac8107c, type: 3}
-  isActiveStage: 0
+  bossForInfinite: {fileID: 135309375421609298, guid: 15233f348bfaa4045a24e3c9cbbcabcc, type: 3}

@@ -1,14 +1,14 @@
-using UnityEngine;
+ç™¤using UnityEngine;
 
 public class EXP : MonoBehaviour
 {
-    [Header("°æÇèÄ¡ ¼¼ÆÃ")]
+    [Header("ê²½í—˜ì¹˜ ì„¸íŒ…")]
     [SerializeField] public float expAmount = 10f;
     [SerializeField] private ItemPool expPool;
     [SerializeField] private PlayerLevel playerLevel;
     [SerializeField] public float levelUpMiutiplier = 1.1f;
 
-    [Header("ÀÚ¼® ¼¼ÆÃ")]
+    [Header("ÂÂÂ„Â Â„ëª…ÂŒÂ…")]
     [SerializeField] private float magnetSpeed = 5.0f;
     [SerializeField] public float levelUpRange = 1.0f;
     [SerializeField] public float magnetRange = 0f;
@@ -26,26 +26,21 @@ public class EXP : MonoBehaviour
     {
         if (player == null) return;
 
-        MagnetRangeCheck();
-    }
-
-    private void MagnetRangeCheck()
-    {
-        float range;
-        //ÀÚ¼® ¾ÆÀÌÅÛ ¸ÔÀ¸¸é ÀÚ¼® ¹üÀ§´Â ¹«ÇÑ
+        //ÂÂÂ„Â Â•Â„ÂëŒ„Â…Âœ ç™’ë±€Âœì‡°ãˆƒ ÂÂÂ„Â è¸°Â”ÂœÂ„ÂŠÂ” è‡¾ëŒ„Â•Âœ
         if (getMagnetItem)
         {
             range = Mathf.Infinity;
         }
-        //Æò¼Ò¿¡´Â ÇÃ·¹ÀÌ¾î ÀÚ·Â
+        //Â‰Â†ÂŒÂ—ÂÂŠÂ” Â”ÂŒï¿½ÂˆÂëŒÂ– ÂÂï¿½
         else
         {
-            range = magnetLevel * levelUpRange;
+            float baseRange = DataManager.Instance.baseData.magnetRange;
+            range = baseRange + (magnetLevel * levelUpRange);
         }
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        //¹üÀ§ ¾ÈÀÌ¸é ÀÚ¼®
+        //ë²”ìœ„ ì•ˆì´ë©´ ìì„
         if (range >= distance)
         {
             transform.position = Vector2.Lerp(transform.position, player.position, Time.deltaTime * magnetSpeed);
@@ -59,11 +54,11 @@ public class EXP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //ÇÃ·¹ÀÌ¾î¿¡ ´êÀ¸¸é ÇÃ·¹ÀÌ¾î°¡ °æÇèÄ¡ ¾ò°í
+        //Â”ÂŒï¿½ÂˆÂëŒÂ–ëŒÂ—Â Â‹ìš°Âœì‡°ãˆƒ Â”ÂŒï¿½ÂˆÂëŒÂ–ë‹¿Â€ å¯ƒì€Â—Â˜ç§»Â˜ Â–ì‚°ï¿½
         if (other.CompareTag("Player"))
         {
             playerLevel.GetEXP(expAmount);
-            //°æÇèÄ¡´Â Ç®¿¡ ¹İÈ¯
+            //å¯ƒì€Â—Â˜ç§»Â˜ÂŠÂ” Â’Â€Â—Â è«›Â˜Â™Â˜
             expPool.ReturnItem(this.gameObject);
         }
     }
