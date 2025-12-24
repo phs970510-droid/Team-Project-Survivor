@@ -14,10 +14,12 @@ public class CommonHP : MonoBehaviour
     protected float invincibleTime = 0.5f;
     protected bool isInvincible = false;
 
-    [Header("경험치(에너미만 할당)")]
-    [SerializeField] private GameObject normalEXPPrefab;
-    [SerializeField] private GameObject bigEXPPrefab;
-    [SerializeField] private float chance = 0.2f;
+    [Header("에너미 죽었을 때")]
+    [SerializeField] private float expChance = 0.2f;
+    [SerializeField] private ItemPool bigPool;
+    [SerializeField] private ItemPool normalPool;
+    [SerializeField] private float coinChance = 0.2f;
+    [SerializeField] private ItemPool coinPool;
 
     [Header("보스 보상")]
     [SerializeField] private GameObject bossReward;
@@ -129,7 +131,11 @@ public class CommonHP : MonoBehaviour
             agent.isStopped = true;
             agent.velocity = Vector2.zero;
         }
-        if(CompareTag("Enemy")) DropEXP();
+        if (CompareTag("Enemy"))
+        {
+            DropEXP();
+            DropCoin();
+        }
         if (CompareTag("Boss")) DropReward();
 
         gameObject.tag = "DeadEnemy";   //플레이어가 공격 안하도록 태그변경
@@ -138,13 +144,33 @@ public class CommonHP : MonoBehaviour
     private void DropEXP()
     {
         float rand = Random.value;
-        if(bigEXPPrefab != null && chance >= rand)
+        GameObject normalObj = GameObject.Find("NormalEXPPool");
+        GameObject bigObj = GameObject.Find("BigEXPPool");
+        normalPool = normalObj.GetComponent<ItemPool>();
+        bigPool = bigObj.GetComponent<ItemPool>();
+
+        if (bigPool != null && normalPool != null)
         {
-            Instantiate(bigEXPPrefab, transform.position, Quaternion.identity);
+            if (expChance >= rand)
+            {
+                bigPool.SpawnItem(transform.position);
+            }
+            else
+            {
+                normalPool.SpawnItem(transform.position);
+            }
         }
-        else
+    }
+
+    private void DropCoin()
+    {
+        float rand = Random.value;
+        GameObject coinObj = GameObject.Find("CoinPool");
+        coinPool = coinObj.GetComponent<ItemPool>();
+
+        if (coinPool != null && coinChance >= rand)
         {
-            Instantiate(normalEXPPrefab, transform.position, Quaternion.identity);
+            coinPool.SpawnItem(transform.position + Vector3.right * 0.5f);
         }
     }
 

@@ -55,7 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3785501709584424279}
   - component: {fileID: 4011689395001350581}
-  - component: {fileID: 636721099262124383}
   - component: {fileID: 786666667325399475}
   - component: {fileID: 5102549481388735783}
   - component: {fileID: 6582120188964527633}
@@ -63,6 +62,7 @@ GameObject:
   - component: {fileID: 2988863353437591690}
   - component: {fileID: 5642534996028245039}
   - component: {fileID: 857152953777053999}
+  - component: {fileID: 302053650959733084}
   m_Layer: 6
   m_Name: ShootEnemy
   m_TagString: Enemy
@@ -138,19 +138,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &636721099262124383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8438441831515790706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b631d42b6e43e4d9246f3bc45c872b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useFlip: 0
 --- !u!114 &786666667325399475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,9 +264,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: 9b824ad910c886b4a968a4c107a08162, type: 2}
   isDead: 0
-  normalEXPPrefab: {fileID: 3696491053880253121, guid: 28ab4557438ce7b4cb4af3b898a7fb29, type: 3}
-  bigEXPPrefab: {fileID: 5082785930944967579, guid: dfd5d6d7d77f2f24fa9f40eeb2d62fa1, type: 3}
-  chance: 0.2
+  expChance: 0.2
+  bigPool: {fileID: -7957447705339452863, guid: 0930c9e85914abd4dabb2004a2b574a2, type: 3}
+  normalPool: {fileID: 5266296165249046533, guid: 63254432723e44a43b17fb6cd6bb92ff, type: 3}
+  coinChance: 0.2
+  coinPool: {fileID: 2659758993133963925, guid: 546ca588d52e91141b4c0ccdbb272b33, type: 3}
   bossReward: {fileID: 0}
   damageReduce: 0.3
   sheildTime: 5
@@ -304,3 +293,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &302053650959733084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438441831515790706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b631d42b6e43e4d9246f3bc45c872b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useFlip: 0

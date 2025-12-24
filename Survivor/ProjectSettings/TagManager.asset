@@ -21,6 +21,7 @@ TagManager:
   - JoyStick
   - OpenSelectItme
   - Obstacle
+  - Coin
   layers:
   - Default
   - TransparentFX
