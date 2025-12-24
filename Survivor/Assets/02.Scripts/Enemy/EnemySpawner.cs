@@ -94,7 +94,7 @@ public class EnemySpawner : MonoBehaviour
             Collider2D hit = Physics2D.OverlapCircle(spawnPos, checkRadius, enemyLayer);
             if (hit == null)
             {
-                enemyManagers.SpawnBoss(spawnPos);
+                enemyManagers.SpawnMid(spawnPos);
                 bossSpawned= true;
                 break;
             }

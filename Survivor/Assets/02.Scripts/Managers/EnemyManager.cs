@@ -21,11 +21,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject bossType1;
     [SerializeField] private GameObject bossType2;
     [SerializeField] private GameObject bossType3;
+    [SerializeField] private GameObject bossForInfinite;
     
     private GameObject bossPrefab;
+    private GameObject bossInfinite;
     public void SetStage(int stageType)
     {
         SelectEnemyPrefab(stageType);
+        bossInfinite = bossForInfinite;
         CreatePool();
     }
 
@@ -93,20 +96,28 @@ public class EnemyManager : MonoBehaviour
         return null;
     }
 
-    public void SpawnBoss(Vector3 position)
+    public void SpawnBoss(GameObject prefab, Vector3 position)
     {
-        if (bossPrefab == null)
+        if (prefab == null)
         {
             return;
         }
-        GameObject enemyBoss=Instantiate(bossPrefab);
-        enemyBoss.transform.position = position;
+        GameObject Boss=Instantiate(prefab);
+        Boss.transform.position = position;
 
-        var agent = enemyBoss.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        var agent = Boss.GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent != null)
         {
             agent.ResetPath();
         }
-        enemyBoss.SetActive(true);
+        Boss.SetActive(true);
+    }
+    public void SpawnMid(Vector3 position)
+    { 
+        SpawnBoss(bossPrefab,position);
+    }
+    public void SpawnInfinite(Vector3 position)
+    {
+        SpawnBoss(bossInfinite, position);
     }
 }
