@@ -1,20 +1,18 @@
-癤using UnityEngine;
+﻿using UnityEngine;
 
 public class EXP : MonoBehaviour
 {
     [Header("경험치 세팅")]
-    [SerializeField] public float expAmount = 10f;
+    [SerializeField] private int expAmount;
     [SerializeField] private ItemPool expPool;
     [SerializeField] private PlayerLevel playerLevel;
-    [SerializeField] public float levelUpMiutiplier = 1.1f;
 
-    [Header(" 명")]
+    [Header("자석 세팅")]
     [SerializeField] private float magnetSpeed = 5.0f;
-    [SerializeField] public float levelUpRange = 1.0f;
-    [SerializeField] public float magnetRange = 0f;
+    [SerializeField] private float levelUpRange = 1.0f;
 
+    private float range;
     public int magnetLevel = 0;
-    public int expLevel = 0;
     private Transform player;
     private bool getMagnetItem = false;
 
@@ -26,12 +24,12 @@ public class EXP : MonoBehaviour
     {
         if (player == null) return;
 
-        // 댄 癒뱀쇰㈃  踰 臾댄
+        //자석 아이템 먹으면 자석 범위는 무한
         if (getMagnetItem)
         {
             range = Mathf.Infinity;
         }
-        // �댁 �
+        //평소에는 플레이어 자력
         else
         {
             float baseRange = DataManager.Instance.baseData.magnetRange;
@@ -41,7 +39,7 @@ public class EXP : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
 
         //범위 안이면 자석
-        if (range >= distance)
+        if(range >= distance)
         {
             transform.position = Vector2.Lerp(transform.position, player.position, Time.deltaTime * magnetSpeed);
         }
@@ -54,11 +52,11 @@ public class EXP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //�댁댁 우쇰㈃ �댁닿 寃쏀移 산�
+        //플레이어에 닿으면 플레이어가 경험치 얻고
         if (other.CompareTag("Player"))
         {
             playerLevel.GetEXP(expAmount);
-            //寃쏀移  諛
+            //경험치는 풀에 반환
             expPool.ReturnItem(this.gameObject);
         }
     }
