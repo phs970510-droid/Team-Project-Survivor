@@ -133,9 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06eee8347b8584419e20740f2109185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expAmount: 1
+  expAmount: 10
   expPool: {fileID: 5266296165249046533, guid: 63254432723e44a43b17fb6cd6bb92ff, type: 3}
   playerLevel: {fileID: 4555377799735681598, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+  levelUpMiutiplier: 1.1
   magnetSpeed: 5
   levelUpRange: 1
+  magnetRange: 0
   magnetLevel: 0
+  expLevel: 0
