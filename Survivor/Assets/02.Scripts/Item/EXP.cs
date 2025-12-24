@@ -6,7 +6,7 @@ public class EXP : MonoBehaviour
     [SerializeField] public float expAmount = 10f;
     [SerializeField] private ItemPool expPool;
     [SerializeField] private PlayerLevel playerLevel;
-    [SerializeField] public float levelUpMiutiplier = 1.1f;
+    [SerializeField] public float levelUpMlutiplier = 1.1f;
 
     [Header("자석 세팅")]
     [SerializeField] private float magnetSpeed = 5.0f;
@@ -60,7 +60,8 @@ public class EXP : MonoBehaviour
         //플레이어에 닿으면 플레이어가 경험치 얻고
         if (other.CompareTag("Player"))
         {
-            playerLevel.GetEXP(expAmount);
+            float finalExp = expAmount * levelUpMlutiplier;
+            playerLevel.GetEXP(Mathf.RoundToInt(finalExp));
             //경험치는 풀에 반환
             expPool.ReturnItem(this.gameObject);
         }
