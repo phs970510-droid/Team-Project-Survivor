@@ -372,6 +372,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd5d6d7d77f2f24fa9f40eeb2d62fa1, type: 3}
+--- !u!1001 &588872977
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 800.86804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 576.54016
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.203562
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650185465918434342, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165108866064752234, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: moneyText
+      value: 
+      objectReference: {fileID: 5421374770882030453}
+    - target: {fileID: 2946331757003450294, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: m_Name
+      value: UIManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3c1862038052b6409770c96f00fa928, type: 3}
 --- !u!1001 &734904232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1437,6 +1498,12 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3139726332131923017, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+      propertyPath: m_text
+      value: '
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3681204679013311163, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1530,6 +1597,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+--- !u!114 &5421374770882030453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3139726332131923017, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+  m_PrefabInstance: {fileID: 5421374770882030452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6208547347274376407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7157591135253029728, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}

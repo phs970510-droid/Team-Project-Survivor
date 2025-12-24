@@ -22,6 +22,11 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayers;    // 효과음 재생용 AudioSource 배열
     int channelIndex;            // 다음 사용할 채널 인덱스(라운드 로빈 방식)
 
+    const string PREF_SFX_ON = "SFX_ON";
+    const string PREF_SFX_VOLUME = "SFX_VOLUME";
+    const string PREF_BGM_ON = "BGM_ON";
+    const string PREF_BGM_VOLUME = "BGM_VOLUME";
+
     // 효과음을 인덱스로 부르기 위한 enum
     public enum Sfx { Dead, Hit, LevelUp = 3, Lose, Melee, Range = 7, Select, Win, Coin }
 
@@ -73,6 +78,27 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i].playOnAwake = false;          // 자동 재생 금지
             sfxPlayers[i].bypassListenerEffects = true; // 3D 효과 무시 (2D 사운드처럼 들림)
             sfxPlayers[i].volume = sfxVolume;           // 초기 볼륨 동일하게 적용
+        }
+
+        bool sfxOn = PlayerPrefs.GetInt(PREF_SFX_ON, 1) == 1;
+        float savedSfxVolume = PlayerPrefs.GetFloat(PREF_SFX_VOLUME, sfxVolume);
+
+        SetSfxVolume(savedSfxVolume);
+        SetSfxEnabled(sfxOn);
+
+        bool bgmOn = PlayerPrefs.GetInt(PREF_BGM_ON, 1) == 1;
+        float savedBgmVolume = PlayerPrefs.GetFloat(PREF_BGM_VOLUME, bgmVolume);
+
+        SetBgmVolume(savedBgmVolume);
+
+        if (bgmOn)
+        {
+            bgmPlayer.Play();
+        }
+
+        else
+        {
+            bgmPlayer.Stop();
         }
     }
 
@@ -130,6 +156,82 @@ public class AudioManager : MonoBehaviour
     public float GetSfxVolume()
     {
         return sfxVolume;
+    }
+    // ---------------------------------------------------------
+    // UI: BGM 켜기 / 끄기 (Toggle 연결)
+    // ---------------------------------------------------------
+    public void SetBgmEnabled(bool isOn)
+    {
+        if (isOn)
+            bgmPlayer.Play();   // BGM 재생
+        else
+            bgmPlayer.Stop();   // BGM 정지
+
+        PlayerPrefs.SetInt(PREF_BGM_ON, isOn ? 1 : 0);
+    }
+
+    // ---------------------------------------------------------
+    // UI: SFX 켜기 / 끄기 (Toggle 연결)
+    // ---------------------------------------------------------
+    public void SetSfxEnabled(bool isOn)
+    {
+        // mute 속성으로 전체 효과음을 한 번에 On/Off
+        foreach (var p in sfxPlayers)
+            p.mute = !isOn;
+
+        PlayerPrefs.SetInt(PREF_SFX_ON, isOn ? 1 : 0);
+    }
+
+    // ---------------------------------------------------------
+    // UI: BGM 볼륨 슬라이더 (0~1)
+    // ---------------------------------------------------------
+    public void SetBgmVolume(float volume)
+    {
+        bgmVolume = volume;
+
+        if (bgmPlayer != null)
+            bgmPlayer.volume = bgmVolume;
+
+        PlayerPrefs.SetFloat(PREF_BGM_VOLUME, bgmVolume);
+    }
+
+    // ---------------------------------------------------------
+    // UI: SFX 볼륨 슬라이더 (0~1)
+    // ---------------------------------------------------------
+    public void SetSfxVolume(float volume)
+    {
+        sfxVolume = volume;
+
+        if (sfxPlayers != null)
+        {
+            foreach (var p in sfxPlayers)
+                p.volume = sfxVolume;
+        }
+
+        PlayerPrefs.SetFloat(PREF_SFX_ON, sfxVolume);
+    }
+
+   
+
+    // UI 버튼 사운드
+    public void PlaySelectSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
+    }
+
+    //코인 사운드
+    public void PlayCoinSound()
+    {
+        PlaySfx(Sfx.Coin);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
+            Destroy(gameObject);
+        }
     }
 
 
