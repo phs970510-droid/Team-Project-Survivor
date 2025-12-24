@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 //스포너는 스폰
@@ -17,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("보스 스폰 타이밍")]
     public float bossSpawnTime = 60f;
+    public float finalBossSpawnTime = 120f;
     public Transform bossSpawnPoint;
 
     [Header("충돌 검사")]
@@ -27,6 +29,9 @@ public class EnemySpawner : MonoBehaviour
     private float timer;
     private float bossTimer;
     private bool bossSpawned = false;
+    //private bool finalBossSpawned = false;
+
+    private Vector2 spawnPos;
 
     //플레이어 좌표는 여기서만 참조하고, 몬스터는 이걸 읽는걸로 변경
     public Transform player;
@@ -48,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= currentDelay)
         {
-            TrySpawn();
+            TrySpawnEnemy();
             timer = 0f;
             currentDelay=Mathf.Max(minDelay,currentDelay - decreasedAmount);
         }
@@ -59,14 +64,20 @@ public class EnemySpawner : MonoBehaviour
             TrySpawnBoss();
         }
 
+        //여기에 무한맵용 최종보스 스폰코드 구현하기
+        //if (!bossSpawned && bossTimer >= finalBossSpawnTime)
+        //{
+        //    TrySpawnInfinite();
+        //}
+
         PlayerPos = new Vector3(player.position.x, player.position.y, 0f);
     }
 
-    private void TrySpawn()
+    private bool TrySpawn()
     {
         for (int i = 0; i < 10; i++)    //최대 10번 위치 재시도하기
         {
-            Vector2 spawnPos = (Vector2)transform.position + new Vector2(
+            spawnPos = (Vector2)transform.position + new Vector2(
                 Random.Range(areaMin.x, areaMax.x),
                 Random.Range(areaMin.y, areaMax.y)
                 );
@@ -74,32 +85,39 @@ public class EnemySpawner : MonoBehaviour
             Collider2D hit =Physics2D.OverlapCircle(spawnPos,checkRadius,enemyLayer);
             if (hit == null)
             {
-                enemyManagers.Spawn(spawnPos);
-                break;
+                return true;
             }
         }
+        spawnPos = Vector2.zero;
+        return false;
     }
 
+    private void TrySpawnEnemy()
+    {
+        if (TrySpawn()==true)
+        {
+            enemyManagers.Spawn(spawnPos);
+        }
+    }
     private void TrySpawnBoss()
     {
         if (bossSpawned) return;
-
-        for (int i = 0; i < 10; i++)    //최대 10번 위치 재시도하기
+        if (TrySpawn()==true)
         {
-            Vector2 spawnPos = (Vector2)transform.position + new Vector2(
-                Random.Range(areaMin.x, areaMax.x),
-                Random.Range(areaMin.y, areaMax.y)
-                );
-
-            Collider2D hit = Physics2D.OverlapCircle(spawnPos, checkRadius, enemyLayer);
-            if (hit == null)
-            {
-                enemyManagers.SpawnMid(spawnPos);
-                bossSpawned= true;
-                break;
-            }
+            enemyManagers.SpawnMid(spawnPos);
+            bossSpawned = true;
         }
     }
+    //무한맵 로직 전까진 주석처리 유지
+    //private void TrySpawnInfinite()
+    //{
+    //    if (finalBossSpawned) return;
+    //    if (TrySpawn()==true)
+    //    {
+    //        enemyManagers.SpawnInfinite(spawnPos);
+    //        finalBossSpawned = true;
+    //    }
+    //}
 
     private void OnDrawGizmosSelected()
     {
