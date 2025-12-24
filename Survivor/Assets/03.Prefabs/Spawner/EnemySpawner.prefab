@@ -106,7 +106,7 @@ MonoBehaviour:
   enemyType02: {fileID: 5936454120232849771, guid: 06c67f311a03a3b49bc1693eff0d9f23, type: 3}
   enemyType03: {fileID: 8438441831515790706, guid: e11d79aeb874883499970bad373cd0d3, type: 3}
   poolSize: 100
-  bossType1: {fileID: 4712620499357379564, guid: 3969186825def224e94301f7a895f115, type: 3}
-  bossType2: {fileID: 3397577142483854797, guid: 2d02f0a2ea348604a816b78802e611a0, type: 3}
+  bossType1: {fileID: 3397577142483854797, guid: 2d02f0a2ea348604a816b78802e611a0, type: 3}
+  bossType2: {fileID: 4712620499357379564, guid: 3969186825def224e94301f7a895f115, type: 3}
   bossType3: {fileID: 1009769719818405756, guid: 10426227de5274440a78bd12fac8107c, type: 3}
   isActiveStage: 0

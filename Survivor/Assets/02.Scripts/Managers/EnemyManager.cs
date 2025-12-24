@@ -23,8 +23,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject bossType3;
     
     private GameObject bossPrefab;
-
-    public bool isActiveStage = false;
     public void SetStage(int stageType)
     {
         SelectEnemyPrefab(stageType);
