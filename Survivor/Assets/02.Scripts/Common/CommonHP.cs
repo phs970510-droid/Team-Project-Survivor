@@ -136,7 +136,22 @@ public class CommonHP : MonoBehaviour
             DropEXP();
             DropCoin();
         }
-        if (CompareTag("Boss")) DropReward();
+        if (CompareTag("Boss"))
+        {
+            DropReward();
+            GameObject exitObj = GameObject.Find("ExitGate");
+            if(exitObj == null) Debug.Log("게이트오브젝트 없음");
+            if (exitObj != null)
+            {
+                ExitGate exitGate = exitObj.GetComponent<ExitGate>();
+                if (exitGate == null) Debug.Log("게이트에 스크립트 없음");
+                else
+                {
+                    exitGate.ShowExitGate();
+                    Debug.Log("게이트 소환");
+                }
+            }
+        }
 
         gameObject.tag = "DeadEnemy";   //플레이어가 공격 안하도록 태그변경
     }

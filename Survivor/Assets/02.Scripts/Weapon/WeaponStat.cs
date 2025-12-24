@@ -8,6 +8,7 @@ public class WeaponStat : MonoBehaviour
     public float fireCoolTime;
     public int bulletCount;
 
+    private int maxLevel = 5;
     public void StartStat()
     {
         level = 1;

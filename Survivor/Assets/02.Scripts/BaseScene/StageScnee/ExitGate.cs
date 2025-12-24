@@ -19,30 +19,22 @@ public class ExitGate : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        //gameObject.SetActive(false);
         col = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
         col.enabled = false;//게임시작하면 안 닿게
         sr.enabled = false; //게임시작하면 안 보이게
     }
 
-    private void Start()
+    //코루틴 삭제
+    public void ShowExitGate()
     {
-        StartCoroutine(ShowExitGate());
-    }
-
-    private IEnumerator ShowExitGate()
-    {
-        yield return new WaitForSeconds(showDelay);
         Vector2 randomDir = Random.insideUnitCircle.normalized;
         //플레이어 포지션 랜덤한 dist거리에 생성
-        Vector3 pos = player.position + (Vector3)(randomDir * distance);
+        Vector3 pos = player.position + (Vector3)(randomDir * distance);    
 
         transform.position = pos;
-        //gameObject.SetActive(true);
         this.col.enabled = true;
         this.sr.enabled = true;
-        //yield return new WaitForSeconds(showDelay);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
