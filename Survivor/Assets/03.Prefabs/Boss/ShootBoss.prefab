@@ -35,7 +35,8 @@ Transform:
   m_LocalPosition: {x: 0.27, y: -3.39, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7038730784460613050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7877311534749871339
@@ -179,9 +180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseData: {fileID: 11400000, guid: b37ca74f6f397214f86d9d15819805f9, type: 2}
   isDead: 0
-  normalEXPPrefab: {fileID: 0}
-  bigEXPPrefab: {fileID: 0}
-  chance: 0.2
+  expChance: 0.2
+  bigPool: {fileID: 0}
+  normalPool: {fileID: 0}
+  coinChance: 0.2
+  coinPool: {fileID: 0}
   bossReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}
   damageReduce: 0.3
   sheildTime: 5
@@ -218,8 +221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f126c8641ad3e4e888b884d5fa6119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 3
+  bulletPool: {fileID: 3378097108804683386}
   patternCoolTime: 5
-  bossBulletPrefab: {fileID: 5840852700482193341, guid: dff13102b53994a4fbc764159785e990, type: 3}
   baseData: {fileID: 11400000, guid: b37ca74f6f397214f86d9d15819805f9, type: 2}
   coneBulletCount: 5
   spreadAngle: 60
@@ -228,3 +232,48 @@ MonoBehaviour:
   circleBulletCount: 36
   randomBulletCount: 40
   randomShootDelay: 0.1
+--- !u!1 &1458894486556601050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7038730784460613050}
+  - component: {fileID: 3378097108804683386}
+  m_Layer: 6
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7038730784460613050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458894486556601050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4965375086923513087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3378097108804683386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458894486556601050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58c5885d5f2ddf44bd6450d79672877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 3c5a1296f3a172a40868d814a3989ba7, type: 2}
