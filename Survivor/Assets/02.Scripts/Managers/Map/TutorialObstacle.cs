@@ -25,16 +25,6 @@ public class TutorialObstacle : Obstacles
             .Where(x => x != obstacleParentB.transform).ToArray();
     }
 
-    protected override void HordingTime()
-    {
-        
-    }
-
-    protected override void ObjectHp()
-    {
-        
-    }
-
     protected override void SpawnInteraction()
     {
         
