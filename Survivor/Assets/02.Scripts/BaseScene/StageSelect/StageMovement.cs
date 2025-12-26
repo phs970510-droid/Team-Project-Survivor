@@ -36,6 +36,14 @@ public class StageMovement : MonoBehaviour
         {
             chunkManager.SelectMap(3, 1);
         }
+        else if (other.CompareTag("Infinity2"))
+        {
+            chunkManager.SelectMap(3, 2);
+        }
+        else if (other.CompareTag("Infinity3"))
+        {
+            chunkManager.SelectMap(3, 3);
+        }
 
 
     }
