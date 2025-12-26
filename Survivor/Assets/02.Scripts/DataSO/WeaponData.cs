@@ -9,6 +9,7 @@ public class WeaponData : ScriptableObject
     public string weaponName;
     public bool isUnlocked;
     public int price;
+    public string description;
 
     [Header("무기 스탯")]
     public float damage = 10f;

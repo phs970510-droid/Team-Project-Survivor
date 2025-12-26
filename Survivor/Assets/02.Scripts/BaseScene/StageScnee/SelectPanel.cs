@@ -1,19 +1,35 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SelectPanel : MonoBehaviour
 {
     public SelectItemButton[] buttons;     
-    public List<WeaponData> allWeaponData; 
+    public List<WeaponData> allWeaponData;
+    private List<WeaponData> runtimeWeaponData;
 
+    public WeaponStat playerWeaponStat;
+
+
+
+    private void Awake()
+    {
+        runtimeWeaponData = new List<WeaponData>();
+        foreach(var data in allWeaponData)
+        {
+            WeaponData runtime = Instantiate(data);
+            runtime.starLevel = 0;
+            runtimeWeaponData.Add(runtime);
+        }
+    }
     private void OnEnable()
     {
         ShowRandomItems();
     }
 
-    void ShowRandomItems()
+    public  void ShowRandomItems()
     {
-        List<WeaponData> temp = new List<WeaponData>(allWeaponData);
+        List<WeaponData> temp = new List<WeaponData>(runtimeWeaponData);
 
         for (int i = 0; i < buttons.Length; i++)
         {

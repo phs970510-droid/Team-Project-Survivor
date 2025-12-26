@@ -16,6 +16,7 @@ MonoBehaviour:
   weaponName: DroneWeapon
   isUnlocked: 0
   price: 10000
+  description: Drone Damage +1
   damage: 3
   speed: 10
   fireCoolTime: 5

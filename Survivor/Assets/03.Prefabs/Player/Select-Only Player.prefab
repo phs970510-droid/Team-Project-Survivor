@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8932246914335209918}
   - component: {fileID: 4169216431764946394}
   - component: {fileID: 74375645562306391}
-  - component: {fileID: 3812838746296150793}
   - component: {fileID: 3637003209214766841}
+  - component: {fileID: 3812838746296150793}
   m_Layer: 3
   m_Name: Select-Only Player
   m_TagString: Player
@@ -164,6 +164,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageSceneLode: {fileID: 0}
+  chunkManager: {fileID: 0}
+--- !u!114 &3637003209214766841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796126371680101017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263d4b985cceb0446b9a5139cf08fd81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &3812838746296150793
 Animator:
   serializedVersion: 5
@@ -185,15 +198,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3637003209214766841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796126371680101017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263d4b985cceb0446b9a5139cf08fd81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

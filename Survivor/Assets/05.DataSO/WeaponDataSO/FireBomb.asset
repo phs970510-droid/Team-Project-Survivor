@@ -16,6 +16,7 @@ MonoBehaviour:
   weaponName: FireBombWeapon
   isUnlocked: 0
   price: 5000
+  description: Fire Damage +1
   damage: 5
   speed: 10
   fireCoolTime: 3

@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &93926172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6442978477284019125, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+  m_PrefabInstance: {fileID: 5421374770882030452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &93926173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8095665190065983814, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+  m_PrefabInstance: {fileID: 5421374770882030452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &93926174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 102977710567267715, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+  m_PrefabInstance: {fileID: 5421374770882030452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &146907472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -392,6 +425,7 @@ MonoBehaviour:
   - {fileID: 5421374770882030458}
   - {fileID: 5421374770882030457}
   - {fileID: 5421374770882030456}
+  descriptionText: {fileID: 93926172}
   selectPanel: {fileID: 6208547347274376407}
 --- !u!1001 &444916269
 PrefabInstance:
@@ -613,6 +647,7 @@ MonoBehaviour:
   - {fileID: 5421374770882030464}
   - {fileID: 5421374770882030463}
   - {fileID: 5421374770882030462}
+  descriptionText: {fileID: 93926174}
   selectPanel: {fileID: 6208547347274376407}
 --- !u!4 &820825937 stripped
 Transform:
@@ -707,6 +742,7 @@ MonoBehaviour:
   - {fileID: 5421374770882030470}
   - {fileID: 5421374770882030469}
   - {fileID: 5421374770882030468}
+  descriptionText: {fileID: 93926173}
   selectPanel: {fileID: 6208547347274376407}
 --- !u!1001 &993444144
 PrefabInstance:
@@ -1818,6 +1854,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 224632947446329819, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+    - {fileID: 6516840547660268303, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+    - {fileID: 8886359256726059043, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
