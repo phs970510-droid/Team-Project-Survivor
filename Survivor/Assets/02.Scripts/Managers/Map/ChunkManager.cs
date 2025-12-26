@@ -85,6 +85,14 @@ public class ChunkManager : MonoBehaviour
         {
             SelectMap(2, 3);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SelectMap(3, 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SelectMap(3, 2);
+        }
     }
     #endregion
 }

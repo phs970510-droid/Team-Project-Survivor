@@ -23,19 +23,11 @@ public class StageMap : Chunk
     private GameObject Obstacle01;
     private GameObject Obstacle02;
     private GameObject Obstacle03;
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        player = GameObject.Find("Player").transform;
-
-        ResetActive(); //다른 프리팹이 활성화 되어있다면 비활성화
-    }
-#endif
     #endregion
 
     protected override void Awake()
     {
+        BaseSetting();
         SelectChunkType();
         base.Awake();
         LoadChunk();
@@ -48,6 +40,13 @@ public class StageMap : Chunk
     }
 
     #region method
+    private void BaseSetting()
+    {
+        player = GameObject.Find("Player").transform;
+
+        ResetActive(); //다른 프리팹이 활성화 되어있다면 비활성화
+    }
+
     private void SelectChunkType()
     {
         selectNumb = (Type)ChunkManager.Instance.typeNumb;

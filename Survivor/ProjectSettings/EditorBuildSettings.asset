@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/Testing/TestSceneSelect.unity
     guid: 32c6a97c1f7792349ae749095b5e8f70
+  - enabled: 1
+    path: Assets/01.Scenes/Map/InfinityMap.unity
+    guid: 5e2da207accf13042b22228184357204
   m_configObjects: {}
