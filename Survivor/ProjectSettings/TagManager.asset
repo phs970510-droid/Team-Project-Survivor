@@ -23,6 +23,7 @@ TagManager:
   - Obstacle
   - Coin
   - SelectPanel
+  - Infinity
   layers:
   - Default
   - TransparentFX
