@@ -159,6 +159,17 @@ public class CommonHP : MonoBehaviour
                     Debug.Log("게이트 소환");
                 }
             }
+            GameObject spawnerObj = GameObject.Find("EnemySpawner");
+            if(spawnerObj != null)
+            {
+                EnemySpawner enemySpawner = spawnerObj.GetComponent<EnemySpawner>();
+                if(enemySpawner != null)
+                {
+                    //에너미 스포너 타임 돌아가기 위함
+                    enemySpawner.FinalBossDead();
+                }
+            }
+
         }
 
         gameObject.tag = "DeadEnemy";   //플레이어가 공격 안하도록 태그변경
