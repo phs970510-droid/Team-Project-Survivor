@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool useFlip;
 
     private EnemySpawner spawner;
+    private TutorialEnemySpawner tutorialEnemySpawner;
     private NavMeshAgent agent;
     private SpriteRenderer sr;
     private CommonHP hp;
@@ -18,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         spawner = GetComponentInParent<EnemySpawner>();
+        tutorialEnemySpawner = GetComponentInParent<TutorialEnemySpawner>();
         agent = GetComponent<NavMeshAgent>();
         sr = GetComponentInChildren<SpriteRenderer>();
         hp = GetComponent<CommonHP>();
@@ -45,11 +47,18 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            if (spawner != null && !hp.isDead && agent.isOnNavMesh)
+            if (!hp.isDead && agent.isOnNavMesh)
             {
-                //스포너에서 PlayerPos 받기
-                agent.SetDestination(spawner.PlayerPos);    //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
+                if (spawner != null)
+                {
+                    //스포너에서 PlayerPos 받기
+                    agent.SetDestination(spawner.PlayerPos);    //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
 
+                }
+                else
+                {
+                    agent.SetDestination(tutorialEnemySpawner.PlayerPos);
+                }
 
                 //좌우반전
                 if (agent.velocity.x > 0)
@@ -61,7 +70,7 @@ public class EnemyAI : MonoBehaviour
                     sr.flipX = true;
                 }
             }
-            yield return new WaitForSeconds(UPDATE_INTERVAL);
+                yield return new WaitForSeconds(UPDATE_INTERVAL);
             //Debug.Log($"PlayerPos={spawner.PlayerPos}");
             //Debug.Log($"AgentDest={agent.destination}");
         }
