@@ -7,7 +7,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public EnemyKillCount enemyKillCount;
+
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI killCountText;
     private void Awake()
     {
         Instance = this;
@@ -25,6 +28,13 @@ public class UIManager : MonoBehaviour
         if(moneyText!= null)
         moneyText.text = $"${money}";
         ;
+    }
+    void Update()
+    {
+        if(enemyKillCount != null)
+        {
+            killCountText.text = enemyKillCount.killcount.ToString();
+        }
     }
 
 
