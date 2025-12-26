@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class StarDisplay : MonoBehaviour
 {
-    public Image[] stars;
-
-    private int currentStar = 0;
-    public void UpdateStar()
+    [SerializeField] private  Image[] stars;
+    
+    public void Refrsh(int starCount)
     {
-        if (currentStar >= stars.Length) return;
-
-        stars[currentStar].gameObject.SetActive(true);
-        currentStar++;
+        for (int i = 0; i < stars.Length; i++) 
+        {
+            stars[i].enabled = i < starCount;
+        }
     }
 }
