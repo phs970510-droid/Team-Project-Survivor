@@ -111,6 +111,7 @@ public class TutorialEnemySpawner : MonoBehaviour
             return;
         }
         enemy.transform.position = position;
+        enemy.SetActive(true);
 
         CommonHP hp = enemy.GetComponent<CommonHP>();
         if (hp != null)
@@ -123,7 +124,6 @@ public class TutorialEnemySpawner : MonoBehaviour
         {
             agent.ResetPath();
         }
-        enemy.SetActive(true);
     }
     private GameObject GetInactiveEnemy()
     {
