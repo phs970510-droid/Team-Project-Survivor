@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageMovement : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class StageMovement : MonoBehaviour
         else if (other.CompareTag("Stage3"))
         {
             chunkManager.SelectMap(2, 3);
+        }
+        else if (other.CompareTag("Infinity"))
+        {
+            chunkManager.SelectMap(3, 1);
         }
 
 
