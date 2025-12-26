@@ -49,15 +49,15 @@ public class EnemyAI : MonoBehaviour
         {
             if (!hp.isDead && agent.isOnNavMesh)
             {
-                if (spawner != null)
+                if (spawner == null)
                 {
                     //스포너에서 PlayerPos 받기
-                    agent.SetDestination(spawner.PlayerPos);    //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
+                    agent.SetDestination(tutorialEnemySpawner.PlayerPos);   //PlayerPos는 spawner에서 이미 Vector3(z=0)으로 관리중
 
                 }
                 else
                 {
-                    agent.SetDestination(tutorialEnemySpawner.PlayerPos);
+                    agent.SetDestination(spawner.PlayerPos);
                 }
 
                 //좌우반전

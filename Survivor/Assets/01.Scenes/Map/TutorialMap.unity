@@ -1169,6 +1169,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4891330530380901470, guid: 02dca581b6dd5e64eb0a3482670d1de5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1932345411}
+    - target: {fileID: 4891330530380901470, guid: 02dca581b6dd5e64eb0a3482670d1de5, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
