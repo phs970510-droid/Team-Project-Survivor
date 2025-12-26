@@ -58,6 +58,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  timerText: {fileID: 0}
+  bossTimerText: {fileID: 0}
   player: {fileID: 4750564613838781617, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
 --- !u!1 &8241025100402724127
 GameObject:
@@ -103,9 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f7383037db0de4aa5a810667f39dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType01: {fileID: 3145574994638028733, guid: 2fe946722f954814fa61c80a64df0a89, type: 3}
-  enemyType02: {fileID: 5936454120232849771, guid: 06c67f311a03a3b49bc1693eff0d9f23, type: 3}
-  enemyType03: {fileID: 8438441831515790706, guid: e11d79aeb874883499970bad373cd0d3, type: 3}
+  enemyType01: {fileID: 5936454120232849771, guid: 06c67f311a03a3b49bc1693eff0d9f23, type: 3}
+  enemyType02: {fileID: 8438441831515790706, guid: e11d79aeb874883499970bad373cd0d3, type: 3}
+  enemyType03: {fileID: 8510927566475596115, guid: a5249190a67187b439c873a350810e4e, type: 3}
   poolSize: 100
   bossType1: {fileID: 3397577142483854797, guid: 2d02f0a2ea348604a816b78802e611a0, type: 3}
   bossType2: {fileID: 4712620499357379564, guid: 3969186825def224e94301f7a895f115, type: 3}
