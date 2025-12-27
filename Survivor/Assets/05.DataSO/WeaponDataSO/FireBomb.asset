@@ -16,9 +16,9 @@ MonoBehaviour:
   weaponName: FireBombWeapon
   isUnlocked: 0
   price: 5000
-  damage: 5
+  damage: 100
   speed: 10
-  fireCoolTime: 3
+  fireCoolTime: 1
   bulletCount: 1
   attackRange: 10
   Sprite: {fileID: 154122315, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
@@ -26,3 +26,8 @@ MonoBehaviour:
   upgradeCost: 0
   starLevel: 0
   maxStar: 5
+  initDamage: 100
+  initSpeed: 10
+  initFireCoolTime: 1
+  initBulletCount: 1
+  initAttackRange: 10

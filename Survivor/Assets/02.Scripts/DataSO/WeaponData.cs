@@ -11,7 +11,7 @@ public class WeaponData : ScriptableObject
     public int price;
 
     [Header("무기 스탯")]
-    public float damage = 10f;
+    public float damage = 100f;
     public float speed = 10f;
     public float fireCoolTime = 1.0f;
     public int bulletCount = 1;
@@ -28,4 +28,20 @@ public class WeaponData : ScriptableObject
     public int starLevel = 0;
     public int maxStar = 5;
 
+    [Header("무기 스탯")]
+    public float initDamage = 100f;
+    public float initSpeed = 10f;
+    public float initFireCoolTime = 1.0f;
+    public int initBulletCount = 1;
+    public float initAttackRange = 10f;
+
+    public void ResetStat()
+    {
+        damage = initDamage;
+        speed = initSpeed;
+        fireCoolTime = initFireCoolTime;
+        bulletCount = initBulletCount;
+        attackRange = initAttackRange;
+        starLevel = 0;
+    }
 }

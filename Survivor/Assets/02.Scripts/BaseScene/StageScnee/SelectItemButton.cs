@@ -23,11 +23,17 @@ public class SelectItemButton : MonoBehaviour
 
     public void OnClick()
     {
+        if (weaponData.starLevel >= weaponData.maxStar) return;
 
-        weaponData.damage++;
-        weaponData.bulletCount++;
+        weaponData.damage *= 1.1f;
+        weaponData.bulletCount += 1;
         weaponData.starLevel++;
-
+        
+        foreach(var ws in FindObjectsOfType<WeaponStat>())
+        {
+            if(ws.weaponData == weaponData)
+                ws.SyncFromData();
+        }
 
         UpdateStarUI();
 
