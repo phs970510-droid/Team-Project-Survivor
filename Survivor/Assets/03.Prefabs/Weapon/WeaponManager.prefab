@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558cef10d7c5685498b14e4b29126783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 1031a6d2d39ba2945a00b7b66cef220f, type: 2}
+  weaponData: {fileID: 11400000, guid: f9bf45a8558158245871e2393a93f8f3, type: 2}
   level: 1
   damage: 0
   fireCoolTime: 0

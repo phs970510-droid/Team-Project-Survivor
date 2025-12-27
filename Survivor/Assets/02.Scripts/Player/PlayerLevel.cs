@@ -13,12 +13,14 @@ public class PlayerLevel : MonoBehaviour
 
     public void GetEXP(float exp)
     {
+        Debug.Log(gameObject.name);
         currentExp += exp;
 
         if(currentExp >= playerData.expMax)
         {
             LevelUp();
         }
+        Debug.Log($"PlayerLevel currentExp : {currentExp}, 맥스경험치 : {playerData.expMax}");
     }
 
     private void LevelUp()
