@@ -182,6 +182,7 @@ public class CommonHP : MonoBehaviour
         GameObject bigObj = GameObject.Find("BigEXPPool");
         normalPool = normalObj.GetComponent<ItemPool>();
         bigPool = bigObj.GetComponent<ItemPool>();
+        if (normalPool == null && bigPool == null) return;
 
         if (bigPool != null && normalPool != null)
         {
