@@ -2,17 +2,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SelectItemType
+{
+    Weapon,
+    Heal
+}
+
 public class SelectItemButton : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public Image iconImage;
     public Image[] starImages;
 
-    public GameObject selectPanel;
+    public Sprite healSprite;
+
     private WeaponData weaponData;
+    private SelectItemType itemType;
+
+    public GameObject selectPanel;
 
     public void SetData(WeaponData data)
     {
+        itemType = SelectItemType.Weapon;
         weaponData = data;
 
         nameText.text = data.weaponName;
@@ -21,25 +32,46 @@ public class SelectItemButton : MonoBehaviour
         UpdateStarUI();
     }
 
+    public void SetHeal()
+    {
+        itemType = SelectItemType.Heal;
+        weaponData = null;
+
+        nameText.text = "Heal";
+        iconImage.sprite = healSprite;
+
+        foreach (var star in starImages)
+        { 
+           star.gameObject.SetActive(false);
+        }
+    }
+
+
     public void OnClick()
     {
-        if (weaponData.starLevel >= weaponData.maxStar) return;
-
-        weaponData.damage *= 1.1f;
-        weaponData.bulletCount += 1;
-        weaponData.starLevel++;
-        
-        foreach(var ws in FindObjectsOfType<WeaponStat>())
+        if (itemType == SelectItemType.Weapon)
         {
-            if(ws.weaponData == weaponData)
-                ws.SyncFromData();
+            if (weaponData == null) return;
+            if (weaponData.starLevel >= weaponData.maxStar) return;
+
+            weaponData.damage *= 1.1f;
+            weaponData.bulletCount += 1;
+            weaponData.starLevel++;
+
+            foreach (var ws in FindObjectsOfType<WeaponStat>())
+            {
+                if (ws.weaponData == weaponData)
+                    ws.SyncFromData();
+            }
+            UpdateStarUI();
+
         }
-
-        UpdateStarUI();
-
+        else if (itemType == SelectItemType.Heal) 
+        {
+            HealPlayer();
+        }
         Time.timeScale = 1f;
         selectPanel.SetActive(false);
-
 
     }
 
@@ -51,5 +83,15 @@ public class SelectItemButton : MonoBehaviour
         }
     }
 
+    void HealPlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
 
+        CommonHP hp = player.GetComponent<CommonHP>();
+        if (hp == null) return;
+
+
+        hp.HealFull();
+    }
 }

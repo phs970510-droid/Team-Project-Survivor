@@ -22,6 +22,16 @@ public class EXP : MonoBehaviour
         MagnetRangeCheck();
     }
 
+    private void Awake()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+
+            playerLevel = playerObj.GetComponent<PlayerLevel>();
+        }
+    }
     private void MagnetRangeCheck()
     {
         float range;

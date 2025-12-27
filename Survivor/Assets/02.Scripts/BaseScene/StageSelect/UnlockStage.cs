@@ -1,18 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class UnlockStage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private int stageIndex;
+    public bool isUnlocked = false;
+    public Sprite lockSprite;
+    public Sprite unLockSprite;
+
+    private SpriteRenderer sr;
+    private LockPanelUI lockPanelUI;
+    private void Awake()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
+        lockPanelUI = FindObjectOfType<LockPanelUI>();
+
+        ApplyState();
+    }
+    private void Start()
+    {
+        //bool unlocked = DataManager.Instance.stageUnlock(stageIndex);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Lock()
     {
-        
+        isUnlocked = false;
+        ApplyState();
+    }
+
+    public void Unlock()
+    {
+        isUnlocked = true;
+        ApplyState();
+    }
+
+    private void ApplyState()
+    {
+        if (isUnlocked)
+            sr.sprite = unLockSprite;
+        else
+            sr.sprite = lockSprite;
     }
 }

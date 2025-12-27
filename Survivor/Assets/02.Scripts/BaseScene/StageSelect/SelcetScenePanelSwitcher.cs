@@ -5,6 +5,7 @@ using UnityEngine;
 public class SelcetScenePanelSwitcher : MonoBehaviour
 {
     public GameObject panelMenu;
+    public GameObject panelLock;
 
     public void ToggleMenu()
     {
@@ -14,6 +15,10 @@ public class SelcetScenePanelSwitcher : MonoBehaviour
     public void CloseMenuPanel()
     {
         panelMenu.SetActive(false);
+    }
+    public void CloseLockPanel()
+    {
+        panelLock.SetActive(false);
     }
 
 }

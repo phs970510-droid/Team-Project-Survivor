@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
-public class StageMovement : MonoBehaviour
+public class TestStageMovent : MonoBehaviour
 {
     public StageSceneLode stageSceneLode;
     public ChunkManager chunkManager;

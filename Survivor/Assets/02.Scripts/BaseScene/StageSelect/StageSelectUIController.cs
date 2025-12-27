@@ -22,4 +22,8 @@ public class StageSelectUIController : MonoBehaviour
         if (gameQuit == null) return;
         gameQuit.QuitButton();
     }
+    public void CloseLockPanel()
+    {
+        selcetScenePanelSwitcher.CloseLockPanel();
+    }
 }

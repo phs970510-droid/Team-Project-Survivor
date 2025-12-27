@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        if(enemyKillCount != null)
+        if(enemyKillCount != null && killCountText != null)
         {
             killCountText.text = enemyKillCount.killcount.ToString();
         }
