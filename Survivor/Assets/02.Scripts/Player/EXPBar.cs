@@ -4,17 +4,24 @@ using UnityEngine.UI;
 public class EXPBar : MonoBehaviour
 {
     [SerializeField] private Slider expBar;
-    [SerializeField] private PlayerLevel playerExp;
+    private PlayerLevel playerLevel;
 
 
     private void Start()
     {
-        playerExp = FindObjectOfType<PlayerLevel>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerLevel = player.GetComponent<PlayerLevel>();
     }
     void Update()
     {
-        //PlayerLevel참조
-        expBar.maxValue = playerExp.playerData.expMax;
-        expBar.value = playerExp.currentExp;
+        UpdateEXPBar();
+
+        Debug.Log($"플레이어 이름 : {playerLevel.gameObject.name}, EXPBar.currentExp : {playerLevel.currentExp}");
+    }
+
+    private void UpdateEXPBar()
+    {
+        expBar.maxValue = playerLevel.playerData.expMax;
+        expBar.value = playerLevel.currentExp;
     }
 }

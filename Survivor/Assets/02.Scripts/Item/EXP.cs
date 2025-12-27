@@ -18,7 +18,13 @@ public class EXP : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+
+            playerLevel = playerObj.GetComponent<PlayerLevel>();
+        }
     }
     void Update()
     {
