@@ -1,4 +1,4 @@
-
+ï»¿
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,9 +10,9 @@ public class ExitGate : MonoBehaviour
     private ChunkManager chunkManager;
 
 
-    [Header("Å»Ãâ¼³Á¤")]
-    [SerializeField] private float showDelay = 5f; //½ÃÀÛ ÈÄ ³ª¿À´Â ½Ã°£
-    [SerializeField] private float distance = 5f;  //ÇÃ·¹ÀÌ¾î¿Í °Å¸®
+    [Header("íƒˆì¶œì„¤ì •")]
+    [SerializeField] private float showDelay = 5f; //ì‹œì‘ í›„ ë‚˜ì˜¤ëŠ” ì‹œê°„
+    [SerializeField] private float distance = 5f;  //í”Œë ˆì´ì–´ì™€ ê±°ë¦¬
     private float timer;
 
 
@@ -32,8 +32,8 @@ public class ExitGate : MonoBehaviour
 
         col = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
-        col.enabled = false;//°ÔÀÓ½ÃÀÛÇÏ¸é ¾È ´ê°Ô
-        sr.enabled = false; //°ÔÀÓ½ÃÀÛÇÏ¸é ¾È º¸ÀÌ°Ô
+        col.enabled = false;//ê²Œì„ì‹œì‘í•˜ë©´ ì•ˆ ë‹¿ê²Œ
+        sr.enabled = false; //ê²Œì„ì‹œì‘í•˜ë©´ ì•ˆ ë³´ì´ê²Œ
     }
 
     private void Update()
@@ -41,11 +41,11 @@ public class ExitGate : MonoBehaviour
         ShowExitTuto();
     }
 
-    //ÄÚ·çÆ¾ »èÁ¦
+    //ì½”ë£¨í‹´ ì‚­ì œ
     public void ShowExitGate()
     {
         Vector2 randomDir = Random.insideUnitCircle.normalized;
-        //ÇÃ·¹ÀÌ¾î Æ÷Áö¼Ç ·£´ıÇÑ dist°Å¸®¿¡ »ı¼º
+        //í”Œë ˆì´ì–´ í¬ì§€ì…˜ ëœë¤í•œ distê±°ë¦¬ì— ìƒì„±
         Vector3 pos = player.position + (Vector3)(randomDir * distance);
 
         transform.position = pos;
@@ -55,15 +55,22 @@ public class ExitGate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player"))
+            return;
+        
+        int clearedStage = chunkManager.typeNumb;
+
+        if (clearedStage >= 2)
         {
-
-            int clearedStage = chunkManager.typeNumb;
-            int nextStage = clearedStage + 1;
-            //DataManager.Instance.StageUnlocked(nextStage, true);
-
-            stageSceneLode.BaseSceneLoder();
+            DataManager.Instance.stageUnlocked[clearedStage - 2] = true;
         }
+
+        DataManager.Instance.infinityUnlocked[clearedStage - 1] = true;
+
+        DataManager.Instance.Save();
+
+        stageSceneLode.BaseSceneLoder();
+        
     }
 
     private void ShowExitTuto()

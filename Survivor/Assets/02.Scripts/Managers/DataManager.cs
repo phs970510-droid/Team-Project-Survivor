@@ -17,7 +17,8 @@ public class DataManager : MonoBehaviour
     public BaseData baseData;
     public List<WeaponData> allWeaponData = new List<WeaponData>();
 
-    [SerializeField] private bool[] stageUnlocked;
+    public bool[] stageUnlocked = new bool[2];      //일반(stage1은 애초에 해금 고정된 상태임)
+    public bool[] infinityUnlocked = new bool[3];   //무한
 
     public int CurrentSlot { get; private set; } = 0;
 
@@ -102,6 +103,16 @@ public class DataManager : MonoBehaviour
             );
         }
 
+        for (int i = 0; i < stageUnlocked.Length; i++)
+        {
+            PlayerPrefs.SetInt(prefix + $"Stage_{i + 2}_Unlocked",stageUnlocked[i] ? 1 : 0);
+        }
+
+        for (int i = 0; i < infinityUnlocked.Length; i++)
+        {
+            PlayerPrefs.SetInt(prefix + $"Infinity_{i}_Unlocked", infinityUnlocked[i] ? 1 : 0);
+        }
+
         PlayerPrefs.Save();
         Debug.Log($"[DataManager] 슬롯 {slotIndex} 저장 완료");
     }
@@ -115,7 +126,7 @@ public class DataManager : MonoBehaviour
             baseData.maxHp = PlayerPrefs.GetFloat(prefix + "Player_MaxHP", baseData.maxHp);
             baseData.moveSpeed = PlayerPrefs.GetFloat(prefix + "Player_MoveSpeed", baseData.moveSpeed);
             baseData.magnetRange = PlayerPrefs.GetFloat(prefix + "Player_MagnetRange", baseData.magnetRange);
-            baseData.expMultiplier = PlayerPrefs.GetFloat(prefix + "Player_expMultiplier", baseData.expMultiplier);
+            baseData.expMultiplier = PlayerPrefs.GetFloat(prefix + "Player_ExpMultiplier", baseData.expMultiplier);
         }
 
         foreach (var weapon in allWeaponData)
@@ -131,6 +142,17 @@ public class DataManager : MonoBehaviour
                 prefix + $"BaseUpgradeCost_{i}",
                 baseData.baseUpgradeCosts[i]
             );
+        }
+
+        for (int i = 0; i < stageUnlocked.Length; i++)
+        {
+            stageUnlocked[i] =PlayerPrefs.GetInt(prefix + $"Stage_{i + 2}_Unlocked", 0) == 1;
+        }
+
+        for (int i = 0; i < infinityUnlocked.Length; i++)
+        {
+            infinityUnlocked[i] =
+                PlayerPrefs.GetInt(prefix + $"Infinity_{i}_Unlocked", 0) == 1;
         }
 
         UIManager.Instance?.UpdateMoney(Money);
