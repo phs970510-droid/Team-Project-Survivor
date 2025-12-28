@@ -616,8 +616,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  useTimeTypeA: 25
-  useTimeTypeB: 20
+  useTimeTypeA: 15
+  useTimeTypeB: 10
   fabricHp: 0
   playerMask:
     serializedVersion: 2
@@ -627,7 +627,7 @@ MonoBehaviour:
   obstaclePrefabsA: []
   obstacleParentB: {fileID: 0}
   obstaclePrefabsB: []
-  intervalTime: 20
+  intervalTime: 25
 --- !u!50 &910156672
 Rigidbody2D:
   serializedVersion: 4
