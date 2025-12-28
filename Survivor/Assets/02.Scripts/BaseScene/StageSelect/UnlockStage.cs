@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
 public class UnlockStage : MonoBehaviour
 {
 
-    private int stageIndex;
+    [SerializeField] private int stageIndex;
     public bool isUnlocked = false;
     public Sprite lockSprite;
     public Sprite unLockSprite;
@@ -15,12 +15,19 @@ public class UnlockStage : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         lockPanelUI = FindObjectOfType<LockPanelUI>();
-
-        ApplyState();
     }
     private void Start()
     {
-        //bool unlocked = DataManager.Instance.stageUnlock(stageIndex);
+        if (stageIndex == 0)
+        {
+            isUnlocked = true;
+        }
+        else
+        {
+            isUnlocked = DataManager.Instance.stageUnlocked[stageIndex - 1];
+        }
+        ApplyState();
+
     }
 
     public void Lock()
