@@ -11,8 +11,8 @@ public abstract class Obstacles : MonoBehaviour
     public Transform player;
 
     [Header("유지시간")]
-    [SerializeField] protected float useTimeTypeA = 25.0f;
-    [SerializeField] protected float useTimeTypeB = 20.0f;
+    [SerializeField] protected float useTimeTypeA = 15.0f;
+    [SerializeField] protected float useTimeTypeB = 10.0f;
 
     [Header("오브젝트 체력")]
     [SerializeField] protected int fabricHp;
@@ -33,7 +33,7 @@ public abstract class Obstacles : MonoBehaviour
     protected bool isTriggerA = true;
     protected float triggerTimeB = 0.0f;
     protected bool isTriggerB = true;
-    [SerializeField] protected float intervalTime = 20.0f;
+    [SerializeField] protected float intervalTime = 25.0f;
     protected float obstacleAKey;
     protected float obstacleBKey;
 
