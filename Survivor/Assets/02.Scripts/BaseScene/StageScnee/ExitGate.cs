@@ -7,11 +7,14 @@ using UnityEngine.SceneManagement;
 public class ExitGate : MonoBehaviour
 {
     private MissionBoard stageSceneLode;
+    private ChunkManager chunkManager;
+
 
     [Header("탈출설정")]
     [SerializeField] private float showDelay = 5f; //시작 후 나오는 시간
     [SerializeField] private float distance = 5f;  //플레이어와 거리
     private float timer;
+
 
     private Transform player;
     private Collider2D col;
@@ -22,6 +25,8 @@ public class ExitGate : MonoBehaviour
     private void Awake()
     {
         stageSceneLode = FindObjectOfType<MissionBoard>();
+        chunkManager = ChunkManager.Instance;
+
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -52,6 +57,11 @@ public class ExitGate : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+
+            int clearedStage = chunkManager.typeNumb;
+            int nextStage = clearedStage + 1;
+            //DataManager.Instance.StageUnlocked(nextStage, true);
+
             stageSceneLode.BaseSceneLoder();
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TestMovement : MonoBehaviour
 {
-    public TestStageSceneLodeipt TestSceneLoad;
     public ChunkManager chunkManager;
 
     private void Awake()

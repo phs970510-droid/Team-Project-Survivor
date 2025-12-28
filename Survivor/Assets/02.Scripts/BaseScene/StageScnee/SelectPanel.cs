@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SelectPanel : MonoBehaviour
@@ -13,18 +14,26 @@ public class SelectPanel : MonoBehaviour
 
     void ShowRandomItems()
     {
-        List<WeaponData> temp = new List<WeaponData>(allWeaponData);
-
+        List<WeaponData> availableWeapons = allWeaponData
+            .Where(w =>
+                w.isUnlocked &&
+                w.starLevel < w.maxStar)
+            .ToList();
         for (int i = 0; i < buttons.Length; i++)
         {
-            int rand = Random.Range(0, temp.Count);
-            WeaponData data = temp[rand];
-            temp.RemoveAt(rand);
+            if (availableWeapons.Count > 0)
+            {
+                int rand = Random.Range(0, availableWeapons.Count);
+                WeaponData data = availableWeapons[rand];
+                availableWeapons.RemoveAt(rand);
 
-            buttons[i].SetData(data);
-
+                buttons[i].SetData(data);
+            }
+            else
+            {
+                buttons[i].SetHeal();
+            }
 
         }
-
     }
 }

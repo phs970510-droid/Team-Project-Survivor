@@ -15,6 +15,12 @@ public class EXP : MonoBehaviour
 
     private Transform player;
     private bool getMagnetItem = false;
+    void Update()
+    {
+        if (player == null) return;
+
+        MagnetRangeCheck();
+    }
 
     private void Awake()
     {
@@ -26,13 +32,6 @@ public class EXP : MonoBehaviour
             playerLevel = playerObj.GetComponent<PlayerLevel>();
         }
     }
-    void Update()
-    {
-        if (player == null) return;
-
-        MagnetRangeCheck();
-    }
-
     private void MagnetRangeCheck()
     {
         float range;
@@ -63,13 +62,16 @@ public class EXP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //플레이어에 닿으면 플레이어가 경험치 얻고
-        if (other.CompareTag("Player"))
-        {
-            float finalExp = expAmount * levelUpMlutiplier;
-            playerLevel.GetEXP(Mathf.RoundToInt(finalExp));
-            //경험치는 풀에 반환
-            expPool.ReturnItem(this.gameObject);
-        }
+        //만약 플레이어태그가 아니면 리턴
+        if (!other.CompareTag("Player")) return;
+
+        //닿은 오브젝트에서 PlayerLevel 찾기
+        PlayerLevel pl = other.GetComponent<PlayerLevel>();
+
+        float finalExp = expAmount * levelUpMlutiplier;
+
+        pl.GetEXP(Mathf.RoundToInt(finalExp));
+        //경험치는 풀에 반환
+        expPool.ReturnItem(gameObject);
     }
 }

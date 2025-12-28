@@ -1370,7 +1370,7 @@ GameObject:
   - component: {fileID: 6004986023443314762}
   - component: {fileID: 3006391479802544069}
   - component: {fileID: 3259103301374283946}
-  - component: {fileID: 840146741046165925}
+  - component: {fileID: 4020092798337608444}
   m_Layer: 5
   m_Name: SelectItemButton 2
   m_TagString: Untagged
@@ -1504,9 +1504,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 840146741046165925}
-        m_TargetAssemblyTypeName: StarDisplay, Assembly-CSharp
-        m_MethodName: UpdateStar
+      - m_Target: {fileID: 4020092798337608444}
+        m_TargetAssemblyTypeName: SelectItemButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1516,7 +1516,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &840146741046165925
+--- !u!114 &4020092798337608444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1525,15 +1525,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1209911603728471148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e667125f0b46f47be64387451547be, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ff7eaccf6d8794599726ddbdcc62c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars:
+  nameText: {fileID: 2885826866413992179}
+  iconImage: {fileID: 3592026254137390411}
+  starImages:
   - {fileID: 185849319780926021}
   - {fileID: 5022071706730568100}
   - {fileID: 6199743230614019655}
   - {fileID: 198903924377615497}
   - {fileID: 633240258177154518}
+  healSprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  selectPanel: {fileID: 6208547348404345564}
 --- !u!1 &1280009089519191297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,7 +3319,7 @@ GameObject:
   - component: {fileID: 6668036577257966636}
   - component: {fileID: 6199982953108120356}
   - component: {fileID: 944306097884282951}
-  - component: {fileID: 1420655325818313388}
+  - component: {fileID: 3996555574253303506}
   m_Layer: 5
   m_Name: SelectItemButton 3
   m_TagString: Untagged
@@ -3449,9 +3453,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1420655325818313388}
-        m_TargetAssemblyTypeName: StarDisplay, Assembly-CSharp
-        m_MethodName: UpdateStar
+      - m_Target: {fileID: 3996555574253303506}
+        m_TargetAssemblyTypeName: SelectItemButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3461,7 +3465,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1420655325818313388
+--- !u!114 &3996555574253303506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3470,15 +3474,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3311874447813759029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e667125f0b46f47be64387451547be, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ff7eaccf6d8794599726ddbdcc62c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars:
+  nameText: {fileID: 1982223535734513755}
+  iconImage: {fileID: 4874174142869437536}
+  starImages:
   - {fileID: 7820498100393538516}
   - {fileID: 5642950417928935145}
   - {fileID: 1589855431286918470}
   - {fileID: 6566074760119039967}
   - {fileID: 7342918245359501825}
+  healSprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  selectPanel: {fileID: 6208547348404345564}
 --- !u!1 &3352685030856574579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,7 +3787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -202}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 1920, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3776990105453678085
@@ -3846,7 +3854,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expBar: {fileID: 3776990105453678085}
-  playerExp: {fileID: 0}
 --- !u!1 &3513812811462733938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4710,7 +4717,7 @@ Transform:
   m_GameObject: {fileID: 4449382242816558481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5601,6 +5608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b16bb0a7fc815f43854c32999671420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
+  bgmToggle: {fileID: 0}
+  sfxToggle: {fileID: 0}
 --- !u!1 &5260493788466809399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5785,7 +5796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 627, y: 403}
+  m_AnchoredPosition: {x: 727, y: 330}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4070560371488649998
@@ -6248,8 +6259,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5308736094599258850}
+  - component: {fileID: 5583915895962197797}
   m_Layer: 5
-  m_Name: SelectItemPanel
+  m_Name: SelectPanel
   m_TagString: OpenSelectItme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6275,6 +6287,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5583915895962197797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208547348404345564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6a04b34edaf52409a66cb36c22e24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 8144745920256300532}
+  - {fileID: 4020092798337608444}
+  - {fileID: 3996555574253303506}
+  allWeaponData:
+  - {fileID: 11400000, guid: f9bf45a8558158245871e2393a93f8f3, type: 2}
+  - {fileID: 11400000, guid: eac3406a402736443a448bf2695376d2, type: 2}
+  - {fileID: 11400000, guid: 6628d2e461b9ac04787849d60c15de2e, type: 2}
+  - {fileID: 11400000, guid: 1f5e16d360502ef439387a456e687a2f, type: 2}
 --- !u!1 &6224592541093378361
 GameObject:
   m_ObjectHideFlags: 0
@@ -6310,7 +6343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 242, y: 403}
+  m_AnchoredPosition: {x: 342, y: 330}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2049146173869381200
@@ -7016,7 +7049,7 @@ GameObject:
   - component: {fileID: 4061004552405138593}
   - component: {fileID: 6797725928247140546}
   - component: {fileID: 2678988149317837495}
-  - component: {fileID: 5284246651523954573}
+  - component: {fileID: 8144745920256300532}
   m_Layer: 5
   m_Name: SelectItemButton
   m_TagString: Untagged
@@ -7150,9 +7183,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5284246651523954573}
-        m_TargetAssemblyTypeName: StarDisplay, Assembly-CSharp
-        m_MethodName: UpdateStar
+      - m_Target: {fileID: 8144745920256300532}
+        m_TargetAssemblyTypeName: SelectItemButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7162,7 +7195,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5284246651523954573
+--- !u!114 &8144745920256300532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7171,15 +7204,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7354019817139197280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e667125f0b46f47be64387451547be, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ff7eaccf6d8794599726ddbdcc62c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars:
+  nameText: {fileID: 1804875476429900959}
+  iconImage: {fileID: 3979025771650992813}
+  starImages:
   - {fileID: 7389833185295048728}
   - {fileID: 8246383162300748030}
   - {fileID: 7069978623899465239}
   - {fileID: 594906251840252253}
   - {fileID: 3256108026842534267}
+  healSprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  selectPanel: {fileID: 6208547348404345564}
 --- !u!1 &7704916791343765464
 GameObject:
   m_ObjectHideFlags: 0

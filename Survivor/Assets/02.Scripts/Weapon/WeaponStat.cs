@@ -24,4 +24,11 @@ public class WeaponStat : MonoBehaviour
         fireCoolTime *= 0.9f;//발사쿨타임 0.9배
         bulletCount += 1;
     }
+
+    public void SyncFromData()
+    {
+        damage = weaponData.damage;
+        fireCoolTime = weaponData.fireCoolTime;
+        bulletCount = weaponData.bulletCount;
+    }
 }

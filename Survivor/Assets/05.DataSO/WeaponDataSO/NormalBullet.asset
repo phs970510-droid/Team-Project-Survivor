@@ -26,3 +26,8 @@ MonoBehaviour:
   upgradeCost: 0
   starLevel: 0
   maxStar: 5
+  initDamage: 100
+  initSpeed: 10
+  initFireCoolTime: 1
+  initBulletCount: 1
+  initAttackRange: 10

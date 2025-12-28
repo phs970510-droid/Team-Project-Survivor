@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 2059331385406805901}
   - component: {fileID: 525465726865028619}
   - component: {fileID: 6516840547660268303}
+  - component: {fileID: 3554080246959436286}
   m_Layer: 5
   m_Name: SelectItemButton 2
   m_TagString: Untagged
@@ -486,21 +487,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140504699724656728}
-        m_TargetAssemblyTypeName: BattleUIController, Assembly-CSharp
-        m_MethodName: CloseSelectPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6516840547660268303}
-        m_TargetAssemblyTypeName: StarDisplay, Assembly-CSharp
-        m_MethodName: UpdateStar
+      - m_Target: {fileID: 3554080246959436286}
+        m_TargetAssemblyTypeName: SelectItemButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -528,6 +517,28 @@ MonoBehaviour:
   - {fileID: 4601496621943629176}
   - {fileID: 3577564610738412575}
   - {fileID: 2175158292601313109}
+--- !u!114 &3554080246959436286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632304061833396041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ff7eaccf6d8794599726ddbdcc62c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 2411650598062066154}
+  iconImage: {fileID: 5481328045394695705}
+  starImages:
+  - {fileID: 3560798373068757973}
+  - {fileID: 5072008870332961579}
+  - {fileID: 4601496621943629176}
+  - {fileID: 3577564610738412575}
+  - {fileID: 2175158292601313109}
+  healSprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  selectPanel: {fileID: 7157591135253029728}
 --- !u!1 &728537497477474542
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -202}
+  m_AnchoredPosition: {x: 0, y: -25.5}
   m_SizeDelta: {x: 1920, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2490269103674085161
@@ -632,7 +643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expBar: {fileID: 2490269103674085161}
-  playerExp: {fileID: 0}
 --- !u!1 &745028271887511812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,7 +3183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 627, y: 403}
+  m_AnchoredPosition: {x: 727, y: 330}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2629362021216134153
@@ -4256,7 +4266,7 @@ Transform:
   m_GameObject: {fileID: 5181727828845416643}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4916,7 +4926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 242, y: 403}
+  m_AnchoredPosition: {x: 342, y: 330}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7682615684590686161
@@ -6309,7 +6319,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6839,9 +6851,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8413635562080481270}
+  - component: {fileID: 8556454710231127318}
   m_Layer: 5
-  m_Name: SelectItemPanel
-  m_TagString: OpenSelectItme
+  m_Name: SelectPanel
+  m_TagString: SelectPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6866,6 +6879,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8556454710231127318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157591135253029728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6a04b34edaf52409a66cb36c22e24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 3451331803179016763}
+  - {fileID: 3554080246959436286}
+  - {fileID: 8964093570277966230}
+  allWeaponData:
+  - {fileID: 11400000, guid: f9bf45a8558158245871e2393a93f8f3, type: 2}
+  - {fileID: 11400000, guid: eac3406a402736443a448bf2695376d2, type: 2}
+  - {fileID: 11400000, guid: 6628d2e461b9ac04787849d60c15de2e, type: 2}
+  - {fileID: 11400000, guid: 1f5e16d360502ef439387a456e687a2f, type: 2}
 --- !u!1 &7211848073514832708
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,7 +6912,7 @@ GameObject:
   - component: {fileID: 5372223549323179836}
   - component: {fileID: 6941883876157818029}
   - component: {fileID: 3100841128600545369}
-  - component: {fileID: 224632947446329819}
+  - component: {fileID: 3451331803179016763}
   m_Layer: 5
   m_Name: SelectItemButton
   m_TagString: Untagged
@@ -7000,9 +7034,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140504699724656728}
-        m_TargetAssemblyTypeName: BattleUIController, Assembly-CSharp
-        m_MethodName: CloseSelectPanel
+      - m_Target: {fileID: 3451331803179016763}
+        m_TargetAssemblyTypeName: SelectItemButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7012,19 +7046,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 224632947446329819}
-        m_TargetAssemblyTypeName: StarDisplay, Assembly-CSharp
-        m_MethodName: UpdateStar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &224632947446329819
+--- !u!114 &3451331803179016763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7033,15 +7055,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7211848073514832708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e667125f0b46f47be64387451547be, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ff7eaccf6d8794599726ddbdcc62c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars:
+  nameText: {fileID: 5207009919517422063}
+  iconImage: {fileID: 6724058068189878094}
+  starImages:
   - {fileID: 4362582045456384275}
   - {fileID: 8430227213453677367}
   - {fileID: 6169544149339838443}
   - {fileID: 3277355182125203480}
   - {fileID: 2816728859477429314}
+  healSprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  selectPanel: {fileID: 7157591135253029728}
 --- !u!1 &7217113205359358637
 GameObject:
   m_ObjectHideFlags: 0
@@ -8328,6 +8354,7 @@ GameObject:
   - component: {fileID: 3321550148418378908}
   - component: {fileID: 2425838868126375007}
   - component: {fileID: 8886359256726059043}
+  - component: {fileID: 8964093570277966230}
   m_Layer: 5
   m_Name: SelectItemButton 3
   m_TagString: Untagged
@@ -8449,21 +8476,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140504699724656728}
-        m_TargetAssemblyTypeName: BattleUIController, Assembly-CSharp
-        m_MethodName: CloseSelectPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8886359256726059043}
-        m_TargetAssemblyTypeName: StarDisplay, Assembly-CSharp
-        m_MethodName: UpdateStar
+      - m_Target: {fileID: 8964093570277966230}
+        m_TargetAssemblyTypeName: SelectItemButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8491,6 +8506,28 @@ MonoBehaviour:
   - {fileID: 3731246960225732414}
   - {fileID: 312637882433218780}
   - {fileID: 5952520150851053095}
+--- !u!114 &8964093570277966230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8957843155445706767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ff7eaccf6d8794599726ddbdcc62c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 3847761384171753645}
+  iconImage: {fileID: 5420015400516318685}
+  starImages:
+  - {fileID: 6071388791302808540}
+  - {fileID: 5911377161297557666}
+  - {fileID: 3731246960225732414}
+  - {fileID: 312637882433218780}
+  - {fileID: 5952520150851053095}
+  healSprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  selectPanel: {fileID: 7157591135253029728}
 --- !u!1 &8978730326494304655
 GameObject:
   m_ObjectHideFlags: 0

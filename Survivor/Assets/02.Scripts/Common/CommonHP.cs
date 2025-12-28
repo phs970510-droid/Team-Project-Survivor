@@ -257,6 +257,13 @@ public class CommonHP : MonoBehaviour
         StartCoroutine(ShieldCoroutine());
     }
 
+    public void HealFull() // wy추가
+    {
+        if (isDead) return;
+
+        currentHP = baseData.maxHp;
+    }
+
     //실드시간 만큼 해스실드 on
     private IEnumerator ShieldCoroutine()
     {

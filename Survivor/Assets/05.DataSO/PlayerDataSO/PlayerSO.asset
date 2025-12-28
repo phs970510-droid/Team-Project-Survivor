@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  maxHp: 150
+  maxHp: 10000
   magnetRange: 0
   expMultiplier: 1
   damage: 10
