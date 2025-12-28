@@ -17,6 +17,8 @@ public class DataManager : MonoBehaviour
     public BaseData baseData;
     public List<WeaponData> allWeaponData = new List<WeaponData>();
 
+    [SerializeField] private bool[] stageUnlocked;
+
     public int CurrentSlot { get; private set; } = 0;
 
     private void Awake()
@@ -25,6 +27,8 @@ public class DataManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+
         }
         else
         {

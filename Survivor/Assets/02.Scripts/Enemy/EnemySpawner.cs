@@ -40,10 +40,6 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector2 spawnPos;
 
-    //플레이어 좌표는 여기서만 참조하고, 몬스터는 이걸 읽는걸로 변경
-    public Transform player;
-    public Vector3 PlayerPos { get; private set; }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -90,7 +86,6 @@ public class EnemySpawner : MonoBehaviour
         //Debug.Log($"현재 보스타이머 : {bossTimer}");
         //Debug.Log($"타이머 : {timer}");
         TimerUI();
-        PlayerPos = new Vector3(player.position.x, player.position.y, 0f);
     }
 
     private bool TrySpawn()

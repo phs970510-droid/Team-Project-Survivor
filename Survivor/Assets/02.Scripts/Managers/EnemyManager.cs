@@ -25,6 +25,17 @@ public class EnemyManager : MonoBehaviour
     
     private GameObject bossPrefab;
     private GameObject bossInfinite;
+
+    //플레이어 좌표는 여기서만 참조하고, 몬스터는 이걸 읽는걸로 변경
+    public Transform player;
+    public Vector3 PlayerPos { get; private set; }
+    private void Update()
+    {
+        if (player != null)
+        {
+            PlayerPos = new Vector3(player.position.x, player.position.y, 0f);
+        }
+    }
     public void SetStage(int stageType)
     {
         SelectEnemyPrefab(stageType);
@@ -102,7 +113,7 @@ public class EnemyManager : MonoBehaviour
         {
             return;
         }
-        GameObject Boss=Instantiate(prefab);
+        GameObject Boss=Instantiate(prefab, transform);
         Boss.transform.position = position;
 
         var agent = Boss.GetComponent<UnityEngine.AI.NavMeshAgent>();
