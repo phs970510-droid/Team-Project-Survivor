@@ -5,12 +5,22 @@ using UnityEngine;
 public class PlayerLevel : MonoBehaviour
 {
     [SerializeField] public PlayerData playerData;
-    private GameObject selectPanel;
 
+    private GameObject selectPanel;
+    private CurrentLevel currentLevel;
 
     public float level = 1;
     public float currentExp = 0;
 
+    private void Awake()
+    {
+        currentLevel = FindObjectOfType<CurrentLevel>(true);
+
+    }
+    private void Start()
+    {
+        currentLevel.SetLevel(level);
+    }
     public void GetEXP(float exp)
     {
         Debug.Log(gameObject.name);
@@ -44,6 +54,9 @@ public class PlayerLevel : MonoBehaviour
         currentExp -= playerData.expMax;
 
         playerData.expMax += 20; //다음 레벨업 필요경험치 증가
+
+        currentLevel.SetLevel(level);
+
 
         //선택까지 일시정지
         Time.timeScale = 0f;

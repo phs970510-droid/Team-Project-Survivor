@@ -39,10 +39,10 @@ public class ExitGate : MonoBehaviour
         sr.enabled = false; //게임시작하면 안 보이게
     }
 
-    private void Update()
-    {
-        ShowExitTuto();
-    }
+    //private void Update() //Test용
+    //{
+    //    ShowExitTuto();
+    //}
 
     //코루틴 삭제
     public void ShowExitGate()
@@ -82,17 +82,17 @@ public class ExitGate : MonoBehaviour
 
     }
 
-    private void ShowExitTuto()
-    {
-        if (isShown) return;
-        if (SceneManager.GetActiveScene().name == StageMapName || SceneManager.GetActiveScene().name == InfinityMapName)
-        {
-            timer += Time.deltaTime;
-            if (timer >= showDelay)
-            {
-                ShowExitGate();
-                isShown = true;
-            }
-        }
-    }
+    //private void ShowExitTuto()
+    //{
+    //    if (isShown) return;
+    //    if (SceneManager.GetActiveScene().name == StageMapName || SceneManager.GetActiveScene().name == InfinityMapName)
+    //    {
+    //        timer += Time.deltaTime;
+    //        if (timer >= showDelay)
+    //        {
+    //            ShowExitGate();
+    //            isShown = true;
+    //        }
+    //    }
+    //}
 }

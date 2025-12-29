@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StageScenePanelSwitcher : MonoBehaviour
@@ -7,7 +8,15 @@ public class StageScenePanelSwitcher : MonoBehaviour
     public GameObject panelMenu;
     public GameObject panelSelcet;
     public GameObject joyStick;
+    public GameObject StageText;
 
+    float time;
+    float fadeTime = 1f;
+
+    private void Update()
+    {
+        OpenStageText();
+    }
     public void BattleSenceToggleMenu()
     {
         if (panelMenu == null)
@@ -65,4 +74,18 @@ public class StageScenePanelSwitcher : MonoBehaviour
         }
         return false;
     }
+    public void OpenStageText()
+    {
+        if (time < fadeTime)
+        {
+            GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 1f - time/fadeTime);
+        }
+        else
+        {
+            time = 0;
+            this.gameObject.SetActive(false);
+        }
+        time += Time.deltaTime;
+    }
+    
 }
