@@ -458,6 +458,7 @@ MonoBehaviour:
   playerLevel: {fileID: 4555377799735681598}
   commonHP: {fileID: 6964823894383930263}
   coinPool: {fileID: 2659758993133963925, guid: 546ca588d52e91141b4c0ccdbb272b33, type: 3}
+  openedReward: {fileID: 2874030568970766115, guid: 1e11c50e809b63b4380b962237e5438c, type: 3}
 --- !u!114 &6964823894383930263
 MonoBehaviour:
   m_ObjectHideFlags: 0
