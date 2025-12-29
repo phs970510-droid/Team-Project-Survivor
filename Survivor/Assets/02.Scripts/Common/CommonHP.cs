@@ -171,6 +171,8 @@ public class CommonHP : MonoBehaviour
                 EnemySpawner enemySpawner = spawnerObj.GetComponent<EnemySpawner>();
                 if(enemySpawner != null)
                 {
+                    //일반맵 클리어용
+                    enemySpawner.StageBossCleared();
                     //에너미 스포너 타임 돌아가기 위함
                     enemySpawner.FinalBossDead();
                 }

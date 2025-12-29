@@ -38,6 +38,8 @@ public class EnemySpawner : MonoBehaviour
     private bool finalBossSpawned = false;
     private bool finalBossDead = true;
 
+    private bool stageBossCleared = false;
+
     private Vector2 spawnPos;
 
     [SerializeField] private WarningMessage warningMessage;
@@ -63,7 +65,10 @@ public class EnemySpawner : MonoBehaviour
             currentDelay=Mathf.Max(minDelay,currentDelay - decreasedAmount);
         }
 
-        bossTimer += Time.deltaTime;
+        if (!stageBossCleared)
+        {
+            bossTimer += Time.deltaTime;
+        }
         if (!bossSpawned && bossTimer >= bossSpawnTime)
         {
                 TrySpawnBoss();
@@ -116,6 +121,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void TrySpawnBoss()
     {
+        if (stageBossCleared) return;
         if (enemyManagers == null) return;
         if (bossSpawned) return;
         if (TrySpawn()==true)
@@ -125,6 +131,11 @@ public class EnemySpawner : MonoBehaviour
         }
         warningMessage.ShowWarning();   //보스등장 메세지 등장
     }
+    public void StageBossCleared()
+    {
+        stageBossCleared = true;
+    }
+
     //무한맵 로직 전까진 주석처리 유지
     private void TrySpawnInfinite()
     {
