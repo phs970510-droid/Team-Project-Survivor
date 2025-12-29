@@ -61,14 +61,12 @@ public class EnemySpawner : MonoBehaviour
             currentDelay=Mathf.Max(minDelay,currentDelay - decreasedAmount);
         }
 
-        if (ChunkManager.Instance.typeNumb == 2)
+        bossTimer += Time.deltaTime;
+        if (!bossSpawned && bossTimer >= bossSpawnTime)
         {
-            bossTimer += Time.deltaTime;
-            if (!bossSpawned && bossTimer >= bossSpawnTime)
-            {
                 TrySpawnBoss();
-            }
         }
+
 
         //여기에 무한맵용 최종보스 스폰코드 구현하기
         if (ChunkManager.Instance.typeNumb == 3)
