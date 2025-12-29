@@ -606,10 +606,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetBGMVolume
-        m_Mode: 1
+      - m_Target: {fileID: 5715560888773093285}
+        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+        m_MethodName: OnBgmSliderChanged
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1322,10 +1322,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetSFXVolume
-        m_Mode: 1
+      - m_Target: {fileID: 5715560888773093285}
+        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+        m_MethodName: OnSfxSliderChanged
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2515,6 +2515,7 @@ GameObject:
   - component: {fileID: 6433237176913508966}
   - component: {fileID: 3637296569021785317}
   - component: {fileID: 3564251518694443165}
+  - component: {fileID: 5715560888773093285}
   m_Layer: 5
   m_Name: MenuPanel
   m_TagString: Untagged
@@ -2586,6 +2587,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5715560888773093285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582857565389209129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b16bb0a7fc815f43854c32999671420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5834084963809307019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,9 +3396,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetBgmEnabled
+      - m_Target: {fileID: 5715560888773093285}
+        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+        m_MethodName: OnBgmToggleChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4075,9 +4088,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetSfxEnabled
+      - m_Target: {fileID: 5715560888773093285}
+        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+        m_MethodName: OnSfxToggleChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
