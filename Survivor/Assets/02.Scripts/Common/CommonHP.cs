@@ -226,7 +226,7 @@ public class CommonHP : MonoBehaviour
 
         GameObject shieldObj = GameObject.Find("ShieldPool");
         shieldPool = shieldObj.GetComponent<ItemPool>();
-        if (shieldPool != null && shieldChance >= rand)
+        if (shieldPool != null && coinChance >= rand)
         {
             shieldPool.SpawnItem(transform.position + Vector3.down * 0.5f);
         }
@@ -238,7 +238,7 @@ public class CommonHP : MonoBehaviour
 
         GameObject magnetObj = GameObject.Find("MagnetPool");
         magnetPool = magnetObj.GetComponent<ItemPool>();
-        if (magnetPool != null && magnetChance >= rand)
+        if (magnetPool != null && coinChance >= rand)
         {
             magnetPool.SpawnItem(transform.position + Vector3.left * 0.5f);
         }
