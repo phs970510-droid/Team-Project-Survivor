@@ -5,6 +5,7 @@ public class UnlockStage : MonoBehaviour
 {
 
     [SerializeField] private int stageIndex;
+    [SerializeField] private int infinityIndex;
     public bool isUnlocked = false;
     public Sprite lockSprite;
     public Sprite unLockSprite;
@@ -18,6 +19,13 @@ public class UnlockStage : MonoBehaviour
     }
     private void Start()
     {
+        if(infinityIndex >= 0)
+        {
+            isUnlocked = DataManager.Instance.infinityUnlocked[infinityIndex];
+            ApplyState();
+            return;
+        }
+
         if (stageIndex == 0)
         {
             isUnlocked = true;

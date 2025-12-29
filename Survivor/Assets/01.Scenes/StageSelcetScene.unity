@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 138801757}
   - component: {fileID: 138801756}
   - component: {fileID: 138801755}
+  - component: {fileID: 138801758}
   m_Layer: 0
   m_Name: Infinity3
   m_TagString: Infinity3
@@ -256,6 +257,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138801753}
   m_CullTransparentMesh: 1
+--- !u!114 &138801758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138801753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeedca4a725b9b4ca82957c7a5216c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageIndex: -1
+  infinityIndex: 2
+  isUnlocked: 0
+  lockSprite: {fileID: 8951557226893895558, guid: d36270e47d36e304a9d89c1fc73428e9, type: 3}
+  unLockSprite: {fileID: -886426416, guid: af8a5f710ef8207438498aa22c347240, type: 3}
 --- !u!1 &205834939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1659,7 @@ GameObject:
   - component: {fileID: 1881465939}
   - component: {fileID: 1881465938}
   - component: {fileID: 1881465937}
+  - component: {fileID: 1881465940}
   m_Layer: 0
   m_Name: Infinity
   m_TagString: Infinity
@@ -1762,6 +1781,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881465935}
   m_CullTransparentMesh: 1
+--- !u!114 &1881465940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881465935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeedca4a725b9b4ca82957c7a5216c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageIndex: -1
+  infinityIndex: 0
+  isUnlocked: 0
+  lockSprite: {fileID: 8951557226893895558, guid: d36270e47d36e304a9d89c1fc73428e9, type: 3}
+  unLockSprite: {fileID: -1043585802, guid: af8a5f710ef8207438498aa22c347240, type: 3}
 --- !u!1 &1901088261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,6 +1810,7 @@ GameObject:
   - component: {fileID: 1901088265}
   - component: {fileID: 1901088264}
   - component: {fileID: 1901088263}
+  - component: {fileID: 1901088266}
   m_Layer: 0
   m_Name: Infinity2
   m_TagString: Infinity2
@@ -1895,6 +1932,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901088261}
   m_CullTransparentMesh: 1
+--- !u!114 &1901088266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901088261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeedca4a725b9b4ca82957c7a5216c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageIndex: -1
+  infinityIndex: 1
+  isUnlocked: 0
+  lockSprite: {fileID: 8951557226893895558, guid: d36270e47d36e304a9d89c1fc73428e9, type: 3}
+  unLockSprite: {fileID: -607806627, guid: af8a5f710ef8207438498aa22c347240, type: 3}
 --- !u!1 &1946251602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,13 +4122,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 268133304171612907, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: isUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268133304171612907, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
       propertyPath: lockSprite
       value: 
       objectReference: {fileID: 8951557226893895558, guid: d36270e47d36e304a9d89c1fc73428e9, type: 3}
     - target: {fileID: 268133304171612907, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: stageIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 268133304171612907, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
       propertyPath: unLockSprite
       value: 
       objectReference: {fileID: 626918169, guid: c4d2ccab0c2ad7e47853b6e31a7ac7c2, type: 3}
+    - target: {fileID: 268133304171612907, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: infinityIndex
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1136075009377399225, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
       propertyPath: m_Size.x
       value: 1.9
@@ -4164,9 +4230,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8951557226893895558, guid: d36270e47d36e304a9d89c1fc73428e9, type: 3}
     - target: {fileID: 6215134202836136990, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: stageIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215134202836136990, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
       propertyPath: unLockSprite
       value: 
       objectReference: {fileID: 1544975445, guid: d33598d781682e049a53a0a13104ef29, type: 3}
+    - target: {fileID: 6215134202836136990, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: infinityIndex
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7699189234787134153, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3.35
@@ -4184,6 +4258,10 @@ PrefabInstance:
       value: 2.28
       objectReference: {fileID: 0}
     - target: {fileID: 8950084661946225255, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: isUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950084661946225255, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
       propertyPath: lockSprite
       value: 
       objectReference: {fileID: 8951557226893895558, guid: d36270e47d36e304a9d89c1fc73428e9, type: 3}
@@ -4191,6 +4269,10 @@ PrefabInstance:
       propertyPath: unLockSprite
       value: 
       objectReference: {fileID: -2092964637, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
+    - target: {fileID: 8950084661946225255, guid: e553ad70c7b93594ea73223487c3f60a, type: 3}
+      propertyPath: infinityIndex
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
