@@ -1,49 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class AudioController : MonoBehaviour
-{ 
-    public Slider bgmSlider;
-    public Slider sfxSlider;
-
-    public Toggle bgmToggle;
-    public Toggle sfxToggle;
-
-    private void Start()
+{
+    public void OnBgmSliderChanged(float value)
     {
-        SyncUIFromAudioManager();
-    }
-    void SyncUIFromAudioManager()
-    {
-        var audio = AudioManager.instance;
-
-        bgmToggle.isOn = audio.IsBgmPlaying();
-        bgmSlider.value = audio.GetBgmVolume();
-
-        sfxToggle.isOn = audio.IsSfxEnabled();
-        sfxSlider.value = audio.GetSfxVolume();
-    }
-
-    public void BGMSlider(float value)
-    {
+        if (AudioManager.instance == null) return;
         AudioManager.instance.SetBgmVolume(value);
     }
 
-    public void SFXSlider(float value)
+    public void OnBgmToggleChanged(bool isOn)
     {
+        if (AudioManager.instance == null) return;
+        AudioManager.instance.SetBgmEnabled(isOn);
+    }
+
+    public void OnSfxSliderChanged(float value)
+    {
+        if (AudioManager.instance == null) return;
         AudioManager.instance.SetSfxVolume(value);
     }
 
-    public void BGMToggle (bool value)
+    public void OnSfxToggleChanged(bool isOn)
     {
-        AudioManager.instance.SetBgmEnabled(value);
-    }
-
-    public void SfxToggle (bool value)
-    {
-        AudioManager.instance.SetSfxEnabled(value);
+        if (AudioManager.instance == null) return;
+        AudioManager.instance.SetSfxEnabled(isOn);
     }
 }

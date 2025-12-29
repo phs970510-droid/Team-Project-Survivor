@@ -644,21 +644,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetSfxEnabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7040422324039735114}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: SfxToggle
+        m_MethodName: OnSfxToggleChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3659,21 +3647,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetBgmEnabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: BGM
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7040422324039735114}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: BGMToggle
+        m_MethodName: OnBgmToggleChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5339,21 +5315,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetSfxVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7040422324039735114}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: SFXSlider
+        m_MethodName: OnSfxSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5375,6 +5339,7 @@ GameObject:
   - component: {fileID: 2099927850826751419}
   - component: {fileID: 3707753583626256841}
   - component: {fileID: 6640938797436388125}
+  - component: {fileID: 7040422324039735114}
   m_Layer: 5
   m_Name: MenuPanel
   m_TagString: Untagged
@@ -5458,6 +5423,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelMenu: {fileID: 8405757356412096016}
+--- !u!114 &7040422324039735114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8405757356412096016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b16bb0a7fc815f43854c32999671420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8678776928459490394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5805,21 +5782,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8437884557819802519, guid: 3be21fdab7f30cf40a7060c3e34b5d01, type: 3}
+      - m_Target: {fileID: 7040422324039735114}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: BGMSlider
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: BGMSlider
+        m_MethodName: OnBgmSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

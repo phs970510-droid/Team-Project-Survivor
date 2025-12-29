@@ -120,9 +120,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5692738586332067889}
+      - m_Target: {fileID: 1878839148297605056}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: BGMToggle
+        m_MethodName: OnBgmToggleChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1118,9 +1118,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5692738586332067889}
+      - m_Target: {fileID: 1878839148297605056}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: SfxSlider
+        m_MethodName: OnSfxSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2864,9 +2864,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5692738586332067889}
+      - m_Target: {fileID: 1878839148297605056}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: SfxToggle
+        m_MethodName: OnSfxToggleChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3902,6 +3902,7 @@ GameObject:
   - component: {fileID: 3424277029182589871}
   - component: {fileID: 9201046243695195156}
   - component: {fileID: 3579025324071570744}
+  - component: {fileID: 1878839148297605056}
   m_Layer: 5
   m_Name: MenuPanel
   m_TagString: Untagged
@@ -3973,6 +3974,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1878839148297605056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567360499614088166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b16bb0a7fc815f43854c32999671420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3734684064674717748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,6 +4752,7 @@ MonoBehaviour:
   panelMenu: {fileID: 3567360499614088166}
   panelSelcet: {fileID: 6208547348404345564}
   joyStick: {fileID: 0}
+  StageText: {fileID: 0}
 --- !u!1 &4492347008979525346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5608,10 +5622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b16bb0a7fc815f43854c32999671420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  bgmToggle: {fileID: 0}
-  sfxToggle: {fileID: 0}
 --- !u!1 &5260493788466809399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,9 +5759,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5692738586332067889}
+      - m_Target: {fileID: 1878839148297605056}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: BGMSlider
+        m_MethodName: OnBgmSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
