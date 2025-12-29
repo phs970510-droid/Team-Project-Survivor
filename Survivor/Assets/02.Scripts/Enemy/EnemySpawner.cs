@@ -116,6 +116,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void TrySpawnBoss()
     {
+        if (enemyManagers == null) return;
         if (bossSpawned) return;
         if (TrySpawn()==true)
         {
@@ -127,6 +128,7 @@ public class EnemySpawner : MonoBehaviour
     //무한맵 로직 전까진 주석처리 유지
     private void TrySpawnInfinite()
     {
+        if (enemyManagers == null) return;
         if (finalBossSpawned)
         {
             return;

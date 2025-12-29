@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     private GameObject enemyPrefab;
 
     private GameObject[] pool;
+    private GameObject[] bossPool;
 
     [Header("BOSS")]
     [SerializeField] private GameObject bossType1;
@@ -51,6 +52,10 @@ public class EnemyManager : MonoBehaviour
             pool[i]=Instantiate(enemyPrefab,transform);
             pool[i].SetActive(false);
         }
+
+        bossPool = new GameObject[1];
+        bossPool[0]=Instantiate(bossPrefab,transform);
+        bossPool[0].SetActive(false);
     }
 
     private void SelectEnemyPrefab(int stageType)
@@ -110,18 +115,19 @@ public class EnemyManager : MonoBehaviour
     public void SpawnBoss(GameObject prefab, Vector3 position)
     {
         if (prefab == null)
-        {
             return;
-        }
-        GameObject Boss=Instantiate(prefab, transform);
-        Boss.transform.position = position;
 
-        var agent = Boss.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (bossPool[0].activeSelf)
+            return;
+
+        bossPool[0].transform.position = position;
+
+        var agent = bossPool[0].GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent != null)
         {
             agent.ResetPath();
         }
-        Boss.SetActive(true);
+        bossPool[0].SetActive(true);
     }
     public void SpawnMid(Vector3 position)
     { 
