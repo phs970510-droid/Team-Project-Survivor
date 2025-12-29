@@ -88,7 +88,7 @@ public class StageMap : Chunk
                     if (chunkParent != null) chunkParent.SetActive(true);
                     if (obstacleType != null) obstacleType.SetActive(true);
 
-                    //자식오브젝트 할당 :: Linq말고 다른 코드 있는지 확인
+                    //자식오브젝트 할당
                     chunkPrefabs = chunkParent.GetComponentsInChildren<Transform>()
                         .Where(x => x != chunkParent.transform).ToArray();
 
