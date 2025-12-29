@@ -43,7 +43,7 @@ Tilemap:
   m_GameObject: {fileID: 324860849471760045}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 7, y: 18, z: 0}
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 7.5, y: 18.5}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -243,7 +243,7 @@ Tilemap:
   m_GameObject: {fileID: 2813731269436731293}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 17, y: 18, z: 0}
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -387,7 +387,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 17.5, y: 18.5}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -443,7 +443,7 @@ Tilemap:
   m_GameObject: {fileID: 3293949999943464474}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 2, y: 18, z: 0}
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -587,7 +587,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.5, y: 18.5}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -598,7 +598,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 5, y: 4}
   m_EdgeRadius: 0
 --- !u!1 &4228562562561927121
 GameObject:
@@ -680,7 +680,7 @@ Tilemap:
   m_GameObject: {fileID: 8077758610991887940}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 27, y: 18, z: 0}
+  - first: {x: -5, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -690,7 +690,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 32, y: 18, z: 0}
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 1
@@ -700,7 +700,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 37, y: 18, z: 0}
+  - first: {x: 5, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 2
@@ -750,8 +750,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 38, y: 19, z: 1}
+  m_Origin: {x: -5, y: 0, z: 0}
+  m_Size: {x: 43, y: 19, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -852,7 +852,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 32.5, y: 18.5}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -908,7 +908,7 @@ Tilemap:
   m_GameObject: {fileID: 8912148037891929484}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 12, y: 18, z: 0}
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -1052,7 +1052,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 12.5, y: 18.5}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1108,7 +1108,7 @@ Tilemap:
   m_GameObject: {fileID: 9087165873317702674}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 22, y: 18, z: 0}
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -1252,7 +1252,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 22.5, y: 18.5}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
