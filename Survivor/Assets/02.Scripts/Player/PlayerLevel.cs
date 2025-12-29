@@ -29,6 +29,7 @@ public class PlayerLevel : MonoBehaviour
         if(currentExp >= playerData.expMax)
         {
             LevelUp();
+            AudioManager.instance.LevelUpSound();
         }
         Debug.Log($"PlayerLevel currentExp : {currentExp}, 맥스경험치 : {playerData.expMax}");
     }
