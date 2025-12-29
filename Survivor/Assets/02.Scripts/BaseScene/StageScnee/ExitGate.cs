@@ -20,7 +20,10 @@ public class ExitGate : MonoBehaviour
     private Collider2D col;
     private SpriteRenderer sr;
 
-    private string tutoMapName = "TutorialMap";
+    private string StageMapName = "StageMap";
+    private string InfinityMapName = "InfinityMap";
+
+
     private bool isShown = false;
     private void Awake()
     {
@@ -57,12 +60,18 @@ public class ExitGate : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
             return;
-        
+
         int clearedStage = chunkManager.typeNumb;
 
-        if (clearedStage >= 2)
+        if (clearedStage >= 1 && clearedStage < 3)
         {
-            DataManager.Instance.stageUnlocked[clearedStage - 2] = true;
+            DataManager.Instance.stageUnlocked[clearedStage - 1] = true;
+
+        }
+        else if (clearedStage == 3)
+        {
+            stageSceneLode.BaseSceneLoder();
+
         }
 
         DataManager.Instance.infinityUnlocked[clearedStage - 1] = true;
@@ -70,13 +79,13 @@ public class ExitGate : MonoBehaviour
         DataManager.Instance.Save();
 
         stageSceneLode.BaseSceneLoder();
-        
+
     }
 
     private void ShowExitTuto()
     {
         if (isShown) return;
-        if (SceneManager.GetActiveScene().name == tutoMapName)
+        if (SceneManager.GetActiveScene().name == StageMapName || SceneManager.GetActiveScene().name == InfinityMapName)
         {
             timer += Time.deltaTime;
             if (timer >= showDelay)
