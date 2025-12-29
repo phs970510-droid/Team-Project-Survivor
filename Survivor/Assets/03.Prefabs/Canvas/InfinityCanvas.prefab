@@ -4875,7 +4875,7 @@ MonoBehaviour:
   panelMenu: {fileID: 1825309198524457412}
   panelSelcet: {fileID: 4410667002044407510}
   joyStick: {fileID: 0}
-  StageText: {fileID: 0}
+  StageText: {fileID: 3160566005054189867}
 --- !u!1 &4747363145855609127
 GameObject:
   m_ObjectHideFlags: 0
