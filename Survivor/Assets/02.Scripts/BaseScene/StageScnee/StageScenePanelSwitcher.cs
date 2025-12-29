@@ -10,7 +10,6 @@ public class StageScenePanelSwitcher : MonoBehaviour
     public GameObject joyStick;
     public GameObject StageText;
 
-    float time;
     //float time;
     //float fadeTime = 1f;
 
