@@ -5,8 +5,11 @@ public class Item : MonoBehaviour
     [SerializeField] private PlayerLevel playerLevel;
     [SerializeField] private CommonHP commonHP;
     [SerializeField] private ItemPool coinPool;
+<<<<<<< HEAD
     [SerializeField] private GameObject openedReward;
     [SerializeField] private GameObject shieldEffect;
+=======
+>>>>>>> parent of ef88eb9 (TW_1229_FirstCommit)
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -45,12 +48,6 @@ public class Item : MonoBehaviour
         {
             GetBossReward();
             Destroy(other.gameObject);
-            if (openedReward == null) return;
-            if (openedReward != null)
-            {
-                Instantiate(openedReward, transform.position, Quaternion.identity);
-                Destroy(openedReward, 3f);
-            }
         }
     }
 
