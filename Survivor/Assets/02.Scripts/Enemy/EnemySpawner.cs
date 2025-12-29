@@ -42,8 +42,6 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector2 spawnPos;
 
-    [SerializeField] private WarningMessage warningMessage;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -129,7 +127,6 @@ public class EnemySpawner : MonoBehaviour
             enemyManagers.SpawnMid(spawnPos);
             bossSpawned = true;
         }
-        warningMessage.ShowWarning();   //보스등장 메세지 등장
     }
     public void StageBossCleared()
     {
@@ -151,7 +148,6 @@ public class EnemySpawner : MonoBehaviour
             finalBossDead = false;  //보스 살아있으면 타이머 안돌아가게 추가
             bossTimer = 0f;
         }
-        warningMessage.ShowPBWarning(); //화염내성 보스 등장
     }
 
     //무한맵 보스 죽으면 타이머 돌아가기

@@ -4851,7 +4851,7 @@ MonoBehaviour:
   panelMenu: {fileID: 1825309198524457412}
   panelSelcet: {fileID: 4410667002044407510}
   joyStick: {fileID: 0}
-  StageText: {fileID: 0}
+  StageText: {fileID: 3160566005054189867}
 --- !u!1 &4747363145855609127
 GameObject:
   m_ObjectHideFlags: 0
@@ -6225,19 +6225,7 @@ MonoBehaviour:
   m_Value: -0.01
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8437884557819802519, guid: 3be21fdab7f30cf40a7060c3e34b5d01, type: 3}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: BGMSlider
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6399541448906431632
 GameObject:
   m_ObjectHideFlags: 0

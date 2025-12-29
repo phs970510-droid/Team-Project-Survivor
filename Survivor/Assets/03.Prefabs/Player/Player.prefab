@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 5235858476541983835}
   - component: {fileID: 917420216698102336}
   - component: {fileID: 769007038035859641}
+  - component: {fileID: 2300547000175744572}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -339,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 3810214103174425284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.948868, y: 2.4625533, z: 0}
+  m_LocalPosition: {x: 0.21566612, y: 5.6816645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -458,8 +459,11 @@ MonoBehaviour:
   playerLevel: {fileID: 4555377799735681598}
   commonHP: {fileID: 6964823894383930263}
   coinPool: {fileID: 2659758993133963925, guid: 546ca588d52e91141b4c0ccdbb272b33, type: 3}
+<<<<<<< HEAD
   openedReward: {fileID: 2874030568970766115, guid: 1e11c50e809b63b4380b962237e5438c, type: 3}
   shieldEffect: {fileID: 7210546834760373442, guid: b2460a9222a3b3147bb8af945eca92de, type: 3}
+=======
+>>>>>>> parent of ef88eb9 (TW_1229_FirstCommit)
 --- !u!114 &6964823894383930263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +573,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2300547000175744572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810214103174425284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d111b02e30be1c541b3a444c273bf315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDatas: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
 --- !u!1 &4844222595398662012
 GameObject:
   m_ObjectHideFlags: 0
