@@ -120,7 +120,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8437884557819802519, guid: 3be21fdab7f30cf40a7060c3e34b5d01, type: 3}
+      - m_Target: {fileID: 5692738586332067889}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
         m_MethodName: BGMToggle
         m_Mode: 0
@@ -1118,9 +1118,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8437884557819802519, guid: 3be21fdab7f30cf40a7060c3e34b5d01, type: 3}
+      - m_Target: {fileID: 5692738586332067889}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: SFXSlider
+        m_MethodName: SfxSlider
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2864,7 +2864,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8437884557819802519, guid: 3be21fdab7f30cf40a7060c3e34b5d01, type: 3}
+      - m_Target: {fileID: 5692738586332067889}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
         m_MethodName: SfxToggle
         m_Mode: 0
@@ -4739,6 +4739,7 @@ MonoBehaviour:
   panelMenu: {fileID: 3567360499614088166}
   panelSelcet: {fileID: 6208547348404345564}
   joyStick: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   StageText: {fileID: 0}
 =======
@@ -4891,6 +4892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 41aed0b (TW_MainCommit)
 --- !u!1 &4492347008979525346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5902,7 +5905,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8437884557819802519, guid: 3be21fdab7f30cf40a7060c3e34b5d01, type: 3}
+      - m_Target: {fileID: 5692738586332067889}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
         m_MethodName: BGMSlider
         m_Mode: 0
