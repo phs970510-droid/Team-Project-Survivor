@@ -4740,6 +4740,7 @@ MonoBehaviour:
   panelSelcet: {fileID: 6208547348404345564}
   joyStick: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   StageText: {fileID: 0}
 =======
@@ -4892,6 +4893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 41aed0b (TW_MainCommit)
 =======
 >>>>>>> parent of 41aed0b (TW_MainCommit)
 --- !u!1 &4492347008979525346
