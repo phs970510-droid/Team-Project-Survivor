@@ -1,26 +1,24 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Item : MonoBehaviour
 {
     [SerializeField] private PlayerLevel playerLevel;
     [SerializeField] private CommonHP commonHP;
     [SerializeField] private ItemPool coinPool;
-<<<<<<< HEAD
+
     [SerializeField] private GameObject openedReward;
     [SerializeField] private GameObject shieldEffect;
-=======
->>>>>>> parent of ef88eb9 (TW_1229_FirstCommit)
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //ÄÚÀÎ
+        //ì½”ì¸
         if (other.CompareTag("Coin"))
         {
             GetCoin();
             coinPool.ReturnItem(other.gameObject);
             AudioManager.instance.PlayCoinSound();
         }
-        //ÀÚ¼® ¾ÆÀÌÅÛ
+        //ìì„ ì•„ì´í…œ
         if(other.CompareTag("Magnet"))
         {
             GetMagnetItem();
@@ -28,7 +26,7 @@ public class Item : MonoBehaviour
             AudioManager.instance.PlayMagnetSound();
         }
 
-        //¹æ¾î¸· ¾ÆÀÌÅÛ Ãß°¡
+        //ë°©ì–´ë§‰ ì•„ì´í…œ ì¶”ê°€
         if (other.CompareTag("Shield"))
         {
             commonHP.GetShieldItem();
@@ -43,7 +41,7 @@ public class Item : MonoBehaviour
             }
         }
 
-        //º¸½º º¸»ó
+        //ë³´ìŠ¤ ë³´ìƒ
         if (other.CompareTag("Reward"))
         {
             GetBossReward();
@@ -61,7 +59,7 @@ public class Item : MonoBehaviour
         GameObject[] exps = GameObject.FindGameObjectsWithTag("Exp");
         GameObject[] bigExps = GameObject.FindGameObjectsWithTag("BigExp");
 
-        //¸ğµç exp¾ÆÀÌÅÛ¿¡ MagnetOn½ÇÇà
+        //ëª¨ë“  expì•„ì´í…œì— MagnetOnì‹¤í–‰
         foreach(GameObject go in exps)
         {
             EXP exp = go.GetComponent<EXP>();
@@ -82,7 +80,7 @@ public class Item : MonoBehaviour
 
     private void GetBossReward()
     {
-        //ÀÎ°ÔÀÓ ÀçÈ­ or ¹«±â ÇØ±İ ¾ÆÀÌÅÛ ¾ò±â
-        DataManager.Instance.AddMoney(1000); //UIÃß°¡
+        //ì¸ê²Œì„ ì¬í™” or ë¬´ê¸° í•´ê¸ˆ ì•„ì´í…œ ì–»ê¸°
+        DataManager.Instance.AddMoney(1000); //UIì¶”ê°€
     }
 }
