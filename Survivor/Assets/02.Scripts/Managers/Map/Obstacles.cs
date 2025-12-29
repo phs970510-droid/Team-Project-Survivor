@@ -37,6 +37,8 @@ public abstract class Obstacles : MonoBehaviour
     protected float obstacleAKey;
     protected float obstacleBKey;
 
+    protected Vector3 obstaclePosition = Vector3.zero;
+
     private Vector3Int currentCenter;
     private Dictionary<float, GameObject> activeObstaclesA = new Dictionary<float, GameObject>();
     private Dictionary<float, GameObject> activeObstaclesB = new Dictionary<float, GameObject>();
@@ -88,9 +90,6 @@ public abstract class Obstacles : MonoBehaviour
         return new Vector3Int(x, y, 0);
     }
 
-    //생성되지 말아야할 최소범위, 생성 되어야할 범위지정
-    //생성하고자 하는 위치가 이미 활성화 되어있는 자리라면 다시 반복
-    //A obstacle은 한 번에 최대 2개 까지 활성화
     //겹치는 현상이 잦을 경우 while문 안에 Random.Range의 범위를 조정함으로 빈도 수 조절
     protected void ActiveObstacleA()
     {
@@ -100,105 +99,33 @@ public abstract class Obstacles : MonoBehaviour
 
         int indexA = Random.Range(0, obstaclePrefabsA.Length);
 
-        Vector3 playerPosition = GetPlayerObstacle();
+        Vector3Int playerPosition = GetPlayerObstacle();
+        Debug.Log($"playerPosition.x : {playerPosition.x}, playerPosition.y : {playerPosition.y}");
 
-        if (playerPosition.x > 0 && playerPosition.y > 0)
+        int extraX = Random.Range(-3, 4) * obstacleSize;
+        int extraY = Random.Range(-3, 4) * obstacleSize;
+
+        obstaclePosition.x = playerPosition.x + extraX; //기존 식의 경우 x값이 양에서 음, 음에서 양
+        obstaclePosition.y = playerPosition.y + extraY; //값 변동 시 다른 if문으로 빨려들어감
+
+        if (activeObstaclesA.ContainsKey(obstacleAKey))
         {
-            int extraX = Random.Range(-2, 5) * obstacleSize;
-            int extraY = Random.Range(-2, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
+            while (activeObstaclesA[obstacleAKey].transform.position == obstaclePosition)
             {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-2, 5) * obstacleSize;
-                    extraY = Random.Range(-2, 5) * obstacleSize;
+                extraX = Random.Range(-3, 4) * obstacleSize;
+                extraY = Random.Range(-3, 4) * obstacleSize;
 
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
-            }
-
-        }
-
-        if (playerPosition.x < 0 && playerPosition.y < 0)
-        {
-            int extraX = Random.Range(-2, 5) * obstacleSize;
-            int extraY = Random.Range(-2, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
-            {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-2, 5) * obstacleSize;
-                    extraY = Random.Range(-2, 5) * obstacleSize;
-
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
+                obstaclePosition.x = playerPosition.x + extraX;
+                obstaclePosition.y = playerPosition.y + extraY;
             }
         }
 
-        if (playerPosition.x > 0 && playerPosition.y < 0)
-        {
-            int extraX = Random.Range(-2, 5) * obstacleSize;
-            int extraY = Random.Range(-2, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
-            {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-2, 5) * obstacleSize;
-                    extraY = Random.Range(-2, 5) * obstacleSize;
-
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
-            }
-        }
-
-        if (playerPosition.x < 0 && playerPosition.y > 0)
-        {
-            int extraX = Random.Range(-2, 5) * obstacleSize;
-            int extraY = Random.Range(-2, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
-            {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-2, 5) * obstacleSize;
-                    extraY = Random.Range(-2, 5) * obstacleSize;
-
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
-            }
-        }
-
-        if (playerPosition.x == 0 && playerPosition.y == 0)
-        {
-            Debug.Log("0,0에서 생성 X");
-        }
-
-        obstaclePrefabsA[indexA].position = playerPosition;
+        obstaclePrefabsA[indexA].position = obstaclePosition;
         obstaclePrefabsA[indexA].gameObject.SetActive(true);
         obstacleAKey = useTimeTypeA + currentTime;
         activeObstaclesA.Add(obstacleAKey, obstaclePrefabsA[indexA].gameObject);
         isTriggerA = false;
-
-    } //생성간격 조건 추가필요 :: 최대 수 활성화 시 카운트 종료
+    }
 
     //B obstacle은 사용자가 활용할 수 있는 오브젝트 최대 1개 활성화
     protected void ActiveObstacleB()
@@ -207,103 +134,32 @@ public abstract class Obstacles : MonoBehaviour
 
         if (!isTriggerB) return;
 
-        Vector3 playerPosition = GetPlayerObstacle();
+        Vector3Int playerPosition = GetPlayerObstacle();
 
-        if (playerPosition.x > 0 && playerPosition.y > 0)
+        int extraX = Random.Range(-4, 5) * obstacleSize;
+        int extraY = Random.Range(-4, 5) * obstacleSize;
+
+        obstaclePosition.x = playerPosition.x + extraX;
+        obstaclePosition.y = playerPosition.y + extraY;
+
+        if (activeObstaclesA.ContainsKey(obstacleAKey))
         {
-            int extraX = Random.Range(-3, 5) * obstacleSize;
-            int extraY = Random.Range(-3, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
+            while (activeObstaclesA[obstacleAKey].transform.position == obstaclePosition)
             {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-3, 5) * obstacleSize;
-                    extraY = Random.Range(-3, 5) * obstacleSize;
+                extraX = Random.Range(-4, 5) * obstacleSize;
+                extraY = Random.Range(-4, 5) * obstacleSize;
 
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
+                obstaclePosition.x = playerPosition.x + extraX;
+                obstaclePosition.y = playerPosition.y + extraY;
             }
         }
 
-        if (playerPosition.x < 0 && playerPosition.y < 0)
-        {
-            int extraX = Random.Range(-3, 5) * obstacleSize;
-            int extraY = Random.Range(-3, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
-            {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-3, 5) * obstacleSize;
-                    extraY = Random.Range(-3, 5) * obstacleSize;
-
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
-            }
-        }
-
-        if (playerPosition.x > 0 && playerPosition.y < 0)
-        {
-            int extraX = Random.Range(-3, 5) * obstacleSize;
-            int extraY = Random.Range(-3, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
-            {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-3, 5) * obstacleSize;
-                    extraY = Random.Range(-3, 5) * obstacleSize;
-
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
-            }
-        }
-
-        if (playerPosition.x < 0 && playerPosition.y > 0)
-        {
-            int extraX = Random.Range(-3, 5) * obstacleSize;
-            int extraY = Random.Range(-3, 5) * obstacleSize;
-
-            playerPosition.x += extraX;
-            playerPosition.y += extraY;
-
-            if (activeObstaclesA.ContainsKey(obstacleAKey))
-            {
-                while (activeObstaclesA[obstacleAKey].transform.position == playerPosition)
-                {
-                    extraX = Random.Range(-3, 5) * obstacleSize;
-                    extraY = Random.Range(-3, 5) * obstacleSize;
-
-                    playerPosition.x += extraX;
-                    playerPosition.y += extraY;
-                }
-            }
-        }
-
-        if (playerPosition.x == 0 && playerPosition.y == 0)
-        {
-            Debug.Log("0,0에서 생성 X");
-        }
-
-        obstaclePrefabsB[0].position = playerPosition;
+        obstaclePrefabsB[0].position = obstaclePosition;
         obstaclePrefabsB[0].gameObject.SetActive(true);
         obstacleBKey = useTimeTypeB + currentTime;
         activeObstaclesB.Add(obstacleBKey, obstaclePrefabsB[0].gameObject);
         isTriggerB = false;
-    } //생성간격 조건 추가필요 :: 여유가 생길 경우 카운트 활성화
+    }
 
     //activeObstacleA 리스트에 추가되는 시점부터 유지시간 적용 후 리스트에서 제거 밑 Setactive:false
     //activeObstacleA, B의 공통 분모를 제외하고 개별 적용되는 사항을 if문으로 구분
@@ -317,10 +173,11 @@ public abstract class Obstacles : MonoBehaviour
             saveObstacleA = activeObstacleA;
         }
 
-        if (saveObstacleA.Key <= currentTime)
+        if (saveObstacleA.Key <= currentTime && activeObstaclesA.Count > 0)
         {
             saveObstacleA.Value.SetActive(false);
             activeObstaclesA.Remove(saveObstacleA.Key);
+            triggerTimeA = 0.0f;
         }
 
         foreach (KeyValuePair<float, GameObject> activeObstacleB in activeObstaclesB)
@@ -330,10 +187,11 @@ public abstract class Obstacles : MonoBehaviour
             saveObstacleB = activeObstacleB;
         }
 
-        if (saveObstacleB.Key <= currentTime)
+        if (saveObstacleB.Key <= currentTime && activeObstaclesB.Count > 0)
         {
             saveObstacleB.Value.SetActive(false);
             activeObstaclesB.Remove(saveObstacleB.Key);
+            triggerTimeB = 0.0f;
         }
     }
 
@@ -346,7 +204,6 @@ public abstract class Obstacles : MonoBehaviour
         if (intervalTime <= triggerTimeA)
         {
             isTriggerA = true;
-            triggerTimeA = 0.0f;
         }
     }
 
@@ -359,7 +216,6 @@ public abstract class Obstacles : MonoBehaviour
         if (intervalTime <= triggerTimeB)
         {
             isTriggerB = true;
-            triggerTimeB = 0.0f;
         }
     }
 
