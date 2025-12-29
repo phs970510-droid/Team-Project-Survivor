@@ -828,6 +828,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1350849556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1204849807304395153, guid: a68cc9bbeedb7cb40924b307feffad60, type: 3}
+  m_PrefabInstance: {fileID: 5421374770882030452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234dcf1f15c377b4ab2936bcba1e6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1439277737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1454,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4555377799735681598, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: levelUI
+      value: 
+      objectReference: {fileID: 1350849556}
+    - target: {fileID: 4555377799735681598, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: selectItem
       value: 
       objectReference: {fileID: 2412383268781833332}
@@ -1924,6 +1939,10 @@ PrefabInstance:
     - target: {fileID: 3410157768621021556, guid: de764937658c6e544bc112a3820ab578, type: 3}
       propertyPath: m_Name
       value: WarningCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410157768621021556, guid: de764937658c6e544bc112a3820ab578, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
