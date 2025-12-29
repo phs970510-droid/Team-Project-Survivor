@@ -14,12 +14,18 @@ public class CommonHP : MonoBehaviour
     protected float invincibleTime = 0.5f;
     protected bool isInvincible = false;
 
-    [Header("에너미 죽었을 때")]
+    [Header("아이템 설정")]
     [SerializeField] private float expChance = 0.2f;
+    [SerializeField] private float coinChance = 0.2f;
+    [SerializeField] private float shieldChance = 0.05f;
+    [SerializeField] private float magnetChance = 0.01f;
+
+    [Header("풀링")]
     [SerializeField] private ItemPool bigPool;
     [SerializeField] private ItemPool normalPool;
-    [SerializeField] private float coinChance = 0.2f;
     [SerializeField] private ItemPool coinPool;
+    [SerializeField] private ItemPool shieldPool;
+    [SerializeField] private ItemPool magnetPool;
 
     [Header("보스 보상")]
     [SerializeField] private GameObject bossReward;
@@ -138,7 +144,7 @@ public class CommonHP : MonoBehaviour
         if (CompareTag("Enemy"))
         {
             DropEXP();
-            DropCoin();
+            DropItem();
             if(enemyKillCount != null)
             {
                 enemyKillCount.AddKill();
@@ -197,15 +203,30 @@ public class CommonHP : MonoBehaviour
         }
     }
 
-    private void DropCoin()
+    private void DropItem()
     {
         float rand = Random.value;
+
+        //코인 드랍
         GameObject coinObj = GameObject.Find("CoinPool");
         coinPool = coinObj.GetComponent<ItemPool>();
-
         if (coinPool != null && coinChance >= rand)
         {
             coinPool.SpawnItem(transform.position + Vector3.right * 0.5f);
+        }
+        //실드 드랍
+        GameObject shieldObj = GameObject.Find("ShieldPool");
+        shieldPool = shieldObj.GetComponent<ItemPool>();
+        if (shieldPool != null && coinChance >= rand)
+        {
+            shieldPool.SpawnItem(transform.position + Vector3.down * 0.5f);
+        }
+        //자석 드랍
+        GameObject magnetObj = GameObject.Find("MagnetPool");
+        magnetPool = magnetObj.GetComponent<ItemPool>();
+        if (magnetPool != null && coinChance >= rand)
+        {
+            magnetPool.SpawnItem(transform.position + Vector3.left * 0.5f);
         }
     }
 
