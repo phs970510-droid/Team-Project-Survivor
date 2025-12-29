@@ -144,7 +144,9 @@ public class CommonHP : MonoBehaviour
         if (CompareTag("Enemy"))
         {
             DropEXP();
-            DropItem();
+            DropCoin();
+            DropShield();
+            DropMagnet();
             if(enemyKillCount != null)
             {
                 enemyKillCount.AddKill();
@@ -205,7 +207,7 @@ public class CommonHP : MonoBehaviour
         }
     }
 
-    private void DropItem()
+    private void DropCoin()
     {
         float rand = Random.value;
 
@@ -216,14 +218,24 @@ public class CommonHP : MonoBehaviour
         {
             coinPool.SpawnItem(transform.position + Vector3.right * 0.5f);
         }
-        //실드 드랍
+    }
+
+    private void DropShield()
+    {
+        float rand = Random.value;
+
         GameObject shieldObj = GameObject.Find("ShieldPool");
         shieldPool = shieldObj.GetComponent<ItemPool>();
         if (shieldPool != null && coinChance >= rand)
         {
             shieldPool.SpawnItem(transform.position + Vector3.down * 0.5f);
         }
-        //자석 드랍
+    }
+
+    private void DropMagnet()
+    {
+        float rand = Random.value;
+
         GameObject magnetObj = GameObject.Find("MagnetPool");
         magnetPool = magnetObj.GetComponent<ItemPool>();
         if (magnetPool != null && coinChance >= rand)

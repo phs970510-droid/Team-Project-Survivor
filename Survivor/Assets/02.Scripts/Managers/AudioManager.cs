@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
     const string PREF_BGM_VOLUME = "BGM_VOLUME";
 
     // 효과음을 인덱스로 부르기 위한 enum
-    public enum Sfx { Dead, Hit, LevelUp = 3, Lose, Melee, Range = 7, Select, Win, Coin }
+    public enum Sfx { Dead, Hit, LevelUp = 3, Lose, Melee, Range = 7, Select, Win, Coin, Magnet, Shield }
 
     void Awake()
     {
@@ -212,6 +212,10 @@ public class AudioManager : MonoBehaviour
     }
 
    
+    public void LevelUpSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.LevelUp);
+    }
 
     // UI 버튼 사운드
     public void PlaySelectSound()
@@ -222,17 +226,27 @@ public class AudioManager : MonoBehaviour
     //코인 사운드
     public void PlayCoinSound()
     {
-        PlaySfx(Sfx.Coin);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void PlayMagnetSound()
     {
-        if (other.CompareTag("Player"))
-        {
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
-            Destroy(gameObject);
-        }
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Magnet);
     }
+
+    public void PlayShieldSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield);
+    }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
+    //        Destroy(gameObject);
+    //    }
+    //}
 
 
 

@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
     [SerializeField] private CommonHP commonHP;
     [SerializeField] private ItemPool coinPool;
     [SerializeField] private GameObject openedReward;
+    [SerializeField] private GameObject shieldEffect;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,12 +15,14 @@ public class Item : MonoBehaviour
         {
             GetCoin();
             coinPool.ReturnItem(other.gameObject);
+            AudioManager.instance.PlayCoinSound();
         }
         //자석 아이템
         if(other.CompareTag("Magnet"))
         {
             GetMagnetItem();
             Destroy(other.gameObject);
+            AudioManager.instance.PlayMagnetSound();
         }
 
         //방어막 아이템 추가
@@ -27,6 +30,14 @@ public class Item : MonoBehaviour
         {
             commonHP.GetShieldItem();
             Destroy(other.gameObject);
+            AudioManager.instance.PlayShieldSound();
+
+            if (shieldEffect == null) return;
+            if (shieldEffect != null)
+            {
+                GameObject shieldEffectObj = Instantiate(shieldEffect, transform.position, Quaternion.identity, transform);
+                Destroy(shieldEffectObj, 5f);
+            }
         }
 
         //보스 보상
@@ -51,12 +62,21 @@ public class Item : MonoBehaviour
     private void GetMagnetItem()
     {
         GameObject[] exps = GameObject.FindGameObjectsWithTag("Exp");
+        GameObject[] bigExps = GameObject.FindGameObjectsWithTag("BigExp");
 
         //모든 exp아이템에 MagnetOn실행
         foreach(GameObject go in exps)
         {
             EXP exp = go.GetComponent<EXP>();
             if(exp != null)
+            {
+                exp.MagnetOn();
+            }
+        }
+        foreach (GameObject go in bigExps)
+        {
+            EXP exp = go.GetComponent<EXP>();
+            if (exp != null)
             {
                 exp.MagnetOn();
             }
