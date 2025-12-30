@@ -11,6 +11,7 @@ public class StageMovement : MonoBehaviour
     {
         chunkManager = FindObjectOfType<ChunkManager>();
         lockPanelUI = FindObjectOfType<LockPanelUI>(true);
+        stageSceneLode = FindObjectOfType<StageSceneLode>();
         lockPanelUI.Hide();
     }
     private void OnTriggerEnter2D(Collider2D other)
