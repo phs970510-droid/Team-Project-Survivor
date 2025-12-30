@@ -56,8 +56,12 @@ public class UpGradeItem : MonoBehaviour
         {
             float current = GetCurrentStat(i);
             float next = DataManager.Instance.GetNextState(i);
+
+            string currentText = StatValue(i, current);
+            string nextText = StatValue(i, next);
+
             upGradeExplane[i].text =
-                $"{GetStatName(i)}\n{current} -> {next}";
+                $"{GetStatName(i)}\n{currentText} -> {nextText}";
         }
     }
 
@@ -69,6 +73,10 @@ public class UpGradeItem : MonoBehaviour
                 return DataManager.Instance.baseData.moveSpeed;
             case 1:
                 return DataManager.Instance.baseData.maxHp;
+            case 2:
+                return DataManager.Instance.baseData.expMultiplier;
+            case 3:
+                return DataManager.Instance.baseData.magnetRange;
             default:
                 return 0f;
         }
@@ -82,8 +90,29 @@ public class UpGradeItem : MonoBehaviour
                 return "MoveSpeed";
             case 1:
                 return "Max Hp";
+            case 2:
+                return "EXP Multiplier";
+            case 3:
+                return "Magnet Range";
             default:
                 return "";
+        }
+    }
+
+    bool IsPercentStat(int index)
+    {
+        return index == 2;
+    }
+
+    string StatValue(int index, float value)
+    {
+        if (IsPercentStat(index))
+        {
+            return$"{ value *10f}%";
+        }
+        else
+        {
+            return value.ToString();
         }
     }
 }
