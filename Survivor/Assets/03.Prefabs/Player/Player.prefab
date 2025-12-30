@@ -441,8 +441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 31bf7df0f0330324ba99042efeacc907, type: 2}
-  level: 3
-  currentExp: 77
+  level: 1
+  currentExp: 0
 --- !u!114 &9101388408852355516
 MonoBehaviour:
   m_ObjectHideFlags: 0
