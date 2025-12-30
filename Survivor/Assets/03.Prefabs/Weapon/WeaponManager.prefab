@@ -639,10 +639,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af0f94f0ab68f548b2ec02fdf923d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponObjects:
-  - {fileID: 559721962857901289}
-  - {fileID: 4561463280999435835}
-  - {fileID: 8855426473536978020}
+  weapons:
+  - weaponData: {fileID: 11400000, guid: 1f5e16d360502ef439387a456e687a2f, type: 2}
+    weaponObject: {fileID: 4464185320431093761}
+  - weaponData: {fileID: 11400000, guid: f9bf45a8558158245871e2393a93f8f3, type: 2}
+    weaponObject: {fileID: 559721962857901289}
+  - weaponData: {fileID: 11400000, guid: 6628d2e461b9ac04787849d60c15de2e, type: 2}
+    weaponObject: {fileID: 4561463280999435835}
+  - weaponData: {fileID: 11400000, guid: eac3406a402736443a448bf2695376d2, type: 2}
+    weaponObject: {fileID: 8855426473536978020}
 --- !u!1 &8855426473536978020
 GameObject:
   m_ObjectHideFlags: 0
