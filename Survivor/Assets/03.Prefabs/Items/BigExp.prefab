@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1010032765
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 362616440, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -136,9 +136,7 @@ MonoBehaviour:
   expAmount: 20
   expPool: {fileID: -7957447705339452863, guid: 0930c9e85914abd4dabb2004a2b574a2, type: 3}
   playerLevel: {fileID: 4555377799735681598, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
-  levelUpMiutiplier: 1.1
+  levelUpMlutiplier: 1.1
   magnetSpeed: 5
   levelUpRange: 1
   magnetRange: 0
-  magnetLevel: 0
-  expLevel: 0

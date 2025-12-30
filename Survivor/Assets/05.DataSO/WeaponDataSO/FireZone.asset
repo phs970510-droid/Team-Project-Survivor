@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
   m_Name: FireZone
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 6248790497338057057, guid: ff1de2d46b2124742b703c2a05d63b2b, type: 3}
+  weaponPrefab: {fileID: 1105021633374263069, guid: 8e78ec0caf9c1d24983d6796fe88ebd3, type: 3}
   weaponName: 
   isUnlocked: 0
   price: 0
@@ -21,5 +21,13 @@ MonoBehaviour:
   fireCoolTime: 0
   bulletCount: 0
   attackRange: 0
-  Sprite: {fileID: 0}
+  Sprite: {fileID: -261014613, guid: 50cc58450ebfb8a40bfa877fc09e0046, type: 3}
   poolSize: 10
+  upgradeCost: 0
+  starLevel: 0
+  maxStar: 5
+  initDamage: 100
+  initSpeed: 10
+  initFireCoolTime: 1
+  initBulletCount: 1
+  initAttackRange: 10
