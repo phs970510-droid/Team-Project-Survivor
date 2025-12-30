@@ -20,6 +20,7 @@ public class WeaponUnlock : MonoBehaviour
             weaponButtons[index].SetActive(false);
             weapon.isUnlocked = true;
         }
+
         else
         {
             emptyMoneyPaenl.SetActive(true);
