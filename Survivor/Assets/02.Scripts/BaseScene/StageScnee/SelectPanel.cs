@@ -5,13 +5,27 @@ using UnityEngine;
 public class SelectPanel : MonoBehaviour
 {
     public SelectItemButton[] buttons;     
-    public List<WeaponData> allWeaponData; 
+    public List<WeaponData> allWeaponData;
+    [SerializeField] GameObject joystick;
 
     private void OnEnable()
     {
         ShowRandomItems();
+
+        if( joystick != null)
+        {
+            //조이스틱 비활성화하기
+            joystick.SetActive(false);
+        }
     }
 
+    private void OnDisable()
+    {
+        if (joystick != null)
+        {
+            joystick.SetActive(true);
+        }
+    }
     void ShowRandomItems()
     {
         List<WeaponData> availableWeapons = allWeaponData
