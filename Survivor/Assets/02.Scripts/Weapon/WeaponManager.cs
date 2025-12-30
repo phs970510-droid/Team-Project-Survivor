@@ -1,9 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Weapon
+{
+    public WeaponData weaponData;
+    public GameObject weaponObject;
+}
 public class WeaponManager : MonoBehaviour
 {
-    public List<GameObject> weaponObjects;
+    public List<Weapon> weapons;
 
     private void OnEnable()
     {
@@ -12,13 +18,11 @@ public class WeaponManager : MonoBehaviour
 
     private void RefreshWeaponObject()
     {
-        for(int i = 0; i < DataManager.Instance.allWeaponData.Count; i++)
+        foreach(var weapon in weapons)
         {
-            bool unlocked = DataManager.Instance.allWeaponData[i].isUnlocked;
-            if(i < weaponObjects.Count)
-            {
-                weaponObjects[i].SetActive(unlocked);
-            }
+            if (weapon.weaponObject == null || weapon.weaponData == null) continue;
+
+            weapon.weaponObject.SetActive(weapon.weaponData.isUnlocked);
         }
     }
 }

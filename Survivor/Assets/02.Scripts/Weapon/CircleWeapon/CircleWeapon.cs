@@ -88,7 +88,11 @@ public class CircleWeapon : MonoBehaviour
         //기존 총알 삭제
         foreach (GameObject obj in circleObjects)
         {
-            gameObject.SetActive(false);
+            if(obj != null)
+            {
+                obj.transform.SetParent(pool.transform);
+                pool.ReturnBullet(obj);
+            }
         }
         //새로 생성
         StartSpin();
