@@ -1,6 +1,3 @@
-using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -10,7 +7,6 @@ public class Item : MonoBehaviour
     [SerializeField] private ItemPool coinPool;
     [SerializeField] private GameObject openedReward;
     [SerializeField] private GameObject shieldEffect;
-    [SerializeField] private GameObject goldText;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -89,20 +85,7 @@ public class Item : MonoBehaviour
 
     private void GetBossReward()
     {
-        int rewardMoney = 1000;
         //인게임 재화 or 무기 해금 아이템 얻기
-        DataManager.Instance.AddMoney(rewardMoney);
-
-        if(goldText != null)
-        {
-            GameObject textObj = Instantiate(goldText, transform.position + Vector3.up * 2f, Quaternion.identity);
-            TextMeshProUGUI tmPro = textObj.GetComponentInChildren<TextMeshProUGUI>();
-
-            if(tmPro != null)
-            {
-                tmPro.text = $"+{rewardMoney}G";
-            }
-            Destroy(textObj, 1f );
-        }
+        DataManager.Instance.AddMoney(1000); //UI추가
     }
 }

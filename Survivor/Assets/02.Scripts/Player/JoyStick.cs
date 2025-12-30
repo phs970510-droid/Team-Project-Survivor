@@ -12,14 +12,10 @@ public class JoyStick : MonoBehaviour
     private Vector2 inputVector;//조이스틱 입력벡터
     private bool isTouching = false;//터치했는지
 
-    private Vector2 baseBackPos;    //조이스틱 기본위치
-
     public Vector2 InputVector => inputVector;
 
     private void Awake()
     {
-        //시작하면 기본 위치
-        baseBackPos = back.rectTransform.anchoredPosition;
         //조이스틱 핸들 중앙으로
         joyStick.rectTransform.anchoredPosition = Vector2.zero;
     }
@@ -31,7 +27,6 @@ public class JoyStick : MonoBehaviour
         {
             isTouching = true;
             UpdateJoyStick(Input.mousePosition);
-            MoveJoyStickPos();
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -39,8 +34,6 @@ public class JoyStick : MonoBehaviour
             isTouching = false;
             joyStick.rectTransform.anchoredPosition = Vector2.zero;
             inputVector = Vector2.zero;
-
-            back.rectTransform.anchoredPosition = baseBackPos;
         }
 
         //터치중일 때만 조이스틱 업데이트 가능
@@ -48,18 +41,6 @@ public class JoyStick : MonoBehaviour
         {
             UpdateJoyStick(Input.mousePosition);
         }
-    }
-
-    //클릭한 순간 조이스틱 커서 위치로
-    private void MoveJoyStickPos()
-    {
-        Vector2 localPos;
-
-        RectTransform rect = transform.parent.GetComponent<RectTransform>();
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, Input.mousePosition, null, out localPos);
-
-        back.rectTransform.anchoredPosition = localPos;
     }
 
     private void UpdateJoyStick(Vector2 pos)
