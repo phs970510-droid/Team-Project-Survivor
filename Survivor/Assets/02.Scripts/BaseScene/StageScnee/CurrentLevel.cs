@@ -11,6 +11,6 @@ public class CurrentLevel : MonoBehaviour
     }
     public void SetLevel(float level)
     {
-        text.text = $"Lv.{level}";
+        text.text = $"Lv{level}";
     }
 }

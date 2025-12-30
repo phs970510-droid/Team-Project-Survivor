@@ -16,15 +16,15 @@ MonoBehaviour:
   weaponName: CircleWeapon
   isUnlocked: 0
   price: 2000
-  damage: 110
+  damage: 100
   speed: 10
   fireCoolTime: 1
-  bulletCount: 2
+  bulletCount: 1
   attackRange: 10
   Sprite: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   poolSize: 5
   upgradeCost: 0
-  starLevel: 1
+  starLevel: 0
   maxStar: 5
   initDamage: 100
   initSpeed: 10
