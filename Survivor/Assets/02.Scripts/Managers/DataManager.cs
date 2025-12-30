@@ -183,10 +183,10 @@ public class DataManager : MonoBehaviour
                 baseData.maxHp += 10f;
                 break;
             case 2:
-                baseData.magnetRange += 1.0f;
+                baseData.expMultiplier += 1.0f;
                 break;
             case 3:
-                baseData.expMultiplier += 0.1f;
+                baseData.magnetRange += 0.1f;
                 break;
         }
     }
@@ -200,7 +200,9 @@ public class DataManager : MonoBehaviour
             case 1:
                 return baseData.maxHp + 10f;
             case 2:
-                return baseData.magnetRange + 1.0f;
+                return baseData.expMultiplier + 1.0f;
+            case 3:
+                return baseData.magnetRange + 0.1f;
             default:
                 return 0f;
         }
