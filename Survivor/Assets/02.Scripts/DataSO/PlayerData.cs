@@ -9,4 +9,13 @@ public class PlayerData : ScriptableObject
 
     [Header("레벨업")]
     public int expMax = 100;
+
+    [Header("초기화 레벨업")]
+
+    public int InitMax = 100;
+
+    public void ResetStat()
+    {
+        expMax = InitMax;
+    }
 }

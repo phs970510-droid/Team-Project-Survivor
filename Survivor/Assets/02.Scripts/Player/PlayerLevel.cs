@@ -15,6 +15,8 @@ public class PlayerLevel : MonoBehaviour
     private void Awake()
     {
         currentLevel = FindObjectOfType<CurrentLevel>(true);
+        level = 1;
+        currentExp = 0;
 
     }
     private void Start()
