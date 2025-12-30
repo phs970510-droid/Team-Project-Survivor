@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDelay: 5
   distance: 5
+  tutoReward: {fileID: 6699600497291500788, guid: bb8d3c9cc6d79ef4e93a0f9edd89e2e2, type: 3}

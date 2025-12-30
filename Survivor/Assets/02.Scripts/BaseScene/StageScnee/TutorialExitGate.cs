@@ -19,6 +19,9 @@ public class TutorialExitGate : MonoBehaviour
 
     private string tutoMapName = "TutorialMap";
     private bool isShown = false;
+
+    [SerializeField] private GameObject tutoReward;
+
     private void Awake()
     {
         stageSceneLode = FindObjectOfType<MissionBoard>();
@@ -29,6 +32,11 @@ public class TutorialExitGate : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         col.enabled = false;//게임시작하면 안 닿게
         sr.enabled = false; //게임시작하면 안 보이게
+    }
+
+    private void Start()
+    {
+        Instantiate(tutoReward, transform.position + Vector3.up * 1f, Quaternion.identity);
     }
 
     private void Update()
@@ -58,7 +66,6 @@ public class TutorialExitGate : MonoBehaviour
         Debug.Log("stageSceneLode: " + (stageSceneLode != null));
 
         stageSceneLode.BaseSceneLoder();
-
     }
 
     private void ShowExitTuto()
