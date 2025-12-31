@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 //스포너는 스폰
 public class EnemySpawner : MonoBehaviour
@@ -44,6 +45,7 @@ public class EnemySpawner : MonoBehaviour
     private Vector2 spawnPos;
 
     [SerializeField] private WarningMessage warningMessage;
+    private bool isInfiniteMap;
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +56,12 @@ public class EnemySpawner : MonoBehaviour
         finalBossTimer = 0f;
 
         int stageType = ChunkManager.Instance.typeNumb;
-        Debug.Log($"현재 맵타입 : {ChunkManager.Instance.typeNumb}");
         enemyManagers.SetStage(stageType);
+
+        isInfiniteMap = SceneManager.GetActiveScene().name == "InfinityMap";
+
+        Debug.Log($"현재 맵타입 : {ChunkManager.Instance.typeNumb}, 인피니티 맵 : {isInfiniteMap}");
+
     }
 
     // Update is called once per frame
@@ -78,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
         //여기에 무한맵용 최종보스 스폰코드 구현하기
-        if (ChunkManager.Instance.typeNumb == 3)
+        if (isInfiniteMap)
         {
             //보스 죽으면 그 때 타이머 돌아가기
             if (finalBossDead)
@@ -90,8 +96,9 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-        //Debug.Log($"현재 보스타이머 : {bossTimer}");
-        //Debug.Log($"타이머 : {timer}");
+        Debug.Log($"현재 보스타이머 : {bossTimer:F0}");
+        Debug.Log($"현재 무한보스타이머 : {finalBossTimer:F0}");
+        Debug.Log($"타이머 : {timer:F0}");
         TimerUI();
     }
 
@@ -152,8 +159,10 @@ public class EnemySpawner : MonoBehaviour
             finalBossSpawned = true;
             finalBossDead = false;  //보스 살아있으면 타이머 안돌아가게 추가
             bossTimer = 0f;
+
+            warningMessage.ShowPBWarning(); //화염내성 보스 등장
+            Debug.Log("최종보스 등장");
         }
-        warningMessage.ShowPBWarning(); //화염내성 보스 등장
     }
 
     //무한맵 보스 죽으면 타이머 돌아가기
