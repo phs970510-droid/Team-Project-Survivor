@@ -186,7 +186,7 @@ public class DataManager : MonoBehaviour
                 baseData.expMultiplier += 1.0f;
                 break;
             case 3:
-                baseData.magnetRange += 0.1f;
+                baseData.magnetRange += 0.5f;
                 break;
         }
     }
@@ -202,7 +202,7 @@ public class DataManager : MonoBehaviour
             case 2:
                 return baseData.expMultiplier + 1.0f;
             case 3:
-                return baseData.magnetRange + 0.1f;
+                return baseData.magnetRange + 0.5f;
             default:
                 return 0f;
         }
