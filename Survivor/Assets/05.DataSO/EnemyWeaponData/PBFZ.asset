@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3297ea72bcc3ae74ba5de0a2c21feffa, type: 3}
   m_Name: PBFZ
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 6210377519655294321, guid: 9f8a1e29bd55d394aaa3d35f68988e11, type: 3}
+  weaponPrefab: {fileID: 1423999351719319633, guid: 5667d6e74dd44cc4dae3f937d74b2b3c, type: 3}
   weaponName: 
   isUnlocked: 0
   price: 0
@@ -23,3 +23,11 @@ MonoBehaviour:
   attackRange: 0
   Sprite: {fileID: 0}
   poolSize: 20
+  upgradeCost: 0
+  starLevel: 0
+  maxStar: 5
+  initDamage: 100
+  initSpeed: 10
+  initFireCoolTime: 1
+  initBulletCount: 1
+  initAttackRange: 10
