@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
             if (finalBossDead)
             {
                 finalBossTimer += Time.deltaTime;
-                if (!finalBossSpawned && bossTimer >= finalBossSpawnTime)
+                if (!finalBossSpawned && finalBossTimer >= finalBossSpawnTime)
                 {
                     TrySpawnInfinite();
                 }
