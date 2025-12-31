@@ -7,6 +7,7 @@ public class WeaponData : ScriptableObject
     [Header("무기 설정")]
     public GameObject weaponPrefab;
     public string weaponName;
+    public string description;
     public bool isUnlocked;
     public int price;
 

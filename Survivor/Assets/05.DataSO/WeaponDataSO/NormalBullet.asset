@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NormalBullet
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 4039606727853340734, guid: d7282e25b859ba1458af27bf075401f1, type: 3}
-  weaponName: NormalWeapon
+  weaponName: ShovelWeapon
+  description: Attacks in facing direction.
   isUnlocked: 1
   price: 0
   damage: 100
