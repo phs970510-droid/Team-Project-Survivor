@@ -345,8 +345,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2220486845974559975, guid: 5be6076b6e18e73489dba367b62c527c, type: 3}
+      propertyPath: bgmClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec78c1b5c9220234984fcba44963c1b0, type: 3}
+    - target: {fileID: 2220486845974559975, guid: 5be6076b6e18e73489dba367b62c527c, type: 3}
       propertyPath: bgmVolume
-      value: 0.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5851795072291665482, guid: 5be6076b6e18e73489dba367b62c527c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1684,7 +1684,7 @@ MonoBehaviour:
   - {fileID: 6199743230614019655}
   - {fileID: 198903924377615497}
   - {fileID: 633240258177154518}
-  healSprite: {fileID: 4606908045521496030, guid: 2b8558b645a07d74582677fd0bf9dfa9, type: 3}
+  healSprite: {fileID: 21300000, guid: a99accd3582fe9f42923a244f5ce9313, type: 3}
   selectPanel: {fileID: 6208547348404345564}
 --- !u!1 &1280009089519191297
 GameObject:
@@ -3634,7 +3634,7 @@ MonoBehaviour:
   - {fileID: 1589855431286918470}
   - {fileID: 6566074760119039967}
   - {fileID: 7342918245359501825}
-  healSprite: {fileID: 4606908045521496030, guid: 2b8558b645a07d74582677fd0bf9dfa9, type: 3}
+  healSprite: {fileID: 21300000, guid: a99accd3582fe9f42923a244f5ce9313, type: 3}
   selectPanel: {fileID: 6208547348404345564}
 --- !u!1 &3352685030856574579
 GameObject:
@@ -7377,7 +7377,7 @@ MonoBehaviour:
   - {fileID: 7069978623899465239}
   - {fileID: 594906251840252253}
   - {fileID: 3256108026842534267}
-  healSprite: {fileID: 4606908045521496030, guid: 2b8558b645a07d74582677fd0bf9dfa9, type: 3}
+  healSprite: {fileID: 21300000, guid: a99accd3582fe9f42923a244f5ce9313, type: 3}
   selectPanel: {fileID: 6208547348404345564}
 --- !u!1 &7704916791343765464
 GameObject:
