@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Data/WeaponData")]
@@ -7,6 +8,7 @@ public class WeaponData : ScriptableObject
     [Header("무기 설정")]
     public GameObject weaponPrefab;
     public string weaponName;
+    public string descriptionText;
     public bool isUnlocked;
     public int price;
 

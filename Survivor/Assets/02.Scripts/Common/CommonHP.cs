@@ -35,6 +35,7 @@ public class CommonHP : MonoBehaviour
     [SerializeField] private float sheildTime = 5f;
     private bool hasShield = false;
 
+    [SerializeField] private GameObject diePanel;
     //플레이어 HP 체력바에 참조
     public float CurrentHP => currentHP;
     public float MaxHP => baseData.maxHp;
@@ -118,6 +119,7 @@ public class CommonHP : MonoBehaviour
         if (CompareTag("Player"))
         {
             //게임오버 / UI
+            StartCoroutine(DiePanelDelay());
         }
         //에너미,보스라면
         else if (CompareTag("Enemy") || CompareTag("Boss"))
@@ -314,5 +316,11 @@ public class CommonHP : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
+    }
+    private IEnumerator DiePanelDelay()
+    {
+        yield return new WaitForSeconds(0.8f);
+        diePanel.SetActive(true);
+
     }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 2202187861052018114, guid: f84f7e950da63c941ab16a6d6badbba6, type: 3}
   weaponName: DroneWeapon
+  descriptionText: Summons a drone that attacks randomly
   isUnlocked: 0
   price: 10000
   damage: 100

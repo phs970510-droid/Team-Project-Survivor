@@ -19,4 +19,8 @@ public class MissionBoard : MonoBehaviour
     {
         SceneManager.LoadScene("StageSelcetScene");
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
