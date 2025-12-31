@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public enum SelectItemType
@@ -12,7 +11,6 @@ public enum SelectItemType
 public class SelectItemButton : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descriptionText;
     public Image iconImage;
     public Image[] starImages;
 
@@ -29,7 +27,6 @@ public class SelectItemButton : MonoBehaviour
         weaponData = data;
 
         nameText.text = data.weaponName;
-        descriptionText.text = data.description;
         iconImage.sprite = data.Sprite;
 
         UpdateStarUI();
@@ -41,7 +38,6 @@ public class SelectItemButton : MonoBehaviour
         weaponData = null;
 
         nameText.text = "Heal";
-        descriptionText.text = "full Hp";
         iconImage.sprite = healSprite;
 
         foreach (var star in starImages)
