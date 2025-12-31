@@ -15,14 +15,14 @@ MonoBehaviour:
   weaponPrefab: {fileID: 2202187861052018114, guid: f84f7e950da63c941ab16a6d6badbba6, type: 3}
   weaponName: DroneWeapon
   descriptionText: Summons a drone that attacks randomly
-  isUnlocked: 0
+  isUnlocked: 1
   price: 10000
   damage: 100
   speed: 10
   fireCoolTime: 1
   bulletCount: 1
   attackRange: 10
-  Sprite: {fileID: -38345435, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  Sprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   poolSize: 30
   upgradeCost: 0
   starLevel: 0

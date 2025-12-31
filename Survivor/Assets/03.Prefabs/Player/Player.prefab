@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 3810214103174425284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.909534, y: 21.324352, z: 0}
+  m_LocalPosition: {x: -0.9552186, y: 1.0288672, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -488,6 +488,7 @@ MonoBehaviour:
   bossReward: {fileID: 0}
   damageReduce: 0.3
   sheildTime: 5
+  diePanel: {fileID: 0}
 --- !u!50 &5235858476541983835
 Rigidbody2D:
   serializedVersion: 4
