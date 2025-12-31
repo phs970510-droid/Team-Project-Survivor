@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
     private float currentDelay;
     private float timer;
     private float bossTimer;
+    private float finalBossTimer;
     private bool bossSpawned = false;
     private bool finalBossSpawned = false;
     private bool finalBossDead = true;
@@ -48,6 +49,9 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         currentDelay = startDelay;
+
+        bossTimer = 0f;
+        finalBossTimer = 0f;
 
         int stageType = ChunkManager.Instance.typeNumb;
         Debug.Log($"현재 맵타입 : {ChunkManager.Instance.typeNumb}");
@@ -65,18 +69,19 @@ public class EnemySpawner : MonoBehaviour
             currentDelay=Mathf.Max(minDelay,currentDelay - decreasedAmount);
         }
 
-        if (!stageBossCleared)
+        if (ChunkManager.Instance.typeNumb != 3)
         {
-            bossTimer += Time.deltaTime;
+            if (!bossSpawned)
+            {
+                bossTimer += Time.deltaTime;
+                if (bossTimer >= bossSpawnTime)
+                {
+                    TrySpawnBoss();
+                }
+            }
         }
-        if (!bossSpawned && bossTimer >= bossSpawnTime)
-        {
-                TrySpawnBoss();
-        }
-
-
         //여기에 무한맵용 최종보스 스폰코드 구현하기
-        if (ChunkManager.Instance.typeNumb == 3)
+        else
         {
             //보스 죽으면 그 때 타이머 돌아가기
             if (finalBossDead)
