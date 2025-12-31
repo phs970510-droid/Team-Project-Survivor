@@ -139,4 +139,5 @@ MonoBehaviour:
   levelUpMlutiplier: 1.1
   magnetSpeed: 5
   levelUpRange: 1
+  baseData: {fileID: 11400000, guid: e61eb1f143d7d554486dfe07861855a7, type: 2}
   magnetRange: 0

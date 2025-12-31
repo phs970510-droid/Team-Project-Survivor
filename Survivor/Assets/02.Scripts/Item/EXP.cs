@@ -11,16 +11,12 @@ public class EXP : MonoBehaviour
     [Header("자석 세팅")]
     [SerializeField] private float magnetSpeed = 5.0f;
     [SerializeField] public float levelUpRange = 1.0f;
-    [SerializeField] public float magnetRange = 0f;
+
+    [SerializeField] private BaseData baseData;
+    public float magnetRange;
 
     private Transform player;
     private bool getMagnetItem = false;
-    void Update()
-    {
-        if (player == null) return;
-
-        MagnetRangeCheck();
-    }
 
     private void Awake()
     {
@@ -31,7 +27,16 @@ public class EXP : MonoBehaviour
 
             playerLevel = playerObj.GetComponent<PlayerLevel>();
         }
+        magnetRange = baseData.magnetRange;
     }
+
+    void Update()
+    {
+        if (player == null) return;
+
+        MagnetRangeCheck();
+    }
+
     private void MagnetRangeCheck()
     {
         float range;
