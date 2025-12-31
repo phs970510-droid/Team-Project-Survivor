@@ -653,6 +653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7374381924722901633, guid: b11062bfd63e2a84f9bc1100887b3239, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 1571649265}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
@@ -13,6 +13,16 @@ public abstract class WeaponBase : MonoBehaviour
     protected virtual void Awake()
     {
         shooter = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    protected virtual void OnEnable()
+    {
+        fireTimer = 0f;
+
+        if (weaponStat != null)
+        {
+            weaponStat.StartStat();
+        }
     }
 
     protected virtual void Start()
@@ -39,12 +49,12 @@ public abstract class WeaponBase : MonoBehaviour
             GameObject bulletObj = bulletPool.SpawnBullet
                 (firePoint.position, Quaternion.identity, lifeTime);
 
-            //°¢ ¹«±â¿¡ ¸Â´Â ÃÑ ¹ß»ç ±¸ÇöÇÏ±â
+            //ê° ë¬´ê¸°ì— ë§ëŠ” ì´ ë°œì‚¬ êµ¬í˜„í•˜ê¸°
             ShootEachWeapon(bulletObj, i);
         }
     }
 
-    //ÀÚ½Ä¿¡¼­ ¼¼ºÎ»çÇ× ±¸ÇöÇÏ±â
+    //ìì‹ì—ì„œ ì„¸ë¶€ì‚¬í•­ êµ¬í˜„í•˜ê¸°
     protected abstract void ShootEachWeapon(GameObject bulletObj, int index);
 
     protected bool IsShoot()
