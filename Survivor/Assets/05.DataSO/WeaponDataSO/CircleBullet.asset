@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CircleBullet
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 3100725527675279697, guid: 93a238a29938033458426510a2c8b481, type: 3}
-  weaponName: CircleWeapon
+  weaponName: SickleWeapon
+  description: Summons a rotating scythe.
   isUnlocked: 0
   price: 2000
   damage: 100
