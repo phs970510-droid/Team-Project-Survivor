@@ -86,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
             //보스 죽으면 그 때 타이머 돌아가기
             if (finalBossDead)
             {
-                bossTimer += Time.deltaTime;
+                finalBossTimer += Time.deltaTime;
                 if (!finalBossSpawned && bossTimer >= finalBossSpawnTime)
                 {
                     TrySpawnInfinite();
