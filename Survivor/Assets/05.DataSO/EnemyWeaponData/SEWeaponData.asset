@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 8098695149774017166, guid: 3f422ce48ea18a24d8414dc017430f9e, type: 3}
   weaponName: 
+  descriptionText: 
   isUnlocked: 0
   price: 0
-  damage: 10
+  damage: 7
   speed: 0
-  fireCoolTime: 1
+  fireCoolTime: 2
   bulletCount: 0
   attackRange: 10
   Sprite: {fileID: 0}
   poolSize: 5
   upgradeCost: 0
+  starLevel: 0
+  maxStar: 5
+  initDamage: 100
+  initSpeed: 10
+  initFireCoolTime: 1
+  initBulletCount: 1
+  initAttackRange: 10

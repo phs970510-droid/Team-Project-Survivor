@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: NormalBoss
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  maxHp: 100
+  maxHp: 500
+  magnetRange: 0
+  expMultiplier: 1
   damage: 10
+  baseUpgradeCosts: 

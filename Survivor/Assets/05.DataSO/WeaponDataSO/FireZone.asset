@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 1423999351719319633, guid: 8e78ec0caf9c1d24983d6796fe88ebd3, type: 3}
   weaponName: 
+  descriptionText: 
   isUnlocked: 0
   price: 0
   damage: 0
@@ -26,8 +27,8 @@ MonoBehaviour:
   upgradeCost: 0
   starLevel: 0
   maxStar: 5
-  initDamage: 100
-  initSpeed: 10
-  initFireCoolTime: 1
-  initBulletCount: 1
-  initAttackRange: 10
+  initDamage: 0
+  initSpeed: 0
+  initFireCoolTime: 0
+  initBulletCount: 0
+  initAttackRange: 0

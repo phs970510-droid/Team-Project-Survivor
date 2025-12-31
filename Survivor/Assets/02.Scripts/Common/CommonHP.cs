@@ -65,7 +65,7 @@ public class CommonHP : MonoBehaviour
     protected virtual void TakeDamage(float damage)
     {
         if (isDead) return; //죽었으면 리턴하기
-        if (CompareTag("Player") && isInvincible)
+        if (isInvincible)
             return; //플레이어가 무적이면 리턴하기
 
         //실드 가지고 있으면 데미지감소

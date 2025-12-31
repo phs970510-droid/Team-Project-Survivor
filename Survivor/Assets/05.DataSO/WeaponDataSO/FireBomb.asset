@@ -17,7 +17,7 @@ MonoBehaviour:
   descriptionText: Throws a Molotov, leaving flames
   isUnlocked: 0
   price: 5000
-  damage: 100
+  damage: 25
   speed: 10
   fireCoolTime: 1
   bulletCount: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
   upgradeCost: 0
   starLevel: 0
   maxStar: 5
-  initDamage: 100
+  initDamage: 25
   initSpeed: 10
   initFireCoolTime: 1
   initBulletCount: 1

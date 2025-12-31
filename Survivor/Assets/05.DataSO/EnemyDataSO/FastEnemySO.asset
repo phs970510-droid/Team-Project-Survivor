@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8227d55a53a90fd4691b5a9100dc639c, type: 3}
   m_Name: FastEnemySO
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   maxHp: 100
+  magnetRange: 0
+  expMultiplier: 1
   damage: 10
+  baseUpgradeCosts: 
