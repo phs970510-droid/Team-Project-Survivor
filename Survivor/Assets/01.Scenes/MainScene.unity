@@ -344,6 +344,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2220486845974559975, guid: 5be6076b6e18e73489dba367b62c527c, type: 3}
+      propertyPath: bgmVolume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5851795072291665482, guid: 5be6076b6e18e73489dba367b62c527c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.9839606
