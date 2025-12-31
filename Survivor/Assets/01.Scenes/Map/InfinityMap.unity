@@ -725,10 +725,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 494417046610380148, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: warningMessage
+      value: 
+      objectReference: {fileID: 2018239083}
+    - target: {fileID: 494417046610380148, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: finalBossSpawnTime
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 1677302221344192017, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: warningMessage
       value: 
-      objectReference: {fileID: 5286534461973330749, guid: de764937658c6e544bc112a3820ab578, type: 3}
+      objectReference: {fileID: 2018239083}
+    - target: {fileID: 1677302221344192017, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: finalBossSpawnTime
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843132114719022471, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: warningMessage
+      value: 
+      objectReference: {fileID: 2018239083}
+    - target: {fileID: 2843132114719022471, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: finalBossSpawnTime
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 3810214103174425284, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: m_Name
       value: Player
@@ -784,6 +804,14 @@ PrefabInstance:
     - target: {fileID: 4750564613838781617, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465324575367899933, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: warningMessage
+      value: 
+      objectReference: {fileID: 2018239083}
+    - target: {fileID: 6465324575367899933, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: finalBossSpawnTime
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6964823894383930263, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: diePanel
@@ -1146,6 +1174,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de764937658c6e544bc112a3820ab578, type: 3}
+--- !u!114 &2018239083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5286534461973330749, guid: de764937658c6e544bc112a3820ab578, type: 3}
+  m_PrefabInstance: {fileID: 2018239082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab81744f9579f6418607d5e135c37fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2129282406
 PrefabInstance:
   m_ObjectHideFlags: 0
