@@ -726,12 +726,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 494417046610380148, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: bossSpawnTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 494417046610380148, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: warningMessage
       value: 
       objectReference: {fileID: 2018239083}
     - target: {fileID: 494417046610380148, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: finalBossSpawnTime
-      value: 120
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677302221344192017, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: bossSpawnTime
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1677302221344192017, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: warningMessage
@@ -739,7 +747,11 @@ PrefabInstance:
       objectReference: {fileID: 2018239083}
     - target: {fileID: 1677302221344192017, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: finalBossSpawnTime
-      value: 120
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843132114719022471, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: bossSpawnTime
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2843132114719022471, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: warningMessage
@@ -747,7 +759,7 @@ PrefabInstance:
       objectReference: {fileID: 2018239083}
     - target: {fileID: 2843132114719022471, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: finalBossSpawnTime
-      value: 120
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3810214103174425284, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: m_Name
@@ -806,12 +818,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6465324575367899933, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
+      propertyPath: bossSpawnTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465324575367899933, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: warningMessage
       value: 
       objectReference: {fileID: 2018239083}
     - target: {fileID: 6465324575367899933, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: finalBossSpawnTime
-      value: 120
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6964823894383930263, guid: 2097186ef3401a346ad90f89e7fd0bca, type: 3}
       propertyPath: diePanel
@@ -1011,6 +1027,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2165108866064752234, guid: e3c1862038052b6409770c96f00fa928, type: 3}
+      propertyPath: moneyText
+      value: 
+      objectReference: {fileID: 5968149925565292030}
     - target: {fileID: 2165108866064752234, guid: e3c1862038052b6409770c96f00fa928, type: 3}
       propertyPath: killCountText
       value: 
@@ -1445,6 +1465,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1580694287252133967, guid: b53dff6a4d506814396b851070098622, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b9a7b973938ef6489df60e3f5f2f31f, type: 2}
+    - target: {fileID: 1580694287252133967, guid: b53dff6a4d506814396b851070098622, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4521377942666640222, guid: b53dff6a4d506814396b851070098622, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1561,6 +1589,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8971570444593453356, guid: b53dff6a4d506814396b851070098622, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b9a7b973938ef6489df60e3f5f2f31f, type: 2}
+    - target: {fileID: 8971570444593453356, guid: b53dff6a4d506814396b851070098622, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1571,6 +1607,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6559468789987734983, guid: b53dff6a4d506814396b851070098622, type: 3}
   m_PrefabInstance: {fileID: 5968149925565292028}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5968149925565292030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7502549686181355570, guid: b53dff6a4d506814396b851070098622, type: 3}
+  m_PrefabInstance: {fileID: 5968149925565292028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7542699139884130492
 PrefabInstance:
   m_ObjectHideFlags: 0
