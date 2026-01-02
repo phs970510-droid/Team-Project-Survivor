@@ -1,6 +1,6 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-//º¸½º È¸ÀüÃàÀ» ´ã´ç
+//ë³´ìŠ¤ íšŒì „ì¶•ì„ ë‹´ë‹¹
 public class BossCircleWeapon : MonoBehaviour
 {
     public GameObject circlePrefab;
@@ -31,7 +31,7 @@ public class BossCircleWeapon : MonoBehaviour
         {
             transform.position = boss.position;
         }
-        //È¸ÀüÃà µ¹±â
+        //íšŒì „ì¶• ëŒê¸°
         transform.Rotate(-Vector3.forward, rotateSpeed * Time.deltaTime);
     }
 
@@ -39,30 +39,30 @@ public class BossCircleWeapon : MonoBehaviour
     {
         circleObjects = new GameObject[count];
 
-        //¿øÇüÀ¸·Î ÃÑ¾Ë ¹èÄ¡
+        //ì›í˜•ìœ¼ë¡œ ì´ì•Œ ë°°ì¹˜
         for (int i = 0; i < count; i++)
         {
-            //¿øÇü Åº Ç®¸µÇÏ±â
+            //ì›í˜• íƒ„ í’€ë§í•˜ê¸°
             GameObject circleBulletObj = pool.SpawnBullet(
             transform.position, Quaternion.identity, 0f);
 
-            //È¸ÀüÃàÀ» µû¶ó µ¹±â À§ÇÑ ºÎ¸ğ ¼³Á¤
+            //íšŒì „ì¶•ì„ ë”°ë¼ ëŒê¸° ìœ„í•œ ë¶€ëª¨ ì„¤ì •
             circleBulletObj.transform.SetParent(this.transform);
 
-            float angle = (360f / count) * i;  //ÃÑ¾Ë ´Ã¾î³ª¸é °¢µµ ¶È°°ÀÌ
+            float angle = (360f / count) * i;  //ì´ì•Œ ëŠ˜ì–´ë‚˜ë©´ ê°ë„ ë˜‘ê°™ì´
 
-            //Åº À§Ä¡¼³Á¤
+            //íƒ„ ìœ„ì¹˜ì„¤ì •
             float x = Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
             float y = Mathf.Cos(angle * Mathf.Deg2Rad) * radius;
             circleBulletObj.transform.localPosition = new Vector3(x, y, 0f);
 
-            //¿øÇü ÁÂÇ¥ °è»ê
+            //ì›í˜• ì¢Œí‘œ ê³„ì‚°
             //Vector3 offset = new Vector3(
             //    Mathf.Sin(angle * Mathf.Deg2Rad),
             //    Mathf.Cos(angle * Mathf.Deg2Rad),
             //    0) * radius;
 
-            //½ºÅÈ °¡Á®¿À±â
+            //ìŠ¤íƒ¯ ê°€ì ¸ì˜¤ê¸°
             CircleBullet circleBullet = circleBulletObj.GetComponent<CircleBullet>();
             int bossLayer = boss.gameObject.layer;
             circleBullet.BulletStat(damage, bossLayer);
@@ -73,13 +73,15 @@ public class BossCircleWeapon : MonoBehaviour
 
     private void OnDestroy()
     {
-        //È¸ÀüÃàÀÌ ÆÄ±«µÇ¸é ÀÚµ¿À¸·Î Ç®¸®ÅÏ
+        //íšŒì „ì¶•ì´ íŒŒê´´ë˜ë©´ ìë™ìœ¼ë¡œ í’€ë¦¬í„´
         ReturnPool();
     }
     private void ReturnPool()
     {
         foreach(GameObject obj in circleObjects)
         {
+            if (circleObjects == null) return;
+            if (pool == null) return;
             if (obj != null && obj.activeSelf)
             {
                 obj.transform.SetParent(pool.transform);
